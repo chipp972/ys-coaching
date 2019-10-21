@@ -1,0 +1,19 @@
+@import "~bulma"
+@import "../variables.sass"
+
+$navbar-height: 70px
+
+.navbar
+  background-color: $black
+  height: $navbar-height
+
+.social-icon-svg
+  fill: $crimson200
+
++mobile
+  .navbar-burger
+    display: flex
+    flex-direction: column-reverse
+    font-size: 12px
+    font-family: $noto-sans
+    align-items: center
