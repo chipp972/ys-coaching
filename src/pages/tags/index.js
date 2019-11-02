@@ -12,7 +12,7 @@ const TagsPage = ({
     }
   }
 }) => (
-  <Layout>
+  <Layout pathname="/blog">
     <section className="section">
       <Helmet title={`Tags | ${title}`} />
       <div className="container content">

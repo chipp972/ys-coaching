@@ -1,9 +1,10 @@
 export const routes = [
+  { name: 'Home', to: '/' },
   { name: 'About', to: '/about' },
-  { name: 'Products', to: '/products' },
-  { name: 'Blog', to: '/blog' },
+  { name: 'Coaching', to: '/products' },
   { name: 'Contact', to: '/contact' },
-  { name: 'Form Examples', to: '/contact/examples' }
+  { name: 'FAQ', to: '/contact/examples' },
+  { name: 'Blog', to: '/blog' }
 ];
 
 export const instagramUrl = 'https://www.instagram.com/ys_coaching_0929/';

@@ -34,8 +34,9 @@ export default class Index extends React.Component {
   };
 
   render() {
+    const {location} = this.props;
     return (
-      <Layout>
+      <Layout pathname={location.pathname}>
         <section className="section">
           <div className="container">
             <div className="content">

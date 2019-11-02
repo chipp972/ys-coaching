@@ -3,12 +3,13 @@ import './global.sass';
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Footer from '../components/Footer';
+import { Footer } from '../components/Footer';
 import { Navbar } from './Navbar/Navbar';
-import useSiteMetadata from './SiteMetadata';
+import { useSiteMetadata } from './SiteMetadata';
 import { withPrefix } from 'gatsby';
+import PropTypes from 'prop-types';
 
-const TemplateWrapper = ({ children }) => {
+const TemplateWrapper = ({ children, pathname }) => {
   const { title, description } = useSiteMetadata();
   return (
     <div>
@@ -20,8 +21,7 @@ const TemplateWrapper = ({ children }) => {
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href={`${withPrefix('/')}img/apple-touch-icon.png`}
-        />
+          href={`${withPrefix('/')}img/apple-touch-icon.png`} />
         <link
           rel="icon"
           type="image/png"
@@ -50,11 +50,15 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar />
+      <Navbar pathname={pathname} />
       <div>{children}</div>
       <Footer />
     </div>
   );
+};
+
+TemplateWrapper.propTypes = {
+  pathname: PropTypes.string
 };
 
 export default TemplateWrapper;

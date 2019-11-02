@@ -1,19 +1,65 @@
-@import "~bulma"
+@import "~bulma/sass/utilities/initial-variables"
 @import "../variables.sass"
 
-$navbar-height: 70px
+$navbar-height: 6rem
+
+$navbar-background-color: $black-04dp
+$navbar-burger-color: $gray50
+
+$navbar-item-color: #B9B9B9
+
+$navbar-item-hover-color: $primary
+$navbar-item-hover-background-color: transparent
+
+$navbar-item-active-color: $gray50
+$navbar-item-active-background-color: #525252
+
+$navbar-dropdown-arrow: #B9B9B9
+
+.navbar-item
+  text-transform: uppercase
+  font-size: $desktop-xs-text
+  letter-spacing: $desktop-headline-letter-spacing
+  line-height: $desktop-headline-line-height
+  font-family: $noto-sans
+
+@import "~bulma"
 
 .navbar
-  background-color: $black
-  height: $navbar-height
+  border-bottom: 1px solid $gray500
+  box-shadow: 0 4px 4px $black
 
 .social-icon-svg
   fill: $crimson200
 
-+mobile
-  .navbar-burger
-    display: flex
-    flex-direction: column-reverse
-    font-size: 12px
-    font-family: $noto-sans
-    align-items: center
+.logo
+  display: flex
+  flex-flow: row nowrap
+  justify-content: center
+  align-items: center
+
+  &:hover
+    .logo-type
+      color: $gray50
+
+  .logo-image
+    width: auto
+    height: $navbar-height
+    max-height: $navbar-height 
+
+  .logo-type
+    font-family: $noto-serif
+    font-size: $mobile-xs-text
+    letter-spacing: 6px
+    text-transform: uppercase
+    color: $gray500
+
+    +tablet
+      font-size: $mobile-m-text
+
+    +desktop
+      font-size: $desktop-m-text
+
++desktop
+  .navbar-item.is-active:hover
+    background-color: #525252

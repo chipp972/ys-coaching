@@ -22,7 +22,7 @@ export const IndexPageTemplate = ({
         backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
         })`,
-        backgroundPosition: `top left`,
+        backgroundPosition: `center`,
         backgroundAttachment: `fixed`
       }}>
       <div
@@ -122,11 +122,11 @@ IndexPageTemplate.propTypes = {
   })
 };
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout>
+    <Layout pathname={location.pathname}>
       <IndexPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
