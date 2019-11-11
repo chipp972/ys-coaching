@@ -7,9 +7,11 @@ import classNames from 'clsx';
 
 export const GhostButton = ({ title, to, className, ...props }) =>
   !!to ? (
-    <Link className={classNames(className, 'big-cta')} to={to} {...props}>
-      {title}
-    </Link>
+    <div className="column is-12 has-text-centered big-cta-container">
+      <Link className={classNames(className, 'big-cta')} to={to} {...props}>
+        {title}
+      </Link>
+    </div>
   ) : (
     <button type="button" className={classNames(className, 'big-cta')} {...props}>
       {title}

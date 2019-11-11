@@ -1,14 +1,12 @@
 @import '../typography'
 @import '../variables'
 
-@mixin big-cta($border-color: $gray500, $color: $gray500, $hover-color: $gray50, $hover-bg: $black)
+@mixin big-cta($color: $gray500, $hover-color: $gray50, $hover-bg: $black)
     @include all-caps-cta
     text-align: center
     text-decoration: none
     font-weight: 800
     padding: 20px 30px
-    border-radius: .25rem;
-    border: 6px solid $border-color
     color: $color
     width: 80%
     transition: background-color 0.3s ease, color 0.3s ease
@@ -20,5 +18,13 @@
     +tablet
         width: auto
 
-.big-cta
-    @include big-cta
+.big-cta-container
+    border: 6px solid $crimson200
+    border-radius: .25rem;
+
+    &:hover
+        background-color: $crimson100
+        color: $crimson900
+
+    .big-cta
+        @include big-cta($color: $crimson200)

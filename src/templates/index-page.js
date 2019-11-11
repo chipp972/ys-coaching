@@ -32,7 +32,6 @@ export const IndexPageTemplate = ({
         <h3 className="has-text-weight-bold has-text-centered is-size-5-mobile is-size-5-tablet is-size-4-widescreen description box-shadow">
           {subheading}
         </h3>
-        <GhostButton title="GET STARTED NOW" className="home-big-cta box-shadow" to="/products" />
       </div>
     </div>
     <section className="section section--gradient">
@@ -64,9 +63,7 @@ export const IndexPageTemplate = ({
                   ))}
                 </div>
                 <div className="columns" style={{margin: '20px 0'}}>
-                  <div className="column is-12 has-text-centered">
-                    <GhostButton to="/products" title="See all services" className="home-services-cta" />
-                  </div>
+                    <GhostButton to="/products" title="See all services" />
                 </div>
                 <div className="column is-12">
                   <h3 className="has-text-weight-semibold is-size-2">
