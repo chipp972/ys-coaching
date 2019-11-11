@@ -3,7 +3,7 @@ export const routes = [
   { name: 'About', to: '/about' },
   { name: 'Coaching', to: '/products' },
   { name: 'Contact', to: '/contact' },
-  { name: 'FAQ', to: '/contact/examples' },
+  // { name: 'FAQ', to: '/contact/examples' },
   { name: 'Blog', to: '/blog' }
 ];
 

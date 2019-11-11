@@ -1,10 +1,12 @@
+import './index-page.sass';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
+import {GhostButton} from '../components/Buttons/Buttons';
 
 import Layout from '../components/Layout';
-import Features from '../components/Features';
 import BlogRoll from '../components/BlogRoll';
+import { FeatureCard } from '../components/FeatureCard/FeatureCard';
 
 export const IndexPageTemplate = ({
   image,
@@ -17,47 +19,20 @@ export const IndexPageTemplate = ({
 }) => (
   <div>
     <div
-      className="full-width-image margin-top-0"
+      className="margin-top-0 home-image"
       style={{
         backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-        backgroundPosition: `center`,
-        backgroundAttachment: `fixed`
+        })`
       }}>
-      <div
-        style={{
-          display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column'
-        }}>
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em'
-          }}>
+      <div className="text-container">
+        <h1 className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen big-headline box-shadow">
           {title}
         </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em'
-          }}>
+        <h3 className="has-text-weight-bold has-text-centered is-size-5-mobile is-size-5-tablet is-size-4-widescreen description box-shadow">
           {subheading}
         </h3>
+        <GhostButton title="GET STARTED NOW" className="home-big-cta box-shadow" to="/products" />
       </div>
     </div>
     <section className="section section--gradient">
@@ -68,26 +43,29 @@ export const IndexPageTemplate = ({
               <div className="content">
                 <div className="content">
                   <div className="tile">
-                    <h1 className="title">{mainpitch.title}</h1>
+                    <h3 className="section-title">{mainpitch.title}</h3>
                   </div>
                   <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
+                    <p>{mainpitch.description}</p>
                   </div>
                 </div>
+                {/* <div className="triangle" /> */}
                 <div className="columns">
                   <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
+                    <h3 className="section-title">
                       {heading}
                     </h3>
                     <p>{description}</p>
                   </div>
                 </div>
-                <Features gridItems={intro.blurbs} />
-                <div className="columns">
+                <div className="columns is-multiline">
+                  {intro.blurbs.map((featureData, index) => (
+                    <FeatureCard key={index} {...featureData} />
+                  ))}
+                </div>
+                <div className="columns" style={{margin: '20px 0'}}>
                   <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/products">
-                      See all products
-                    </Link>
+                    <GhostButton to="/products" title="See all services" className="home-services-cta" />
                   </div>
                 </div>
                 <div className="column is-12">

@@ -1,0 +1,18 @@
+@import './variables.sass'
+@import './typography.sass'
+
+.footer
+  padding: 3rem 0rem 0rem
+  background-color: $gray50
+
+  .menu-list
+      margin: 0
+
+  .navbar-item
+      @include all-caps-cta
+      color: $black
+      &:active
+          color: $black
+      &:hover
+          background-color: $gray100
+          color: $black

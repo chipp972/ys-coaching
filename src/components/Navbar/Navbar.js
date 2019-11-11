@@ -1,5 +1,5 @@
 import './navbar.sass';
-import instagram from '../../img/social/instagram.svg';
+import pinkInstagram from '../../img/social/pink-instagram.svg';
 import logo from '../../img/logo.svg';
 
 import React from 'react';
@@ -26,9 +26,10 @@ const HamburgerMenu = ({ setActive, isActive }) => {
         })}
         data-target="navMenu"
         onClick={() => setActive(!isActive)}>
-        <span />
-        <span />
-        <span />
+        <div className="burger-part" />
+        <div className="burger-part" />
+        <div className="burger-part" />
+        <div>{isActive ? 'close' : 'menu'}</div>
       </div>
     </>
   );
@@ -67,26 +68,13 @@ export const Navbar = ({ pathname }) => {
             ))}
           </div>
           <div className="navbar-end has-text-centered">
-            <div className="navbar-item has-dropdown is-hoverable">
-              <div className="navbar-link">
-                en
-              </div>
-              <div class="navbar-dropdown">
-                <button className="navbar-item">
-                  fr
-                </button>
-                <button className="navbar-item">
-                  jp
-                </button>
-              </div>
-            </div>
             <a
               className="navbar-item social-icon"
               href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer">
               <span className="icon">
-                <img src={instagram} alt="Ys coaching Instagram" />
+                <img src={pinkInstagram} alt="Ys coaching Instagram" />
               </span>
             </a>
           </div>

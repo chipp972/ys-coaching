@@ -1,0 +1,58 @@
+@import "../components/variables"
+@import "../components/typography"
+
+.box-shadow
+    background-color: rgba(18, 18, 18, 0.7)
+
+.home-image
+    display: flex
+    justify-content: center
+    align-items: center
+    background-size: cover
+    background-position: center
+    background-attachment: fixed
+    width: 100vw
+    height: calc(100vh - #{$navbar-height})
+
+    .text-container
+        display: flex
+        justify-content: space-around
+        align-items: center
+        flex-direction: column
+
+        & > *
+            margin-bottom: 25px
+
+        .big-headline
+            padding: 0.25em
+            text-align: center
+        
+        .description
+            color: $white
+            padding: 0.25em
+        
+        .home-big-cta
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%
+
+            +tablet
+                width: auto
+
+.home-services-cta
+    border: 6px solid $crimson300
+    color: $crimson300
+
+    &:hover
+        background-color: $crimson100
+        color: $crimson900
+
+.triangle
+    display : inline-block
+    height : 0
+    width : 0
+    border-top : 140px solid red
+    border-right : 50vw solid transparent
+    border-left : 50vw solid transparent

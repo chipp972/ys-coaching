@@ -1,10 +1,31 @@
 @import "./variables.sass"
+@import "./typography.sass"
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,400,500,700|Noto+Serif+JP:200,400&display=swap")
 
-body
-    font-family: $noto-serif
-    background-color: $black
-    color: $gray50
+$family-primary: $noto-serif, $family-sans-serif
+$body-background-color: $black
 
-h1, h2, h3, h4, h5
-    font-family: $noto-sans
+// Navbar
+$navbar-height: $navbar-height
+
+$navbar-background-color: $black-04dp
+$navbar-burger-color: $gray50
+
+$navbar-item-color: #B9B9B9
+
+$navbar-item-hover-color: $primary
+$navbar-item-hover-background-color: transparent
+
+$navbar-item-active-color: $gray50
+$navbar-item-active-background-color: #525252
+
+$navbar-dropdown-arrow: #B9B9B9
+
+@import "~bulma"
+
+body
+    @include body-text
+
+.content h3
+    @include section-title
+    margin-bottom: 2.5rem

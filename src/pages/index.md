@@ -3,7 +3,7 @@ templateKey: index-page
 title: Get strong with Y's coaching
 image: /img/img-20190924-wa0002.jpg
 heading: Great coffee with a conscience
-subheading: Support sustainable farming while enjoying a cup
+subheading: Meet your strength and fitness goals
 mainpitch:
   title: Why Kaldi
   description: >
