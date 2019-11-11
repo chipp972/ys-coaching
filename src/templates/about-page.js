@@ -36,19 +36,6 @@ export const AboutPageTemplate = ({
               <PageContent className="content about-content" content={content} />
             </div>
 
-            <div className="about-content-container">
-              <img
-                className="about-main-image"
-                src={
-                  mainImage.childImageSharp
-                    ? mainImage.childImageSharp.fluid.src
-                    : mainImage
-                }
-                alt="Yuto"
-              />
-              <PageContent className="content about-content" content={content} />
-            </div>
-
           </div>
         </div>
       </div>
