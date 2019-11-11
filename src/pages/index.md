@@ -5,7 +5,7 @@ image: /img/img-20190924-wa0002.jpg
 heading: A program adapted to your needs
 subheading: Meet your strength and fitness goals
 mainpitch:
-  title: Why Kaldi
+  title: Why Y's Coaching
   description: >-
     Lorem ipsum dolor sit amet, consect etur adipiscing elit. Lorem ipsum dolor
     sit amet. Lorem ipsum dolor sit amet, consect etur adipiscing elit. Lorem
