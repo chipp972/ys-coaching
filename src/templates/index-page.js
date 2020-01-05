@@ -26,7 +26,7 @@ export const IndexPageTemplate = ({
         })`
       }}>
       <div className="text-container">
-        <h1 className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen big-headline box-shadow">
+        <h1 className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen home-hang-headline box-shadow">
           {title}
         </h1>
         <h3 className="has-text-weight-bold has-text-centered is-size-5-mobile is-size-5-tablet is-size-4-widescreen description box-shadow">
@@ -34,9 +34,9 @@ export const IndexPageTemplate = ({
         </h3>
       </div>
     </div>
-    <section className="section section--gradient">
+    <section>
       <div className="container">
-        <div className="section">
+        <div className="section home-section">
           <div className="columns">
             <div className="column is-10 is-offset-1">
               <div className="content">
@@ -62,19 +62,8 @@ export const IndexPageTemplate = ({
                     <FeatureCard key={index} {...featureData} />
                   ))}
                 </div>
-                <div className="columns" style={{margin: '20px 0'}}>
+                <div className="columns" style={{marginTop: '50px'}}>
                     <GhostButton to="/products" title="See all services" />
-                </div>
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
-                  </h3>
-                  <BlogRoll />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      Read more
-                    </Link>
-                  </div>
                 </div>
               </div>
             </div>
