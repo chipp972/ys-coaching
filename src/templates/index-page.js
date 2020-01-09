@@ -1,11 +1,10 @@
 import './index-page.sass';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import {GhostButton} from '../components/Buttons/Buttons';
 
 import Layout from '../components/Layout';
-import BlogRoll from '../components/BlogRoll';
 import { FeatureCard } from '../components/FeatureCard/FeatureCard';
 
 export const IndexPageTemplate = ({

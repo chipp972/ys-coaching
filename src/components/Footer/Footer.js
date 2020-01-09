@@ -1,11 +1,11 @@
 import './footer.sass';
 
-import logoDark from '../img/logo-dark.svg';
-import instagram from '../img/social/instagram.svg';
+import logoDark from '../../img/logo-dark.svg';
+import instagram from '../../img/social/instagram.svg';
 
 import React from 'react';
 import { Link } from 'gatsby';
-import { routes, instagramUrl } from '../routing';
+import { routes, instagramUrl } from '../../routing';
 
 export const Footer = () => (
   <footer className="footer has-text-white-ter">

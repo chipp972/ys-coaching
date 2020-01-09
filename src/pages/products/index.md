@@ -77,21 +77,21 @@ pricing:
         - 3 lbs of coffee per month
         - Green or roasted beans"
         - One or two varieties of beans"
-      plan: Small
-      price: '50'
+      name: 1-on-1 Personal training
+      price: 240
     - description: 'Great for avid drinkers, java-loving couples and bigger crowds'
       items:
         - 6 lbs of coffee per month
         - Green or roasted beans
         - Up to 4 different varieties of beans
-      plan: Big
-      price: '80'
+      name: Online coaching
+      price: 135
     - description: Want a few tiny batches from different varieties? Try our custom plan
       items:
         - Whatever you need
         - Green or roasted beans
         - Unlimited varieties
-      plan: Custom
-      price: '??'
+      name: Custom program
+      price: 25
 ---
 
