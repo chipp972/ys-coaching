@@ -20,14 +20,14 @@ intro:
         local communities. Check our post or contact us directly for current
         availability.
       title: Become strong
-      image: /img/trending-up.svg
+      image: /img/noun_strong_1757000.png
     - text: >
         We offer a small, but carefully curated selection of brewing gear and
         tools for every taste and experience level. No matter if you roast your
         own beans or just bought your first french press, you’ll find a gadget
         to fall in love with in our shop.
       title: Lose weight
-      image: /img/trending-down.svg
+      image: /img/noun_lose-weight_324636.png
     - text: >
         Love a great cup of coffee, but never knew how to make one? Bought a
         fancy new Chemex but have no clue how to use it? Don't worry, we’re here
@@ -35,7 +35,7 @@ intro:
         to learn anything you want to know about coffee roasting and brewing.
         Email us or call the store for details.
       title: Online coaching
-      image: /img/wifi.svg
+      image: /img/noun_coaching_1477028.png
     - text: >
         We believe that good coffee has the power to bring people together.
         That’s why we decided to turn a corner of our shop into a cozy meeting
@@ -43,7 +43,7 @@ intro:
         coffee making techniques. All of the artwork on display there is for
         sale. The full price you pay goes to the artist.
       title: 1-on-1 Coaching
-      image: /img/users.svg
+      image: /img/noun_coaching_66723.png
   heading: What we offer
   description: >
     Kaldi is the ultimate spot for coffee lovers who want to learn about their
