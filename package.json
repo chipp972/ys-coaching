@@ -12,6 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.27",
     "bulma": "^0.8.0",
     "clsx": "^1.0.4",
     "gatsby": "^2.13.31",
@@ -42,6 +43,9 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "babel-preset-gatsby": "^0.2.27",
     "prettier": "^1.15.3"
   },
   "private": true
