@@ -23,7 +23,7 @@ const SubTitle = styled.h2`
   font-family: ${fontFamilies.notoSerif};
   font-size: 28px;
   font-weight: 100;
-  line-height: 0.5;
+  line-height: 1.1;
   letter-spacing: 2px;
   text-transform: uppercase;
 
