@@ -42,7 +42,7 @@ pricing:
         - Unlimited video analysis
         - Unlimited messaging via whatsapp
       plan: 1-on-1 personal coaching
-      price: '60'
+      price: 60
     - frequency: week
       image: /img/guillaume-bolduc-hdbaq9w0hry-unsplash.jpg
       description: Programming and analysis with videos
@@ -51,7 +51,7 @@ pricing:
         - Unlimited video analysis
         - Unlimited messaging via whatsapp
       plan: Online coaching
-      price: '30'
+      price: 30
     - image: /img/emma-matthews-digital-content-production-8k62atzbulq-unsplash.jpg
       description: A program adapted to you that will make you reach your goal
       items:
