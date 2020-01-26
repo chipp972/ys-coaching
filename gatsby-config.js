@@ -4,6 +4,20 @@ module.exports = {
     description: 'Online and in-person strenght and conditioning'
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: `Y's coaching`,
+        short_name: `Y's coaching`,
+        description: 'Online and in-person strenght and conditioning',
+        start_url: `/`,
+        background_color: `#121212`,
+        theme_color: `#c0c0c0`,
+        display: `standalone`,
+        icon: 'static/img/favicon-512x512.png'
+      }
+    },
+    'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
