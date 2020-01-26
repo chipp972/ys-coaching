@@ -31,10 +31,10 @@ main:
 testimonials: []
 full_image: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
 pricing:
-  heading: Monthly subscriptions
+  heading: Services
   description: Choose how you want us to work together.
   plans:
-    - frequency: month
+    - frequency: week
       image: /img/alora-griffiths-bnrqnvtzxio-unsplash.jpg
       description: In person training at your gym or at home
       items:
@@ -42,8 +42,8 @@ pricing:
         - Unlimited video analysis
         - Unlimited messaging via whatsapp
       plan: 1-on-1 personal coaching
-      price: 240
-    - frequency: month
+      price: '60'
+    - frequency: week
       image: /img/guillaume-bolduc-hdbaq9w0hry-unsplash.jpg
       description: Programming and analysis with videos
       items:
@@ -51,7 +51,7 @@ pricing:
         - Unlimited video analysis
         - Unlimited messaging via whatsapp
       plan: Online coaching
-      price: 135
+      price: '30'
     - image: /img/emma-matthews-digital-content-production-8k62atzbulq-unsplash.jpg
       description: A program adapted to you that will make you reach your goal
       items:
