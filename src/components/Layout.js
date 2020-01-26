@@ -3,11 +3,13 @@ import './global.sass';
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Footer } from '../components/Footer/Footer';
-import { Navbar } from './Navbar/Navbar';
+import { Footer, footerHeight } from '../components/Footer/Footer';
+import { Navbar, navbarHeight } from './Navbar/Navbar';
 import { useSiteMetadata } from './SiteMetadata';
 import { withPrefix } from 'gatsby';
 import PropTypes from 'prop-types';
+import { colors } from './theme';
+import { css } from '@emotion/core';
 
 const TemplateWrapper = ({ children, pathname }) => {
   const { title, description } = useSiteMetadata();
@@ -38,7 +40,7 @@ const TemplateWrapper = ({ children, pathname }) => {
         <link
           rel="mask-icon"
           href={`${withPrefix('/')}img/safari-pinned-tab.svg`}
-          color="#ff4400"
+          color={colors.gray500}
         />
         <meta name="theme-color" content="#fff" />
 
@@ -51,7 +53,11 @@ const TemplateWrapper = ({ children, pathname }) => {
         />
       </Helmet>
       <Navbar pathname={pathname} />
-      <div>{children}</div>
+      <div css={css`
+        margin-top: ${navbarHeight};
+        overflow-x: hidden;
+        min-height: calc(100vh - ${footerHeight} - ${navbarHeight});
+      `}>{children}</div>
       <Footer />
     </div>
   );

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Pricing from '../components/Pricing';
-import { css } from '@emotion/core';
 import { FullWidthImage } from '../components/ImageContainer/FullWidthImage';
-import { fontFamilies } from '../components/theme';
+import { PageTitle } from '../components/Typography/PageTitle';
+import { SectionTitle } from '../components/Typography/SectionTitle';
 
 export const ProductPageTemplate = ({
   image,
@@ -19,32 +19,20 @@ export const ProductPageTemplate = ({
 }) => (
   <div className="container">
     <div className="section">
+      <PageTitle title={heading} subtitle={description} />
       <div className="columns">
-        <div className="column is-10 has-text-centered is-offset-1">
-          <h3 className="has-text-weight-semibold is-size-2" css={css`
-            font-family: ${fontFamilies.notoSans};
-            line-height: 177.5%;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-          `}>{heading}</h3>
-          <p>{description}</p>
+        <div className="column is-10 is-offset-1">
+          <SectionTitle>{main.heading}</SectionTitle>
+          <p>{main.description}</p>
         </div>
       </div>
       <div className="columns">
+        <FullWidthImage image={fullImage} />
+      </div>
+      <div className="columns">
         <div className="column is-10 is-offset-1">
-          <div className="columns">
-            <div className="column is-7">
-              <h3 className="section-title" css={css`margin-bottom: 1rem;`}>
-                {main.heading}
-              </h3>
-              <p>{main.description}</p>
-            </div>
-          </div>
-          <FullWidthImage image={fullImage} />
-          <h2 className="section-title" css={css`margin-bottom: 1rem;`}>
-            {pricing.heading}
-          </h2>
-          <p className="is-size-5">{pricing.description}</p>
+          <SectionTitle>{pricing.heading}</SectionTitle>
+          <p>{pricing.description}</p>
           <Pricing data={pricing.plans} />
         </div>
       </div>

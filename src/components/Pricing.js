@@ -5,6 +5,7 @@ import { colors } from './theme';
 import { ScalableImage } from './ImageContainer/ScalableImage';
 
 const selectedCardShadow = `0px 0px 15px 5px ${colors.crimson200}`;
+const transitionDuration = '0.4s';
 
 const PlanCard = ({ plan, description, image, price, frequency, items }) => {
   const [isSelected, updateSelection] = React.useState(false);
@@ -17,7 +18,7 @@ const PlanCard = ({ plan, description, image, price, frequency, items }) => {
         display: flex;
         flex-flow: column nowrap;
         margin: 30px 30px 0 0;
-        transition: background-color 0.15s ease-in-out;
+        transition: all ${transitionDuration} ease-in-out;
         box-shadow: ${isSelected ? selectedCardShadow : 'none'};
         cursor: pointer;
         :hover,

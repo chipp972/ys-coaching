@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 
 const navBarActiveClass = 'is-active';
 
+export const navbarHeight = '6rem';
+
 const Logo = () => (
   <div className="logo">
     <img className="logo-image" src={logo} alt="Ys coaching logo" />

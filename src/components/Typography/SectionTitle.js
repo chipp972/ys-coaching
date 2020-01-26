@@ -1,16 +1,17 @@
 import styled from '@emotion/styled';
-import {colors, fontFamilies, mediaQueries} from './theme';
+import { colors, fontFamilies, mediaQueries } from '../theme';
 
 export const SectionTitle = styled.h3`
-  font-size: 38px;
+  font-size: 32px;
   font-family: ${fontFamilies.notoSans};
   font-weight: 100;
   line-height: 1.05;
   letter-spacing: 2px;
   color: ${colors.white};
   text-transform: uppercase;
+  margin-bottom: 2rem;
 
   ${mediaQueries.fromTablet} {
-    font-size: 44px;
+    font-size: 36px;
   }
 `;

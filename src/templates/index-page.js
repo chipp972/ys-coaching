@@ -1,13 +1,12 @@
-import './index-page.sass';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import { GhostButton } from '../components/Buttons/Buttons';
 
 import Layout from '../components/Layout';
 import { FeatureCard } from '../components/FeatureCard/FeatureCard';
-import { SectionTitle } from '../components/SectionTitle';
+import { SectionTitle } from '../components/Typography/SectionTitle';
+import { HomeParallax } from '../components/HomeParallax';
 
 export const IndexPageTemplate = ({
   image,
@@ -19,56 +18,36 @@ export const IndexPageTemplate = ({
   intro
 }) => (
   <div>
-    <div
-      className="margin-top-0 home-image"
-      style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`
-      }}>
-      <div className="text-container">
-        <h1 className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen home-hang-headline box-shadow">
-          {title}
-        </h1>
-        <h3 className="has-text-weight-bold has-text-centered is-size-5-mobile is-size-5-tablet is-size-4-widescreen description box-shadow">
-          {subheading}
-        </h3>
-      </div>
-    </div>
+    <HomeParallax
+      image={image}
+      title={title}
+      subtitle={subheading} />
     <section>
       <div className="container">
-        <div
-          css={css`
-            padding: 3rem 1.5rem;
-          `}>
+        <div className="section">
           <div className="columns">
             <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <SectionTitle>{mainpitch.title}</SectionTitle>
-                  </div>
-                  <div className="tile">
-                    <p>{mainpitch.description}</p>
-                  </div>
-                </div>
-                {/* <div className="triangle" /> */}
-                <div className="columns">
-                  <div className="column is-12">
-                    <SectionTitle>{heading}</SectionTitle>
-                    <p>{description}</p>
-                  </div>
-                </div>
-                <div className="columns is-multiline">
-                  {intro.blurbs.map((featureData, index) => (
-                    <FeatureCard key={index} {...featureData} />
-                  ))}
-                </div>
-                <div className="columns" style={{ marginTop: '50px' }}>
-                  <GhostButton to="/products" title="See all services" />
-                </div>
+              <div className="tile">
+                <SectionTitle>{mainpitch.title}</SectionTitle>
+              </div>
+              <div className="tile">
+                <p>{mainpitch.description}</p>
               </div>
             </div>
+          </div>
+          <div className="columns">
+            <div className="column is-10 is-offset-1">
+              <SectionTitle>{heading}</SectionTitle>
+              <p>{description}</p>
+            </div>
+          </div>
+          <div className="columns is-multiline">
+            {intro.blurbs.map((featureData, index) => (
+              <FeatureCard key={index} {...featureData} />
+            ))}
+          </div>
+          <div className="columns" style={{ marginTop: '50px' }}>
+            <GhostButton to="/products" title="See all services" />
           </div>
         </div>
       </div>

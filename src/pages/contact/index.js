@@ -1,6 +1,7 @@
 import React from 'react';
 import { navigate } from 'gatsby-link';
 import Layout from '../../components/Layout';
+import { PageTitle } from '../../components/Typography/PageTitle';
 
 function encode(data) {
   return Object.keys(data)
@@ -38,9 +39,9 @@ export default class Index extends React.Component {
     return (
       <Layout pathname={location.pathname}>
         <section className="section">
+          <PageTitle title="Contact" />
           <div className="container">
             <div className="content">
-              <h1>Contact</h1>
               <form
                 name="contact"
                 method="post"

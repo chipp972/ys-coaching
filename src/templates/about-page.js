@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
+import { PageTitle } from '../components/Typography/PageTitle';
 
 export const AboutPageTemplate = ({
   title,
@@ -17,12 +18,10 @@ export const AboutPageTemplate = ({
 
   return (
     <section className="section section--gradient">
+      <PageTitle title={title} subtitle={subtitle} />
       <div className="container">
         <div className="columns">
           <div className="column is-10 is-offset-1">
-            <h1 className="big-headline">{title}</h1>
-            <h2 className="sub-headline">{subtitle}</h2>
-
             <div className="about-content-container">
               <img
                 className="about-main-image"
