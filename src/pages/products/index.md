@@ -34,7 +34,8 @@ pricing:
   heading: Monthly subscriptions
   description: Choose how you want us to work together.
   plans:
-    - image: /img/alora-griffiths-bnrqnvtzxio-unsplash.jpg
+    - frequency: month
+      image: /img/alora-griffiths-bnrqnvtzxio-unsplash.jpg
       description: In person training at your gym or at home
       items:
         - Weekly strength and conditioning program
@@ -42,7 +43,8 @@ pricing:
         - Unlimited messaging via whatsapp
       plan: 1-on-1 personal coaching
       price: 240
-    - image: /img/guillaume-bolduc-hdbaq9w0hry-unsplash.jpg
+    - frequency: month
+      image: /img/guillaume-bolduc-hdbaq9w0hry-unsplash.jpg
       description: Programming and analysis with videos
       items:
         - Weekly strength and conditioning program
