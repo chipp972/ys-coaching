@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import {getImageSrc} from '../helpers/gatsby';
 import styled from '@emotion/styled';
 import { fontFamilies, mediaQueries, colors } from './theme';
 import { navbarHeight } from './Navbar/Navbar';
@@ -48,12 +49,14 @@ export const HomeParallax = ({ image, title, subtitle }) => (
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      background-image: url(${!!image.childImageSharp
-        ? image.childImageSharp.fluid.src
-        : image});
+      background-image: url(${getImageSrc(image)});
       width: 100vw;
       height: calc(100vh - ${navbarHeight});
       margin-top: 0;
+
+      ${mediaQueries.mobileOnly} {
+        background-attachment: initial;
+      }
     `}>
     <div
       css={css`

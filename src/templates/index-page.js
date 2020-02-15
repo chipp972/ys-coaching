@@ -26,7 +26,7 @@ export const IndexPageTemplate = ({
       <div className="container">
         <div className="section">
           <div className="columns">
-            <div className="column is-10 is-offset-1">
+            <div className="column is-12">
               <div className="tile">
                 <SectionTitle>{mainpitch.title}</SectionTitle>
               </div>
@@ -36,7 +36,7 @@ export const IndexPageTemplate = ({
             </div>
           </div>
           <div className="columns">
-            <div className="column is-10 is-offset-1">
+            <div className="column is-12">
               <SectionTitle>{heading}</SectionTitle>
               <p>{description}</p>
             </div>
