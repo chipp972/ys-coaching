@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FullWidthImage } from '../ImageContainer/FullWidthImage';
-import {PageTitle} from '../Typography/PageTitle';
+import { PageTitle } from '../Typography/PageTitle';
 
 export const HeadlineBanner = ({ image, title, subtitle }) => (
   <FullWidthImage image={image} mobileHeight="200px">

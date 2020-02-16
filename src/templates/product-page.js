@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Pricing from '../components/Pricing';
-import { FullWidthImage } from '../components/ImageContainer/FullWidthImage';
 import { SectionTitle } from '../components/Typography/SectionTitle';
 import { HeadlineBanner } from '../components/HeadlineBanner/HeadlineBanner';
+import { Tabs } from '../components/Tabs/Tabs';
 
 export const ProductPageTemplate = ({
   image,
@@ -18,17 +18,21 @@ export const ProductPageTemplate = ({
   pricing
 }) => (
   <div className="container">
-    <HeadlineBanner image={fullImage} title={heading} subtitle={description} />
+    <HeadlineBanner image={image} title={heading} subtitle={description} />
     <div className="section">
       <div className="columns">
-        <div className="column is-10 is-offset-1">
-          <SectionTitle>{main.heading}</SectionTitle>
-          <p>{main.description}</p>
-        </div>
+        <SectionTitle className="column is-10 is-offset-1">{pricing.heading}</SectionTitle>
+      </div>
+      <div className="columns">
+        <Tabs className="column is-10 is-offset-1" items={[
+          {option: 'single session', value: 'single-session'},
+          {option: 'long term coaching', value: 'long-term-coaching'},
+          {option: 'custom programs', value: 'custom-programs'}
+        ]}
+        defaultValue="long-term-coaching" />
       </div>
       <div className="columns">
         <div className="column is-10 is-offset-1">
-          <SectionTitle>{pricing.heading}</SectionTitle>
           <p>{pricing.description}</p>
           <Pricing data={pricing.plans} />
         </div>
@@ -39,6 +43,7 @@ export const ProductPageTemplate = ({
 
 ProductPageTemplate.propTypes = {
   title: PropTypes.string,
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   heading: PropTypes.string,
   description: PropTypes.string,
   intro: PropTypes.shape({}),
@@ -62,6 +67,7 @@ const ProductPage = ({ data, location }) => {
     <Layout pathname={location.pathname}>
       <ProductPageTemplate
         title={frontmatter.title}
+        image={frontmatter.image}
         heading={frontmatter.heading}
         description={frontmatter.description}
         intro={frontmatter.intro}
@@ -89,6 +95,13 @@ export const productPageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
+        image {
+          childImageSharp {
+            fluid(maxWidth: 2048, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         heading
         description
         intro {
