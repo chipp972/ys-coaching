@@ -4,8 +4,8 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Pricing from '../components/Pricing';
 import { FullWidthImage } from '../components/ImageContainer/FullWidthImage';
-import { PageTitle } from '../components/Typography/PageTitle';
 import { SectionTitle } from '../components/Typography/SectionTitle';
+import { HeadlineBanner } from '../components/HeadlineBanner/HeadlineBanner';
 
 export const ProductPageTemplate = ({
   image,
@@ -18,16 +18,13 @@ export const ProductPageTemplate = ({
   pricing
 }) => (
   <div className="container">
+    <HeadlineBanner image={fullImage} title={heading} subtitle={description} />
     <div className="section">
-      <PageTitle title={heading} subtitle={description} />
       <div className="columns">
         <div className="column is-10 is-offset-1">
           <SectionTitle>{main.heading}</SectionTitle>
           <p>{main.description}</p>
         </div>
-      </div>
-      <div className="columns">
-        <FullWidthImage image={fullImage} />
       </div>
       <div className="columns">
         <div className="column is-10 is-offset-1">

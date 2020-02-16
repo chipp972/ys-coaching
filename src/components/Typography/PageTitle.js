@@ -35,9 +35,11 @@ const SubTitle = styled.h2`
 export const PageTitle = ({ title, subtitle }) => (
   <div
     css={css`
-      display: block;
+      display: flex;
+      flex-flow: column nowrap;
       text-align: center;
-      padding: 0.75rem 0 5rem 0;
+      align-items: center;
+      z-index: 1;
     `}>
     <Title>{title}</Title>
     {subtitle && <SubTitle>{subtitle}</SubTitle>}

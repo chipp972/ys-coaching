@@ -1,25 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { getImageSrc } from '../../helpers/gatsby';
 
 export const ScalableImage = ({
   image,
   height = '100%',
   width = '100%',
-  scalableImageClassName
+  scalableImageClassName,
+  children
 }) => (
   <div
     css={css`
       height: ${height};
       width: ${width};
       overflow: hidden;
+      position: relative;
     `}>
     <div
       className={scalableImageClassName}
       css={css`
-        background-image: url(${!!image.childImageSharp
-          ? image.childImageSharp.fluid.src
-          : image});
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url(${getImageSrc(image)});
         background-position: center;
         background-size: cover;
         height: 100%;
@@ -27,6 +31,7 @@ export const ScalableImage = ({
         transition: transform 0.15s ease-in-out;
       `}
     />
+    {children}
   </div>
 );
 

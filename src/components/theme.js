@@ -1,7 +1,9 @@
 export const colors = {
     white: '#ffffff',
     black: '#121212',
+    overlay: 'rgba(0, 0, 0, 0.5)',
     shadow: 'rgba(18, 18, 18, 0.7)',
+    transparent: 'transparent',
 
     black01dp: '#1e1e1e',
     black02dp: '#232323',
@@ -12,6 +14,8 @@ export const colors = {
     black12dp: '#333333',
     black16dp: '#363636',
     black24dp: '#383838',
+
+    crimson04dp: '#221f1f',
 
     gray50: '#f7f7f7',
     gray100: '#ececee',
