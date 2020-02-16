@@ -1,11 +1,10 @@
 ---
 templateKey: product-page
 title: Coaching services
-image: /img/jumbotron.jpg
-heading: Coaching
+image: /img/victor-freitas-wvdydxdzkhs-unsplash.jpg
+heading: Coaching packages
 description: CHOOSE YOUR PROGRAM
 intro:
-  blurbs: []
   heading: What we offer
   description: >
     Kaldi is the ultimate spot for coffee lovers who want to learn about their
@@ -31,8 +30,12 @@ main:
 testimonials: []
 full_image: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
 pricing:
-  heading: Services
-  description: Choose how you want us to work together.
+  heading: HOW DO YOU WANT US TO WORK TOGETHER ?
+  description: >-
+    Si vous désirez faire parti de ma Team, faire des compétitions et profiter
+    d’entraînements privilégiés choisissez un de ces programmes. C’est également
+    ici que vous devriez choisir si vous débutez parce qu’il vous faut le
+    meilleur suivi possible pour démarrer votre “fitness journey” du bon pied.
   plans:
     - frequency: week
       image: /img/alora-griffiths-bnrqnvtzxio-unsplash.jpg
