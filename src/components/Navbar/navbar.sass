@@ -37,6 +37,11 @@
   font-family: $noto-sans
   font-size: 8px
   text-transform: uppercase
+  height: $navbar-height-mobile
+  width: $navbar-height-mobile
+  +tablet
+    height: $navbar-height-tablet
+    width: $navbar-height-tablet
   +desktop
     display: none
 
@@ -73,9 +78,13 @@
 
   .logo-image
     width: auto
-    height: $navbar-height
-    max-height: $navbar-height 
+    height: $navbar-height-mobile
+    max-height: $navbar-height-mobile
     transition: transform 0.2s ease
+    +tablet
+      height: $navbar-height-tablet
+      max-height: $navbar-height-tablet
+
 
   .logo-type
     font-family: $noto-serif

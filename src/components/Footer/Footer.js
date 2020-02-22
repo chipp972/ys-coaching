@@ -2,9 +2,7 @@ import './footer.sass';
 import React from 'react';
 import logoDark from '../../img/logo-dark.svg';
 import { css } from '@emotion/core';
-import { colors } from '../theme';
-
-export const footerHeight = '10rem';
+import { colors, footerHeight } from '../theme';
 
 export const Footer = () => (
   <footer

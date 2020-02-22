@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import {getImageSrc} from '../helpers/gatsby';
 import styled from '@emotion/styled';
-import { fontFamilies, mediaQueries, colors } from './theme';
-import { navbarHeight } from './Navbar/Navbar';
+import { fontFamilies, mediaQueries, colors, navbarHeight } from './theme';
 
 const Title = styled.h1`
   font-family: Cinzel, ${fontFamilies.notoSans};
@@ -51,11 +50,15 @@ export const HomeParallax = ({ image, title, subtitle }) => (
       background-attachment: fixed;
       background-image: url(${getImageSrc(image)});
       width: 100vw;
-      height: calc(100vh - ${navbarHeight});
+      height: calc(100vh - ${navbarHeight.mobile});
       margin-top: 0;
 
       ${mediaQueries.mobileOnly} {
         background-attachment: initial;
+      }
+
+      ${mediaQueries.fromTablet} {
+        height: calc(100vh - ${navbarHeight.fromTablet});
       }
     `}>
     <div
