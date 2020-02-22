@@ -8,6 +8,7 @@ import checkIcon from '../../img/icon/check.svg';
 
 const selectedCardShadow = `0px 0px 0px 2px ${colors.gray50}`;
 const transitionDuration = '0.4s';
+const cardWidth = '300px';
 
 const CardTitle = ({ plan }) => (
       <div css={css`
@@ -80,7 +81,7 @@ export const ServiceCard = ({ plan, description, image, price, frequency, items 
       css={css`
         background-color: ${isSelected ? colors.black12dp : colors.black04dp};
         padding: 0;
-        width: 330px;
+        width: ${cardWidth};
         display: flex;
         flex-flow: column nowrap;
         margin: 30px 30px 0 0;

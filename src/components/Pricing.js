@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { ServiceCard } from './ServiceCard/ServiceCard';
+import { mediaQueries } from './theme';
 
 const Pricing = ({ data }) => (
   <div
@@ -9,8 +10,9 @@ const Pricing = ({ data }) => (
       display: flex;
       flex-flow: column wrap;
       align-items: center;
-      @media (min-width: 768px) {
-        justify-content: space-around;
+
+      ${mediaQueries.fromTablet} {
+        justify-content: flex-start;
         flex-flow: row wrap;
         align-items: stretch;
       }

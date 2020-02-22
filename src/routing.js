@@ -4,7 +4,7 @@ export const routes = [
   { name: 'Coaching', to: '/products' },
   { name: 'Contact', to: '/contact' },
   // { name: 'FAQ', to: '/contact/examples' },
-  { name: 'Blog', to: '/blog' }
+  // { name: 'Blog', to: '/blog' }
 ];
 
 export const instagramUrl = 'https://www.instagram.com/ys_coaching_0929/';
