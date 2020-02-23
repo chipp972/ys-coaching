@@ -1,4 +1,5 @@
 ---
+dataKey: product-categories
 title: Long term coaching
 description: >-
   Si vous désirez faire parti de ma Team, faire des compétitions et profiter

@@ -9,13 +9,14 @@ public_folder: /img
 collections:
   - name: "product-categories"
     label: "Product categories"
-    folder: "src/pages/product-categories"
+    folder: "src/cms/product-categories"
     create: true
     slug: "{{title}}"
     fields:
+      - {label: "Data Key", name: "dataKey", widget: "hidden", default: "product-categories"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
-      - {label: "Position", name: "position", widget: "number"}
+      - {label: "Position", name: "position", widget: "number", default: 50}
 
   - name: "blog"
     label: "Blog"
