@@ -44,6 +44,8 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
+    "react-swipe": "^6.0.4",
+    "swipe-js-iso": "^2.1.5",
     "uuid": "^3.2.1"
   },
   "devDependencies": {

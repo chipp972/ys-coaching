@@ -7,7 +7,7 @@ export const TabItem = ({ label, selectTab, isSelected }) => (
   <li css={css`
     position: relative;
     padding-bottom: 10px;
-    margin-right: 20px;
+    margin-right: 10px;
     text-align: center;
     cursor: pointer;
 

@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { colors } from '../theme';
 
 export const TabContent = ({ isVisible, children }) => (
   <div css={css`
-    @keyframe fadein {
-      from: {opacity: 0}
-      to: {opacity: 1}
-    }
-
-    display: ${isVisible ? 'block' : 'none'};
-    opacity: 0;
-    animation: 0.15s ease-in 1s forwards fadein;
-    background-color: ${colors.black02dp};
+    position: ${isVisible ? 'relative' : 'absolute'};
+    pointer-events: ${isVisible ? 'auto' : 'none'};
+    top: 0;
+    left: 0;
+    opacity: ${isVisible ? 1 : 0};
+    transition: opacity 0.15s ease-in-out;
   `}>{children}</div>
 );
 

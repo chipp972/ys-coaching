@@ -1,4 +1,3 @@
-import * as R from 'ramda';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
@@ -29,11 +28,16 @@ export const Tabs = ({ items, defaultValue = items[0].value, ...props }) => {
             isSelected={selectedValue === value} />
         ))}
       </ul>
-      {items.map(({value, content}) => (
-        <TabContent isVisible={value === selectedValue}>
-          {content}
-        </TabContent>
-      ))}
+      <div css={css`
+        position: relative;
+        background-color: ${colors.black02dp};
+      `}>
+        {items.map(({value, content}) => (
+          <TabContent key={value} isVisible={value === selectedValue}>
+            {content}
+          </TabContent>
+        ))}
+      </div>
     </div>
   );
 };

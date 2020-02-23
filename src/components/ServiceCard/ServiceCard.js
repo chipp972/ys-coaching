@@ -79,7 +79,7 @@ export const ServiceCard = ({ plan, description, image, price, frequency, benefi
   return (
     <div
       css={css`
-        background-color: ${isSelected ? colors.black12dp : colors.black04dp};
+        background-color: ${isSelected ? colors.black12dp : colors.black06dp};
         padding: 0;
         width: ${cardWidth};
         display: flex;

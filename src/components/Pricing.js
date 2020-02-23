@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { ServiceCard } from './ServiceCard/ServiceCard';
 import { mediaQueries } from './theme';
 
-const Pricing = ({ data }) => (
+export const Pricing = ({ data }) => (
   <div
     css={css`
       display: flex;
