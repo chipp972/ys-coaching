@@ -2,10 +2,13 @@
 dataKey: product-categories
 title: Custom programs
 description: >-
-  Si vous désirez faire parti de ma Team, faire des compétitions et profiter
-  d’entraînements privilégiés choisissez un de ces programmes. C’est également
-  ici que vous devriez choisir si vous débutez parce qu’il vous faut le meilleur
-  suivi possible pour démarrer votre “fitness journey” du bon pied.
+  Vous êtes totalement autonome  et vous souhaitez essayer un programme qui a
+  fait ses preuve. Choisissez l’un de ces programmes pour atteindre vos
+  objectifs.
+
+  Chaque programme inclus 1h d’appel téléphonique afin de recueillir vos
+  objectifs et vos contraintes pour coller au mieux à vos spécificités et
+  augmenter drastiquement les résultats.
 position: 3
 ---
 
