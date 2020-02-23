@@ -74,7 +74,7 @@ const CardFooter = ({ frequency, price }) => (
   </section>
 );
 
-export const ServiceCard = ({ plan, description, image, price, frequency, items }) => {
+export const ServiceCard = ({ plan, description, image, price, frequency, benefits }) => {
   const [isSelected, updateSelection] = React.useState(false);
   return (
     <div
@@ -141,7 +141,7 @@ export const ServiceCard = ({ plan, description, image, price, frequency, items 
         </p>
         <table css={css`line-height: 1.5rem;`}>
           <tbody>
-            {items.map((item) => (
+            {benefits.map((item) => (
               <tr key={item} css={css`padding-bottom: 10px;`}>
                 <td css={css`
                   margin-right: 10px;
@@ -168,5 +168,5 @@ ServiceCard.propTypes = {
   price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   frequency: PropTypes.string,
   description: PropTypes.string,
-  items: PropTypes.array
+  benefits: PropTypes.array
 };
