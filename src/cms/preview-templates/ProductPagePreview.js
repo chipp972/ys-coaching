@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ProductPageTemplate } from '../../templates/product-page';
 
-const ProductPagePreview = ({ entry, getAsset }) => {
-
+const ProductPagePreview = ({ entry }) => {
   const entryPricingPlans = entry.getIn(['data', 'packages', 'plans']);
   const pricingPlans = entryPricingPlans ? entryPricingPlans.toJS() : [];
 

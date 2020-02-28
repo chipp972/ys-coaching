@@ -2,18 +2,16 @@ import React from 'react';
 import { navigate } from 'gatsby-link';
 import Layout from '../../components/Layout';
 
-function encode(data) {
+const encode = (data) => {
   const formData = new FormData();
-
-  for (const key of Object.keys(data)) {
-    formData.append(key, data[key]);
-  }
+  Object.entries(data)
+    .forEach(([key, value]) => formData.append(key, value));
 
   return formData;
-}
+};
 
 export default class Contact extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {};
   }
@@ -37,11 +35,13 @@ export default class Contact extends React.Component {
       })
     })
       .then(() => navigate(form.getAttribute('action')))
+      // eslint-disable-next-line
       .catch((error) => alert(error));
   };
 
+  // eslint-disable-next-line
   render() {
-    const {location} = this.props;
+    const { location } = this.props;
     return (
       <Layout pathname={location.pathname}>
         <section className="section">
@@ -74,7 +74,7 @@ export default class Contact extends React.Component {
                       name={'name'}
                       onChange={this.handleChange}
                       id={'name'}
-                      required={true}
+                      required
                     />
                   </div>
                 </div>

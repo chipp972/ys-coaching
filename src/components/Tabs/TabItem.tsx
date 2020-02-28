@@ -1,9 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { colors, mediaQueries } from '../theme';
 
-export const TabItem = ({ label, selectTab, isSelected }) => (
+type Props = {
+  label: string;
+  selectTab: () => void;
+  isSelected: boolean;
+};
+
+export const TabItem: React.FC<Props> = ({ label, selectTab, isSelected }) => (
   <li css={css`
     position: relative;
     padding-bottom: 10px;
@@ -47,9 +52,3 @@ export const TabItem = ({ label, selectTab, isSelected }) => (
     `}
   `} onClick={selectTab}>{label}</li>
 );
-
-TabItem.propTypes = {
-  label: PropTypes.string.isRequired,
-  selectTab: PropTypes.func.isRequired,
-  isSelected: PropTypes.bool.isRequired
-};

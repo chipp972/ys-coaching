@@ -1,0 +1,6 @@
+{
+  "extends": "@chipp972/eslint-config",
+  "rules": {
+    "unicorn/filename-case": "off"
+  }
+}

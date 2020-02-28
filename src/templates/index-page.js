@@ -18,10 +18,7 @@ export const IndexPageTemplate = ({
   intro
 }) => (
   <div>
-    <HomeParallax
-      image={image}
-      title={title}
-      subtitle={subheading} />
+    <HomeParallax image={image} title={title} subtitle={subheading} />
     <section>
       <div className="container">
         <div className="section">

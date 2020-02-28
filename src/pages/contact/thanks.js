@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 
-export default ({location}) => (
+export default ({ location }) => (
   <Layout pathname={location.pathname}>
     <section className="section">
       <div className="container">

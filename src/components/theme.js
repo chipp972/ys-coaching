@@ -66,9 +66,15 @@ export const mediaQueries = {
   fromWidescreen: `@media screen and (min-width: ${breakpoints.widescreen}px)`,
   fromFullhd: `@media screen and (min-width: ${breakpoints.fullhd}px)`,
   mobileOnly: `@media screen and (max-width: ${breakpoints.tablet - 1}px)`,
-  tabletOnly: `@media screen and (min-width: ${breakpoints.tablet}px) and (max-width: ${breakpoints.desktop - 1}px))`,
-  desktopOnly: `@media screen and (min-width: ${breakpoints.desktop}px) and (max-width: ${breakpoints.widescreen - 1}px))`,
-  widescreenOnly: `@media screen and (min-width: ${breakpoints.widescreen}px) and (max-width: ${breakpoints.fullhd - 1}px))`
+  tabletOnly: `@media screen and (min-width: ${
+    breakpoints.tablet
+  }px) and (max-width: ${breakpoints.desktop - 1}px))`,
+  desktopOnly: `@media screen and (min-width: ${
+    breakpoints.desktop
+  }px) and (max-width: ${breakpoints.widescreen - 1}px))`,
+  widescreenOnly: `@media screen and (min-width: ${
+    breakpoints.widescreen
+  }px) and (max-width: ${breakpoints.fullhd - 1}px))`
 };
 
 export const navbarHeight = {

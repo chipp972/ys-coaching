@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import {getImageSrc} from '../helpers/gatsby';
+import { getImageSrc } from '../helpers/gatsby';
 import styled from '@emotion/styled';
 import { fontFamilies, mediaQueries, colors, navbarHeight } from './theme';
 
@@ -86,5 +86,5 @@ HomeParallax.propTypes = {
     PropTypes.string
   ]).isRequired,
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
+  subtitle: PropTypes.string
 };

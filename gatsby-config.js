@@ -1,3 +1,6 @@
+/* eslint-env node */
+/* eslint-disable @typescript-eslint/camelcase, fp/no-mutation */
+
 module.exports = {
   siteMetadata: {
     title: 'Ys coaching',
@@ -7,13 +10,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `Y's coaching`,
-        short_name: `Y's coaching`,
+        name: 'Y\'s coaching',
+        short_name: 'Y\'s coaching',
         description: 'Online and in-person strenght and conditioning',
-        start_url: `/`,
-        background_color: `#121212`,
-        theme_color: `#c0c0c0`,
-        display: `standalone`,
+        start_url: '/',
+        background_color: '#121212',
+        theme_color: '#c0c0c0',
+        display: 'standalone',
         icon: 'static/img/favicon-512x512.png'
       }
     },
@@ -86,12 +89,18 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
+      // purges all unused/unreferenced css rules
+      // must be after other CSS plugins
+      resolve: 'gatsby-plugin-purgecss', 
       options: {
-        develop: true, // Activates purging in npm run develop
-        purgeOnly: ['/all.sass'] // applies purging only on the bulma css file
+        // Activates purging in npm run develop
+        develop: true, 
+        // applies purging only on the bulma css file
+        purgeOnly: ['/all.sass'] 
       }
-    }, // must be after other CSS plugins
-    'gatsby-plugin-netlify' // make sure to keep it last in the array
+    }, 
+    'gatsby-plugin-typescript',
+    // make sure to keep gatby-plugin-netlify last in the array
+    'gatsby-plugin-netlify' 
   ]
 };

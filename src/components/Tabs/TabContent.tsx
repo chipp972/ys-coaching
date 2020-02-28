@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
-export const TabContent = ({ isVisible, children }) => (
+type Props = {
+  isVisible: boolean;
+};
+
+export const TabContent: React.FC<Props> = ({ isVisible, children }) => (
   <div css={css`
     position: ${isVisible ? 'relative' : 'absolute'};
     pointer-events: ${isVisible ? 'auto' : 'none'};
@@ -12,7 +15,3 @@ export const TabContent = ({ isVisible, children }) => (
     transition: opacity 0.15s ease-in-out;
   `}>{children}</div>
 );
-
-TabContent.propTypes = {
-  isVisible: PropTypes.bool.isRequired
-};

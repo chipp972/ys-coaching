@@ -1,11 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { colors, fontFamilies } from '../theme';
 import { TabItem } from './TabItem';
 import { TabContent } from './TabContent';
 
-export const Tabs = ({ items, defaultValue = items[0].value, ...props }) => { 
+export type TabItemData = {
+  label: string;
+  value: string;
+  content: React.ReactNode;
+};
+
+type Props = {
+  items: TabItemData[];
+  defaultValue?: string;
+};
+
+export const Tabs: React.FC<Props> = ({ items, defaultValue = items[0].value, ...props }) => { 
   const [selectedValue, updateValue] = React.useState(defaultValue);
   return (
     <div css={css`
@@ -25,14 +35,15 @@ export const Tabs = ({ items, defaultValue = items[0].value, ...props }) => {
             key={value}
             label={label}
             selectTab={() => updateValue(value)}
-            isSelected={selectedValue === value} />
+            isSelected={selectedValue === value}
+          />
         ))}
       </ul>
       <div css={css`
         position: relative;
         background-color: ${colors.black02dp};
       `}>
-        {items.map(({value, content}) => (
+        {items.map(({ value, content }) => (
           <TabContent key={value} isVisible={value === selectedValue}>
             {content}
           </TabContent>
@@ -40,13 +51,4 @@ export const Tabs = ({ items, defaultValue = items[0].value, ...props }) => {
       </div>
     </div>
   );
-};
-
-Tabs.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    content: PropTypes.node
-  })).isRequired,
-  defaultValue: PropTypes.string
 };

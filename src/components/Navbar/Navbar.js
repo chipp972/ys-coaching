@@ -13,36 +13,31 @@ const navBarActiveClass = 'is-active';
 const Logo = () => (
   <div className="logo">
     <img className="logo-image" src={logo} alt="Ys coaching logo" />
-    <span className="logo-type">Y's coaching</span>
+    <span className="logo-type">Y&apos;s coaching</span>
   </div>
 );
 
-const HamburgerMenu = ({ setActive, isActive }) => {
-  return (
-    <>
-      <div
-        className={classNames('navbar-burger', 'burger', {
-          [navBarActiveClass]: isActive
-        })}
-        data-target="navMenu"
-        onClick={() => setActive(!isActive)}>
-        <div className="burger-part" />
-        <div className="burger-part" />
-        <div className="burger-part" />
-        <div>{isActive ? 'close' : 'menu'}</div>
-      </div>
-    </>
-  );
-};
+const HamburgerMenu = ({ setActive, isActive }) => (
+  <>
+    <div
+      className={classNames('navbar-burger', 'burger', {
+        [navBarActiveClass]: isActive
+      })}
+      data-target="navMenu"
+      onClick={() => setActive(!isActive)}>
+      <div className="burger-part" />
+      <div className="burger-part" />
+      <div className="burger-part" />
+      <div>{isActive ? 'close' : 'menu'}</div>
+    </div>
+  </>
+);
 
 export const Navbar = ({ pathname }) => {
   const [isActive, setActive] = React.useState(false);
   const isCurrentPage = (to) => to === pathname;
   return (
-    <nav
-      className="navbar"
-      role="navigation"
-      aria-label="main-navigation">
+    <nav className="navbar" role="navigation" aria-label="main-navigation">
       <div className="container">
         <div className="navbar-brand">
           <Link to="/" title="Logo">

@@ -3,14 +3,12 @@ import { navigate } from 'gatsby-link';
 import Layout from '../../components/Layout';
 import { PageTitle } from '../../components/Typography/PageTitle';
 
-function encode(data) {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&');
-}
+const encode = (data) => Object.keys(data)
+  .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+  .join('&');
 
 export default class Index extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = { isValidated: false };
   }
@@ -31,11 +29,13 @@ export default class Index extends React.Component {
       })
     })
       .then(() => navigate(form.getAttribute('action')))
+      // eslint-disable-next-line
       .catch((error) => alert(error));
   };
 
-  render() {
-    const {location} = this.props;
+  // eslint-disable-next-line
+  render () {
+    const { location } = this.props;
     return (
       <Layout pathname={location.pathname}>
         <section className="section">
@@ -68,22 +68,22 @@ export default class Index extends React.Component {
                       name={'name'}
                       onChange={this.handleChange}
                       id={'name'}
-                      required={true}
+                      required
                     />
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label" htmlFor={'email'}>
+                  <label className="label" htmlFor="email">
                     Email
                   </label>
                   <div className="control">
                     <input
                       className="input"
-                      type={'email'}
-                      name={'email'}
+                      type="email"
+                      name="email"
                       onChange={this.handleChange}
-                      id={'email'}
-                      required={true}
+                      id="email"
+                      required
                     />
                   </div>
                 </div>
@@ -97,7 +97,7 @@ export default class Index extends React.Component {
                       name={'message'}
                       onChange={this.handleChange}
                       id={'message'}
-                      required={true}
+                      required
                     />
                   </div>
                 </div>

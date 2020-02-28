@@ -3,7 +3,12 @@ import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
 
-const PostLink = ({node: {fields: {slug}, frontmatter: {title}}}) => (
+const PostLink = ({
+  node: {
+    fields: { slug },
+    frontmatter: { title }
+  }
+}) => (
   <li>
     <Link to={slug}>
       <h2 className="is-size-2">{title}</h2>
@@ -35,7 +40,9 @@ const TagRoute = ({
               style={{ marginBottom: '6rem' }}>
               <h3 className="title is-size-4 is-bold-light">{tagHeader}</h3>
               <ul className="taglist">
-                {posts.map((post) => <PostLink key={post.node.fields.slug} {...post} />)}
+                {posts.map((post) => (
+                  <PostLink key={post.node.fields.slug} {...post} />
+                ))}
               </ul>
               <p>
                 <Link to="/tags/">Browse all tags</Link>

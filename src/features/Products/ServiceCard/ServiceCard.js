@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { colors, fontFamilies } from '../theme';
-import { ScalableImage } from '../ImageContainer/ScalableImage';
-import { GhostButton } from '../Buttons/Buttons';
-import checkIcon from '../../img/icon/check.svg';
+import { colors, fontFamilies } from '../../../components/theme';
+import { ScalableImage } from '../../../components/ImageContainer/ScalableImage';
+import { GhostButton } from '../../../components/Buttons/Buttons';
+import checkIcon from '../../../img/icon/check.svg';
 
 const selectedCardShadow = `0px 0px 0px 2px ${colors.gray50}`;
 const transitionDuration = '0.4s';

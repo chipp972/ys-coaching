@@ -15,15 +15,15 @@ import ReactSwipe from 'react-swipe';
 // TODO: Make a component for each step
 // TODO: Use redux to build the form data
 
+// eslint-disable-next-line
 export const ProductPageTemplate = ({
-  title,
   image,
   heading,
   subheading,
   description,
   packages,
   tabsData
-}) => { 
+}) => {
   const swipeRef = React.useRef(null);
   return (
     <div className="container">
@@ -37,25 +37,33 @@ export const ProductPageTemplate = ({
         {/* Program choice */}
         <div className="section">
           <div className="columns">
-            <SectionTitle className="column is-10 is-offset-1">{packages.heading}</SectionTitle>
+            <SectionTitle className="column is-10 is-offset-1">
+              {packages.heading}
+            </SectionTitle>
           </div>
           {description && <p>{description}</p>}
           <div className="columns">
             <Tabs className="column is-10 is-offset-1" items={tabsData} />
           </div>
-          <button type="button" onClick={() => swipeRef.current.next()}>next</button>
+          <button type="button" onClick={() => swipeRef.current.next()}>
+            next
+          </button>
         </div>
-        
+
         {/* Date and time choice */}
         <div className="section">
           <div className="columns">
-            <SectionTitle className="column is-10 is-offset-1">Page 2</SectionTitle>
+            <SectionTitle className="column is-10 is-offset-1">
+              Page 2
+            </SectionTitle>
           </div>
           {description && <p>{description}</p>}
           <div className="columns">
             <Tabs className="column is-10 is-offset-1" items={tabsData} />
           </div>
-          <button type="button" onClick={() => swipeRef.current.prev()}>prev</button>
+          <button type="button" onClick={() => swipeRef.current.prev()}>
+            prev
+          </button>
         </div>
       </ReactSwipe>
     </div>
@@ -90,7 +98,7 @@ const ProductPage = ({ data, location }) => {
     R.map((edge) => ({
       label: R.path(['node', 'frontmatter', 'title'], edge),
       value: R.path(['node', 'fields', 'slug'], edge),
-      position: R.pathOr(50, ['node', 'frontmatter', 'position'], edge),
+      position: R.path(['node', 'frontmatter', 'position'], edge),
       description: R.path(['node', 'frontmatter', 'description'], edge)
     })),
     R.sortBy(R.prop('position')),
@@ -101,7 +109,9 @@ const ProductPage = ({ data, location }) => {
         <div className="columns">
           <div className="column is-10 is-offset-1">
             <p>{description}</p>
-            <Pricing data={packages.plans.filter(({category}) => category === label)} />
+            <Pricing
+              data={packages.plans.filter(({ category }) => category === label)}
+            />
           </div>
         </div>
       )
@@ -117,7 +127,8 @@ const ProductPage = ({ data, location }) => {
         subheading={frontmatter.subheading}
         description={frontmatter.description}
         tabsData={tabsData}
-        packages={frontmatter.packages} />
+        packages={frontmatter.packages}
+      />
     </Layout>
   );
 };
@@ -134,7 +145,9 @@ export default ProductPage;
 
 export const productPageQuery = graphql`
   query ProductPage($id: String!) {
-    allMarkdownRemark(filter: {frontmatter: {dataKey: {eq: "product-categories"}}}) {
+    allMarkdownRemark(
+      filter: { frontmatter: { dataKey: { eq: "product-categories" } } }
+    ) {
       edges {
         node {
           frontmatter {

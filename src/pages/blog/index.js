@@ -8,7 +8,7 @@ const BlogIndexPage = ({ location }) => (
     <div
       className="full-width-image-container margin-top-0"
       style={{
-        backgroundImage: `url('/img/blog-index.jpg')`
+        backgroundImage: "url('/img/blog-index.jpg')"
       }}>
       <h1
         className="has-text-weight-bold is-size-1"

@@ -8,7 +8,11 @@
         }
       }
     ],
-    "@emotion/babel-preset-css-prop"
+    "@emotion/babel-preset-css-prop",
+    "@babel/preset-typescript"
   ],
-  "plugins": ["@babel/plugin-proposal-optional-chaining"]
+  "plugins": [
+    ["babel-plugin-ramda", { "useES": true }],
+    "@babel/plugin-proposal-optional-chaining"
+  ]
 }

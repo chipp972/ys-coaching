@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, graphql, StaticQuery } from 'gatsby';
 
 class BlogRoll extends React.Component {
-  render() {
+  render () {
     const { data } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
 

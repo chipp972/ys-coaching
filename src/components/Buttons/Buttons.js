@@ -17,7 +17,7 @@ const buttonThemes = {
     hoverColor: colors.gray50,
     hoverBackground: colors.transparent
   }
-}
+};
 
 const buttonSizes = {
   big: {
@@ -32,7 +32,7 @@ const buttonSizes = {
     fromTabletFontSize: '18px',
     isFullWidth: false
   }
-}
+};
 
 const buttonCss = (theme, size) => css`
   cursor: pointer;
@@ -43,7 +43,7 @@ const buttonCss = (theme, size) => css`
   text-transform: uppercase;
   font-family: ${fontFamilies.notoSans};
   border: 2px solid ${theme.color};
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   text-align: center;
   text-decoration: none;
   padding: ${size.padding};
@@ -63,7 +63,13 @@ const buttonCss = (theme, size) => css`
   }
 `;
 
-export const GhostButton = ({ title, to, theme = 'crimson', size = 'big', ...props }) => {
+export const GhostButton = ({
+  title,
+  to,
+  theme = 'crimson',
+  size = 'big',
+  ...props
+}) => {
   const themeProps = buttonThemes[theme];
   const sizeProps = buttonSizes[size];
 
@@ -78,7 +84,7 @@ export const GhostButton = ({ title, to, theme = 'crimson', size = 'big', ...pro
       {title}
     </button>
   );
-}
+};
 
 GhostButton.propTypes = {
   title: PropType.string.isRequired,
