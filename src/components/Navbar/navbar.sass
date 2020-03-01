@@ -29,38 +29,6 @@
   +desktop
     animation: none
 
-.navbar-burger
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  font-family: $noto-sans
-  font-size: 8px
-  text-transform: uppercase
-  height: $navbar-height-mobile
-  width: $navbar-height-mobile
-  +tablet
-    height: $navbar-height-tablet
-    width: $navbar-height-tablet
-  +desktop
-    display: none
-
-  .burger-part
-    width: 20px
-    height: 2px
-    margin-bottom: 5px
-    background-color: $white
-    transition: transform 0.2s ease
-
-  &.is-active
-    .burger-part:nth-child(1)
-      transform: translateY(2px) rotate(45deg)
-    .burger-part:nth-child(2)
-      transform: translateY(-5px) rotate(-45deg)
-    .burger-part:nth-child(3)
-      opacity: 0
-
-
 .logo
   display: flex
   flex-flow: row nowrap

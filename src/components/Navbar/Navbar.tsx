@@ -1,12 +1,16 @@
 import './navbar.sass';
+import * as R from 'ramda';
 import pinkInstagram from '../../img/social/pink-instagram.svg';
 import logo from '../../img/logo.svg';
-
 import React from 'react';
 import { Link } from 'gatsby';
 import { routes, instagramUrl } from '../../routing';
-import classNames from 'clsx';
-import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
+import { mediaQueries, navbarHeight, fontFamilies, colors } from '../theme';
+
+type Props = {
+  pathname: string;
+};
 
 const navBarActiveClass = 'is-active';
 
@@ -20,20 +24,54 @@ const Logo = () => (
 const HamburgerMenu = ({ setActive, isActive }) => (
   <>
     <div
-      className={classNames('navbar-burger', 'burger', {
-        [navBarActiveClass]: isActive
-      })}
+      css={css`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: ${fontFamilies.notoSans};
+        font-size: 8px;
+        text-transform: uppercase;
+        height: ${navbarHeight.mobile};
+        width: ${navbarHeight.mobile};
+
+        ${mediaQueries.fromTablet} {
+          height: ${navbarHeight.fromTablet};
+          width: ${navbarHeight.fromTablet};
+        }
+
+        ${mediaQueries.fromDesktop} {
+          display: none;
+        }
+      `}
+      className="navbar-burger burger"
       data-target="navMenu"
       onClick={() => setActive(!isActive)}>
-      <div className="burger-part" />
-      <div className="burger-part" />
-      <div className="burger-part" />
+      {R.range(0, 3).map((id) => (
+        <div
+          key={id}
+          css={css`
+            width: 20px;
+            height: 2px;
+            margin-bottom: 5px;
+            background-color: ${colors.white};
+            transition: transform 0.2s ease;
+
+            ${isActive &&
+              {
+                0: 'transform: translateY(2px) rotate(45deg);',
+                1: 'transform: translateY(-5px) rotate(-45deg);',
+                2: 'opacity: 0;'
+              }[id]}
+          `}
+        />
+      ))}
       <div>{isActive ? 'close' : 'menu'}</div>
     </div>
   </>
 );
 
-export const Navbar = ({ pathname }) => {
+export const Navbar: React.FC<Props> = ({ pathname }) => {
   const [isActive, setActive] = React.useState(false);
   const isCurrentPage = (to) => to === pathname;
   return (
@@ -47,16 +85,12 @@ export const Navbar = ({ pathname }) => {
         </div>
         <div
           id="navMenu"
-          className={classNames('navbar-menu', {
-            [navBarActiveClass]: isActive
-          })}>
+          className={`navbar-menu ${isActive && navBarActiveClass}`}>
           <div className="navbar-end has-text-centered">
             {routes.map(({ name, to }, index) => (
               <Link
                 key={index}
-                className={classNames('navbar-item', {
-                  [navBarActiveClass]: isCurrentPage(to)
-                })}
+                className={`navbar-item ${isCurrentPage(to) ? navBarActiveClass : ''}`}
                 to={to}>
                 {name}
               </Link>
@@ -77,8 +111,4 @@ export const Navbar = ({ pathname }) => {
       </div>
     </nav>
   );
-};
-
-Navbar.propTypes = {
-  pathname: PropTypes.string
 };
