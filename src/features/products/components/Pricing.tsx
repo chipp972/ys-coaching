@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { ServiceCard } from './ServiceCard/ServiceCard';
-import { mediaQueries } from '../../components/theme';
+import { mediaQueries } from '../../../components/theme';
 
 export const Pricing = ({ data }) => (
   <div

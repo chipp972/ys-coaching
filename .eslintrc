@@ -1,5 +1,8 @@
 {
   "extends": "@chipp972/eslint-config",
+  "globals": {
+    "process": true
+  },
   "rules": {
     "unicorn/filename-case": "off"
   }

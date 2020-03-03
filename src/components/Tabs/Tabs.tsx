@@ -13,12 +13,13 @@ export type TabItemData = {
 type Props = {
   items: TabItemData[];
   defaultValue?: string;
+  className?: string;
 };
 
-export const Tabs: React.FC<Props> = ({ items, defaultValue = items[0].value, ...props }) => { 
+export const Tabs: React.FC<Props> = ({ className = '', items, defaultValue = items[0].value, ...props }) => { 
   const [selectedValue, updateValue] = React.useState(defaultValue);
   return (
-    <div css={css`
+    <div className={className} css={css`
       display: flex;
       flex-direction: column;
     `}>

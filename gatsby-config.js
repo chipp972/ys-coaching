@@ -4,9 +4,19 @@
 module.exports = {
   siteMetadata: {
     title: 'Ys coaching',
-    description: 'Online and in-person strenght and conditioning'
+    description: 'Online and in-person strenght and conditioning',
+    routes: [
+      { name: 'Home', to: '/' },
+      { name: 'About', to: '/about' },
+      { name: 'Coaching', to: '/products' },
+      { name: 'Contact', to: '/contact' }
+      // { name: 'FAQ', to: '/contact/examples' },
+      // { name: 'Blog', to: '/blog' }
+    ],
+    instagramUrl: 'https://www.instagram.com/ys_coaching_0929/'
   },
   plugins: [
+    'gatsby-plugin-typescript',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -99,7 +109,19 @@ module.exports = {
         purgeOnly: ['/all.sass'] 
       }
     }, 
-    'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-plugin-react-redux',
+      options: {
+        pathToCreateStoreModule: './src/store/create-store',
+        serialize: {
+          space: 0,
+          isJSON: true,
+          unsafe: false
+        },
+        cleanupOnClient: true,
+        windowKey: '__PRELOADED_STATE__'
+      }
+    },
     // make sure to keep gatby-plugin-netlify last in the array
     'gatsby-plugin-netlify' 
   ]

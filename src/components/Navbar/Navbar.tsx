@@ -4,9 +4,9 @@ import pinkInstagram from '../../img/social/pink-instagram.svg';
 import logo from '../../img/logo.svg';
 import React from 'react';
 import { Link } from 'gatsby';
-import { routes, instagramUrl } from '../../routing';
 import { css } from '@emotion/core';
 import { mediaQueries, navbarHeight, fontFamilies, colors } from '../theme';
+import { useSiteMetadata } from '../SiteMetadata';
 
 type Props = {
   pathname: string;
@@ -72,6 +72,7 @@ const HamburgerMenu = ({ setActive, isActive }) => (
 );
 
 export const Navbar: React.FC<Props> = ({ pathname }) => {
+  const { routes, instagramUrl } = useSiteMetadata();
   const [isActive, setActive] = React.useState(false);
   const isCurrentPage = (to) => to === pathname;
   return (
