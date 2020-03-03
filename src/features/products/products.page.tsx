@@ -36,17 +36,17 @@ export const ProductsPage = ({
   const dispatch = useDispatch();
 
   const nextStep = R.pipe(
-    R.path(['current', 'next'], swipeRef),
+    R.pathOr(R.identity, ['current', 'next'], swipeRef),
     goNextStep,
     dispatch
   );
   // const prevStep = R.pipe(R.path(['current', 'prev'], swipeRef), goPrevStep, dispatch);
   const selectPlan = R.pipe(
     setPlan,
-    dispatch,
     nextStep
   );
 
+  // TODO: be able to pass onChoice to tabsData content
   return (
     <div className="container">
       <HeadlineBanner image={image} title={heading} subtitle={subheading} />

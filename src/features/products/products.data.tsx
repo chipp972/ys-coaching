@@ -4,12 +4,6 @@ import { Pricing } from './components/Pricing';
 
 export const makeTabsData = (packages) =>
   R.pipe(
-    R.map((edge) => ({
-      label: R.path(['node', 'frontmatter', 'title'], edge),
-      value: R.path(['node', 'fields', 'slug'], edge),
-      position: R.path(['node', 'frontmatter', 'position'], edge),
-      description: R.path(['node', 'frontmatter', 'description'], edge)
-    })),
     R.sortBy(R.prop('position')),
     R.map(({ label, value, description }) => ({
       label,
@@ -32,7 +26,15 @@ export const getProductsPageData = (data) => {
   const { edges } = data.allMarkdownRemark;
   const packages = R.prop('packages', frontmatter);
 
-  const tabsData = makeTabsData(packages)(edges);
+  const tabsData = R.pipe(
+    R.map((edge) => ({
+      label: R.path(['node', 'frontmatter', 'title'], edge),
+      value: R.path(['node', 'fields', 'slug'], edge),
+      position: R.path(['node', 'frontmatter', 'position'], edge),
+      description: R.path(['node', 'frontmatter', 'description'], edge)
+    })),
+    makeTabsData(packages)
+  )(edges);
 
   return {
     tabsData,
