@@ -5,9 +5,11 @@ const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
 const toKebabCase = (str) => str
-  .replace(/([a-z])([A-Z])/g, '$1-$2')
-  .replace(/[\s_]+/g, '-')
-  .toLowerCase();
+  ? str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/[\s_]+/g, '-')
+    .toLowerCase()
+  : str;
 
 // eslint-disable-next-line
 exports.createPages = ({ actions, graphql }) => {
