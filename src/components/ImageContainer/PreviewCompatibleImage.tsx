@@ -1,20 +1,28 @@
+import * as R from 'ramda';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
+import { GatsbyImage } from '../../helpers/gatsby';
 
-const PreviewCompatibleImage = ({
+type Props = {
+  imageInfo: {
+    image: GatsbyImage;
+    alt: string;
+    childImageSharp: {fluid: FluidObject};
+  };
+};
+
+export const PreviewCompatibleImage: React.FC<Props> = ({
   imageInfo: { alt = '', childImageSharp, image }
 }) => {
   const imageStyle = { borderRadius: '5px' };
 
-  if (!!image) {
-    if (!!image.childImageSharp) {
-      return (
-        <Img style={imageStyle} fluid={image.childImageSharp.fluid} alt={alt} />
-      );
-    } else if (typeof image === 'string') {
-      return <img style={imageStyle} src={image} alt={alt} />;
-    }
+  if (R.hasPath(['childImageSharp', 'fluid'], image)) {
+    return (
+      <Img style={imageStyle} fluid={R.path(['childImageSharp', 'fluid'], image)} alt={alt} />
+    );
+  } else if (typeof image === 'string') {
+    return <img style={imageStyle} src={image} alt={alt} />;
   }
 
   if (!!childImageSharp) {
@@ -23,14 +31,3 @@ const PreviewCompatibleImage = ({
 
   return null;
 };
-
-PreviewCompatibleImage.propTypes = {
-  imageInfo: PropTypes.shape({
-    alt: PropTypes.string,
-    childImageSharp: PropTypes.object,
-    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-    style: PropTypes.object
-  }).isRequired
-};
-
-export default PreviewCompatibleImage;
