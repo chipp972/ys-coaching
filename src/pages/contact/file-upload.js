@@ -1,6 +1,6 @@
 import React from 'react';
 import { navigate } from 'gatsby-link';
-import Layout from '../../components/Layout';
+import { Page } from '../../common/layout';
 
 const encode = (data) => {
   const formData = new FormData();
@@ -42,7 +42,7 @@ export default class Contact extends React.Component {
   render() {
     const { location } = this.props;
     return (
-      <Layout pathname={location.pathname}>
+      <Page pathname={location.pathname}>
         <section className="section">
           <div className="container">
             <div className="content">
@@ -101,7 +101,7 @@ export default class Contact extends React.Component {
             </div>
           </div>
         </section>
-      </Layout>
+      </Page>
     );
   }
 }

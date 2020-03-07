@@ -1,7 +1,7 @@
 import React from 'react';
 import { navigate } from 'gatsby-link';
-import Layout from '../../components/Layout';
-import { PageTitle } from '../../components/Typography/PageTitle';
+import { Page } from '../../common/layout';
+import { PageTitle } from '../../common/theme';
 
 const encode = (data) =>
   Object.keys(data)
@@ -38,7 +38,7 @@ export default class Index extends React.Component {
   render() {
     const { location } = this.props;
     return (
-      <Layout pathname={location.pathname}>
+      <Page pathname={location.pathname}>
         <section className="section">
           <PageTitle title="Contact" />
           <div className="container">
@@ -111,7 +111,7 @@ export default class Index extends React.Component {
             </div>
           </div>
         </section>
-      </Layout>
+      </Page>
     );
   }
 }

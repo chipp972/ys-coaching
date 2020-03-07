@@ -1,8 +1,13 @@
 /* eslint-env node */
-const _ = require('lodash');
+const R = require('ramda');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
+
+const toKebabCase = (str) => str
+  .replace(/([a-z])([A-Z])/g, '$1-$2')
+  .replace(/[\s_]+/g, '-')
+  .toLowerCase();
 
 // eslint-disable-next-line
 exports.createPages = ({ actions, graphql }) => {
@@ -55,16 +60,16 @@ exports.createPages = ({ actions, graphql }) => {
     let tags = [];
     // Iterate through each post, putting all found tags into `tags`
     posts.forEach((edge) => {
-      if (_.get(edge, 'node.frontmatter.tags')) {
+      if (R.hasPath(['node', 'frontmatter', 'tags'], edge)) {
         tags = tags.concat(edge.node.frontmatter.tags);
       }
     });
     // Eliminate duplicate tags
-    tags = _.uniq(tags);
+    tags = R.uniq(tags);
 
     // Make tag pages
     return tags.forEach((tag) => {
-      const tagPath = `/tags/${_.kebabCase(tag)}/`;
+      const tagPath = `/tags/${toKebabCase(tag)}/`;
 
       createPage({
         path: tagPath,

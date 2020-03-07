@@ -1,75 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { GhostButton } from '../components/Buttons/Buttons';
+import { Page } from '../common/layout';
+import { HomePage } from '../features/home/home.page';
+import { GatsbyImage } from '../helpers/gatsby';
 
-import Layout from '../components/Layout';
-import { FeatureCard } from '../components/FeatureCard/FeatureCard';
-import { SectionTitle } from '../components/Typography/SectionTitle';
-import { HomeParallax } from '../components/HomeParallax';
-
-export const IndexPageTemplate = ({
-  image,
-  title,
-  heading,
-  subheading,
-  mainpitch,
-  description,
-  intro
-}) => (
-  <div>
-    <HomeParallax image={image} title={title} subtitle={subheading} />
-    <section>
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-12">
-              <div className="tile">
-                <SectionTitle>{mainpitch.title}</SectionTitle>
-              </div>
-              <div className="tile">
-                <p>{mainpitch.description}</p>
-              </div>
-            </div>
-          </div>
-          <div className="columns">
-            <div className="column is-12">
-              <SectionTitle>{heading}</SectionTitle>
-              <p>{description}</p>
-            </div>
-          </div>
-          <div className="columns is-multiline">
-            {intro.blurbs.map((featureData, index) => (
-              <FeatureCard key={index} {...featureData} />
-            ))}
-          </div>
-          <div className="columns" style={{ marginTop: '50px' }}>
-            <GhostButton to="/products" title="See all services" />
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-);
-
-IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array
-  })
+type Props = {
+  location: {pathname: string};
+  data: {
+    markdownRemark: {
+      frontmatter: {
+        image: GatsbyImage;
+        title: string;
+        heading: string;
+        subheading: string;
+        mainpitch: any;
+        description: string;
+        intro: any;
+      };
+    };
+  };
 };
 
-const IndexPage = ({ data, location }) => {
+const Home: React.FC<Props> = ({ data, location }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout pathname={location.pathname}>
-      <IndexPageTemplate
+    <Page pathname={location.pathname}>
+      <HomePage
         image={frontmatter.image}
         title={frontmatter.title}
         heading={frontmatter.heading}
@@ -78,19 +35,11 @@ const IndexPage = ({ data, location }) => {
         description={frontmatter.description}
         intro={frontmatter.intro}
       />
-    </Layout>
+    </Page>
   );
 };
 
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object
-    })
-  })
-};
-
-export default IndexPage;
+export default Home;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
+import { Page } from '../common/layout';
 import { ProductsPage } from '../features/products/products.page';
 import { getProductsPageData } from '../features/products/products.data';
 
@@ -32,13 +32,13 @@ type Props = {
   };
 };
 
-const ProductPage: React.FC<Props> = ({ data, location }) => (
-  <Layout pathname={location.pathname}>
+const Products: React.FC<Props> = ({ data, location }) => (
+  <Page pathname={location.pathname}>
     <ProductsPage {...getProductsPageData(data)} />
-  </Layout>
+  </Page>
 );
 
-export default ProductPage;
+export default Products;
 
 export const productPageQuery = graphql`
   query ProductPage($id: String!) {

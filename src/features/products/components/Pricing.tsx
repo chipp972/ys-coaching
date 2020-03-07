@@ -1,10 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { ServiceCard } from './ServiceCard/ServiceCard';
-import { mediaQueries } from '../../../components/theme';
+import { mediaQueries } from '../../../common/theme';
+import { GatsbyImage } from '../../../helpers/gatsby';
 
-export const Pricing = ({ data }) => (
+type Plan = {
+  plan: string;
+  image: GatsbyImage;
+  price: string | number;
+  frequency?: string;
+  description: string;
+  benefits: string[];
+};
+
+type Props = {
+  data: Plan[];
+};
+
+export const Pricing: React.FC<Props> = ({ data }) => (
   <div
     css={css`
       display: flex;
@@ -22,18 +35,3 @@ export const Pricing = ({ data }) => (
     ))}
   </div>
 );
-
-Pricing.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      plan: PropTypes.string,
-      image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-      price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      frequency: PropTypes.string,
-      description: PropTypes.string,
-      items: PropTypes.array
-    })
-  )
-};
-
-export default Pricing;

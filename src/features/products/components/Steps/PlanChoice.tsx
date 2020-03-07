@@ -1,6 +1,6 @@
 import React from 'react';
-import { Tabs, TabItemData } from '../../../../components/Tabs/Tabs';
-import { SectionTitle } from '../../../../components/Typography/SectionTitle';
+import { Tabs, TabItemData } from '../../../../common/components/Tabs/Tabs';
+import { SectionTitle } from '../../../../common/theme';
 
 type Props = {
   heading: string;

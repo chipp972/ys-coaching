@@ -1,67 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { kebabCase } from 'lodash';
 import Helmet from 'react-helmet';
-import { graphql, Link } from 'gatsby';
-import Layout from '../components/Layout';
-import Content, { HTMLContent } from '../components/Content';
+import { graphql } from 'gatsby';
+import { Page, HTMLContent } from '../common/layout';
+import { BlogPost } from '../features/blog/blog.page';
 
-export const BlogPostTemplate = ({
-  content,
-  contentComponent,
-  description,
-  tags,
-  title,
-  helmet
-}) => {
-  const PostContent = contentComponent || Content;
-
-  return (
-    <section className="section">
-      {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: '4rem' }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map((tag) => (
-                    <li key={`${tag}tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+type Props = {
+  location: {pathname: string};
+  data: {
+    markdownRemark: {
+      html: string;
+      frontmatter: {
+        tags: string[];
+        title: string;
+        description: string;
+      };
+    };
+  };
 };
 
-BlogPostTemplate.propTypes = {
-  content: PropTypes.node.isRequired,
-  contentComponent: PropTypes.func,
-  description: PropTypes.string,
-  title: PropTypes.string,
-  helmet: PropTypes.object
-};
-
-const BlogPost = ({ data, location }) => {
+const Blog: React.FC<Props> = ({ data, location }) => {
   const { markdownRemark: post } = data;
 
   return (
-    <Layout pathname={location.pathname}>
-      <BlogPostTemplate
+    <Page pathname={location.pathname}>
+      <BlogPost
         content={post.html}
-        contentComponent={HTMLContent}
+        ContentComponent={HTMLContent}
         description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
@@ -75,17 +39,11 @@ const BlogPost = ({ data, location }) => {
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
       />
-    </Layout>
+    </Page>
   );
 };
 
-BlogPost.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.object
-  })
-};
-
-export default BlogPost;
+export default Blog;
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {

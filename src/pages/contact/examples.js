@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import Layout from '../../components/Layout';
+import { Page } from '../../common/layout';
 
 export default ({ location }) => (
-  <Layout pathname={location.pathname}>
+  <Page pathname={location.pathname}>
     <section className="section">
       <div className="container">
         <div className="content">
@@ -42,5 +42,5 @@ export default ({ location }) => (
         </div>
       </div>
     </section>
-  </Layout>
+  </Page>
 );

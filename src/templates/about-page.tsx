@@ -1,78 +1,30 @@
-import './about-page.sass';
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
-import Content, { HTMLContent } from '../components/Content';
-import { PageTitle } from '../components/Typography/PageTitle';
+import { Page, HTMLContent } from '../common/layout';
+import { AboutPage } from '../features/about/about.page';
 
-export const AboutPageTemplate = ({
-  title,
-  subtitle,
-  mainImage,
-  content,
-  contentComponent
-}) => {
-  const PageContent = contentComponent || Content;
-
-  return (
-    <section className="section section--gradient">
-      <PageTitle title={title} subtitle={subtitle} />
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="about-content-container">
-              <img
-                className="about-main-image"
-                src={
-                  mainImage.childImageSharp
-                    ? mainImage.childImageSharp.fluid.src
-                    : mainImage
-                }
-                alt="Yuto"
-              />
-              <PageContent
-                className="content about-content"
-                content={content}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+type Props = {
+  location: {pathname: string};
+  data: any;
 };
 
-AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  mainImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  content: PropTypes.string,
-  contentComponent: PropTypes.func
-};
-
-const AboutPage = ({ data, location }) => {
+const About: React.FC<Props> = ({ data, location }) => {
   const { markdownRemark: post } = data;
 
   return (
-    <Layout pathname={location.pathname}>
-      <AboutPageTemplate
-        contentComponent={HTMLContent}
+    <Page pathname={location.pathname}>
+      <AboutPage
+        ContentComponent={HTMLContent}
         title={post.frontmatter.title}
         subtitle={post.frontmatter.subtitle}
         mainImage={post.frontmatter.mainImage}
         content={post.html}
       />
-    </Layout>
+    </Page>
   );
 };
 
-AboutPage.propTypes = {
-  data: PropTypes.object.isRequired
-};
-
-export default AboutPage;
+export default About;
 
 export const aboutPageQuery = graphql`
   query AboutPage($id: String!) {

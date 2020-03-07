@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
-import Layout from '../components/Layout';
+import { Page } from '../common/layout';
 
 const PostLink = ({
   node: {
@@ -30,7 +30,7 @@ const TagRoute = ({
   } tagged with “${tag}”`;
 
   return (
-    <Layout pathname="/blog">
+    <Page pathname="/blog">
       <section className="section">
         <Helmet title={`${tag} | ${title}`} />
         <div className="container content">
@@ -51,7 +51,7 @@ const TagRoute = ({
           </div>
         </div>
       </section>
-    </Layout>
+    </Page>
   );
 };
 

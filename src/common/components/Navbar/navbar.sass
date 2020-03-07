@@ -1,0 +1,73 @@
+@import "../../variables.sass"
+
+@keyframes slide-left
+  0%
+    opacity: 0
+    transform: translateX(20px)
+    
+  100%
+    opacity: 1
+    transform: translateX(0)
+
+.navbar-item
+  text-transform: uppercase
+  font-size: $desktop-xs-text
+  letter-spacing: $desktop-headline-letter-spacing
+  line-height: $desktop-headline-line-height
+  font-family: $noto-sans
+
+.navbar
+  border-bottom: 1px solid $gray500
+  box-shadow: 0 4px 4px $black
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+
+.navbar-menu
+  animation: slide-left 0.3s ease
+  +desktop
+    animation: none
+
+.logo
+  display: flex
+  flex-flow: row nowrap
+  justify-content: center
+  align-items: center
+  +desktop
+    width: 400px
+
+  &:hover
+    .logo-type
+      color: $gray50
+      letter-spacing: 0.5em
+    .logo-image
+      transform: scale(1.1)
+
+  .logo-image
+    width: auto
+    height: $navbar-height-mobile
+    max-height: $navbar-height-mobile
+    transition: transform 0.2s ease
+    +tablet
+      height: $navbar-height-tablet
+      max-height: $navbar-height-tablet
+
+
+  .logo-type
+    font-family: $noto-serif
+    font-size: $mobile-xs-text
+    letter-spacing: 0.4em
+    text-transform: uppercase
+    color: $gray500
+    transition: letter-spacing 0.2s ease, color 0.2s ease
+
+    +tablet
+      font-size: $mobile-m-text
+
+    +desktop
+      font-size: $desktop-m-text
+
++desktop
+  .navbar-item.is-active:hover
+    background-color: #525252

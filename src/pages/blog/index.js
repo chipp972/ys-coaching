@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Layout from '../../components/Layout';
-import BlogRoll from '../../components/BlogRoll';
+import { Page } from '../../common/layout';
+import { BlogRoll } from '../../features/blog/components/BlogRoll';
 
 const BlogIndexPage = ({ location }) => (
-  <Layout pathname={location.pathname}>
+  <Page pathname={location.pathname}>
     <div
       className="full-width-image-container margin-top-0"
       style={{
@@ -28,7 +28,7 @@ const BlogIndexPage = ({ location }) => (
         </div>
       </div>
     </section>
-  </Layout>
+  </Page>
 );
 
 export default BlogIndexPage;

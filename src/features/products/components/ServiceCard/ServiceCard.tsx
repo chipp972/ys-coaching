@@ -1,8 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { colors } from '../../../../components/theme';
-import { ScalableImage } from '../../../../components/ImageContainer/ScalableImage';
-import { GhostButton } from '../../../../components/Buttons/Buttons';
+import { colors } from '../../../../common/theme';
+import { ScalableImage } from '../../../../common/components/ImageContainer';
+import { GhostButton } from '../../../../common/components/Button';
 import CheckIcon from '../../../../img/icon/check.inline.svg';
 import { GatsbyImage } from '../../../../helpers/gatsby';
 import { CardTitle } from './CardTitle';
@@ -74,7 +74,6 @@ export const ServiceCard: React.FC<Props> = ({
         height="300px"
         scalableImageClassName="pricing-plan-image">
         <GhostButton
-          title="Choose"
           theme="light"
           size="medium"
           className="plan-choose-button"
@@ -85,8 +84,7 @@ export const ServiceCard: React.FC<Props> = ({
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1;
-          `}
-        />
+          `}>Choose</GhostButton>
       </ScalableImage>
       <CardTitle plan={plan} />
       <section

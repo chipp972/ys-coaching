@@ -2,15 +2,15 @@ import * as R from 'ramda';
 import React from 'react';
 import ReactSwipe from 'react-swipe';
 import { PlanChoice } from './components/Steps/PlanChoice';
-import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
+import { Breadcrumb } from '../../common/components/Breadcrumb/Breadcrumb';
 import { css } from '@emotion/core';
-import { colors } from '../../components/theme';
+import { colors } from '../../common/theme';
 import { useDispatch } from 'react-redux';
 import { setPlan, goNextStep, jumpToStep } from './state/products.action';
-import { HeadlineBanner } from '../../components/HeadlineBanner/HeadlineBanner';
+import { HeadlineBanner } from '../../common/components/HeadlineBanner/HeadlineBanner';
 import { GatsbyImage } from '../../helpers/gatsby';
 
-// Pass into contrib
+// TODO: Pass into contrib
 const productJourneyLabels = [
   'Choose a program',
   'Date and time',

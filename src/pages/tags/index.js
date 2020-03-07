@@ -1,8 +1,8 @@
 import React from 'react';
-import { kebabCase } from 'lodash';
+import { toKebabCase } from '../../helpers/to-kebab-case';
 import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
-import Layout from '../../components/Layout';
+import { Page } from '../../common/layout';
 
 const TagsPage = ({
   data: {
@@ -12,7 +12,7 @@ const TagsPage = ({
     }
   }
 }) => (
-  <Layout pathname="/blog">
+  <Page pathname="/blog">
     <section className="section">
       <Helmet title={`Tags | ${title}`} />
       <div className="container content">
@@ -24,7 +24,7 @@ const TagsPage = ({
             <ul className="taglist">
               {group.map((tag) => (
                 <li key={tag.fieldValue}>
-                  <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                  <Link to={`/tags/${toKebabCase(tag.fieldValue)}/`}>
                     {tag.fieldValue} ({tag.totalCount})
                   </Link>
                 </li>
@@ -34,7 +34,7 @@ const TagsPage = ({
         </div>
       </div>
     </section>
-  </Layout>
+  </Page>
 );
 
 export default TagsPage;
