@@ -1,82 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { colors, fontFamilies } from '../../../../components/theme';
+import { colors } from '../../../../components/theme';
 import { ScalableImage } from '../../../../components/ImageContainer/ScalableImage';
 import { GhostButton } from '../../../../components/Buttons/Buttons';
 import CheckIcon from '../../../../img/icon/check.inline.svg';
+import { GatsbyImage } from '../../../../helpers/gatsby';
+import { CardTitle } from './CardTitle';
+import { CardFooter } from './CardFooter';
 
 const selectedCardShadow = `0px 0px 0px 2px ${colors.gray50}`;
 const transitionDuration = '0.4s';
 const cardWidth = '300px';
 
-const CardTitle = ({ plan }) => (
-  <div
-    css={css`
-      padding: 30px;
-      position: relative;
-      text-align: center;
-    `}>
-    <span
-      css={css`
-        color: ${colors.gray100};
-        font-family: Noto Sans JP;
-        padding-bottom: 30px;
-        margin: 0;
-        font-size: 20px;
-        font-weight: 600;
-        width: 100%;
-
-        :after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 10%;
-          width: 80%;
-          height: 3px;
-          background-color: ${colors.gray100};
-        }
-      `}>
-      {plan}
-    </span>
-  </div>
-);
-
-const CardFooter = ({ frequency, price }) => (
-  <section
-    css={css`
-      margin-top: auto;
-      background-color: ${colors.gray100};
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 10px;
-      border-radius: 0 0 5px 5px;
-    `}>
-    <span
-      css={css`
-        text-align: center;
-        font-size: 3rem;
-        font-weight: 800;
-        color: ${colors.black};
-        font-family: ${fontFamilies.notoSans};
-      `}>
-      {price}€
-    </span>
-    {frequency && (
-      <span
-        css={css`
-          color: ${colors.black};
-          margin-left: 1rem;
-        `}>
-        / {frequency}
-      </span>
-    )}
-  </section>
-);
+type Props = {
+  plan: string;
+  image: GatsbyImage;
+  price: string | number;
+  frequency?: string;
+  description: string;
+  benefits: string[];
+};
 
 // eslint-disable-next-line
-export const ServiceCard = ({
+export const ServiceCard: React.FC<Props> = ({
   plan,
   description,
   image,
@@ -189,13 +135,4 @@ export const ServiceCard = ({
       <CardFooter frequency={frequency} price={price} />
     </div>
   );
-};
-
-ServiceCard.propTypes = {
-  plan: PropTypes.string,
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  frequency: PropTypes.string,
-  description: PropTypes.string,
-  benefits: PropTypes.array
 };

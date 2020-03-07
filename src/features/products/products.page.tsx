@@ -8,7 +8,9 @@ import { colors } from '../../components/theme';
 import { useDispatch } from 'react-redux';
 import { setPlan, goNextStep, jumpToStep } from './state/products.action';
 import { HeadlineBanner } from '../../components/HeadlineBanner/HeadlineBanner';
+import { GatsbyImage } from '../../helpers/gatsby';
 
+// Pass into contrib
 const productJourneyLabels = [
   'Choose a program',
   'Date and time',
@@ -16,14 +18,10 @@ const productJourneyLabels = [
   'Confirmation'
 ];
 
-export type NetlifyCmsImage =
-  | string
-  | { childImageSharp: { fluid: { src: string } } };
-
 export type Props = {
   heading: string;
   description: string;
-  image: NetlifyCmsImage;
+  image: GatsbyImage;
   subheading: string;
   tabsData: {
     label: string;
@@ -57,6 +55,7 @@ export const ProductsPage = ({
   // const prevStep = R.pipe(R.path(['current', 'prev'], swipeRef), goPrevStep, dispatch);
   const selectPlan = R.pipe(
     setPlan,
+    dispatch,
     nextStep
   );
 
