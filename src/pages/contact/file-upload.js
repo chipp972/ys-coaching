@@ -4,14 +4,13 @@ import Layout from '../../components/Layout';
 
 const encode = (data) => {
   const formData = new FormData();
-  Object.entries(data)
-    .forEach(([key, value]) => formData.append(key, value));
+  Object.entries(data).forEach(([key, value]) => formData.append(key, value));
 
   return formData;
 };
 
 export default class Contact extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {};
   }

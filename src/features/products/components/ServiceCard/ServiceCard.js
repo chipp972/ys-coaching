@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { colors, fontFamilies } from '../../../../components/theme';
 import { ScalableImage } from '../../../../components/ImageContainer/ScalableImage';
 import { GhostButton } from '../../../../components/Buttons/Buttons';
-import checkIcon from '../../../../img/icon/check.svg';
+import CheckIcon from '../../../../img/icon/check.inline.svg';
 
 const selectedCardShadow = `0px 0px 0px 2px ${colors.gray50}`;
 const transitionDuration = '0.4s';
@@ -172,7 +172,7 @@ export const ServiceCard = ({
                     vertical-align: middle;
                     width: 16px;
                   `}>
-                  <img src={checkIcon} alt="bullet point" aria-hidden="true" />
+                  <CheckIcon />
                 </td>
                 <td
                   css={css`

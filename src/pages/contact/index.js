@@ -3,12 +3,13 @@ import { navigate } from 'gatsby-link';
 import Layout from '../../components/Layout';
 import { PageTitle } from '../../components/Typography/PageTitle';
 
-const encode = (data) => Object.keys(data)
-  .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-  .join('&');
+const encode = (data) =>
+  Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join('&');
 
 export default class Index extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = { isValidated: false };
   }
@@ -34,7 +35,7 @@ export default class Index extends React.Component {
   };
 
   // eslint-disable-next-line
-  render () {
+  render() {
     const { location } = this.props;
     return (
       <Layout pathname={location.pathname}>

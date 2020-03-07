@@ -16,21 +16,30 @@ type Props = {
   className?: string;
 };
 
-export const Tabs: React.FC<Props> = ({ className = '', items, defaultValue = items[0].value, ...props }) => { 
+export const Tabs: React.FC<Props> = ({
+  className = '',
+  items,
+  defaultValue = items[0].value,
+  ...props
+}) => {
   const [selectedValue, updateValue] = React.useState(defaultValue);
   return (
-    <div className={className} css={css`
-      display: flex;
-      flex-direction: column;
-    `}>
-      <ul {...props} css={css`
+    <div
+      className={className}
+      css={css`
         display: flex;
-        font-family: ${fontFamilies.notoSans};
-        font-size: 18px;
-        color: ${colors.gray50};
-        text-transform: uppercase;
-        padding: 25px 0;
+        flex-direction: column;
       `}>
+      <ul
+        {...props}
+        css={css`
+          display: flex;
+          font-family: ${fontFamilies.notoSans};
+          font-size: 18px;
+          color: ${colors.gray50};
+          text-transform: uppercase;
+          padding: 25px 0;
+        `}>
         {items.map(({ label, value }) => (
           <TabItem
             key={value}
@@ -40,10 +49,11 @@ export const Tabs: React.FC<Props> = ({ className = '', items, defaultValue = it
           />
         ))}
       </ul>
-      <div css={css`
-        position: relative;
-        background-color: ${colors.black02dp};
-      `}>
+      <div
+        css={css`
+          position: relative;
+          background-color: ${colors.black02dp};
+        `}>
         {items.map(({ value, content }) => (
           <TabContent key={value} isVisible={value === selectedValue}>
             {content}

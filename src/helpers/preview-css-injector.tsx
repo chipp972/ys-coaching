@@ -6,19 +6,15 @@ import { CacheProvider, EmotionCache } from '@emotion/core';
 export class CSSInjector extends React.Component {
   cache: EmotionCache;
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     const iframe = document.getElementsByTagName('iframe')[0];
     const iframeHead = iframe.contentDocument.head;
     this.cache = createCache({ container: iframeHead });
   }
 
-  render () {
+  render() {
     const { children } = this.props;
-    return (
-      <CacheProvider value={this.cache}>
-        {children}
-      </CacheProvider>
-    );
+    return <CacheProvider value={this.cache}>{children}</CacheProvider>;
   }
 }

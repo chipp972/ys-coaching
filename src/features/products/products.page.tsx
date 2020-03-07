@@ -2,12 +2,19 @@ import * as R from 'ramda';
 import React from 'react';
 import ReactSwipe from 'react-swipe';
 import { PlanChoice } from './components/Steps/PlanChoice';
-import { Breadcrumbs } from './components/Breadcrumbs';
+import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
 import { css } from '@emotion/core';
 import { colors } from '../../components/theme';
 import { useDispatch } from 'react-redux';
-import { setPlan, goNextStep } from './state/products.action';
+import { setPlan, goNextStep, jumpToStep } from './state/products.action';
 import { HeadlineBanner } from '../../components/HeadlineBanner/HeadlineBanner';
+
+const productJourneyLabels = [
+  'Choose a program',
+  'Date and time',
+  'Location',
+  'Confirmation'
+];
 
 export type NetlifyCmsImage =
   | string
@@ -25,6 +32,7 @@ export type Props = {
   };
 };
 
+// eslint-disable-next-line
 export const ProductsPage = ({
   heading,
   description,
@@ -40,6 +48,12 @@ export const ProductsPage = ({
     goNextStep,
     dispatch
   );
+
+  const jumpStep = (stepIndex: number) => {
+    swipeRef.current.slide(stepIndex);
+    dispatch(jumpToStep(stepIndex));
+  };
+
   // const prevStep = R.pipe(R.path(['current', 'prev'], swipeRef), goPrevStep, dispatch);
   const selectPlan = R.pipe(
     setPlan,
@@ -50,25 +64,41 @@ export const ProductsPage = ({
   return (
     <div className="container">
       <HeadlineBanner image={image} title={heading} subtitle={subheading} />
-      <Breadcrumbs />
+      <Breadcrumb
+        currentStepIndex={3}
+        labelList={productJourneyLabels}
+        onClick={jumpStep}
+      />
       <ReactSwipe
         css={css`
           background-color: ${colors.black01dp};
         `}
         ref={swipeRef}
         swipeOptions={{ continuous: false, speed: 500 }}>
-        <PlanChoice
-          heading={heading}
-          description={description}
-          tabsData={tabsData}
-          onChoice={selectPlan}
-        />
-        <PlanChoice
-          heading={heading}
-          description={description}
-          tabsData={tabsData}
-          onChoice={selectPlan}
-        />
+        <div>
+          <PlanChoice
+            heading={heading}
+            description={description}
+            tabsData={tabsData}
+            onChoice={selectPlan}
+          />
+        </div>
+        <div>
+          <PlanChoice
+            heading={heading}
+            description={description}
+            tabsData={tabsData}
+            onChoice={selectPlan}
+          />
+        </div>
+        <div>
+          <PlanChoice
+            heading={heading}
+            description={description}
+            tabsData={tabsData}
+            onChoice={selectPlan}
+          />
+        </div>
       </ReactSwipe>
     </div>
   );

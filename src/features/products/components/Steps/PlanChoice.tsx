@@ -10,8 +10,10 @@ export const PlanChoice = ({ heading, description, tabsData }) => (
       </SectionTitle>
     </div>
     {description && <p>{description}</p>}
-    {tabsData.length > 0 && <div className="columns">
-      <Tabs className="column is-10 is-offset-1" items={tabsData} />
-    </div>}
+    {tabsData.length > 0 && (
+      <div className="columns">
+        <Tabs className="column is-10 is-offset-1" items={tabsData} />
+      </div>
+    )}
   </div>
 );

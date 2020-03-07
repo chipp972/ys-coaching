@@ -17,7 +17,7 @@ const IndexPagePreview = ({ entry }) => {
         mainpitch={data.mainpitch || {}}
       />
     );
-  } 
+  }
   return <div>Loading...</div>;
 };
 

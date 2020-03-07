@@ -1,6 +1,6 @@
 import './navbar.sass';
 import * as R from 'ramda';
-import pinkInstagram from '../../img/social/pink-instagram.svg';
+import InstagramIcon from '../../img/social/instagram.inline.svg';
 import logo from '../../img/logo.svg';
 import React from 'react';
 import { Link } from 'gatsby';
@@ -71,6 +71,7 @@ const HamburgerMenu = ({ setActive, isActive }) => (
   </>
 );
 
+// eslint-disable-next-line
 export const Navbar: React.FC<Props> = ({ pathname }) => {
   const { routes, instagramUrl } = useSiteMetadata();
   const [isActive, setActive] = React.useState(false);
@@ -91,7 +92,9 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
             {routes.map(({ name, to }, index) => (
               <Link
                 key={index}
-                className={`navbar-item ${isCurrentPage(to) ? navBarActiveClass : ''}`}
+                className={`navbar-item ${
+                  isCurrentPage(to) ? navBarActiveClass : ''
+                }`}
                 to={to}>
                 {name}
               </Link>
@@ -103,9 +106,17 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
               href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer">
-              <span className="icon">
-                <img src={pinkInstagram} alt="Ys coaching Instagram" />
-              </span>
+              <InstagramIcon
+                css={css`
+                  fill: ${colors.gray400};
+                  width: 25px;
+                  height: auto;
+
+                  :hover {
+                    fill: ${colors.crimson200};
+                  }
+                `}
+              />
             </a>
           </div>
         </div>

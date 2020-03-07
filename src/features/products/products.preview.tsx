@@ -21,14 +21,12 @@ export const ProductPagePreview: React.FC<PreviewProps> = ({
   const tabsData = R.pipe(
     R.path(['packages', 'plans', 'category', 'product-categories']),
     R.values,
-    R.map(
-      ({ title, description, position }) => ({
-        label: title,
-        value: title,
-        description,
-        position
-      })
-    ),
+    R.map(({ title, description, position }) => ({
+      label: title,
+      value: title,
+      description,
+      position
+    })),
     makeTabsData(data.packages)
   )(fieldsMetaData.toJS());
 
