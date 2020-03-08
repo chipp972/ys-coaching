@@ -7,22 +7,29 @@ import { css } from '@emotion/core';
 import { colors } from '../../common/theme';
 import { useDispatch } from 'react-redux';
 import { setPlan, goNextStep, jumpToStep } from './state/products.action';
-import { HeadlineBanner } from '../../common/components/HeadlineBanner/HeadlineBanner';
-import { GatsbyImage } from '../../common/helpers/gatsby';
 
-// TODO: Pass into contrib
-const productJourneyLabels = [
-  'Choose a program',
-  'Date and time',
-  'Location',
-  'Confirmation'
-];
+const ProductsBreadcrumb: React.FC<{
+  stepDataList: StepData[];
+  jumpStep: (stepIndex: number) => void;
+}> = ({ stepDataList, jumpStep }) => {
+  const labels: string[] = stepDataList.map(R.prop('stepName'));
+  return (
+    <Breadcrumb currentStepIndex={2} labelList={labels} onClick={jumpStep} />
+  );
+};
+
+type StepData = {
+  stepName: string;
+  heading: string;
+  description?: string;
+};
 
 export type Props = {
-  heading: string;
-  description: string;
-  image: GatsbyImage;
-  subheading: string;
+  packages: StepData;
+  dateTimeScreen: StepData;
+  locationScreen: StepData;
+  confirmationScreen: StepData;
+  thankYouScreen: StepData;
   tabsData: {
     label: string;
     value: string;
@@ -32,11 +39,12 @@ export type Props = {
 
 // eslint-disable-next-line
 export const ProductsPage = ({
-  heading,
-  description,
+  packages,
   tabsData,
-  image,
-  subheading
+  dateTimeScreen,
+  locationScreen,
+  confirmationScreen,
+  thankYouScreen
 }) => {
   const swipeRef = React.useRef(null);
   const dispatch = useDispatch();
@@ -53,20 +61,19 @@ export const ProductsPage = ({
   };
 
   // const prevStep = R.pipe(R.path(['current', 'prev'], swipeRef), goPrevStep, dispatch);
-  const selectPlan = R.pipe(
-    setPlan,
-    dispatch,
-    nextStep
-  );
+  const selectPlan = R.pipe(setPlan, dispatch, nextStep);
 
   // TODO: be able to pass onChoice to tabsData content
   return (
     <div className="container">
-      <HeadlineBanner image={image} title={heading} subtitle={subheading} />
-      <Breadcrumb
-        currentStepIndex={3}
-        labelList={productJourneyLabels}
-        onClick={jumpStep}
+      <ProductsBreadcrumb
+        jumpStep={jumpStep}
+        stepDataList={[
+          packages,
+          dateTimeScreen,
+          locationScreen,
+          confirmationScreen
+        ]}
       />
       <ReactSwipe
         css={css`
@@ -76,24 +83,24 @@ export const ProductsPage = ({
         swipeOptions={{ continuous: false, speed: 500 }}>
         <div>
           <PlanChoice
-            heading={heading}
-            description={description}
+            heading={packages.heading}
+            description={packages.description}
             tabsData={tabsData}
             onChoice={selectPlan}
           />
         </div>
         <div>
           <PlanChoice
-            heading={heading}
-            description={description}
+            heading={packages.heading}
+            description={packages.description}
             tabsData={tabsData}
             onChoice={selectPlan}
           />
         </div>
         <div>
           <PlanChoice
-            heading={heading}
-            description={description}
+            heading={packages.heading}
+            description={packages.description}
             tabsData={tabsData}
             onChoice={selectPlan}
           />

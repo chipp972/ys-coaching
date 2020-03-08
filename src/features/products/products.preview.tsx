@@ -5,19 +5,21 @@ import { MakePreviewStore } from '../../store/create-store';
 import { ProductsPage } from './products.page';
 import { makeTabsData } from './products.data';
 import { PreviewProps } from '../../common/helpers/gatsby';
+import { HeadlineBanner } from '../../common/components/HeadlineBanner/HeadlineBanner';
 
 export const ProductPagePreview: React.FC<PreviewProps> = ({
   entry,
   fieldsMetaData
 }) => {
   const data = entry.getIn(['data']).toJS();
+  const { title, subtitle, image } = data;
 
   const tabsData = R.pipe(
     R.path(['packages', 'plans', 'category', 'product-categories']),
     R.values,
-    R.map(({ title, description, position }) => ({
-      label: title,
-      value: title,
+    R.map(({ title: category, description, position }) => ({
+      label: category,
+      value: category,
       description,
       position
     })),
@@ -26,6 +28,7 @@ export const ProductPagePreview: React.FC<PreviewProps> = ({
 
   return (
     <Provider store={MakePreviewStore()}>
+      <HeadlineBanner title={title} subtitle={subtitle} image={image} />
       <ProductsPage {...data} tabsData={tabsData} />
     </Provider>
   );

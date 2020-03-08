@@ -42,6 +42,7 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
           - {label: Title, name: title, widget: string}
+          - {label: Subtitle, name: subtitle, widget: string}
           - {label: Image, name: image, widget: image}
           - {label: Heading, name: heading, widget: string}
           - {label: Subheading, name: subheading, widget: string}
@@ -69,12 +70,12 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
           - {label: "Title", name: "title", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
           - {label: "Image", name: "image", widget: "image"}
-          - {label: "Heading", name: "heading", widget: "string"}
-          - {label: "Subheading", name: "subheading", widget: "string"}
           - {label: "Packages", name: "packages", widget: "object", fields: [
+              {label: "Step name", name: "stepName", widget: "string"},
               {label: "Heading", name: "heading", widget: "string"},
-              {label: "Description", name: "description", widget: "string", required: false},
+              {label: "Description", name: "description", widget: "text", required: false, default: ''},
               {label: "Plans", name: "plans", widget: "list", fields: [
                   {label: "Plan", name: "plan", widget: "string"},
                   {label: "Category", name: "category", widget: "relation", collection: "product-categories", searchFields: ["title"], valueField: "title"},
@@ -85,4 +86,34 @@ collections:
                   {label: "Benefits", name: "benefits", widget: "list", field: {label: "Benefit", name: "benefit", widget: "string"}}
                 ]
               }
+            ]}
+          - {label: "Date and time choice", name: "dateTimeScreen", widget: "object", fields: [
+              {label: "Step name", name: "stepName", widget: "string"},
+              {label: "Heading", name: "heading", widget: "string"},
+              {label: "Description", name: "description", widget: "text", required: false, default: ''},
+              {label: "Available timeslots", name: "availableTimeslots", widget: "list", fields: [
+                  {label: "Start", name: "start", widget: "datetime", dateFormat: "DD/MM/YYYY", timeFormat: "HH:mm", format: "LLL"},
+                  {label: "End", name: "end", widget: "datetime", dateFormat: "DD/MM/YYYY", timeFormat: "HH:mm", format: "LLL"}
+                ]
+              }
+            ]}
+          - {label: "Location choice", name: "locationScreen", widget: "object", fields: [
+              {label: "Step name", name: "stepName", widget: "string"},
+              {label: "Heading", name: "heading", widget: "string"},
+              {label: "Description", name: "description", widget: "text", required: false, default: ''},
+              {label: "Available locations", name: "availableLocations", widget: "list", fields: [
+                  {label: "Label", name: "label", widget: "string"},
+                  {label: "Address", name: "address", widget: "string"}
+                ]
+              }
+            ]}
+          - {label: "Confirmation screen", name: "confirmationScreen", widget: "object", fields: [
+              {label: "Step name", name: "stepName", widget: "string"},
+              {label: "Heading", name: "heading", widget: "string"},
+              {label: "Description", name: "description", widget: "text", required: false, default: ''}
+            ]}
+          - {label: "Thank you screen", name: "thankYouScreen", widget: "object", fields: [
+              {label: "Heading", name: "heading", widget: "string"},
+              {label: "Content", name: "content", widget: "text"},
+              {label: "Image", name: "image", widget: "image"}
             ]}

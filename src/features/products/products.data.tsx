@@ -22,9 +22,14 @@ export const makeTabsData = (packages) =>
   );
 
 export const getProductsPageData = (data) => {
-  const { frontmatter } = data.markdownRemark;
+  const {
+    packages,
+    dateTimeScreen,
+    locationScreen,
+    confirmationScreen,
+    thankYouScreen
+  } = data.markdownRemark.frontmatter;
   const { edges } = data.allMarkdownRemark;
-  const packages = R.prop('packages', frontmatter);
 
   const tabsData = R.pipe(
     R.map((edge) => ({
@@ -38,11 +43,10 @@ export const getProductsPageData = (data) => {
 
   return {
     tabsData,
-    title: frontmatter.title,
-    image: frontmatter.image,
-    heading: frontmatter.heading,
-    subheading: frontmatter.subheading,
-    description: frontmatter.description,
-    plans: frontmatter.packages
+    packages,
+    dateTimeScreen,
+    locationScreen,
+    confirmationScreen,
+    thankYouScreen
   };
 };

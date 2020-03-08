@@ -32,11 +32,19 @@ type Props = {
   };
 };
 
-const Products: React.FC<Props> = ({ data, location }) => (
-  <Page pathname={location.pathname}>
-    <ProductsPage {...getProductsPageData(data)} />
-  </Page>
-);
+const Products: React.FC<Props> = ({ data, location }) => {
+  const { title, subtitle, image } = data.markdownRemark.frontmatter;
+  return (
+    <Page
+      pathname={location.pathname}
+      title={title}
+      subtitle={subtitle}
+      image={image}
+      hasHeadlineBanner>
+      <ProductsPage {...getProductsPageData(data)} />
+    </Page>
+  );
+};
 
 export default Products;
 
@@ -61,6 +69,7 @@ export const productPageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
+        subtitle
         image {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {
@@ -68,10 +77,8 @@ export const productPageQuery = graphql`
             }
           }
         }
-        heading
-        subheading
-        description
         packages {
+          stepName
           heading
           plans {
             plan
@@ -87,6 +94,40 @@ export const productPageQuery = graphql`
             benefits
             price
             frequency
+          }
+        }
+        dateTimeScreen {
+          stepName
+          heading
+          description
+          availableTimeslots {
+            start
+            end
+          }
+        }
+        locationScreen {
+          stepName
+          heading
+          description
+          availableLocations {
+            label
+            address
+          }
+        }
+        confirmationScreen {
+          stepName
+          heading
+          description
+        }
+        thankYouScreen {
+          heading
+          content
+          image {
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
           }
         }
       }

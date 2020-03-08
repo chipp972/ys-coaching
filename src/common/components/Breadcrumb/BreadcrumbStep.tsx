@@ -40,6 +40,7 @@ const DesktopLabel: React.FC<SharedProps & { label: string }> = ({
 }) => (
   <ExtraSmallText
     onClick={onClick}
+    className="desktop-label"
     css={css`
       display: none;
       font-weight: ${isCurrentStep ? '500' : '400'};
@@ -62,6 +63,7 @@ const CircleStep: React.FC<SharedProps> = ({
 }) => (
   <span
     onClick={onClick}
+    className="circle-step"
     css={css`
       background-color: ${isCurrentStep ? colors.white : colors.black};
       border: ${borderSize.mobile} solid ${colors.white};
@@ -79,10 +81,10 @@ const CircleStep: React.FC<SharedProps> = ({
       }
     `}>
     {isClickable && (
-      <DoneIcon css={getIconStyle({ isLightBackground: false })} />
+      <DoneIcon className="step-icon" css={getIconStyle({ isLightBackground: false })} />
     )}
     {isCurrentStep && (
-      <CurrentStepIcon css={getIconStyle({ isLightBackground: true })} />
+      <CurrentStepIcon className="step-icon" css={getIconStyle({ isLightBackground: true })} />
     )}
   </span>
 );
@@ -116,6 +118,20 @@ export const BreadcrumbStep: React.FC<Props> = ({
         justify-content: flex-end;
         margin-right: 10px;
         position: relative;
+
+        ${isClickable && `:hover {
+          .circle-step {
+            border-color: ${colors.crimson200};
+          }
+
+          .step-icon {
+            stroke: ${colors.crimson200};
+          }
+
+          .desktop-label {
+            color: ${colors.crimson200};
+          }
+        }`}
       `}>
       <CircleStep {...sharedProps} />
       <DesktopLabel label={label} {...sharedProps} />
