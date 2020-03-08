@@ -9,7 +9,7 @@ public_folder: /img
 collections:
   - name: "product-categories"
     label: "Product categories"
-    folder: "src/cms/product-categories"
+    folder: "src/cms/products/categories"
     create: true
     slug: "{{title}}"
     fields:
@@ -20,7 +20,7 @@ collections:
 
   - name: "blog"
     label: "Blog"
-    folder: "src/pages/blog"
+    folder: "src/cms/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -36,7 +36,7 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "src/pages/index.md"
+      - file: "src/cms/index.md"
         label: "Landing Page"
         name: "index"
         fields:
@@ -50,7 +50,8 @@ collections:
           - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Title, name: title, widget: string}, {label: Text, name: text, widget: text}]}]}
           - {label: Full_image, name: full_image, widget: image}
           - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
-      - file: "src/pages/about/index.md"
+
+      - file: "src/cms/about/index.md"
         label: "About"
         name: "about"
         fields:
@@ -61,7 +62,8 @@ collections:
           - {label: "Part1", name: "part1", widget: "text"}
           - {label: "Part2", name: "part2", widget: "text"}
           - {label: Link, name: link, widget: object, fields: [{label: Text, name: text, widget: string}, {label: URL, name: url, widget: srting}]}
-      - file: "src/pages/products/index.md"
+
+      - file: "src/cms/products/index.md"
         label: "Products Page"
         name: "products"
         fields:
