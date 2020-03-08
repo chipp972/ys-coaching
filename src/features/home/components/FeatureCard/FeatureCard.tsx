@@ -2,7 +2,7 @@ import React from 'react';
 import { PreviewCompatibleImage } from '../../../../common/components/ImageContainer';
 import { css } from '@emotion/core';
 import { colors, BigText } from '../../../../common/theme';
-import { GatsbyImage } from '../../../../helpers/gatsby';
+import { GatsbyImage } from '../../../../common/helpers/gatsby';
 
 export type FeatureCardProps = {
   image: GatsbyImage;

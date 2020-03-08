@@ -4,7 +4,7 @@ import { colors } from '../../../../common/theme';
 import { ScalableImage } from '../../../../common/components/ImageContainer';
 import { GhostButton } from '../../../../common/components/Button';
 import CheckIcon from '../../../../img/icon/check.inline.svg';
-import { GatsbyImage } from '../../../../helpers/gatsby';
+import { GatsbyImage } from '../../../../common/helpers/gatsby';
 import { CardTitle } from './CardTitle';
 import { CardFooter } from './CardFooter';
 

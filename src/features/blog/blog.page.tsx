@@ -1,5 +1,5 @@
 import React from 'react';
-import { toKebabCase } from '../../helpers/to-kebab-case';
+import { toKebabCase } from '../../common/helpers/to-kebab-case';
 import { Link } from 'gatsby';
 import { Content, ContentProps } from '../../common/layout';
 

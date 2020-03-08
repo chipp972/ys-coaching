@@ -3,7 +3,7 @@ import { GhostButton } from '../../common/components/Button';
 import { FeatureCard, FeatureCardProps } from './components/FeatureCard/FeatureCard';
 import { SectionTitle } from '../../common/theme';
 import { HomeParallax } from './components/HomeParallax/HomeParallax';
-import { GatsbyImage } from '../../helpers/gatsby';
+import { GatsbyImage } from '../../common/helpers/gatsby';
 
 type Props = {
   image: GatsbyImage;

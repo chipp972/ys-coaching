@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { MakePreviewStore } from '../../store/create-store';
 import { ProductsPage } from './products.page';
 import { makeTabsData } from './products.data';
-import { PreviewProps } from '../../helpers/gatsby';
+import { PreviewProps } from '../../common/helpers/gatsby';
 
 export const ProductPagePreview: React.FC<PreviewProps> = ({
   entry,

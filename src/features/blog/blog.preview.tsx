@@ -1,6 +1,6 @@
 import React from 'react';
 import { BlogPost } from './blog.page';
-import { PreviewProps } from '../../helpers/gatsby';
+import { PreviewProps } from '../../common/helpers/gatsby';
 
 export const BlogPostPreview: React.FC<PreviewProps> = ({ entry, widgetFor }) => (
   <BlogPost

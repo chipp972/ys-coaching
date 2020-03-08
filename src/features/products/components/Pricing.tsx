@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import { ServiceCard } from './ServiceCard/ServiceCard';
 import { mediaQueries } from '../../../common/theme';
-import { GatsbyImage } from '../../../helpers/gatsby';
+import { GatsbyImage } from '../../../common/helpers/gatsby';
 
 type Plan = {
   plan: string;

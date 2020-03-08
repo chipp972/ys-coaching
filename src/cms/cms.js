@@ -2,7 +2,7 @@ import CMS from 'netlify-cms-app';
 import uploadcare from 'netlify-cms-media-library-uploadcare';
 import cloudinary from 'netlify-cms-media-library-cloudinary';
 
-import { CSSInjector } from '../helpers/preview-css-injector';
+import { CSSInjector } from '../common/helpers/preview-css-injector';
 import { ProductPagePreview } from '../features/products/products.preview';
 import { AboutPagePreview } from '../features/about/about.preview';
 import { BlogPostPreview } from '../features/blog/blog.preview';

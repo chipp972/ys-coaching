@@ -1,5 +1,5 @@
 import React from 'react';
-import { toKebabCase } from '../../helpers/to-kebab-case';
+import { toKebabCase } from '../../common/helpers/to-kebab-case';
 import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import { Page } from '../../common/layout';

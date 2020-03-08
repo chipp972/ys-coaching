@@ -7,7 +7,7 @@ import { useSiteMetadata } from '../hook/use-site-metadata';
 import { mediaQueries } from '../theme';
 import { navbarHeight, footerHeight } from './layout.constant';
 import { css } from '@emotion/core';
-import { GatsbyImage } from '../../helpers/gatsby';
+import { GatsbyImage } from '../helpers/gatsby';
 
 type Props = {
   pathname: string;

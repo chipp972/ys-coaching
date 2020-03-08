@@ -8,7 +8,7 @@ import { colors } from '../../common/theme';
 import { useDispatch } from 'react-redux';
 import { setPlan, goNextStep, jumpToStep } from './state/products.action';
 import { HeadlineBanner } from '../../common/components/HeadlineBanner/HeadlineBanner';
-import { GatsbyImage } from '../../helpers/gatsby';
+import { GatsbyImage } from '../../common/helpers/gatsby';
 
 // TODO: Pass into contrib
 const productJourneyLabels = [

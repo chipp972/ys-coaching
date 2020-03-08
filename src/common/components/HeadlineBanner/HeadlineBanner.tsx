@@ -1,7 +1,7 @@
 import React from 'react';
 import { FullWidthImage } from '../ImageContainer';
 import { PageTitle } from '../../theme';
-import { GatsbyImage } from '../../../helpers/gatsby';
+import { GatsbyImage } from '../../helpers/gatsby';
 import { headlineBannerHeight } from '../../layout';
 
 type Props = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { getImageSrc, GatsbyImage } from '../../../../helpers/gatsby';
+import { getImageSrc, GatsbyImage } from '../../../../common/helpers/gatsby';
 import { mediaQueries } from '../../../../common/theme';
 import { navbarHeight } from '../../../../common/layout';
 import { Title } from './Title';

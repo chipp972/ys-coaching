@@ -2,7 +2,7 @@ import React from 'react';
 import { Content, ContentProps } from '../../common/layout';
 import { PageTitle, mediaQueries } from '../../common/theme';
 import { css } from '@emotion/core';
-import { getImageSrc, GatsbyImage } from '../../helpers/gatsby';
+import { getImageSrc, GatsbyImage } from '../../common/helpers/gatsby';
 
 type Props = {
   title: string;

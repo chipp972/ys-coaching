@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Page } from '../common/layout';
 import { HomePage } from '../features/home/home.page';
-import { GatsbyImage } from '../helpers/gatsby';
+import { GatsbyImage } from '../common/helpers/gatsby';
 
 type Props = {
   location: {pathname: string};

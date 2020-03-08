@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import React from 'react';
 import Img, { FluidObject } from 'gatsby-image';
-import { GatsbyImage } from '../../../helpers/gatsby';
+import { GatsbyImage } from '../../helpers/gatsby';
 
 type Props = {
   imageInfo: {

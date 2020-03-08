@@ -1,6 +1,6 @@
 import React from 'react';
 import { HomePage } from './home.page';
-import { PreviewProps } from '../../helpers/gatsby';
+import { PreviewProps } from '../../common/helpers/gatsby';
 
 export const IndexPagePreview: React.FC<PreviewProps> = ({ entry }) => {
   const data = entry.getIn(['data']).toJS();
