@@ -1,6 +1,7 @@
 ---
 templateKey: product-page
 title: Coaching services
+subtitle: Let's work together
 image: /img/victor-freitas-wvdydxdzkhs-unsplash.jpg
 heading: Coaching packages
 subheading: Let's work together
@@ -49,5 +50,39 @@ packages:
       image: /img/emma-matthews-digital-content-production-8k62atzbulq-unsplash.jpg
       plan: Nutrition plan
       price: 25
----
+  stepName: Choose a program
+dateTimeScreen:
+  stepName: Date and time
+  heading: WHEN ARE YOU AVAILABLE ?
+  description: >-
+    La deuxième étape pour démarrer ensemble est de programmer notre rencontre.
 
+    Votre première session durera environ une heure où j’évaluerai votre niveau
+    actuel et établirai un plan adapté pour vous mener à l’accomplissement de
+    vos objectifs.
+  availableTimeslots:
+    - start: 2020-03-08T08:00:00.000Z
+      end: 2020-03-08T19:00:59.582Z
+locationScreen:
+  stepName: Location
+  heading: WHERE DO YOU PREFER TO TRAIN ?
+  description: ''
+  availableLocations:
+    - label: Fitness park Diderot
+      address: '60-62 Boulevard Diderot, 75012 Paris'
+confirmationScreen:
+  heading: IS EVERYTHING OK FOR YOU ?
+  stepName: Confirmation
+  description: >-
+    Merci de confirmer toutes les informations saisie et d’indiquer une adresse
+    mail ainsi que vos noms et prénoms afin de recevoir l’email de confirmation
+    et pour que nous puissions vous recontacter.
+thankYouScreen:
+  content: |-
+    Un email de confirmation vient de vous être envoyé.
+    A très vite !
+
+    Yuto
+  image: /img/apple-touch-icon.png
+  heading: Thank you
+---
