@@ -49,7 +49,7 @@ const Products: React.FC<Props> = ({ data, location }) => {
 export default Products;
 
 export const productPageQuery = graphql`
-  query ProductPage($id: String!) {
+  query ProductPage($id: String) {
     allMarkdownRemark(
       filter: { frontmatter: { dataKey: { eq: "product-categories" } } }
     ) {

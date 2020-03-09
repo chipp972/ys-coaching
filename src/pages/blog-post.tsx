@@ -46,7 +46,7 @@ const Blog: React.FC<Props> = ({ data, location }) => {
 export default Blog;
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
+  query BlogPostByID($id: String) {
     markdownRemark(id: { eq: $id }) {
       id
       html

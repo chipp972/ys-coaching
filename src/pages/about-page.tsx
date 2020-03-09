@@ -27,7 +27,7 @@ const About: React.FC<Props> = ({ data, location }) => {
 export default About;
 
 export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
+  query AboutPage($id: String) {
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
