@@ -11,52 +11,60 @@ export type TabItemData = {
 };
 
 type Props = {
-  items: TabItemData[];
-  defaultValue?: string;
-  className?: string;
+  labels: string[];
 };
 
-export const Tabs: React.FC<Props> = ({
-  className = '',
-  items,
-  defaultValue = items[0].value,
-  ...props
-}) => {
-  const [selectedValue, updateValue] = React.useState(defaultValue);
+const TabList: React.FC = ({ children }) => (
+  <ul
+    className="column is-10 is-offset-1"
+    css={css`
+      display: flex;
+      font-family: ${fontFamilies.notoSans};
+      font-size: 18px;
+      color: ${colors.gray50};
+      text-transform: uppercase;
+      padding: 25px 0;
+    `}>
+    {children}
+  </ul>
+);
+
+export const Tabs: React.FC<Props> = ({ labels, children, ...props }) => {
+  const [currentTab, setCurrentTab] = React.useState(0);
+  if (labels.length !== React.Children.count(children)) {
+    throw new Error(
+      `The number of tabs (${
+        labels.length
+      }) and tab contents (${React.Children.count(children)}) are different`
+    );
+  }
   return (
     <div
-      className={className}
+      {...props}
       css={css`
         display: flex;
         flex-direction: column;
       `}>
-      <ul
-        {...props}
-        css={css`
-          display: flex;
-          font-family: ${fontFamilies.notoSans};
-          font-size: 18px;
-          color: ${colors.gray50};
-          text-transform: uppercase;
-          padding: 25px 0;
-        `}>
-        {items.map(({ label, value }) => (
+      <TabList>
+        {labels.map((label, index) => (
           <TabItem
-            key={value}
+            key={`tab-${index}`}
             label={label}
-            selectTab={() => updateValue(value)}
-            isSelected={selectedValue === value}
+            selectTab={() => setCurrentTab(index)}
+            isSelected={currentTab === index}
           />
         ))}
-      </ul>
+      </TabList>
       <div
         css={css`
           position: relative;
           background-color: ${colors.black02dp};
         `}>
-        {items.map(({ value, content }) => (
-          <TabContent key={value} isVisible={value === selectedValue}>
-            {content}
+        {React.Children.map(children, (child, index) => (
+          <TabContent
+            key={`tabcontent-${index}`}
+            isVisible={index === currentTab}>
+            {child}
           </TabContent>
         ))}
       </div>

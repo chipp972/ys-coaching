@@ -19,6 +19,7 @@ type Props = {
   frequency?: string;
   description: string;
   benefits: string[];
+  onClick: (cardId: string) => void;
 };
 
 // eslint-disable-next-line
@@ -28,7 +29,8 @@ export const ServiceCard: React.FC<Props> = ({
   image,
   price,
   frequency,
-  benefits
+  benefits,
+  onClick
 }) => {
   const [isSelected, updateSelection] = React.useState(false);
   return (
@@ -68,7 +70,10 @@ export const ServiceCard: React.FC<Props> = ({
           }
         }
       `}
-      onClick={() => updateSelection(!isSelected)}>
+      onClick={() => {
+        updateSelection(!isSelected);
+        onClick(plan);
+      }}>
       <ScalableImage
         image={image}
         height="300px"

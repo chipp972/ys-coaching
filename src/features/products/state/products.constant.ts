@@ -14,17 +14,6 @@ export const actions = {
 
 export const reducerKey = 'products';
 
-export const initialState = {
-  currentStep: null,
-  plan: null,
-  dateTime: null,
-  location: null,
-  email: null,
-  firstName: null,
-  lastName: null,
-  comment: null
-};
-
 export const steps = {
   PLAN_CHOICE: 'PLAN_CHOICE',
   DATE_TIME_CHOICE: 'DATE_TIME_CHOICE',
@@ -40,3 +29,14 @@ export const orderedStepList = [
   steps.CONFIRMATION,
   steps.THANK_YOU
 ];
+
+export const initialState = {
+  currentStep: steps.PLAN_CHOICE,
+  plan: null,
+  dateTime: null,
+  location: null,
+  email: null,
+  firstName: null,
+  lastName: null,
+  comment: null
+};

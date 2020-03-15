@@ -1,6 +1,4 @@
-import React from 'react';
 import * as R from 'ramda';
-import { Pricing } from './components/Pricing';
 
 export const makeTabsData = (packages) =>
   R.pipe(
@@ -8,16 +6,8 @@ export const makeTabsData = (packages) =>
     R.map(({ label, value, description }) => ({
       label,
       value,
-      content: (
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <p>{description}</p>
-            <Pricing
-              data={packages.plans.filter(({ category }) => category === label)}
-            />
-          </div>
-        </div>
-      )
+      description,
+      packageList: packages.plans.filter(({ category }) => category === label)
     }))
   );
 
