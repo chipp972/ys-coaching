@@ -1,10 +1,32 @@
 ---
+locationScreen:
+  stepName: Location
+  heading: WHERE DO YOU PREFER TO TRAIN ?
+  description: ''
+  availableLocations:
+    - label: Fitness park Diderot
+      address: '60-62 Boulevard Diderot, 75012 Paris'
+confirmationScreen:
+  heading: IS EVERYTHING OK FOR YOU ?
+  stepName: Confirmation
+  description: >-
+    Merci de confirmer toutes les informations saisie et d’indiquer une adresse
+    mail ainsi que vos noms et prénoms afin de recevoir l’email de confirmation
+    et pour que nous puissions vous recontacter.
+thankYouScreen:
+  content: |-
+    Un email de confirmation vient de vous être envoyé.
+    A très vite !
+
+    Yuto
+  image: /img/apple-touch-icon.png
+  heading: Thank you
+heading: Coaching packages
+subheading: Let's work together
 templateKey: product-page
 title: Coaching services
 subtitle: Let's work together
 image: /img/victor-freitas-wvdydxdzkhs-unsplash.jpg
-heading: Coaching packages
-subheading: Let's work together
 packages:
   heading: How do you want us to work together ?
   plans:
@@ -63,26 +85,10 @@ dateTimeScreen:
   availableTimeslots:
     - start: 2020-03-08T08:00:00.000Z
       end: 2020-03-08T19:00:59.582Z
-locationScreen:
-  stepName: Location
-  heading: WHERE DO YOU PREFER TO TRAIN ?
-  description: ''
-  availableLocations:
-    - label: Fitness park Diderot
-      address: '60-62 Boulevard Diderot, 75012 Paris'
-confirmationScreen:
-  heading: IS EVERYTHING OK FOR YOU ?
-  stepName: Confirmation
-  description: >-
-    Merci de confirmer toutes les informations saisie et d’indiquer une adresse
-    mail ainsi que vos noms et prénoms afin de recevoir l’email de confirmation
-    et pour que nous puissions vous recontacter.
-thankYouScreen:
-  content: |-
-    Un email de confirmation vient de vous être envoyé.
-    A très vite !
-
-    Yuto
-  image: /img/apple-touch-icon.png
-  heading: Thank you
+    - start: 'March 9, 2020 9:00 AM'
+      end: 'March 9, 2020 1:00 PM'
+    - start: 'March 9, 2020 2:00 PM'
+      end: 'March 9, 2020 6:30 PM'
+    - start: 'March 10, 2020 8:00 AM'
+      end: 'March 10, 2020 5:00 PM'
 ---
