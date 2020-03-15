@@ -77,6 +77,7 @@ export const ProductsPage = ({
         css={css`
           background-color: ${colors.black01dp};
         `}
+        isSwipeDisabled
         currentStepIndex={currentStepIndex}>
         <PlanChoice
           heading={packages.heading}
@@ -89,6 +90,18 @@ export const ProductsPage = ({
           description={dateTimeScreen.description}
           availabilityTimeslots={dateTimeScreen.availableTimeslots}
           selectDate={selectDate}
+        />
+        <PlanChoice
+          heading={packages.heading}
+          description={packages.description}
+          tabsData={tabsData}
+          onChoice={selectPlan}
+        />
+        <PlanChoice
+          heading={packages.heading}
+          description={packages.description}
+          tabsData={tabsData}
+          onChoice={selectPlan}
         />
         <PlanChoice
           heading={packages.heading}
