@@ -10,18 +10,22 @@ export const NavbarLinks: React.FC = () => {
     <div className="navbar-end has-text-centered">
       <a
         className="navbar-item social-icon"
+        css={css`
+          :hover {
+            .instagram-icon {
+              fill: ${colors.crimson200};
+            }
+          }
+        `}
         href={instagramUrl}
         target="_blank"
         rel="noopener noreferrer">
         <InstagramIcon
+          className="instagram-icon"
           css={css`
             fill: ${colors.gray400};
             width: 25px;
             height: auto;
-
-            :hover {
-              fill: ${colors.crimson200};
-            }
           `}
         />
       </a>

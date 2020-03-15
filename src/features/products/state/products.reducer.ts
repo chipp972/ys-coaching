@@ -26,14 +26,14 @@ export const productsReducer = createReducer<ProductsState>(
     [actions.PRODUCTS_GO_NEXT_STEP]: (state) => ({
       ...state,
       currentStep: !!state.currentStep
-        ? steps.PLAN_CHOICE
-        : changeStep(state.currentStep, 1)
+        ? changeStep(state.currentStep, 1)
+        : steps.PLAN_CHOICE
     }),
     [actions.PRODUCTS_GO_PREV_STEP]: (state) => ({
       ...state,
       currentStep: !!state.currentStep
-        ? steps.PLAN_CHOICE
-        : changeStep(state.currentStep, -1)
+        ? changeStep(state.currentStep, -1)
+        : steps.PLAN_CHOICE
     }),
     [actions.PRODUCTS_JUMP_TO_STEP]: (state, newStepIndex: number) => ({
       ...state,

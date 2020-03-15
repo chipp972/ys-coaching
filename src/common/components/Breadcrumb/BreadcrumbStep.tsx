@@ -65,7 +65,7 @@ const CircleStep: React.FC<SharedProps> = ({
     onClick={onClick}
     className="circle-step"
     css={css`
-      background-color: ${isCurrentStep ? colors.white : colors.black};
+      background-color: ${colors.black};
       border: ${borderSize.mobile} solid ${colors.white};
       border-radius: 50%;
       color: ${colors.white};
@@ -84,7 +84,7 @@ const CircleStep: React.FC<SharedProps> = ({
       <DoneIcon className="step-icon" css={getIconStyle({ isLightBackground: false })} />
     )}
     {isCurrentStep && (
-      <CurrentStepIcon className="step-icon" css={getIconStyle({ isLightBackground: true })} />
+      <CurrentStepIcon className="step-icon" css={getIconStyle({ isLightBackground: false })} />
     )}
   </span>
 );

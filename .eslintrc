@@ -6,6 +6,7 @@
   "rules": {
     "unicorn/filename-case": "off",
     "space-before-function-paren": ["error", "never"],
-    "indent": "off"
+    "indent": "off",
+    "no-unused-expressions": "off"
   }
 }

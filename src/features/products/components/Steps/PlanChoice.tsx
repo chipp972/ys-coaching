@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs, TabItemData } from '../../../../common/components/Tabs/Tabs';
-import { SectionTitle } from '../../../../common/theme';
+import { StepContainer } from './StepContainer';
 
 type Props = {
   heading: string;
@@ -10,17 +10,13 @@ type Props = {
 };
 
 export const PlanChoice: React.FC<Props> = ({ heading, description, tabsData }) => (
-  <div className="section">
-    <div className="columns">
-      <SectionTitle className="column is-10 is-offset-1">
-        {heading}
-      </SectionTitle>
-    </div>
-    {description && <p>{description}</p>}
+  <StepContainer
+    heading={heading}
+    description={description}>
     {tabsData.length > 0 && (
       <div className="columns">
         <Tabs className="column is-10 is-offset-1" items={tabsData} />
       </div>
     )}
-  </div>
+  </StepContainer>
 );

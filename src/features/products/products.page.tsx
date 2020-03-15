@@ -1,12 +1,13 @@
 import * as R from 'ramda';
 import React from 'react';
-import ReactSwipe from 'react-swipe';
-import { PlanChoice } from './components/Steps/PlanChoice';
+import { PlanChoice, DateTimeStep } from './components/Steps';
 import { Breadcrumb } from '../../common/components/Breadcrumb/Breadcrumb';
 import { css } from '@emotion/core';
 import { colors } from '../../common/theme';
-import { useDispatch } from 'react-redux';
-import { setPlan, goNextStep, jumpToStep } from './state/products.action';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPlan, setDateTime, goNextStep, jumpToStep } from './state/products.action';
+import { reducerKey, steps, orderedStepList } from './state/products.constant';
+import { Carousel } from '../../common/components/Carousel/Carousel';
 
 const ProductsBreadcrumb: React.FC<{
   stepDataList: StepData[];
@@ -26,7 +27,7 @@ type StepData = {
 
 export type Props = {
   packages: StepData;
-  dateTimeScreen: StepData;
+  dateTimeScreen: StepData & { availableTimeslots: {start: string; end: string}[]};
   locationScreen: StepData;
   confirmationScreen: StepData;
   thankYouScreen: StepData;
@@ -46,22 +47,22 @@ export const ProductsPage = ({
   confirmationScreen,
   thankYouScreen
 }) => {
-  const swipeRef = React.useRef(null);
   const dispatch = useDispatch();
+  const currentStep = useSelector(R.pathOr(steps.PLAN_CHOICE, [reducerKey, 'currentStep']));
+  const currentStepIndex = orderedStepList.findIndex(R.equals(currentStep));
 
   const nextStep = R.pipe(
-    R.pathOr(R.identity, ['current', 'next'], swipeRef),
     goNextStep,
     dispatch
   );
 
   const jumpStep = (stepIndex: number) => {
-    swipeRef.current.slide(stepIndex);
     dispatch(jumpToStep(stepIndex));
   };
 
   // const prevStep = R.pipe(R.path(['current', 'prev'], swipeRef), goPrevStep, dispatch);
   const selectPlan = R.pipe(setPlan, dispatch, nextStep);
+  const selectDate = R.pipe(setDateTime, dispatch, nextStep);
 
   // TODO: be able to pass onChoice to tabsData content
   return (
@@ -75,37 +76,28 @@ export const ProductsPage = ({
           confirmationScreen
         ]}
       />
-      <ReactSwipe
-        css={css`
-          background-color: ${colors.black01dp};
-        `}
-        ref={swipeRef}
-        swipeOptions={{ continuous: false, speed: 500 }}>
-        <div>
-          <PlanChoice
-            heading={packages.heading}
-            description={packages.description}
-            tabsData={tabsData}
-            onChoice={selectPlan}
-          />
-        </div>
-        <div>
-          <PlanChoice
-            heading={packages.heading}
-            description={packages.description}
-            tabsData={tabsData}
-            onChoice={selectPlan}
-          />
-        </div>
-        <div>
-          <PlanChoice
-            heading={packages.heading}
-            description={packages.description}
-            tabsData={tabsData}
-            onChoice={selectPlan}
-          />
-        </div>
-      </ReactSwipe>
+      <Carousel
+        css={css`background-color: ${colors.black01dp};`}
+        currentStepIndex={currentStepIndex}>
+        <PlanChoice
+          heading={packages.heading}
+          description={packages.description}
+          tabsData={tabsData}
+          onChoice={selectPlan}
+        />
+        <DateTimeStep
+          heading={dateTimeScreen.heading}
+          description={dateTimeScreen.description}
+          availabilityTimeslots={dateTimeScreen.availableTimeslots}
+          selectDate={selectDate}
+        />
+        <PlanChoice
+          heading={packages.heading}
+          description={packages.description}
+          tabsData={tabsData}
+          onChoice={selectPlan}
+        />
+      </Carousel>
     </div>
   );
 };
