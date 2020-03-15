@@ -8,9 +8,10 @@ const formatHours = format('HH:mm');
 type Props = {
   value: Date;
   onClick: (date: Date) => void;
+  isSelected: boolean;
 };
 
-export const Timeslot: React.FC<Props> = ({ value, onClick }) => (
+export const Timeslot: React.FC<Props> = ({ value, onClick, isSelected }) => (
   <button onClick={() => onClick(value)} css={css`
     border: none;
     outline: none;
@@ -30,6 +31,10 @@ export const Timeslot: React.FC<Props> = ({ value, onClick }) => (
     :focus {
       background-color: ${colors.crimson200};
     }
+
+    ${isSelected && `
+      background-color: ${colors.crimson200};
+    `}
   `}>
     <MediumText css={css`
       color: ${colors.black};

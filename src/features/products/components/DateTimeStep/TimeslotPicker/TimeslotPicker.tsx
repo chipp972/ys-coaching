@@ -1,6 +1,5 @@
 import * as R from 'ramda';
 import React from 'react';
-import LeftArrow from '../../../../../img/icon/arrow-left-circle.inline.svg';
 import { css } from '@emotion/core';
 import { colors } from '../../../../../common/theme';
 import addMinutes from 'date-fns/fp/addMinutes';
@@ -45,13 +44,13 @@ export type Availability = {
 };
 
 type Props = {
+  currentSelection?: Date;
   availabilityList: Availability[];
   onTimeslotSelection: (date: Date) => void;
 };
 
-export const TimeSlotPicker: React.FC<Props> = ({ onTimeslotSelection, availabilityList }) => {
+export const TimeSlotPicker: React.FC<Props> = ({ onTimeslotSelection, availabilityList, currentSelection }) => {
   const timeslots = generateTimeslots(availabilityList);
-  const [currentPage, setPage] = React.useState(0);
   return (
     <div
       css={css`
@@ -60,19 +59,10 @@ export const TimeSlotPicker: React.FC<Props> = ({ onTimeslotSelection, availabil
         align-items: flex-start;
         margin: auto;
       `}>
-      <LeftArrow
-        css={css`
-          width: 40px;
-          height: auto;
-          stroke: ${colors.white};
-          cursor: pointer;
-          flex-shrink: 0;
-        `}
-      />
       {/* TODO: calculate height */}
       <div css={css`
         position: relative;
-        width: 80vw;
+        width: 95vw;
         height: 500px;
         overflow: scroll;
         background-color: ${colors.black};
@@ -80,22 +70,12 @@ export const TimeSlotPicker: React.FC<Props> = ({ onTimeslotSelection, availabil
         <table css={css`
           position: absolute;
           top: 0;
-          left: calc(${currentPage} * 80vw);
+          left: 0;
         `}>
           <TimeslotListHeader dateList={Object.keys(timeslots)} />
-          <TimeslotListBody timeslots={timeslots} onClick={onTimeslotSelection} />
+          <TimeslotListBody timeslots={timeslots} currentSelection={currentSelection} onClick={onTimeslotSelection} />
         </table>
       </div>
-      <LeftArrow
-        css={css`
-          width: 40px;
-          height: auto;
-          stroke: ${colors.white};
-          cursor: pointer;
-          transform: rotate(180deg);
-          flex-shrink: 0;
-        `}
-      />
     </div>
   );
 };

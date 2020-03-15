@@ -11,7 +11,7 @@ export const getCurrentStepIndex: (state: AppState) => number = R.pipe(
 
 export const getSelectedPlan: (state: AppState) => string = R.path([reducerKey, 'plan']);
 
-export const getSelectedDate: (state: AppState) => string = R.path([reducerKey, 'date']);
+export const getSelectedDate: (state: AppState) => Date = R.path([reducerKey, 'dateTime']);
 
 export const getSelectedLocation: (state: AppState) => string = R.path([reducerKey, 'location']);
 
