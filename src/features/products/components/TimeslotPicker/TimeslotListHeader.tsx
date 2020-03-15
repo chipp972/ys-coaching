@@ -12,7 +12,7 @@ export const TimeslotListHeader: React.FC<Props> = ({ dateList }) => {
   const parsedDateList = dateList.map(parseISO);
   return (
     <thead css={css`
-      border-bottom: 1px solid #989898;
+      border-bottom: 1px solid ${colors.gray900};
     `}>
       <tr>
         {parsedDateList.map((date, index) => (
@@ -20,14 +20,14 @@ export const TimeslotListHeader: React.FC<Props> = ({ dateList }) => {
             color: ${colors.gray300};
           `}>
             <MediumText color={colors.gray400} css={css`
-              color: #989898;
+              color: ${colors.gray900};
               ${mediaQueries.fromTablet} {
                 display: none;
               }
             `}>{format('iii', date)}</MediumText>
             <MediumText css={css`
               display: none;
-              color: #989898;
+              color: ${colors.gray900};
 
               ${mediaQueries.fromTablet} {
                 display: block;
@@ -40,7 +40,7 @@ export const TimeslotListHeader: React.FC<Props> = ({ dateList }) => {
         {parsedDateList.map((date, index) => (
           <td key={dateList[index]} align="center">
             <MediumText css={css`
-              color: #989898;
+              color: ${colors.gray900};
               margin-bottom: 10px;
             `}>{format('dd/MM', date)}</MediumText>
           </td>

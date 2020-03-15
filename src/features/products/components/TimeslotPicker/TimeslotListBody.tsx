@@ -19,7 +19,7 @@ export const TimeslotListBody: React.FC<Props> = ({ timeslots, onClick }) => (
             <div
               key={`${dateKey}.${index}`}
               css={css`
-                margin: 15px 15px;
+                margin: 15px 5px;
                 ${mediaQueries.fromTablet} {
                   margin: 20px 20px;
                 }

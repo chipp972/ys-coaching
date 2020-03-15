@@ -6,10 +6,10 @@ type Props = {
   transitionSpeed?: number;
   isSwipeDisabled?: boolean;
   isContinuous?: boolean;
-  isAuto?: boolean;
+  autoSliding?: number;
   onTransitionStart?: () => void;
   onTransitionEnd?: () => void;
-  onSwipe?: (event: Event) => void;
+  onSwipe?: (position: number) => void;
 };
 
 const defaultTransitionSpeed = 500;
@@ -21,7 +21,7 @@ export const Carousel: React.FC<Props> = ({
   isSwipeDisabled = false,
   onSwipe,
   isContinuous = false,
-  isAuto = false,
+  autoSliding = 0,
   onTransitionStart,
   onTransitionEnd,
   ...props
@@ -41,9 +41,10 @@ export const Carousel: React.FC<Props> = ({
       ref={swipeRef}
       swipeOptions={{
         continuous: isContinuous,
-        auto: isAuto,
+        auto: autoSliding,
         speed: transitionSpeed,
-        swiping: (e) => (isSwipeDisabled ? e.preventDefault() : onSwipe?.(e)),
+        disableScroll: isSwipeDisabled,
+        swiping: onSwipe,
         callback: onTransitionStart,
         onTransitionEnd
       }}>

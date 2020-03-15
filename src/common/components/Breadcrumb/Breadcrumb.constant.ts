@@ -5,5 +5,5 @@ export const stepSize = {
 
 export const borderSize = {
   mobile: '2px',
-  fromTablet: '4px'
+  fromTablet: '3px'
 };
