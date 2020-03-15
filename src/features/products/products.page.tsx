@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import React from 'react';
-import { PlanChoice, DateTimeStep } from './components/Steps';
+import { PlanChoice, DateTimeStep, ThankYouStep } from './components';
 import { Breadcrumb } from '../../common/components/Breadcrumb/Breadcrumb';
 import { css } from '@emotion/core';
 import { colors } from '../../common/theme';
@@ -11,8 +11,9 @@ import {
   goNextStep,
   jumpToStep
 } from './state/products.action';
-import { reducerKey, steps, orderedStepList } from './state/products.constant';
+import { getCurrentStepIndex } from './state/products.selector';
 import { Carousel } from '../../common/components/Carousel/Carousel';
+import { LocationStep } from './components/LocationStep/LocationStep';
 
 type StepData = {
   stepName: string;
@@ -45,10 +46,7 @@ export const ProductsPage = ({
   thankYouScreen
 }) => {
   const dispatch = useDispatch();
-  const currentStep = useSelector(
-    R.pathOr(steps.PLAN_CHOICE, [reducerKey, 'currentStep'])
-  );
-  const currentStepIndex = orderedStepList.findIndex(R.equals(currentStep));
+  const currentStepIndex = useSelector(getCurrentStepIndex);
   const breadcrumbLabels: string[] = [
     packages,
     dateTimeScreen,
@@ -91,23 +89,22 @@ export const ProductsPage = ({
           availabilityTimeslots={dateTimeScreen.availableTimeslots}
           selectDate={selectDate}
         />
+        <LocationStep
+          heading={locationScreen.heading}
+          description={locationScreen.description}
+          availableLocations={locationScreen.availableLocations}
+        />
         <PlanChoice
-          heading={packages.heading}
-          description={packages.description}
+          heading={confirmationScreen.heading}
+          description={confirmationScreen.description}
           tabsData={tabsData}
           onChoice={selectPlan}
         />
-        <PlanChoice
-          heading={packages.heading}
-          description={packages.description}
-          tabsData={tabsData}
-          onChoice={selectPlan}
-        />
-        <PlanChoice
-          heading={packages.heading}
-          description={packages.description}
-          tabsData={tabsData}
-          onChoice={selectPlan}
+        <ThankYouStep
+          heading={thankYouScreen.heading}
+          description={thankYouScreen.description}
+          content={thankYouScreen.content}
+          image={thankYouScreen.image}
         />
       </Carousel>
     </div>

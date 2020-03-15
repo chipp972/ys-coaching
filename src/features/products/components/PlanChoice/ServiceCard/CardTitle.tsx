@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { colors } from '../../../../common/theme';
+import { colors } from '../../../../../common/theme';
 
 type Props = {
   plan: string;

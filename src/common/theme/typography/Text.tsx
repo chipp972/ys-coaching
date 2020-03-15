@@ -50,3 +50,15 @@ export const BigText = styled.span`
     font-size: 22px;
   }
 `;
+
+export const ActiveText = styled.span`
+  font-size: 18px;
+  font-family: ${fontFamilies.notoSans};
+  font-weight: 400;
+  line-height: 1.5;
+  color: ${colors.white};
+
+  ${mediaQueries.fromTablet} {
+    font-size: 22px;
+  }
+`;

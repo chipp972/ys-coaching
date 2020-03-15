@@ -1,8 +1,8 @@
 import * as R from 'ramda';
 import React from 'react';
 import { Tabs } from '../../../../common/components/Tabs/Tabs';
-import { StepContainer } from './StepContainer';
-import { Pricing, Plan } from '../Pricing';
+import { StepContainer } from '../StepContainer';
+import { Pricing, Plan } from './Pricing';
 
 type Props = {
   heading: string;
@@ -28,17 +28,16 @@ export const PlanChoice: React.FC<Props> = ({
   return (
     <StepContainer heading={heading} description={description}>
       {tabsData.length > 0 && (
-        <div className="columns">
-          <Tabs labels={labels}>
-            {tabsData.map(({ value, packageList, description: categoryDescription }) => (
-              <Pricing
-                key={value}
-                description={categoryDescription}
-                data={packageList}
-                onClick={onChoice}></Pricing>
-            ))}
-          </Tabs>
-        </div>
+        <Tabs labels={labels}>
+          {tabsData.map(({ value, packageList, description: categoryDescription }) => (
+            <Pricing
+              key={value}
+              description={categoryDescription}
+              data={packageList}
+              onClick={onChoice}
+            />
+          ))}
+        </Tabs>
       )}
     </StepContainer>
   );

@@ -1,5 +1,5 @@
 export type ProductsState = {
-  currentStep: string | null;
+  currentStep: string;
   plan: string | null;
   dateTime: Date | null;
   location: string | null;

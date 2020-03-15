@@ -1,10 +1,10 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { colors, mediaQueries } from '../../../../common/theme';
-import { ScalableImage } from '../../../../common/components/ImageContainer';
-import { GhostButton } from '../../../../common/components/Button';
-import CheckIcon from '../../../../img/icon/check.inline.svg';
-import { GatsbyImage } from '../../../../common/helpers/gatsby';
+import { colors, mediaQueries } from '../../../../../common/theme';
+import { ScalableImage } from '../../../../../common/components/ImageContainer';
+import { GhostButton } from '../../../../../common/components/Button';
+import CheckIcon from '../../../../../img/icon/check.inline.svg';
+import { GatsbyImage } from '../../../../../common/helpers/gatsby';
 import { CardTitle } from './CardTitle';
 import { CardFooter } from './CardFooter';
 
@@ -61,10 +61,10 @@ export const ServiceCard: React.FC<Props> = ({
       width: ${cardWidth};
       display: flex;
       flex-flow: column nowrap;
-      margin: 30px 30px 0 0;
       transition: all ${transitionDuration} ease-in-out;
       box-shadow: ${isSelected ? selectedCardShadow : 'none'};
       cursor: pointer;
+      margin-top: 30px;
 
       ${activeStyle} :hover,
       :active {
@@ -76,6 +76,8 @@ export const ServiceCard: React.FC<Props> = ({
       }
 
       ${mediaQueries.fromTablet} {
+        margin: 30px 30px 0 0;
+
         .pricing-plan-image {
           transform: scale(1);
 

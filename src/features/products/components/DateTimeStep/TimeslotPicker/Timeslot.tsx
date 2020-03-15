@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import format from 'date-fns/fp/format';
-import { MediumText, colors, mediaQueries } from '../../../../common/theme';
+import { MediumText, colors, mediaQueries } from '../../../../../common/theme';
 
 const formatHours = format('HH:mm');
 

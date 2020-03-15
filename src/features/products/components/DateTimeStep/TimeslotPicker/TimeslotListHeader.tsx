@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import parseISO from 'date-fns/fp/parseISO';
 import format from 'date-fns/fp/format';
-import { MediumText, colors, mediaQueries } from '../../../../common/theme';
+import { MediumText, colors, mediaQueries } from '../../../../../common/theme';
 
 type Props = {
   dateList: string[];

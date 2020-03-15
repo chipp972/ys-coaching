@@ -1,8 +1,8 @@
 import * as R from 'ramda';
 import React from 'react';
-import LeftArrow from '../../../../img/icon/arrow-left-circle.inline.svg';
+import LeftArrow from '../../../../../img/icon/arrow-left-circle.inline.svg';
 import { css } from '@emotion/core';
-import { colors } from '../../../../common/theme';
+import { colors } from '../../../../../common/theme';
 import addMinutes from 'date-fns/fp/addMinutes';
 import isAfter from 'date-fns/fp/isAfter';
 import startOfHour from 'date-fns/fp/startOfHour';
@@ -51,12 +51,14 @@ type Props = {
 
 export const TimeSlotPicker: React.FC<Props> = ({ onTimeslotSelection, availabilityList }) => {
   const timeslots = generateTimeslots(availabilityList);
+  const [currentPage, setPage] = React.useState(0);
   return (
     <div
       css={css`
         display: flex;
         flex-flow: row nowrap;
         align-items: flex-start;
+        margin: auto;
       `}>
       <LeftArrow
         css={css`
@@ -67,10 +69,23 @@ export const TimeSlotPicker: React.FC<Props> = ({ onTimeslotSelection, availabil
           flex-shrink: 0;
         `}
       />
-      <table>
-        <TimeslotListHeader dateList={Object.keys(timeslots)} />
-        <TimeslotListBody timeslots={timeslots} onClick={onTimeslotSelection} />
-      </table>
+      {/* TODO: calculate height */}
+      <div css={css`
+        position: relative;
+        width: 80vw;
+        height: 500px;
+        overflow: scroll;
+        background-color: ${colors.black};
+      `}>
+        <table css={css`
+          position: absolute;
+          top: 0;
+          left: calc(${currentPage} * 80vw);
+        `}>
+          <TimeslotListHeader dateList={Object.keys(timeslots)} />
+          <TimeslotListBody timeslots={timeslots} onClick={onTimeslotSelection} />
+        </table>
+      </div>
       <LeftArrow
         css={css`
           width: 40px;

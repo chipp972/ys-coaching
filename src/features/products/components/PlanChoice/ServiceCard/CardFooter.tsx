@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { colors, fontFamilies } from '../../../../common/theme';
+import { colors, fontFamilies } from '../../../../../common/theme';
 
 type Props = {
   frequency?: string;

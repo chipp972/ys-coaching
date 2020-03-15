@@ -11,9 +11,11 @@ export const SectionTitle = styled.h3`
   letter-spacing: 2px;
   color: ${colors.white};
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
 
   ${mediaQueries.fromTablet} {
     font-size: 36px;
+    text-align: left;
   }
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { mediaQueries } from '../../../../common/theme';
+import { mediaQueries } from '../../../../../common/theme';
 import { Timeslot } from './Timeslot';
 
 type Props = {

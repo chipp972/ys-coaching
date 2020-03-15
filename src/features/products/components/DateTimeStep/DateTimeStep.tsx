@@ -1,7 +1,8 @@
 import React from 'react';
-import { StepContainer } from './StepContainer';
-import { TimeSlotPicker } from '../TimeslotPicker/TimeslotPicker';
+import { StepContainer } from '../StepContainer';
+import { TimeSlotPicker } from './TimeslotPicker/TimeslotPicker';
 import isValid from 'date-fns/fp/isValid';
+import { Section } from '../../../../common/layout';
 
 type Props = {
   heading: string;
@@ -28,10 +29,12 @@ export const DateTimeStep: React.FC<Props> = ({
   );
   return (
     <StepContainer heading={heading} description={description}>
-      <TimeSlotPicker
-        availabilityList={availabilityList}
-        onTimeslotSelection={selectDate}
-      />
+      <Section>
+        <TimeSlotPicker
+          availabilityList={availabilityList}
+          onTimeslotSelection={selectDate}
+        />
+      </Section>
     </StepContainer>
   );
 };

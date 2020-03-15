@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { colors, fontFamilies } from '../../theme';
+import { colors, fontFamilies, mediaQueries } from '../../theme';
 import { TabItem } from './TabItem';
 import { TabContent } from './TabContent';
 
@@ -16,14 +16,18 @@ type Props = {
 
 const TabList: React.FC = ({ children }) => (
   <ul
-    className="column is-10 is-offset-1"
     css={css`
       display: flex;
+      justify-content: space-around;
       font-family: ${fontFamilies.notoSans};
       font-size: 18px;
       color: ${colors.gray50};
       text-transform: uppercase;
       padding: 25px 0;
+
+      ${mediaQueries.fromTablet} {
+        justify-content: flex-start;
+      }
     `}>
     {children}
   </ul>
