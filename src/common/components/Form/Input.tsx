@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { ActiveText, MediumText, mediaQueries } from '../../theme';
+import { InfoText, ActiveText, mediaQueries } from '../../theme';
 import { colors } from '../../theme/colors';
 
 type Props = {
@@ -20,18 +20,18 @@ export const Input: React.FC<Props> = ({
   <>
     <label
       css={css`
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         cursor: pointer;
 
         ${mediaQueries.fromTablet} {
-          margin-bottom: 20px;
+          margin-bottom: 10px;
         }
       `}
       htmlFor={name}>
       <ActiveText>{label}</ActiveText>
     </label>
     {isDisabled ? (
-      <MediumText>{value}</MediumText>
+      <InfoText>{value}</InfoText>
     ) : (
       <input
         css={css`

@@ -62,3 +62,15 @@ export const ActiveText = styled.span`
     font-size: 22px;
   }
 `;
+
+export const InfoText = styled.span`
+  font-size: 18px;
+  font-family: ${fontFamilies.notoSerif};
+  font-weight: 400;
+  line-height: 1.5;
+  color: ${colors.gray600};
+
+  ${mediaQueries.fromTablet} {
+    font-size: 24px;
+  }
+`;
