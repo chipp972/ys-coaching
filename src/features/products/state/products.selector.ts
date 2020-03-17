@@ -1,13 +1,6 @@
 import * as R from 'ramda';
-import { reducerKey, orderedStepList } from './products.constant';
+import { reducerKey } from './products.constant';
 import { AppState } from '../../../store/store.type';
-
-export const getCurrentStep: (state: AppState) => string = R.path([reducerKey, 'currentStep']);
-
-export const getCurrentStepIndex: (state: AppState) => number = R.pipe(
-  getCurrentStep,
-  (currentStep: string) => orderedStepList.findIndex(R.equals(currentStep))
-);
 
 export const getSelectedPlan: (state: AppState) => string = R.path([reducerKey, 'plan']);
 

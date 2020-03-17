@@ -1,9 +1,7 @@
 import {
   actions,
   initialState,
-  reducerKey,
-  orderedStepList,
-  steps
+  reducerKey
 } from './products.constant';
 import { ProductsState as _ProductsState } from './products.type';
 import { createReducer } from '@chipp972/redux-helpers';
@@ -12,33 +10,8 @@ export const productsReducerKey = reducerKey;
 
 export type ProductsState = _ProductsState;
 
-const changeStep = (currentStep: string, jump: number) => {
-  const currentStepIndex = orderedStepList.indexOf(currentStep);
-  const nextStepIndex = currentStepIndex + jump;
-  const maxStepIndex = orderedStepList.length - 1;
-  return orderedStepList[
-    nextStepIndex > maxStepIndex ? maxStepIndex : nextStepIndex
-  ];
-};
-
 export const productsReducer = createReducer<ProductsState>(
   {
-    [actions.PRODUCTS_GO_NEXT_STEP]: (state) => ({
-      ...state,
-      currentStep: !!state.currentStep
-        ? changeStep(state.currentStep, 1)
-        : steps.PLAN_CHOICE
-    }),
-    [actions.PRODUCTS_GO_PREV_STEP]: (state) => ({
-      ...state,
-      currentStep: !!state.currentStep
-        ? changeStep(state.currentStep, -1)
-        : steps.PLAN_CHOICE
-    }),
-    [actions.PRODUCTS_JUMP_TO_STEP]: (state, newStepIndex: number) => ({
-      ...state,
-      currentStep: orderedStepList[newStepIndex]
-    }),
     [actions.PRODUCTS_SET_PLAN]: (state, plan) => ({
       ...state,
       plan

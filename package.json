@@ -17,6 +17,7 @@
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
+    "@chipp972/carousel": "^1.0.0",
     "@chipp972/eslint-config": "^1.0.2",
     "@chipp972/redux-helpers": "^1.0.1",
     "@emotion/babel-preset-css-prop": "^10.0.27",

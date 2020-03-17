@@ -4,15 +4,12 @@ import { PlanChoice, DateTimeStep, ThankYouStep } from './components';
 import { Breadcrumb } from '../../common/components/Breadcrumb/Breadcrumb';
 import { css } from '@emotion/core';
 import { colors } from '../../common/theme';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   setPlan,
-  setDateTime,
-  goNextStep,
-  jumpToStep
+  setDateTime
 } from './state/products.action';
-import { getCurrentStepIndex } from './state/products.selector';
-import { Carousel } from '../../common/components/Carousel/Carousel';
+import { Carousel, useCarousel } from '@chipp972/carousel';
 import { LocationStep } from './components/LocationStep/LocationStep';
 
 type StepData = {
@@ -36,6 +33,8 @@ export type Props = {
   };
 };
 
+const carouselId = 'products';
+
 // eslint-disable-next-line
 export const ProductsPage = ({
   packages,
@@ -45,8 +44,8 @@ export const ProductsPage = ({
   confirmationScreen,
   thankYouScreen
 }) => {
+  const { currentStepIndex, goNextStep, jumpToStep } = useCarousel(carouselId);
   const dispatch = useDispatch();
-  const currentStepIndex = useSelector(getCurrentStepIndex);
   const breadcrumbLabels: string[] = [
     packages,
     dateTimeScreen,
@@ -54,29 +53,22 @@ export const ProductsPage = ({
     confirmationScreen
   ].map(R.prop('stepName'));
 
-  const nextStep = R.pipe(goNextStep, dispatch);
-
-  const jumpStep = (stepIndex: number) => {
-    dispatch(jumpToStep(stepIndex));
-  };
-
-  // const prevStep = R.pipe(R.path(['current', 'prev'], swipeRef), goPrevStep, dispatch);
-  const selectPlan = R.pipe(setPlan, dispatch, nextStep);
-  const selectDate = R.pipe(setDateTime, dispatch, nextStep);
+  const selectPlan = R.pipe(setPlan, dispatch, goNextStep);
+  const selectDate = R.pipe(setDateTime, dispatch, goNextStep);
 
   return (
     <div className="container">
       <Breadcrumb
         currentStepIndex={currentStepIndex}
         labelList={breadcrumbLabels}
-        onClick={jumpStep}
+        onClick={jumpToStep}
       />
       <Carousel
+        carouselId={carouselId}
         css={css`
           background-color: ${colors.black01dp};
         `}
-        isSwipeDisabled
-        currentStepIndex={currentStepIndex}>
+        isSwipeDisabled>
         <PlanChoice
           heading={packages.heading}
           description={packages.description}
