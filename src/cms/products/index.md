@@ -1,8 +1,10 @@
 ---
 locationScreen:
-  stepName: Location
   heading: WHERE DO YOU PREFER TO TRAIN ?
-  description: ''
+  customerPlacePlaceholder: Choose a place
+  customerPlaceLabel: 1 rue du général Leclerc ...
+  locationChoiceError: Please select a place to meet or provide your own place
+  locationChoiceCustomPlaceLabel: At your place
   availableLocations:
     - label: Fitness park Diderot
       address: 60-62 Boulevard Diderot 75012 Paris
@@ -14,6 +16,15 @@ locationScreen:
       label: Fitness park Chevaleret
     - label: Fitness park Bercy 2
       address: 'Centre Commercial Bercy 2, 4 Place de l''Europe 94220 Charenton-le-Pont'
+  stepName: Location
+  description: >-
+    La deuxième étape pour démarrer ensemble est de programmer notre rencontre.
+
+    Votre première session durera environ une heure où j’évaluerai votre niveau
+    actuel et établirai un plan adapté pour vous mener à l’accomplissement de
+    vos objectifs.
+  locationChoiceLabel: Your preferred place
+  customerPlaceError: We are missing an address to meet
 confirmationScreen:
   heading: IS EVERYTHING OK FOR YOU ?
   stepName: Confirmation
