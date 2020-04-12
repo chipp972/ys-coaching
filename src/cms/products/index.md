@@ -5,7 +5,15 @@ locationScreen:
   description: ''
   availableLocations:
     - label: Fitness park Diderot
-      address: '60-62 Boulevard Diderot, 75012 Paris'
+      address: 60-62 Boulevard Diderot 75012 Paris
+    - address: 5 Avenue de la République 75011 Paris
+      label: Fitness park République
+    - label: Fitness park Paris 20e
+      address: 65 rue de bagnolet 75020 Paris
+    - address: 81-83 Rue du Chevaleret 75013 Paris
+      label: Fitness park Chevaleret
+    - label: Fitness park Bercy 2
+      address: 'Centre Commercial Bercy 2, 4 Place de l''Europe 94220 Charenton-le-Pont'
 confirmationScreen:
   heading: IS EVERYTHING OK FOR YOU ?
   stepName: Confirmation
