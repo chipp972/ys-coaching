@@ -3,6 +3,13 @@ locationScreen:
   heading: WHERE DO YOU PREFER TO TRAIN ?
   customerPlacePlaceholder: Choose a place
   customerPlaceLabel: 1 rue du général Leclerc ...
+  contribution:
+    locationChoiceCustomPlaceLabel: At your place
+    locationChoiceLabel: Your preferred place
+    locationChoiceError: Please select a place to meet or provide your own place
+    customerPlacePlaceholder: 1 rue du général Leclerc ...
+    customerPlaceLabel: Choose a place
+    customerPlaceError: We are missing an address to meet
   locationChoiceError: Please select a place to meet or provide your own place
   locationChoiceCustomPlaceLabel: At your place
   availableLocations:
