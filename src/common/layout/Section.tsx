@@ -18,14 +18,14 @@ export const FullWidthSection: React.FC = styled.section`
  * Section of content with standardized padding.
  */
 export const Section: React.FC = styled.section`
-  padding: 30px 5px;
+  padding: 3rem 0.5rem;
 
   ${mediaQueries.fromTablet} {
-    padding: 50px 20px;
+    padding: 5rem 2rem;
   }
 
   ${mediaQueries.fromDesktop} {
-    padding: 60px 30px;
+    padding: 3rem 6rem;
   }
 `;
 

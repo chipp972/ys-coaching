@@ -42,7 +42,7 @@ const buttonCss = (theme, size) => css`
   text-transform: uppercase;
   font-family: ${fontFamilies.notoSans};
   border: 2px solid ${theme.color};
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   text-align: center;
   text-decoration: none;
   padding: ${size.padding};

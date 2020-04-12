@@ -1,5 +1,5 @@
 import React from 'react';
-import InstagramIcon from '../../../img/social/instagram.inline.svg';
+import { Instagram as InstagramIcon } from 'react-feather';
 import { useSiteMetadata } from '../../hook/use-site-metadata';
 import { colors } from '../../theme';
 import { css } from '@emotion/core';
@@ -13,7 +13,7 @@ export const NavbarLinks: React.FC = () => {
         css={css`
           :hover {
             .instagram-icon {
-              fill: ${colors.crimson200};
+              stroke: ${colors.crimson200};
             }
           }
         `}
@@ -23,8 +23,8 @@ export const NavbarLinks: React.FC = () => {
         <InstagramIcon
           className="instagram-icon"
           css={css`
-            fill: ${colors.gray400};
-            width: 25px;
+            fill: ${colors.transparent};
+            width: 2.5rem;
             height: auto;
           `}
         />

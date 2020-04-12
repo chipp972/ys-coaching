@@ -10,7 +10,7 @@ export const Subtitle: React.FC = styled.h2`
   color: ${colors.gray50};
   text-align: center;
   background-color: ${colors.shadow};
-  padding: 1rem;
+  padding: 1.6rem;
 
   ${mediaQueries.fromTablet} {
     font-size: 34px;

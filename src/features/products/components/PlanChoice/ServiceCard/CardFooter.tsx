@@ -21,7 +21,7 @@ export const CardFooter: React.FC<Props> = ({ frequency, price }) => (
     <span
       css={css`
         text-align: center;
-        font-size: 3rem;
+        font-size: 4.8rem;
         font-weight: 800;
         color: ${colors.black};
         font-family: ${fontFamilies.notoSans};
@@ -32,7 +32,7 @@ export const CardFooter: React.FC<Props> = ({ frequency, price }) => (
       <span
         css={css`
           color: ${colors.black};
-          margin-left: 1rem;
+          margin-left: 1.6rem;
         `}>
         / {frequency}
       </span>

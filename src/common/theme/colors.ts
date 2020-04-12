@@ -5,6 +5,11 @@ export const colors = {
   shadow: 'rgba(18, 18, 18, 0.7)',
   transparent: 'transparent',
 
+  error: '#f44336',
+  warning: '#ffcc00',
+  info: '#2196f3',
+  success: '#4caf50',
+
   black01dp: '#1b1b1b',
   black02dp: '#232323',
   black03dp: '#252525',
@@ -37,9 +42,5 @@ export const colors = {
   crimson600: '#910000',
   crimson700: '#860000',
   crimson800: '#7c0000',
-  crimson900: '#6b0000',
-
-  green1: '#219653',
-  green2: '#27ae60',
-  green3: '#6fcf97'
+  crimson900: '#6b0000'
 };

@@ -1,15 +1,16 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { colors, mediaQueries, ExtraSmallText } from '../../theme';
-import DoneIcon from '../../../img/icon/check.inline.svg';
-import CurrentStepIcon from '../../../img/icon/refresh-cw.inline.svg';
+import { colors, mediaQueries, ExtraSmallText, animation } from '../../theme';
+import { Check as DoneIcon, RefreshCw as CurrentStepIcon } from 'react-feather';
 import { stepSize, borderSize } from './Breadcrumb.constant';
 
 const getIconStyle = ({
-  isLightBackground
+  isLightBackground = false,
+  isCurrentStep = false
 }: {
-  isLightBackground: boolean;
-}) => css`
+  isLightBackground?: boolean;
+  isCurrentStep?: boolean;
+} = {}) => css`
   width: calc(${stepSize.mobile} / 2);
   height: calc(${stepSize.mobile} / 2);
   position: absolute;
@@ -17,6 +18,7 @@ const getIconStyle = ({
   left: calc(50% - ${stepSize.mobile} / 4);
   stroke: ${isLightBackground ? colors.black : colors.white};
   stroke-width: ${borderSize.fromTablet};
+  ${isCurrentStep && css`animation: ${animation.spin} 2s ease infinite;`}
 
   ${mediaQueries.fromTablet} {
     width: calc(${stepSize.fromTablet} / 2);
@@ -45,7 +47,7 @@ const DesktopLabel: React.FC<SharedProps & { label: string }> = ({
       display: none;
       font-weight: ${isCurrentStep ? '500' : '400'};
       text-align: center;
-      margin-top: 10px;
+      margin-top: 1rem;
       cursor: ${isClickable ? 'pointer' : 'auto'};
 
       ${mediaQueries.fromTablet} {
@@ -81,10 +83,10 @@ const CircleStep: React.FC<SharedProps> = ({
       }
     `}>
     {isClickable && (
-      <DoneIcon className="step-icon" css={getIconStyle({ isLightBackground: false })} />
+      <DoneIcon className="step-icon" css={getIconStyle()} />
     )}
     {isCurrentStep && (
-      <CurrentStepIcon className="step-icon" css={getIconStyle({ isLightBackground: false })} />
+      <CurrentStepIcon className="step-icon" css={getIconStyle({ isCurrentStep: true })} />
     )}
   </span>
 );

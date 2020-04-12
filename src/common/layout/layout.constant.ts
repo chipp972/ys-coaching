@@ -1,11 +1,11 @@
 export const navbarHeight = {
-  mobile: '4rem',
-  fromTablet: '6rem'
+  mobile: '6.4rem',
+  fromTablet: '9.6rem'
 };
 
-export const footerHeight = '10rem';
+export const footerHeight = '16rem';
 
 export const headlineBannerHeight = {
-  mobile: '200px',
-  fromTablet: '400px'
+  mobile: '20rem',
+  fromTablet: '40rem'
 };

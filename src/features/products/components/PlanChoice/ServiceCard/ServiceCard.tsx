@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import { colors, mediaQueries } from '../../../../../common/theme';
 import { ScalableImage } from '../../../../../common/components/ImageContainer';
 import { GhostButton } from '../../../../../common/components/Button';
-import CheckIcon from '../../../../../img/icon/check.inline.svg';
+import { Check as CheckIcon } from 'react-feather';
 import { GatsbyImage } from '../../../../../common/helpers/gatsby';
 import { CardTitle } from './CardTitle';
 import { CardFooter } from './CardFooter';
@@ -125,7 +125,7 @@ export const ServiceCard: React.FC<Props> = ({
       </p>
       <table
         css={css`
-          line-height: 1.5rem;
+          line-height: 2.4rem;
         `}>
         <tbody>
           {benefits.map((item) => (
@@ -145,7 +145,7 @@ export const ServiceCard: React.FC<Props> = ({
               </td>
               <td
                 css={css`
-                  font-size: 1rem;
+                  font-size: 1.6rem;
                   padding: 10px;
                 `}>
                 {item}
