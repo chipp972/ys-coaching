@@ -40,3 +40,13 @@ export const getProductsPageData = (data) => {
     thankYouScreen
   };
 };
+
+export const getProductPageContextData = (data) => {
+  const {
+    locationScreen
+  } = data.markdownRemark.frontmatter;
+
+  return {
+    contribution: R.prop('contribution', locationScreen)
+  };
+};

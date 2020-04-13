@@ -17,7 +17,7 @@
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/preset-typescript": "^7.9.0",
-    "@chipp972/accessibility": "^1.1.0",
+    "@chipp972/accessibility": "^1.1.1",
     "@chipp972/carousel": "^1.0.1",
     "@chipp972/eslint-config": "^1.2.0",
     "@chipp972/form-validation": "^1.1.0",

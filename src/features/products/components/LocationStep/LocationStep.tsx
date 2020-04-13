@@ -7,16 +7,7 @@ import { useDispatch } from 'react-redux';
 import { css } from '@emotion/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { StepButtons } from '../../../../common/components/Button';
-
-// TODO: Make this contribuable
-const labelsToContribute = {
-  ownPlaceLabel: 'At your place',
-  locationChoiceLabel: 'Your preferred place',
-  locationChoiceErrorMessage: 'Please select a place to meet or provide your own place',
-  customerPlaceLabel: 'Choose a place',
-  customerPlacePlaceholder: '1 rue du général Leclerc ...',
-  customerPlaceErrorMessage: 'We are missing an address to meet'
-};
+import { ProductsContext } from '../../products.context';
 
 type Location = {
   label: React.ReactNode;
@@ -33,14 +24,9 @@ type Props = {
   prevStepName: string;
 };
 
-const ownPlaceOption = {
-  label: labelsToContribute.ownPlaceLabel,
-  address: 'own-place'
-};
-
 const useStyles = makeStyles((theme: Theme) => ({
   fieldset: {
-    marginBottom: theme.spacing(2)
+    marginTop: theme.spacing(2)
   }
 }));
 
@@ -57,10 +43,16 @@ export const LocationStep: React.FC<Props> = ({
   const dispatch = useDispatch();
   const [isCustomLocationChecked, setIsCustomLocationChecked] = React.useState(false);
   const [currentLocation, setCurrentLocation] = React.useState(null);
+  const { contribution } = React.useContext(ProductsContext);
   const classes = useStyles();
 
+  const customPlaceOption = {
+    label: contribution.locationChoiceCustomPlaceLabel,
+    address: 'own-place'
+  };
+
   const locationList = availableLocations
-    .concat([ownPlaceOption])
+    .concat([customPlaceOption])
     .map(({ label, address }) => ({ label, value: address }));
   return (
     <StepContainer heading={heading} description={description}>
@@ -70,34 +62,35 @@ export const LocationStep: React.FC<Props> = ({
           flex-direction: column;
         `}
         onValidationSuccess={({ location, homeAddress }) => {
-          const selectedLocation = location === ownPlaceOption.address ? homeAddress : location;
+          const selectedLocation = location === customPlaceOption.address ? homeAddress : location;
           dispatch(setLocation(selectedLocation));
           goNextStep();
         }}>
         <FormRadioGroup
           className={classes.fieldset}
           options={locationList}
-          label={labelsToContribute.locationChoiceLabel}
-          errorMessage={labelsToContribute.locationChoiceErrorMessage}
+          label={contribution.locationChoiceLabel}
+          errorMessage={contribution.locationChoiceError}
           name="location"
           value={currentLocation}
           onFieldReset={() => setCurrentLocation(null)}
           onChange={(event) => {
             const { value } = event.target;
             setCurrentLocation(value);
-            setIsCustomLocationChecked(value === ownPlaceOption.address);
+            setIsCustomLocationChecked(value === customPlaceOption.address);
           }}
         />
         <FormInput
           className={classes.fieldset}
-          label={labelsToContribute.customerPlaceLabel}
+          label={contribution.customerPlaceLabel}
           name="homeAddress"
-          placeholder={labelsToContribute.customerPlacePlaceholder}
-          errorMessage={labelsToContribute.customerPlaceErrorMessage}
+          placeholder={contribution.customerPlacePlaceholder}
+          errorMessage={contribution.customerPlaceError}
           required={isCustomLocationChecked}
           margin="dense"
         />
         <StepButtons
+          className={classes.fieldset}
           onPrevStepClick={goPrevStep}
           prevStepName={prevStepName}
           nextStepName={nextStepName}

@@ -101,6 +101,14 @@ collections:
               {label: "Step name", name: "stepName", widget: "string"},
               {label: "Heading", name: "heading", widget: "string"},
               {label: "Description", name: "description", widget: "text", required: false, default: ''},
+              {label: "Labels", name: "contribution", widget: "object", fields: [
+                {label: "Location choice custom place label", name: "locationChoiceCustomPlaceLabel", widget: "string", default: 'At your place'},
+                {label: "Location choice label", name: "locationChoiceLabel", widget: "string", default: 'Your preferred place'},
+                {label: "Location choice error", name: "locationChoiceError", widget: "text", default: 'Please select a place to meet or provide your own place'},
+                {label: "Customer place label", name: "customerPlaceLabel", widget: "string", default: 'Choose a place'},
+                {label: "Customer place placeholder", name: "customerPlacePlaceholder", widget: "string", default: '1 rue du général Leclerc ...'},
+                {label: "Customer place error", name: "customerPlaceError", widget: "text", default: 'We are missing an address to meet'}
+              ]},
               {label: "Available locations", name: "availableLocations", widget: "list", fields: [
                   {label: "Label", name: "label", widget: "string"},
                   {label: "Address", name: "address", widget: "string"}

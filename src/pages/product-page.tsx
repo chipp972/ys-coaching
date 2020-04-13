@@ -2,10 +2,10 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Page } from '../common/layout';
 import { ProductsPage } from '../features/products/products.page';
-import { getProductsPageData } from '../features/products/products.data';
+import { getProductsPageData, getProductPageContextData } from '../features/products/products.data';
+import { ProductsContext } from '../features/products/products.context';
 
 // TODO: put location in redux instead
-
 type Props = {
   location: {
     pathname: string;
@@ -41,7 +41,9 @@ const Products: React.FC<Props> = ({ data, location }) => {
       subtitle={subtitle}
       image={image}
       hasHeadlineBanner>
-      <ProductsPage {...getProductsPageData(data)} />
+      <ProductsContext.Provider value={getProductPageContextData(data)}>
+        <ProductsPage {...getProductsPageData(data)} />
+      </ProductsContext.Provider>
     </Page>
   );
 };
@@ -109,6 +111,14 @@ export const productPageQuery = graphql`
           stepName
           heading
           description
+          contribution {
+            locationChoiceCustomPlaceLabel
+            locationChoiceLabel
+            locationChoiceError
+            customerPlaceLabel
+            customerPlacePlaceholder
+            customerPlaceError
+          }
           availableLocations {
             label
             address

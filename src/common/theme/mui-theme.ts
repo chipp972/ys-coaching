@@ -24,6 +24,9 @@ export const theme = createMuiTheme({
   },
   typography: {
     fontFamily: fontFamilies.notoSans,
+    body2: {
+      fontFamily: fontFamilies.notoSerif
+    },
     htmlFontSize: 10
   }
 });

@@ -64,6 +64,7 @@ const CircleStep: React.FC<SharedProps> = ({
   onClick
 }) => (
   <span
+    tabIndex={isClickable ? 0 : -1}
     onClick={onClick}
     className="circle-step"
     css={css`

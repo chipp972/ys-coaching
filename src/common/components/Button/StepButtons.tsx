@@ -30,6 +30,7 @@ const PrevStepButton: React.FC<ButtonProps> = ({ className, children, ...props }
 );
 
 type Props = {
+  className?: string;
   prevStepName: React.ReactNode;
   nextStepName: React.ReactNode;
   prevStepClassName?: string;
@@ -39,6 +40,7 @@ type Props = {
 };
 
 export const StepButtons: React.FC<Props> = ({
+  className,
   prevStepClassName,
   nextStepClassName,
   prevStepName,
@@ -49,6 +51,7 @@ export const StepButtons: React.FC<Props> = ({
   const theme = useTheme();
   return (
     <div
+      className={className}
       css={css`
         display: flex;
         flex-flow: column nowrap;

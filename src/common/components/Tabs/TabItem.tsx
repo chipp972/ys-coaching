@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import { colors, mediaQueries } from '../../theme';
+import { callOnEnterOrSpaceKey } from '@chipp972/accessibility';
 
 type Props = {
   label: string;
@@ -10,6 +11,7 @@ type Props = {
 
 export const TabItem: React.FC<Props> = ({ label, selectTab, isSelected }) => (
   <li
+    tabIndex={0}
     css={css`
       position: relative;
       padding-bottom: 10px;
@@ -53,6 +55,7 @@ export const TabItem: React.FC<Props> = ({ label, selectTab, isSelected }) => (
       }
     `}
     `}
+    onKeyDown={callOnEnterOrSpaceKey(selectTab)}
     onClick={selectTab}>
     {label}
   </li>
