@@ -32,13 +32,11 @@ export const DateTimeStep: React.FC<Props> = ({
   );
   return (
     <StepContainer heading={heading} description={description}>
-      <Section>
-        <TimeSlotPicker
-          currentSelection={currentTimeslot}
-          availabilityList={availabilityList}
-          onTimeslotSelection={selectDate}
-        />
-      </Section>
+      <TimeSlotPicker
+        currentSelection={currentTimeslot}
+        availabilityList={availabilityList}
+        onTimeslotSelection={selectDate}
+      />
     </StepContainer>
   );
 };

@@ -11,15 +11,17 @@ type Props = {
 
 export const TabItem: React.FC<Props> = ({ label, selectTab, isSelected }) => (
   <li
-    tabIndex={0}
+    tabIndex={isSelected ? -1 : 0}
     css={css`
       position: relative;
-      padding-bottom: 10px;
-      margin-right: 10px;
+      padding-bottom: 1rem;
+      margin-right: 1rem;
       text-align: center;
       cursor: pointer;
+      outline: none;
 
-      :hover {
+      :hover,
+      :focus {
         :after {
           transition: width 0.15s ease;
           width: 100%;
@@ -37,8 +39,12 @@ export const TabItem: React.FC<Props> = ({ label, selectTab, isSelected }) => (
       }
 
       ${mediaQueries.fromTablet} {
-        padding-bottom: 25px;
-        margin-right: 50px;
+        padding-bottom: 2.5rem;
+        margin-right: 5rem;
+      }
+
+      ${mediaQueries.fromDesktop} {
+        outline: initial;
       }
 
       :last-of-type {

@@ -69,7 +69,7 @@ type Props = {
   className?: string;
   to?: string;
   onClick?: () => void;
-};
+} & React.HTMLAttributes<HTMLButtonElement>;
 
 export const GhostButton: React.FC<Props> = ({
   to,

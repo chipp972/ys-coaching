@@ -76,11 +76,15 @@ const CircleStep: React.FC<SharedProps> = ({
       height: ${stepSize.mobile};
       position: relative;
       cursor: ${isClickable ? 'pointer' : 'auto'};
+      outline: none;
 
       ${mediaQueries.fromTablet} {
         border-width: ${borderSize.fromTablet};
         width: ${stepSize.fromTablet};
         height: ${stepSize.fromTablet};
+      }
+      ${mediaQueries.fromDesktop} {
+        outline: initial;
       }
     `}>
     {isClickable && (

@@ -3,49 +3,43 @@ import { css } from '@emotion/core';
 import parseISO from 'date-fns/fp/parseISO';
 import format from 'date-fns/fp/format';
 import { MediumText, colors, mediaQueries } from '../../../../../common/theme';
+import { TableHead, TableRow, TableCell } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 type Props = {
   dateList: string[];
 };
 
+const useStyles = makeStyles({
+  thead: {
+    borderBottom: `1px solid ${colors.gray900}`
+  },
+  dayCell: {
+    color: colors.gray300
+  }
+});
+
 export const TimeslotListHeader: React.FC<Props> = ({ dateList }) => {
   const parsedDateList = dateList.map(parseISO);
+  const classes = useStyles();
   return (
-    <thead css={css`
-      border-bottom: 1px solid ${colors.gray900};
-    `}>
-      <tr>
+    <TableHead className={classes.thead}>
+      <TableRow>
         {parsedDateList.map((date, index) => (
-          <td key={dateList[index]} align="center" css={css`
-            color: ${colors.gray300};
-          `}>
-            <MediumText color={colors.gray400} css={css`
+          <TableCell key={dateList[index]} align="center">
+            <div css={css`
+              display: flex;
+              flex-flow: column nowrap;
+              justify-content: center;
+              text-align: center;
               color: ${colors.gray900};
-              ${mediaQueries.fromTablet} {
-                display: none;
-              }
-            `}>{format('iii', date)}</MediumText>
-            <MediumText css={css`
-              display: none;
-              color: ${colors.gray900};
-
-              ${mediaQueries.fromTablet} {
-                display: block;
-              }
-            `}>{format('iiii', date)}</MediumText>
-          </td>
+            `}>
+              <MediumText>{format('iiii', date)}</MediumText>
+              <MediumText>{format('dd/MM', date)}</MediumText>
+            </div>
+          </TableCell>
         ))}
-      </tr>
-      <tr>
-        {parsedDateList.map((date, index) => (
-          <td key={dateList[index]} align="center">
-            <MediumText css={css`
-              color: ${colors.gray900};
-              margin-bottom: 10px;
-            `}>{format('dd/MM', date)}</MediumText>
-          </td>
-        ))}
-      </tr>
-    </thead>
+      </TableRow>
+    </TableHead>
   );
 };

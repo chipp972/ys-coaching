@@ -9,6 +9,8 @@ import isSameHour from 'date-fns/fp/isSameHour';
 import { TimeslotListHeader } from './TimeslotListHeader';
 import format from 'date-fns/fp/format';
 import { TimeslotListBody } from './TimeslotListBody';
+import { TableContainer, Table, Paper } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 
 const groupByDay = R.groupBy(format('yyyy-MM-dd'));
 
@@ -49,33 +51,30 @@ type Props = {
   onTimeslotSelection: (date: Date) => void;
 };
 
+const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    maxHeight: 440,
+    [theme.breakpoints.up('sm')]: {
+      maxHeight: 600
+    },
+    [theme.breakpoints.up('md')]: {
+      maxHeight: 800
+    }
+  },
+  table: {
+    minWidth: 300
+  }
+}));
+
 export const TimeSlotPicker: React.FC<Props> = ({ onTimeslotSelection, availabilityList, currentSelection }) => {
   const timeslots = generateTimeslots(availabilityList);
+  const classes = useStyles();
   return (
-    <div
-      css={css`
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: flex-start;
-        margin: auto;
-      `}>
-      {/* TODO: calculate height */}
-      <div css={css`
-        position: relative;
-        width: 95vw;
-        height: 500px;
-        overflow: scroll;
-        background-color: ${colors.black};
-      `}>
-        <table css={css`
-          position: absolute;
-          top: 0;
-          left: 0;
-        `}>
-          <TimeslotListHeader dateList={Object.keys(timeslots)} />
-          <TimeslotListBody timeslots={timeslots} currentSelection={currentSelection} onClick={onTimeslotSelection} />
-        </table>
-      </div>
-    </div>
+    <TableContainer className={classes.container} component={Paper}>
+      <Table stickyHeader className={classes.table} aria-label="Timeslot table">
+        <TimeslotListHeader dateList={Object.keys(timeslots)} />
+        <TimeslotListBody timeslots={timeslots} currentSelection={currentSelection} onClick={onTimeslotSelection} />
+      </Table>
+    </TableContainer>
   );
 };
