@@ -1,7 +1,5 @@
 import * as R from 'ramda';
 import React from 'react';
-import { css } from '@emotion/core';
-import { colors } from '../../../../../common/theme';
 import addMinutes from 'date-fns/fp/addMinutes';
 import isAfter from 'date-fns/fp/isAfter';
 import startOfHour from 'date-fns/fp/startOfHour';
@@ -53,10 +51,6 @@ type Props = {
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
-    maxHeight: 440,
-    [theme.breakpoints.up('sm')]: {
-      maxHeight: 600
-    },
     [theme.breakpoints.up('md')]: {
       maxHeight: 800
     }

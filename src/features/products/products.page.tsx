@@ -68,6 +68,7 @@ export const ProductsPage = ({
         css={css`
           background-color: ${colors.black01dp};
         `}
+        isScrollToTop
         isSwipeDisabled>
         <PlanChoice
           heading={packages.heading}

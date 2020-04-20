@@ -12,6 +12,7 @@ export type TabItemData = {
 
 type Props = {
   labels: string[];
+  onChange?: (newTabIndex: number) => void;
 };
 
 const TabList: React.FC = ({ children }) => (
@@ -33,7 +34,7 @@ const TabList: React.FC = ({ children }) => (
   </ul>
 );
 
-export const Tabs: React.FC<Props> = ({ labels, children, ...props }) => {
+export const Tabs: React.FC<Props> = ({ labels, children, onChange, ...props }) => {
   const [currentTab, setCurrentTab] = React.useState(0);
   if (labels.length !== React.Children.count(children)) {
     throw new Error(
@@ -54,7 +55,10 @@ export const Tabs: React.FC<Props> = ({ labels, children, ...props }) => {
           <TabItem
             key={`tab-${index}`}
             label={label}
-            selectTab={() => setCurrentTab(index)}
+            selectTab={() => {
+              setCurrentTab(index);
+              onChange?.(index);
+            }}
             isSelected={currentTab === index}
           />
         ))}
