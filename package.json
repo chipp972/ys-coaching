@@ -20,7 +20,7 @@
     "@chipp972/accessibility": "^1.1.1",
     "@chipp972/carousel": "^1.1.0",
     "@chipp972/eslint-config": "^1.2.0",
-    "@chipp972/form-validation": "^1.1.0",
+    "@chipp972/form-validation": "^1.1.1",
     "@chipp972/redux-helpers": "^1.0.2",
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@emotion/core": "^10.0.28",
