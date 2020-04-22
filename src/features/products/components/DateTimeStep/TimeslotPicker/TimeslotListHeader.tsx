@@ -1,10 +1,10 @@
-import React from 'react';
 import { css } from '@emotion/core';
-import parseISO from 'date-fns/fp/parseISO';
-import format from 'date-fns/fp/format';
-import { MediumText, colors, mediaQueries } from '../../../../../common/theme';
-import { TableHead, TableRow, TableCell } from '@material-ui/core';
+import { TableCell, TableHead, TableRow } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import format from 'date-fns/fp/format';
+import parseISO from 'date-fns/fp/parseISO';
+import React from 'react';
+import { colors, MediumText } from '../../../../../common/theme';
 
 type Props = {
   dateList: string[];

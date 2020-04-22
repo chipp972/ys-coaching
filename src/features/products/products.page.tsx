@@ -5,7 +5,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Breadcrumb } from '../../common/components/Breadcrumb/Breadcrumb';
 import { colors } from '../../common/theme';
-import { DateTimeStep, PlanChoice, ThankYouStep } from './components';
+import { ConfirmationStep, DateTimeStep, PlanChoice, ThankYouStep } from './components';
 import { LocationStep } from './components/LocationStep/LocationStep';
 import { setDateTime, setPlan } from './state/products.action';
 
@@ -88,11 +88,13 @@ export const ProductsPage = ({
           prevStepName={dateTimeScreen.stepName}
           nextStepName={confirmationScreen.stepName}
         />
-        <PlanChoice
+        <ConfirmationStep
           heading={confirmationScreen.heading}
           description={confirmationScreen.description}
-          tabsData={tabsData}
-          onChoice={selectPlan}
+          goNextStep={goNextStep}
+          goPrevStep={goPrevStep}
+          prevStepName={locationScreen.stepName}
+          nextStepName="SCHEDULE OUR MEETING"
         />
         <ThankYouStep
           heading={thankYouScreen.heading}

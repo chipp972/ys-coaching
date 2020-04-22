@@ -1,9 +1,9 @@
-import React from 'react';
+import { InputProps, useForm } from '@chipp972/form-validation';
 import { css } from '@emotion/core';
-import { useForm, InputProps } from '@chipp972/form-validation';
-import { FormControl, TextField, TextFieldProps } from '@material-ui/core';
+import { FormControl, FormLabel, TextField, TextFieldProps } from '@material-ui/core';
+import React from 'react';
 
-type Props = TextFieldProps & InputProps;
+type Props = TextFieldProps & InputProps & { hasBigLabel?: boolean };
 
 export const FormInput: React.FC<Props> = ({
   label,
@@ -17,6 +17,7 @@ export const FormInput: React.FC<Props> = ({
   disabled,
   required,
   className,
+  hasBigLabel = false,
   ...props
 }) => {
   const { hasError } = useForm({ name, validate, errorMessage, onFieldReset, onFieldValidated });
@@ -31,12 +32,15 @@ export const FormInput: React.FC<Props> = ({
         display: flex;
         flex-direction: column;
       `}>
+      {hasBigLabel && <FormLabel htmlFor={name}>
+        {label}
+      </FormLabel>}
       <TextField
         {...props}
         error={hasError}
         id={name}
         name={name}
-        label={label}
+        label={!hasBigLabel && label}
         variant={variant}
         disabled={disabled}
         required={required}

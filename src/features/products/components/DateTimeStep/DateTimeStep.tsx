@@ -1,10 +1,9 @@
-import React from 'react';
-import { StepContainer } from '../StepContainer';
-import { TimeSlotPicker } from './TimeslotPicker/TimeslotPicker';
 import isValid from 'date-fns/fp/isValid';
-import { Section } from '../../../../common/layout';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { getSelectedDate } from '../../state/products.selector';
+import { StepContainer } from '../StepContainer';
+import { TimeSlotPicker } from './TimeslotPicker/TimeslotPicker';
 
 type Props = {
   heading: string;
