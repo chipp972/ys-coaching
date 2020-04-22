@@ -1,7 +1,9 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { colors, fontFamilies, mediaQueries } from '../../theme';
 import { css } from '@emotion/core';
+import { Button, Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import { Link } from 'gatsby';
+import React from 'react';
+import { colors, fontFamilies, mediaQueries } from '../../theme';
 
 const buttonThemes = {
   crimson: {
@@ -21,13 +23,13 @@ const buttonThemes = {
 const buttonSizes = {
   big: {
     fontSize: '24px',
-    padding: '20px 30px',
+    padding: '2rem',
     fromTabletFontSize: '28px',
     isFullWidth: true
   },
   medium: {
     fontSize: '16px',
-    padding: '20px 30px',
+    padding: '1.5rem',
     fromTabletFontSize: '18px',
     isFullWidth: false
   }
@@ -49,9 +51,7 @@ const buttonCss = (theme, size) => css`
   color: ${theme.color};
   background-color: ${theme.background};
   transition: background-color 0.3s ease, color 0.3s ease;
-  ${size.isFullWidth && 'width: 80;'}
-
-  :hover {
+  ${size.isFullWidth && 'width: 80%;'} :hover {
     background-color: ${theme.hoverBackground};
     color: ${theme.hoverColor};
   }
@@ -69,7 +69,7 @@ type Props = {
   className?: string;
   to?: string;
   onClick?: () => void;
-} & React.HTMLAttributes<HTMLButtonElement>;
+} & React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>;
 
 export const GhostButton: React.FC<Props> = ({
   to,
@@ -92,5 +92,29 @@ export const GhostButton: React.FC<Props> = ({
     <button css={buttonCss(themeProps, sizeProps)} type={type} {...props}>
       {children}
     </button>
+  );
+};
+
+const useStyles = makeStyles((theme: Theme) => ({
+  primaryButton: {
+    '&:hover': {
+      color: theme.palette.primary.main
+    }
+  }
+}));
+
+export const PrimaryButton: React.FC<Props> = ({ to, className = '', children, ...props }) => {
+  const classes = useStyles();
+  return (
+    <Button
+      {...props}
+      component={!!to ? Link : 'button'}
+      to={to}
+      variant="outlined"
+      color="primary"
+      className={`${classes.primaryButton} ${className}`}
+      size="large">
+      {children}
+    </Button>
   );
 };

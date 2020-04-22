@@ -1,16 +1,13 @@
+import { Carousel, useCarousel } from '@chipp972/carousel';
+import { css } from '@emotion/core';
 import * as R from 'ramda';
 import React from 'react';
-import { PlanChoice, DateTimeStep, ThankYouStep } from './components';
-import { Breadcrumb } from '../../common/components/Breadcrumb/Breadcrumb';
-import { css } from '@emotion/core';
-import { colors } from '../../common/theme';
 import { useDispatch } from 'react-redux';
-import {
-  setPlan,
-  setDateTime
-} from './state/products.action';
-import { Carousel, useCarousel } from '@chipp972/carousel';
+import { Breadcrumb } from '../../common/components/Breadcrumb/Breadcrumb';
+import { colors } from '../../common/theme';
+import { DateTimeStep, PlanChoice, ThankYouStep } from './components';
 import { LocationStep } from './components/LocationStep/LocationStep';
+import { setDateTime, setPlan } from './state/products.action';
 
 type StepData = {
   stepName: string;
@@ -102,6 +99,8 @@ export const ProductsPage = ({
           description={thankYouScreen.description}
           content={thankYouScreen.content}
           image={thankYouScreen.image}
+          redirectLinkLabel="CHECK OUT MY BLOG"
+          redirectLinkUrl="/"
         />
       </Carousel>
     </div>

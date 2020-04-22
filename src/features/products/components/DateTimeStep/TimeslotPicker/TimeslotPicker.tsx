@@ -1,14 +1,14 @@
+import { Paper, Table, TableContainer } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import addMinutes from 'date-fns/fp/addMinutes';
+import format from 'date-fns/fp/format';
+import isAfter from 'date-fns/fp/isAfter';
+import isSameHour from 'date-fns/fp/isSameHour';
+import startOfHour from 'date-fns/fp/startOfHour';
 import * as R from 'ramda';
 import React from 'react';
-import addMinutes from 'date-fns/fp/addMinutes';
-import isAfter from 'date-fns/fp/isAfter';
-import startOfHour from 'date-fns/fp/startOfHour';
-import isSameHour from 'date-fns/fp/isSameHour';
-import { TimeslotListHeader } from './TimeslotListHeader';
-import format from 'date-fns/fp/format';
 import { TimeslotListBody } from './TimeslotListBody';
-import { TableContainer, Table, Paper } from '@material-ui/core';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { TimeslotListHeader } from './TimeslotListHeader';
 
 const groupByDay = R.groupBy(format('yyyy-MM-dd'));
 
@@ -49,22 +49,17 @@ type Props = {
   onTimeslotSelection: (date: Date) => void;
 };
 
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    [theme.breakpoints.up('md')]: {
-      maxHeight: 800
-    }
-  },
+const useStyles = makeStyles({
   table: {
     minWidth: 300
   }
-}));
+});
 
 export const TimeSlotPicker: React.FC<Props> = ({ onTimeslotSelection, availabilityList, currentSelection }) => {
   const timeslots = generateTimeslots(availabilityList);
   const classes = useStyles();
   return (
-    <TableContainer className={classes.container} component={Paper}>
+    <TableContainer component={Paper}>
       <Table stickyHeader className={classes.table} aria-label="Timeslot table">
         <TimeslotListHeader dateList={Object.keys(timeslots)} />
         <TimeslotListBody timeslots={timeslots} currentSelection={currentSelection} onClick={onTimeslotSelection} />
