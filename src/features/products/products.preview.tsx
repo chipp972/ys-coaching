@@ -1,11 +1,12 @@
 import * as R from 'ramda';
 import React from 'react';
 import { Provider } from 'react-redux';
-import { MakePreviewStore } from '../../store/create-store';
-import { ProductsPage } from './products.page';
-import { makeTabsData } from './products.data';
-import { PreviewProps } from '../../common/helpers/gatsby';
 import { HeadlineBanner } from '../../common/components/HeadlineBanner/HeadlineBanner';
+import { PreviewProps } from '../../common/helpers/gatsby';
+import { MakePreviewStore } from '../../store/create-store';
+import { ProductsContext } from './products.context';
+import { getProductPageContextData, makeTabsData } from './products.data';
+import { ProductsPage } from './products.page';
 
 export const ProductPagePreview: React.FC<PreviewProps> = ({
   entry,
@@ -28,8 +29,10 @@ export const ProductPagePreview: React.FC<PreviewProps> = ({
 
   return (
     <Provider store={MakePreviewStore()}>
-      <HeadlineBanner title={title} subtitle={subtitle} image={image} />
-      <ProductsPage {...data} tabsData={tabsData} />
+      <ProductsContext.Provider value={getProductPageContextData(data)}>
+        <HeadlineBanner title={title} subtitle={subtitle} image={image} />
+        <ProductsPage {...data} tabsData={tabsData} />
+      </ProductsContext.Provider>
     </Provider>
   );
 };

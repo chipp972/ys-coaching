@@ -62,7 +62,7 @@ collections:
           - {label: "Main image", name: "mainImage", widget: "image"}
           - {label: "Part1", name: "part1", widget: "text"}
           - {label: "Part2", name: "part2", widget: "text"}
-          - {label: Link, name: link, widget: object, fields: [{label: Text, name: text, widget: string}, {label: URL, name: url, widget: srting}]}
+          - {label: Link, name: link, widget: object, fields: [{label: Text, name: text, widget: string}, {label: URL, name: url, widget: string}]}
 
       - file: "src/cms/products/index.md"
         label: "Products Page"

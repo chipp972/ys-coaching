@@ -1,13 +1,18 @@
 import * as R from 'ramda';
 
-export const makeTabsData = (packages) =>
+const getPackageList = (label: string) => R.pipe(
+  R.propOr([], 'plans'),
+  R.filter(({ category }) => category === label)
+);
+
+export const makeTabsData = (packages = { plans: [] }) =>
   R.pipe(
     R.sortBy(R.prop('position')),
     R.map(({ label, value, description }) => ({
       label,
       value,
       description,
-      packageList: packages.plans.filter(({ category }) => category === label)
+      packageList: getPackageList(label)(packages)
     }))
   );
 
@@ -42,11 +47,10 @@ export const getProductsPageData = (data) => {
 };
 
 export const getProductPageContextData = (data) => {
-  const {
-    locationScreen
-  } = data.markdownRemark.frontmatter;
+  const contribution = R.either(
+    R.path(['markdownRemark', 'frontmatter', 'locationScreen', 'contribution']),
+    R.path(['locationScreen', 'contribution'])
+  )(data);
 
-  return {
-    contribution: R.prop('contribution', locationScreen)
-  };
+  return { contribution };
 };

@@ -1,36 +1,45 @@
+import { ThemeProvider } from '@material-ui/core/styles';
 import CMS from 'netlify-cms-app';
-import uploadcare from 'netlify-cms-media-library-uploadcare';
 import cloudinary from 'netlify-cms-media-library-cloudinary';
-
+import uploadcare from 'netlify-cms-media-library-uploadcare';
 import { CSSInjector } from '../common/helpers/preview-css-injector';
-import { ProductPagePreview } from '../features/products/products.preview';
+import { theme } from '../common/theme';
 import { AboutPagePreview } from '../features/about/about.preview';
 import { BlogPostPreview } from '../features/blog/blog.preview';
 import { IndexPagePreview } from '../features/home/home.preview';
+import { ProductPagePreview } from '../features/products/products.preview';
 
 CMS.registerMediaLibrary(uploadcare);
 CMS.registerMediaLibrary(cloudinary);
 
+const PreviewWrapper = ({ children }) => (
+  <ThemeProvider theme={theme}>
+    <CSSInjector>
+      {children}
+    </CSSInjector>
+  </ThemeProvider>
+);
+
 CMS.registerPreviewTemplate('products', (props) => (
-  <CSSInjector>
+  <PreviewWrapper>
     <ProductPagePreview {...props} />
-  </CSSInjector>
+  </PreviewWrapper>
 ));
 
 CMS.registerPreviewTemplate('about', (props) => (
-  <CSSInjector>
+  <PreviewWrapper>
     <AboutPagePreview {...props} />
-  </CSSInjector>
+  </PreviewWrapper>
 ));
 
 CMS.registerPreviewTemplate('index', (props) => (
-  <CSSInjector>
+  <PreviewWrapper>
     <IndexPagePreview {...props} />
-  </CSSInjector>
+  </PreviewWrapper>
 ));
 
 CMS.registerPreviewTemplate('blog', (props) => (
-  <CSSInjector>
+  <PreviewWrapper>
     <BlogPostPreview {...props} />
-  </CSSInjector>
+  </PreviewWrapper>
 ));

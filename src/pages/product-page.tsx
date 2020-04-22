@@ -1,9 +1,9 @@
-import React from 'react';
 import { graphql } from 'gatsby';
+import React from 'react';
 import { Page } from '../common/layout';
-import { ProductsPage } from '../features/products/products.page';
-import { getProductsPageData, getProductPageContextData } from '../features/products/products.data';
 import { ProductsContext } from '../features/products/products.context';
+import { getProductPageContextData, getProductsPageData } from '../features/products/products.data';
+import { ProductsPage } from '../features/products/products.page';
 
 // TODO: put location in redux instead
 type Props = {
@@ -51,7 +51,7 @@ const Products: React.FC<Props> = ({ data, location }) => {
 export default Products;
 
 export const productPageQuery = graphql`
-  query ProductPage($id: String) {
+  query ProductPage {
     allMarkdownRemark(
       filter: { frontmatter: { dataKey: { eq: "product-categories" } } }
     ) {
@@ -68,7 +68,7 @@ export const productPageQuery = graphql`
         }
       }
     }
-    markdownRemark(id: { eq: $id }) {
+    markdownRemark(frontmatter: { templateKey: { eq: "product-page" } }) {
       frontmatter {
         title
         subtitle
