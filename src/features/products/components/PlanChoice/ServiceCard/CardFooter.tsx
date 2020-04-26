@@ -1,6 +1,6 @@
-import React from 'react';
 import { css } from '@emotion/core';
-import { colors, fontFamilies } from '../../../../../common/theme';
+import React from 'react';
+import { colors } from '../../../../../common/theme';
 
 type Props = {
   frequency?: string;
@@ -24,7 +24,6 @@ export const CardFooter: React.FC<Props> = ({ frequency, price }) => (
         font-size: 4.8rem;
         font-weight: 800;
         color: ${colors.black};
-        font-family: ${fontFamilies.notoSans};
       `}>
       {price}€
     </span>

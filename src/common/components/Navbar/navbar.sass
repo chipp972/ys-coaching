@@ -14,7 +14,6 @@
   font-size: $desktop-xs-text
   letter-spacing: $desktop-headline-letter-spacing
   line-height: $desktop-headline-line-height
-  font-family: $noto-sans
   padding: 1.2rem
 
 .navbar
@@ -41,7 +40,7 @@
   &:hover
     .logo-type
       color: $gray50
-      letter-spacing: 0.5em
+      letter-spacing: 7px
     .logo-image
       transform: scale(1.1)
 
@@ -53,21 +52,6 @@
     +tablet
       height: $navbar-height-tablet
       max-height: $navbar-height-tablet
-
-
-  .logo-type
-    font-family: $noto-serif
-    font-size: $mobile-xs-text
-    letter-spacing: 0.4em
-    text-transform: uppercase
-    color: $gray500
-    transition: letter-spacing 0.2s ease, color 0.2s ease
-
-    +tablet
-      font-size: $mobile-m-text
-
-    +desktop
-      font-size: $desktop-m-text
 
 +desktop
   .navbar-item.is-active:hover

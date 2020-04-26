@@ -3,7 +3,7 @@ import { Button, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { Link } from 'gatsby';
 import React from 'react';
-import { colors, fontFamilies, mediaQueries } from '../../theme';
+import { colors, mediaQueries } from '../../theme';
 
 const buttonThemes = {
   crimson: {
@@ -42,7 +42,6 @@ const buttonCss = (theme, size) => css`
   line-height: 1.5;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-family: ${fontFamilies.notoSans};
   border: 2px solid ${theme.color};
   border-radius: 0.5rem;
   text-align: center;

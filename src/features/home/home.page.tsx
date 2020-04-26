@@ -1,9 +1,10 @@
+import { css } from '@emotion/core';
 import React from 'react';
-import { GhostButton } from '../../common/components/Button';
-import { FeatureCard, FeatureCardProps } from './components/FeatureCard/FeatureCard';
-import { SectionTitle } from '../../common/theme';
-import { HomeParallax } from './components/HomeParallax/HomeParallax';
+import { PrimaryButton } from '../../common/components/Button';
 import { GatsbyImage } from '../../common/helpers/gatsby';
+import { SectionTitle } from '../../common/theme';
+import { FeatureCard, FeatureCardProps } from './components/FeatureCard/FeatureCard';
+import { HomeParallax } from './components/HomeParallax/HomeParallax';
 
 type Props = {
   image: GatsbyImage;
@@ -55,8 +56,12 @@ export const HomePage: React.FC<Props> = ({
               <FeatureCard key={index} {...featureData} />
             ))}
           </div>
-          <div className="columns" style={{ marginTop: '50px' }}>
-            <GhostButton to="/products">See all services</GhostButton>
+          <div css={css`
+            display: flex;
+            justify-content: center;
+            margin-top: 5rem;
+          `}>
+            <PrimaryButton to="/products">See all services</PrimaryButton>
           </div>
         </div>
       </div>

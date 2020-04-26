@@ -1,8 +1,8 @@
-import React from 'react';
 import { css } from '@emotion/core';
-import { colors, fontFamilies, mediaQueries } from '../../theme';
-import { TabItem } from './TabItem';
+import React from 'react';
+import { colors, mediaQueries } from '../../theme';
 import { TabContent } from './TabContent';
+import { TabItem } from './TabItem';
 
 export type TabItemData = {
   label: string;
@@ -20,7 +20,6 @@ const TabList: React.FC = ({ children }) => (
     css={css`
       display: flex;
       justify-content: space-around;
-      font-family: ${fontFamilies.notoSans};
       font-size: 18px;
       color: ${colors.gray50};
       text-transform: uppercase;

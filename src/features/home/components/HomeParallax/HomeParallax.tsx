@@ -1,9 +1,10 @@
-import React from 'react';
 import { css } from '@emotion/core';
-import { getImageSrc, GatsbyImage } from '../../../../common/helpers/gatsby';
-import { mediaQueries } from '../../../../common/theme';
+import { Typography } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import React from 'react';
+import { GatsbyImage, getImageSrc } from '../../../../common/helpers/gatsby';
 import { navbarHeight } from '../../../../common/layout';
-import { Title } from './Title';
+import { colors, mediaQueries } from '../../../../common/theme';
 import { Subtitle } from './Subtitle';
 
 type Props = {
@@ -12,7 +13,20 @@ type Props = {
   subtitle?: string;
 };
 
-export const HomeParallax: React.FC<Props> = ({ image, title, subtitle }) => (
+const useStyles = makeStyles((theme: Theme) => ({
+  title: {
+    marginBottom: theme.spacing(5),
+    padding: theme.spacing(2),
+    color: colors.white,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    backgroundColor: colors.shadow
+  }
+}));
+
+export const HomeParallax: React.FC<Props> = ({ image, title, subtitle }) => { 
+  const classes = useStyles();
+  return (
   <div
     css={css`
       display: flex;
@@ -41,8 +55,8 @@ export const HomeParallax: React.FC<Props> = ({ image, title, subtitle }) => (
         align-items: center;
         flex-direction: column;
       `}>
-      <Title>{title}</Title>
+      <Typography className={classes.title} variant="h1">{title}</Typography>
       {subtitle && <Subtitle>{subtitle}</Subtitle>}
     </div>
-  </div>
-);
+  </div>);
+ };

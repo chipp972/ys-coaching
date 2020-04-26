@@ -1,11 +1,9 @@
 import styled from '@emotion/styled';
-import { fontFamilies } from './variables';
-import { mediaQueries } from '../mediaqueries';
 import { colors } from '../colors';
+import { mediaQueries } from '../mediaqueries';
 
 export const ExtraSmallText = styled.span`
   font-size: 1.2rem;
-  font-family: ${fontFamilies.notoSans};
   font-weight: 400;
   line-height: 1.5;
   color: ${colors.white};
@@ -17,7 +15,6 @@ export const ExtraSmallText = styled.span`
 
 export const SmallText = styled.span`
   font-size: 1.4rem;
-  font-family: ${fontFamilies.notoSans};
   font-weight: 400;
   line-height: 1.5;
   color: ${colors.white};
@@ -29,7 +26,6 @@ export const SmallText = styled.span`
 
 export const MediumText = styled.span`
   font-size: 1.6rem;
-  font-family: ${fontFamilies.notoSans};
   font-weight: 400;
   line-height: 1.5;
   color: ${colors.white};
@@ -41,7 +37,6 @@ export const MediumText = styled.span`
 
 export const BigText = styled.span`
   font-size: 1.8rem;
-  font-family: ${fontFamilies.notoSans};
   font-weight: 400;
   line-height: 1.5;
   color: ${colors.white};
@@ -53,7 +48,6 @@ export const BigText = styled.span`
 
 export const ActiveText = styled.span`
   font-size: 1.8rem;
-  font-family: ${fontFamilies.notoSans};
   font-weight: 400;
   line-height: 1.5;
   color: ${colors.white};
@@ -65,7 +59,6 @@ export const ActiveText = styled.span`
 
 export const InfoText = styled.span`
   font-size: 1.8rem;
-  font-family: ${fontFamilies.notoSerif};
   font-weight: 400;
   line-height: 1.5;
   color: ${colors.gray600};

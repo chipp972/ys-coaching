@@ -1,13 +1,11 @@
-import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { fontFamilies } from './variables';
-import { mediaQueries } from '../mediaqueries';
+import React from 'react';
 import { colors } from '../colors';
+import { mediaQueries } from '../mediaqueries';
 
 const Title = styled.h1`
   color: ${colors.white};
-  font-family: ${fontFamilies.notoSans};
   font-size: 34px;
   font-weight: 800;
   line-height: 1.5;
@@ -21,7 +19,6 @@ const Title = styled.h1`
 
 const SubTitle = styled.h2`
   color: ${colors.white};
-  font-family: ${fontFamilies.notoSerif};
   font-size: 28px;
   font-weight: 100;
   line-height: 1.1;

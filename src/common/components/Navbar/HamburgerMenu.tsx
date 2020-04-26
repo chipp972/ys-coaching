@@ -1,8 +1,8 @@
+import { css } from '@emotion/core';
 import * as R from 'ramda';
 import React from 'react';
-import { css } from '@emotion/core';
-import { mediaQueries, fontFamilies, colors } from '../../theme';
 import { navbarHeight } from '../../layout';
+import { colors, mediaQueries } from '../../theme';
 
 export const HamburgerMenu = ({ setActive, isActive }) => (
   <>
@@ -12,7 +12,6 @@ export const HamburgerMenu = ({ setActive, isActive }) => (
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-family: ${fontFamilies.notoSans};
         font-size: 8px;
         text-transform: uppercase;
         height: ${navbarHeight.mobile};

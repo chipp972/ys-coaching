@@ -3,6 +3,6 @@ const sansSerif =
 
 export const fontFamilies = {
   notoSans: `Noto Sans JP, ${sansSerif}`,
-  notoSerif: 'Noto Serif JP, serif',
+  cinzel: `Cinzel, ${sansSerif}`,
   monospace: 'monospace'
 };

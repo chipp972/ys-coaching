@@ -1,5 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { colors } from './colors';
+import { mediaQueries } from './mediaqueries';
 import { fontFamilies } from './typography/variables';
 
 export const theme = createMuiTheme({
@@ -28,8 +29,18 @@ export const theme = createMuiTheme({
       fontSize: '1.8rem'
     },
     body2: {
-      fontFamily: fontFamilies.notoSerif,
       fontSize: '1.6rem'
+    },
+    h1: {
+      fontFamily: fontFamilies.cinzel,
+      fontSize: '4.8rem',
+      fontWeight: 900,
+      letterSpacing: 3,
+      lineHeight: 1.2,
+      [mediaQueries.fromTablet]: {
+        fontSize: '5.8rem',
+        lineHeight: 1.5
+      }
     },
     htmlFontSize: 10
   }

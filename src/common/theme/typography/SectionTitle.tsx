@@ -1,11 +1,9 @@
 import styled from '@emotion/styled';
-import { fontFamilies } from './variables';
-import { mediaQueries } from '../mediaqueries';
 import { colors } from '../colors';
+import { mediaQueries } from '../mediaqueries';
 
 export const SectionTitle = styled.h3`
   font-size: 3.2rem;
-  font-family: ${fontFamilies.notoSans};
   font-weight: 100;
   line-height: 1.05;
   letter-spacing: 2px;
