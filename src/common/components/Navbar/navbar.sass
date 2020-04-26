@@ -16,6 +16,12 @@
   line-height: $desktop-headline-line-height
   padding: 1.2rem
 
++desktop
+  .navbar-item.is-active
+    &:hover,
+    &:focus
+      background-color: #525252
+
 .navbar
   border-bottom: 1px solid $gray500
   box-shadow: 0 4px 4px $black
@@ -28,31 +34,3 @@
   animation: slide-left 0.3s ease
   +desktop
     animation: none
-
-.logo
-  display: flex
-  flex-flow: row nowrap
-  justify-content: center
-  align-items: center
-  +desktop
-    width: 400px
-
-  &:hover
-    .logo-type
-      color: $gray50
-      letter-spacing: 7px
-    .logo-image
-      transform: scale(1.1)
-
-  .logo-image
-    width: auto
-    height: $navbar-height-mobile
-    max-height: $navbar-height-mobile
-    transition: transform 0.2s ease
-    +tablet
-      height: $navbar-height-tablet
-      max-height: $navbar-height-tablet
-
-+desktop
-  .navbar-item.is-active:hover
-    background-color: #525252

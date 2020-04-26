@@ -16,6 +16,7 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
   const { routes } = useSiteMetadata();
   const [isActive, setActive] = React.useState(false);
   const isCurrentPage = (to) => to === pathname;
+
   return (
     <nav className="navbar" role="navigation" aria-label="main-navigation">
       <div className="container">
