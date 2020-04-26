@@ -1,13 +1,11 @@
-import { Carousel, useCarousel } from '@chipp972/carousel';
+import { Carousel } from '@chipp972/carousel';
 import { css } from '@emotion/core';
-import * as R from 'ramda';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Breadcrumb } from '../../common/components/Breadcrumb/Breadcrumb';
 import { colors } from '../../common/theme';
 import { ConfirmationStep, DateTimeStep, PlanChoice, ThankYouStep } from './components';
 import { LocationStep } from './components/LocationStep/LocationStep';
-import { setDateTime, setPlan } from './state/products.action';
+import { useProductsContext } from './products.hook';
 
 type StepData = {
   stepName: string;
@@ -32,26 +30,8 @@ export type Props = {
 
 const carouselId = 'products';
 
-// eslint-disable-next-line
-export const ProductsPage = ({
-  packages,
-  tabsData,
-  dateTimeScreen,
-  locationScreen,
-  confirmationScreen,
-  thankYouScreen
-}) => {
-  const { currentStepIndex, goNextStep, goPrevStep } = useCarousel(carouselId);
-  const dispatch = useDispatch();
-  const breadcrumbLabels: string[] = [
-    packages,
-    dateTimeScreen,
-    locationScreen,
-    confirmationScreen
-  ].map(R.prop('stepName'));
-
-  const selectPlan = R.pipe(setPlan, dispatch, goNextStep);
-  const selectDate = R.pipe(setDateTime, dispatch, goNextStep);
+export const ProductsPage = () => {
+  const { breadcrumbLabels, currentStepIndex } = useProductsContext();
 
   return (
     <div className="container">
@@ -66,45 +46,11 @@ export const ProductsPage = ({
         `}
         isScrollToTop
         isSwipeDisabled>
-        <PlanChoice
-          heading={packages.heading}
-          description={packages.description}
-          tabsData={tabsData}
-          onChoice={selectPlan}
-        />
-        <DateTimeStep
-          heading={dateTimeScreen.heading}
-          description={dateTimeScreen.description}
-          availabilityTimeslots={dateTimeScreen.availableTimeslots}
-          selectDate={selectDate}
-          goPrevStep={goPrevStep}
-          prevStepName={packages.stepName}
-        />
-        <LocationStep
-          heading={locationScreen.heading}
-          description={locationScreen.description}
-          availableLocations={locationScreen.availableLocations}
-          goNextStep={goNextStep}
-          goPrevStep={goPrevStep}
-          prevStepName={dateTimeScreen.stepName}
-          nextStepName={confirmationScreen.stepName}
-        />
-        <ConfirmationStep
-          heading={confirmationScreen.heading}
-          description={confirmationScreen.description}
-          goNextStep={goNextStep}
-          goPrevStep={goPrevStep}
-          prevStepName={locationScreen.stepName}
-          nextStepName="SCHEDULE OUR MEETING"
-        />
-        <ThankYouStep
-          heading={thankYouScreen.heading}
-          description={thankYouScreen.description}
-          content={thankYouScreen.content}
-          image={thankYouScreen.image}
-          redirectLinkLabel="CHECK OUT MY BLOG"
-          redirectLinkUrl="/"
-        />
+        <PlanChoice />
+        <DateTimeStep />
+        <LocationStep />
+        <ConfirmationStep />
+        <ThankYouStep />
       </Carousel>
     </div>
   );

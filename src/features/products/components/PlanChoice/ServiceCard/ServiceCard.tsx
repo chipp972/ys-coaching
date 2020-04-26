@@ -1,13 +1,13 @@
-import React from 'react';
-import { css } from '@emotion/core';
-import { colors, mediaQueries } from '../../../../../common/theme';
-import { ScalableImage } from '../../../../../common/components/ImageContainer';
-import { GhostButton } from '../../../../../common/components/Button';
-import { Check as CheckIcon } from 'react-feather';
-import { GatsbyImage } from '../../../../../common/helpers/gatsby';
-import { CardTitle } from './CardTitle';
-import { CardFooter } from './CardFooter';
 import { callOnEnterOrSpaceKey } from '@chipp972/accessibility';
+import { css } from '@emotion/core';
+import React from 'react';
+import { Check as CheckIcon } from 'react-feather';
+import { ScalableImage } from '../../../../../common/components/ImageContainer';
+import { GatsbyImage } from '../../../../../common/helpers/gatsby';
+import { colors, mediaQueries } from '../../../../../common/theme';
+import { CardFooter } from './CardFooter';
+import { CardTitle } from './CardTitle';
+import { GhostButton } from './GhostButton';
 
 const selectedCardShadow = `0px 0px 0px 2px ${colors.gray50}`;
 const transitionDuration = '0.4s';

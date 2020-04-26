@@ -1,56 +1,36 @@
 import * as R from 'ramda';
 
-const getPackageList = (label: string) => R.pipe(
-  R.propOr([], 'plans'),
-  R.filter(({ category }) => category === label)
+const getProductCategories = R.pipe(
+  R.path(['allMarkdownRemark', 'edges']),
+  R.map((edge) => ({
+    label: R.path(['node', 'frontmatter', 'title'], edge),
+    value: R.path(['node', 'fields', 'slug'], edge),
+    position: R.path(['node', 'frontmatter', 'position'], edge),
+    description: R.path(['node', 'frontmatter', 'description'], edge)
+  }))
 );
 
-export const makeTabsData = (packages = { plans: [] }) =>
-  R.pipe(
-    R.sortBy(R.prop('position')),
-    R.map(({ label, value, description }) => ({
-      label,
-      value,
+const getPreviewProductCategories = R.pipe(
+    R.path(['packages', 'plans', 'category', 'product-categories']),
+    R.values,
+    R.map(({ title: category, description, position }) => ({
+      label: category,
+      value: category,
       description,
-      packageList: getPackageList(label)(packages)
+      position
     }))
-  );
+);
 
-export const getProductsPageData = (data) => {
-  const {
-    packages,
-    dateTimeScreen,
-    locationScreen,
-    confirmationScreen,
-    thankYouScreen
-  } = data.markdownRemark.frontmatter;
-  const { edges } = data.allMarkdownRemark;
-
-  const tabsData = R.pipe(
-    R.map((edge) => ({
-      label: R.path(['node', 'frontmatter', 'title'], edge),
-      value: R.path(['node', 'fields', 'slug'], edge),
-      position: R.path(['node', 'frontmatter', 'position'], edge),
-      description: R.path(['node', 'frontmatter', 'description'], edge)
-    })),
-    makeTabsData(packages)
-  )(edges);
+export const getProductPageContextData = (data: any, fieldsMetaData?: any) => {
+  const isPreview = !R.hasPath(['markdownRemark', 'frontmatter'], data);
+  const productCategories = isPreview
+    ? getPreviewProductCategories(fieldsMetaData)
+    : getProductCategories(data);
+  const contribution = isPreview ? data : R.path(['markdownRemark', 'frontmatter'], data);
 
   return {
-    tabsData,
-    packages,
-    dateTimeScreen,
-    locationScreen,
-    confirmationScreen,
-    thankYouScreen
+    carouselId: 'products',
+    productCategories,
+    ...contribution
   };
-};
-
-export const getProductPageContextData = (data) => {
-  const contribution = R.either(
-    R.path(['markdownRemark', 'frontmatter', 'locationScreen', 'contribution']),
-    R.path(['locationScreen', 'contribution'])
-  )(data);
-
-  return { contribution };
 };

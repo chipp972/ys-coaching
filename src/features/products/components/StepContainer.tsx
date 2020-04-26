@@ -5,13 +5,7 @@ import React from 'react';
 import { PrevStepButton } from '../../../common/components/Button';
 import { Section } from '../../../common/layout';
 import { SectionTitle } from '../../../common/theme';
-
-type Props = {
-  heading: string;
-  description: string;
-  prevStepName?: string;
-  goPrevStep?: () => void;
-};
+import { useProductsContext } from '../products.hook';
 
 const useStyles = makeStyles((theme: Theme) => ({
   description: {
@@ -19,25 +13,31 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export const StepContainer: React.FC<Props> = ({ heading, description, children, prevStepName, goPrevStep }) => {
+export const StepContainer: React.FC = ({ children }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const { prevStep, currentStep, goPrevStep } = useProductsContext();
   return (
     <Section
       css={css`
         display: flex;
         flex-direction: column;
       `}>
-      {prevStepName && goPrevStep && <div css={css`
-        disply: inline-block;
-        margin-bottom: ${theme.spacing(3)};
-      `}>
-        <PrevStepButton variant="text" onClick={goPrevStep}>{prevStepName}</PrevStepButton>
-      </div>}
-      <SectionTitle>{heading}</SectionTitle>
-      {description && (
+      {prevStep?.stepName && (
+        <div
+          css={css`
+            disply: inline-block;
+            margin-bottom: ${theme.spacing(3)};
+          `}>
+          <PrevStepButton variant="text" onClick={goPrevStep}>
+            {prevStep?.stepName}
+          </PrevStepButton>
+        </div>
+      )}
+      <SectionTitle>{currentStep?.heading}</SectionTitle>
+      {currentStep?.description && (
         <Typography className={classes.description} variant="body2">
-          {description}
+          {currentStep?.description}
         </Typography>
       )}
       {children}

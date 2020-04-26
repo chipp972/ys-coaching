@@ -7,19 +7,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StepButtons } from '../../../../common/components/Button';
 import { FormInput } from '../../../../common/components/Form';
-import { ProductsContext } from '../../products.context';
+import { useProductsContext } from '../../products.hook';
 import { setComment, setEmail, setFirstName, setLastName } from '../../state/products.action';
 import { getSelectedDate, getSelectedLocation, getSelectedPlan } from '../../state/products.selector';
 import { StepContainer } from '../StepContainer';
-
-type Props = {
-  heading: string;
-  description?: string;
-  goNextStep: () => void;
-  goPrevStep: () => void;
-  nextStepName: string;
-  prevStepName: string;
-};
 
 const useStyles = makeStyles((theme: Theme) => ({
   fieldset: {
@@ -35,16 +26,9 @@ const FilledAnswer: React.FC<{label: string; answer: string; className?: string}
 );
 
 // eslint-disable-next-line max-lines-per-function
-export const ConfirmationStep: React.FC<Props> = ({
-  heading,
-  description,
-  goNextStep,
-  goPrevStep,
-  nextStepName,
-  prevStepName
-}) => {
+export const ConfirmationStep: React.FC = () => {
   const dispatch = useDispatch();
-  const { contribution } = React.useContext(ProductsContext);
+  const { locationScreen, goNextStep, goPrevStep, prevStep } = useProductsContext();
   const selectedLocation = useSelector(getSelectedLocation);
   const selectedPlan = useSelector(getSelectedPlan);
   const selectedDate = useSelector(getSelectedDate);
@@ -52,12 +36,12 @@ export const ConfirmationStep: React.FC<Props> = ({
 
   const formattedDate = !!selectedDate && format('iiii dd/MM hh:mm', selectedDate);
 
+  // TODO: put in contrib
+  const validationButtonLabel = 'SCHEDULE OUR MEETING';
+  // TODO: add contrib in confirmation screen instead and use it
+
   return (
-    <StepContainer
-      heading={heading}
-      description={description}
-      prevStepName={prevStepName}
-      goPrevStep={goPrevStep}>
+    <StepContainer>
       <Form
         css={css`
           display: flex;
@@ -92,41 +76,41 @@ export const ConfirmationStep: React.FC<Props> = ({
 
         <FormInput
           className={classes.fieldset}
-          label={contribution.customerPlaceLabel}
+          label={locationScreen.contribution.customerPlaceLabel}
           name="email"
           type="email"
-          placeholder={contribution.customerPlacePlaceholder}
-          errorMessage={contribution.customerPlaceError}
+          placeholder={locationScreen.contribution.customerPlacePlaceholder}
+          errorMessage={locationScreen.contribution.customerPlaceError}
           margin="dense"
           required
         />
 
         <FormInput
           className={classes.fieldset}
-          label={contribution.customerPlaceLabel}
+          label={locationScreen.contribution.customerPlaceLabel}
           name="firstName"
-          placeholder={contribution.customerPlacePlaceholder}
-          errorMessage={contribution.customerPlaceError}
+          placeholder={locationScreen.contribution.customerPlacePlaceholder}
+          errorMessage={locationScreen.contribution.customerPlaceError}
           margin="dense"
           required
         />
 
         <FormInput
           className={classes.fieldset}
-          label={contribution.customerPlaceLabel}
+          label={locationScreen.contribution.customerPlaceLabel}
           name="lastName"
-          placeholder={contribution.customerPlacePlaceholder}
-          errorMessage={contribution.customerPlaceError}
+          placeholder={locationScreen.contribution.customerPlacePlaceholder}
+          errorMessage={locationScreen.contribution.customerPlaceError}
           margin="dense"
           required
         />
 
         <FormInput
           className={classes.fieldset}
-          label={contribution.customerPlaceLabel}
+          label={locationScreen.contribution.customerPlaceLabel}
           name="additionalInformations"
-          placeholder={contribution.customerPlacePlaceholder}
-          errorMessage={contribution.customerPlaceError}
+          placeholder={locationScreen.contribution.customerPlacePlaceholder}
+          errorMessage={locationScreen.contribution.customerPlaceError}
           margin="dense"
           multiline
         />
@@ -134,8 +118,8 @@ export const ConfirmationStep: React.FC<Props> = ({
         <StepButtons
           className={classes.fieldset}
           onPrevStepClick={goPrevStep}
-          prevStepName={prevStepName}
-          nextStepName={nextStepName}
+          prevStepName={prevStep?.stepName}
+          nextStepName={validationButtonLabel}
         />
       </Form>
     </StepContainer>

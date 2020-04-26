@@ -1,11 +1,11 @@
-import React from 'react';
 import { css } from '@emotion/core';
-import { ServiceCard } from './ServiceCard/ServiceCard';
-import { mediaQueries } from '../../../../common/theme';
-import { SubSection } from '../../../../common/layout';
-import { GatsbyImage } from '../../../../common/helpers/gatsby';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import { GatsbyImage } from '../../../../common/helpers/gatsby';
+import { SubSection } from '../../../../common/layout';
+import { mediaQueries } from '../../../../common/theme';
 import { getSelectedPlan } from '../../state/products.selector';
+import { ServiceCard } from './ServiceCard/ServiceCard';
 
 export type Plan = {
   plan: string;

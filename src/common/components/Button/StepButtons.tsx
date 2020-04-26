@@ -44,8 +44,8 @@ export const StepButtons: React.FC<Props> = ({
   className,
   prevStepClassName,
   nextStepClassName,
-  prevStepName,
-  nextStepName,
+  prevStepName = '',
+  nextStepName = '',
   onNextStepClick,
   onPrevStepClick
 }) => {

@@ -5,24 +5,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { StepButtons } from '../../../../common/components/Button';
 import { FormInput, FormRadioGroup } from '../../../../common/components/Form';
-import { ProductsContext } from '../../products.context';
+import { useProductsContext } from '../../products.hook';
 import { setLocation } from '../../state/products.action';
 import { StepContainer } from '../StepContainer';
-
-type Location = {
-  label: React.ReactNode;
-  address: string;
-};
-
-type Props = {
-  heading: string;
-  description?: string;
-  availableLocations: Location[];
-  goNextStep: () => void;
-  goPrevStep: () => void;
-  nextStepName: string;
-  prevStepName: string;
-};
 
 const useStyles = makeStyles((theme: Theme) => ({
   fieldset: {
@@ -31,35 +16,23 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 // eslint-disable-next-line max-lines-per-function
-export const LocationStep: React.FC<Props> = ({
-  heading,
-  description,
-  availableLocations,
-  goNextStep,
-  goPrevStep,
-  nextStepName,
-  prevStepName
-}) => {
+export const LocationStep: React.FC = () => {
   const dispatch = useDispatch();
   const [isCustomLocationChecked, setIsCustomLocationChecked] = React.useState(false);
   const [currentLocation, setCurrentLocation] = React.useState(null);
-  const { contribution } = React.useContext(ProductsContext);
   const classes = useStyles();
+  const { locationScreen, goNextStep, goPrevStep, nextStep, prevStep } = useProductsContext();
 
   const customPlaceOption = {
-    label: contribution.locationChoiceCustomPlaceLabel,
+    label: locationScreen.contribution.locationChoiceCustomPlaceLabel,
     address: 'own-place'
   };
 
-  const locationList = availableLocations
+  const locationList = locationScreen.availableLocations
     .concat([customPlaceOption])
     .map(({ label, address }) => ({ label, value: address }));
   return (
-    <StepContainer
-      heading={heading}
-      description={description}
-      prevStepName={prevStepName}
-      goPrevStep={goPrevStep}>
+    <StepContainer>
       <Form
         css={css`
           display: flex;
@@ -73,8 +46,8 @@ export const LocationStep: React.FC<Props> = ({
         <FormRadioGroup
           className={classes.fieldset}
           options={locationList}
-          label={contribution.locationChoiceLabel}
-          errorMessage={contribution.locationChoiceError}
+          label={locationScreen.contribution.locationChoiceLabel}
+          errorMessage={locationScreen.contribution.locationChoiceError}
           name="location"
           value={currentLocation}
           onFieldReset={() => setCurrentLocation(null)}
@@ -86,18 +59,18 @@ export const LocationStep: React.FC<Props> = ({
         />
         <FormInput
           className={classes.fieldset}
-          label={contribution.customerPlaceLabel}
+          label={locationScreen.contribution.customerPlaceLabel}
           name="homeAddress"
-          placeholder={contribution.customerPlacePlaceholder}
-          errorMessage={contribution.customerPlaceError}
+          placeholder={locationScreen.contribution.customerPlacePlaceholder}
+          errorMessage={locationScreen.contribution.customerPlaceError}
           required={isCustomLocationChecked}
           margin="dense"
         />
         <StepButtons
           className={classes.fieldset}
           onPrevStepClick={goPrevStep}
-          prevStepName={prevStepName}
-          nextStepName={nextStepName}
+          prevStepName={prevStep?.stepName}
+          nextStepName={nextStep?.stepName}
         />
       </Form>
     </StepContainer>

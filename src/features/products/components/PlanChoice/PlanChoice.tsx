@@ -1,40 +1,50 @@
 import * as R from 'ramda';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Tabs } from '../../../../common/components/Tabs/Tabs';
+import { useProductsContext } from '../../products.hook';
+import { setPlan } from '../../state/products.action';
 import { StepContainer } from '../StepContainer';
-import { Pricing, Plan } from './Pricing';
+import { Plan, Pricing } from './Pricing';
 
-type Props = {
-  heading: string;
-  description: string;
-  tabsData: {
-    label: string;
-    value: string;
-    description: string;
-    packageList: Plan[];
-  }[];
-  onChoice: (plan: string) => void;
+type TabData = {
+  label: string;
+  value: string;
+  description?: string;
+  packageList: Plan[];
 };
 
-export const PlanChoice: React.FC<Props> = ({
-  heading,
-  description,
-  tabsData,
-  onChoice
-}) => {
-  const labels: string[] = React.useMemo(() => tabsData.map(R.prop('label')), [
-    tabsData
-  ]);
+const getPackageList = (label: string) => R.pipe(
+  R.propOr([], 'plans'),
+  R.filter(({ category }) => category === label)
+);
+
+export const makeTabsData = (packages = { plans: [] }) =>
+  R.pipe(
+    R.sortBy(R.prop('position')),
+    R.map(({ label, value, description }) => ({
+      label,
+      value,
+      description,
+      packageList: getPackageList(label)(packages)
+    }))
+  );
+
+export const PlanChoice: React.FC = () => {
+  const { packages, goNextStep, productCategories } = useProductsContext();
+  const tabsData: TabData[] = makeTabsData(packages)(productCategories);
+  const dispatch = useDispatch();
+  const selectPlan: (plan: string) => void = R.pipe(setPlan, dispatch, goNextStep);
   return (
-    <StepContainer heading={heading} description={description}>
+    <StepContainer>
       {tabsData.length > 0 && (
-        <Tabs labels={labels}>
+        <Tabs labels={tabsData.map(R.prop('label'))}>
           {tabsData.map(({ value, packageList, description: categoryDescription }) => (
             <Pricing
               key={value}
               description={categoryDescription}
               data={packageList}
-              onClick={onChoice}
+              onClick={selectPlan}
             />
           ))}
         </Tabs>

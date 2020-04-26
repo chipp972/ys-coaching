@@ -2,10 +2,9 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import { Page } from '../common/layout';
 import { ProductsContext } from '../features/products/products.context';
-import { getProductPageContextData, getProductsPageData } from '../features/products/products.data';
+import { getProductPageContextData } from '../features/products/products.data';
 import { ProductsPage } from '../features/products/products.page';
 
-// TODO: put location in redux instead
 type Props = {
   location: {
     pathname: string;
@@ -26,7 +25,6 @@ type Props = {
       };
     };
     markdownRemark: {
-      // TODO: finish typing
       frontmatter: any;
     };
   };
@@ -42,7 +40,7 @@ const Products: React.FC<Props> = ({ data, location }) => {
       image={image}
       hasHeadlineBanner>
       <ProductsContext.Provider value={getProductPageContextData(data)}>
-        <ProductsPage {...getProductsPageData(data)} />
+        <ProductsPage />
       </ProductsContext.Provider>
     </Page>
   );

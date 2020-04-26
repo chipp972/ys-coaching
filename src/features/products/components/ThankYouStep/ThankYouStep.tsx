@@ -1,29 +1,22 @@
+import { Typography } from '@material-ui/core';
 import React from 'react';
 import { PrimaryButton } from '../../../../common/components/Button';
 import { PreviewCompatibleImage } from '../../../../common/components/ImageContainer';
-import { GatsbyImage } from '../../../../common/helpers/gatsby';
+import { ProductsContext } from '../../products.context';
 import { StepContainer } from '../StepContainer';
 
-type Props = {
-  heading: string;
-  description?: string;
-  content: string;
-  image: GatsbyImage;
-  redirectLinkUrl?: string;
-  redirectLinkLabel?: string;
+export const ThankYouStep: React.FC = () => {
+  const { thankYouScreen } = React.useContext(ProductsContext);
+  // TODO: put in contrib
+  const redirectLinkLabel = 'CHECK OUT MY BLOG';
+  const redirectLinkUrl = '/';
+  return (
+    <StepContainer>
+      <Typography variant="body1">{thankYouScreen.content}</Typography>
+      <PreviewCompatibleImage imageInfo={{ image: thankYouScreen.image }} />
+      {!!redirectLinkLabel && (
+        <PrimaryButton to={redirectLinkUrl}>{redirectLinkLabel}</PrimaryButton>
+      )}
+    </StepContainer>
+  );
 };
-
-export const ThankYouStep: React.FC<Props> = ({
-  heading,
-  description,
-  image,
-  content,
-  redirectLinkLabel,
-  redirectLinkUrl
-}) => (
-  <StepContainer heading={heading} description={description}>
-    <p>{content}</p>
-    <PreviewCompatibleImage imageInfo={{ image }} />
-{!!redirectLinkLabel && <PrimaryButton to={redirectLinkUrl}>{redirectLinkLabel}</PrimaryButton>}
-  </StepContainer>
-);
