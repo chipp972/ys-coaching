@@ -1,8 +1,8 @@
-import React from 'react';
 import { css } from '@emotion/core';
-import { mediaQueries, colors, MediumText } from '../../theme';
-import { BreadcrumbStep } from './BreadcrumbStep';
+import React from 'react';
+import { colors, mediaQueries, MediumText } from '../../theme';
 import { borderSize, stepSize } from './Breadcrumb.constant';
+import { BreadcrumbStep } from './BreadcrumbStep';
 
 const MobileLabel = ({ label }) => (
   <MediumText
@@ -60,8 +60,7 @@ type Props = {
 
 export const Breadcrumb: React.FC<Props> = ({
   labelList,
-  currentStepIndex = 0,
-  onClick
+  currentStepIndex = 0
 }) => (
   <div
     css={css`
@@ -85,7 +84,6 @@ export const Breadcrumb: React.FC<Props> = ({
           label={label}
           stepIndex={index}
           currentStepIndex={currentStepIndex}
-          onClick={onClick}
         />
       ))}
     </BreadcrumbStepList>

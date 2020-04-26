@@ -1,18 +1,8 @@
-import React from 'react';
-import {
-  useForm,
-  InputProps
-} from '@chipp972/form-validation';
-import { ErrorMessage } from './FormMessages';
+import { InputProps, useForm } from '@chipp972/form-validation';
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, RadioGroupProps } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import {
-  FormControl,
-  FormLabel,
-  FormControlLabel,
-  RadioGroup,
-  Radio,
-  RadioGroupProps
-} from '@material-ui/core';
+import React from 'react';
+import { ErrorMessage } from './FormMessages';
 
 type Option = {
   label: React.ReactNode;
@@ -63,7 +53,7 @@ export const FormRadioGroup: React.FC<Props> = ({
       <FormLabel
         className={classes.root}
         id={name}
-        component="label">{label}</FormLabel>
+        component="legend">{label}</FormLabel>
       <RadioGroup {...props} aria-label={label} id={name} name={name}>
         {options.map((option) => (
           <FormControlLabel

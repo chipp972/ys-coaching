@@ -1,8 +1,8 @@
-import React from 'react';
 import { css } from '@emotion/core';
-import { colors, mediaQueries, ExtraSmallText, animation } from '../../theme';
+import React from 'react';
 import { Check as DoneIcon, RefreshCw as CurrentStepIcon } from 'react-feather';
-import { stepSize, borderSize } from './Breadcrumb.constant';
+import { animation, colors, ExtraSmallText, mediaQueries } from '../../theme';
+import { borderSize, stepSize } from './Breadcrumb.constant';
 
 const getIconStyle = ({
   isLightBackground = false,
@@ -18,7 +18,10 @@ const getIconStyle = ({
   left: calc(50% - ${stepSize.mobile} / 4);
   stroke: ${isLightBackground ? colors.black : colors.white};
   stroke-width: ${borderSize.fromTablet};
-  ${isCurrentStep && css`animation: ${animation.spin} 2s ease infinite;`}
+  ${isCurrentStep &&
+  css`
+    animation: ${animation.spin} 2s ease infinite;
+  `}
 
   ${mediaQueries.fromTablet} {
     width: calc(${stepSize.fromTablet} / 2);
@@ -30,25 +33,22 @@ const getIconStyle = ({
 
 type SharedProps = {
   isCurrentStep: boolean;
-  isClickable: boolean;
-  onClick?: () => void;
+  isDoneStep: boolean;
 };
 
 const DesktopLabel: React.FC<SharedProps & { label: string }> = ({
   label,
   isCurrentStep,
-  isClickable,
-  onClick
+  isDoneStep
 }) => (
   <ExtraSmallText
-    onClick={onClick}
     className="desktop-label"
     css={css`
       display: none;
       font-weight: ${isCurrentStep ? '500' : '400'};
       text-align: center;
       margin-top: 1rem;
-      cursor: ${isClickable ? 'pointer' : 'auto'};
+      opacity: ${!isDoneStep && !isCurrentStep ? 0.5 : 1};
 
       ${mediaQueries.fromTablet} {
         display: block;
@@ -58,14 +58,25 @@ const DesktopLabel: React.FC<SharedProps & { label: string }> = ({
   </ExtraSmallText>
 );
 
-const CircleStep: React.FC<SharedProps> = ({
-  isCurrentStep,
-  isClickable,
-  onClick
-}) => (
+const BreadcrumbIcon: React.FC<SharedProps> = ({ isCurrentStep, isDoneStep }) => {
+  if (isCurrentStep) {
+    return (
+      <CurrentStepIcon
+        aria-hidden="true"
+        className="step-icon"
+        css={getIconStyle({ isCurrentStep: true })}
+      />
+    );
+  }
+  if (isDoneStep) {
+    return <DoneIcon aria-hidden="true" className="step-icon" css={getIconStyle()} />;
+  }
+  return null;
+};
+
+const BreadcrumbStepIconContainer: React.FC<SharedProps> = (props) => (
   <span
-    tabIndex={isClickable ? 0 : -1}
-    onClick={onClick}
+    aria-hidden="true"
     className="circle-step"
     css={css`
       background-color: ${colors.black};
@@ -75,24 +86,15 @@ const CircleStep: React.FC<SharedProps> = ({
       width: ${stepSize.mobile};
       height: ${stepSize.mobile};
       position: relative;
-      cursor: ${isClickable ? 'pointer' : 'auto'};
-      outline: none;
 
       ${mediaQueries.fromTablet} {
         border-width: ${borderSize.fromTablet};
         width: ${stepSize.fromTablet};
         height: ${stepSize.fromTablet};
       }
-      ${mediaQueries.fromDesktop} {
-        outline: initial;
-      }
     `}>
-    {isClickable && (
-      <DoneIcon className="step-icon" css={getIconStyle()} />
-    )}
-    {isCurrentStep && (
-      <CurrentStepIcon className="step-icon" css={getIconStyle({ isCurrentStep: true })} />
-    )}
+    {}
+    <BreadcrumbIcon {...props} />
   </span>
 );
 
@@ -100,20 +102,13 @@ type Props = {
   label: string;
   currentStepIndex: number;
   stepIndex: number;
-  onClick?: (stepIndex: number) => void;
 };
 
-export const BreadcrumbStep: React.FC<Props> = ({
-  label,
-  currentStepIndex,
-  stepIndex,
-  onClick
-}) => {
-  const isClickable = currentStepIndex > stepIndex;
+export const BreadcrumbStep: React.FC<Props> = ({ label, currentStepIndex, stepIndex }) => {
+  const isDoneStep = currentStepIndex > stepIndex;
   const sharedProps = {
-    isClickable,
-    isCurrentStep: currentStepIndex === stepIndex,
-    onClick: () => isClickable && onClick && onClick(stepIndex)
+    isDoneStep,
+    isCurrentStep: currentStepIndex === stepIndex
   };
   return (
     <div
@@ -125,22 +120,8 @@ export const BreadcrumbStep: React.FC<Props> = ({
         justify-content: flex-end;
         margin-right: 10px;
         position: relative;
-
-        ${isClickable && `:hover {
-          .circle-step {
-            border-color: ${colors.crimson200};
-          }
-
-          .step-icon {
-            stroke: ${colors.crimson200};
-          }
-
-          .desktop-label {
-            color: ${colors.crimson200};
-          }
-        }`}
       `}>
-      <CircleStep {...sharedProps} />
+      <BreadcrumbStepIconContainer {...sharedProps} />
       <DesktopLabel label={label} {...sharedProps} />
     </div>
   );

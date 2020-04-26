@@ -1,5 +1,5 @@
-import React from 'react';
 import { css } from '@emotion/core';
+import React from 'react';
 
 type Props = {
   isVisible: boolean;
@@ -14,6 +14,7 @@ export const TabContent: React.FC<Props> = ({ isVisible, children }) => (
       left: 0;
       opacity: ${isVisible ? 1 : 0};
       transition: opacity 0.15s ease-in-out;
+      visibility: ${isVisible ? 'visible' : 'hidden'};
     `}>
     {children}
   </div>

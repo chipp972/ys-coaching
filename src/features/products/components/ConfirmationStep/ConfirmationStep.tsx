@@ -95,7 +95,6 @@ export const ConfirmationStep: React.FC<Props> = ({
           placeholder={contribution.customerPlacePlaceholder}
           errorMessage={contribution.customerPlaceError}
           margin="dense"
-          hasBigLabel
           required
         />
 
@@ -106,7 +105,6 @@ export const ConfirmationStep: React.FC<Props> = ({
           placeholder={contribution.customerPlacePlaceholder}
           errorMessage={contribution.customerPlaceError}
           margin="dense"
-          hasBigLabel
           required
         />
 
@@ -117,7 +115,6 @@ export const ConfirmationStep: React.FC<Props> = ({
           placeholder={contribution.customerPlacePlaceholder}
           errorMessage={contribution.customerPlaceError}
           margin="dense"
-          hasBigLabel
           required
         />
 
@@ -129,7 +126,6 @@ export const ConfirmationStep: React.FC<Props> = ({
           errorMessage={contribution.customerPlaceError}
           margin="dense"
           multiline
-          hasBigLabel
         />
 
         <StepButtons

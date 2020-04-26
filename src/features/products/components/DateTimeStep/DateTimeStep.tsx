@@ -10,13 +10,17 @@ type Props = {
   description: string;
   availabilityTimeslots: { start: string; end: string }[];
   selectDate: (date: Date) => void;
+  goPrevStep: () => void;
+  prevStepName: string;
 };
 
 export const DateTimeStep: React.FC<Props> = ({
   heading,
   description,
   selectDate,
-  availabilityTimeslots
+  availabilityTimeslots,
+  goPrevStep,
+  prevStepName
 }) => {
   const currentTimeslot = useSelector(getSelectedDate);
   const availabilityList = React.useMemo(
@@ -30,7 +34,11 @@ export const DateTimeStep: React.FC<Props> = ({
     [availabilityTimeslots]
   );
   return (
-    <StepContainer heading={heading} description={description}>
+    <StepContainer
+      heading={heading}
+      description={description}
+      goPrevStep={goPrevStep}
+      prevStepName={prevStepName}>
       <TimeSlotPicker
         currentSelection={currentTimeslot}
         availabilityList={availabilityList}

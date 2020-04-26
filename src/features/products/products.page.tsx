@@ -58,7 +58,6 @@ export const ProductsPage = ({
       <Breadcrumb
         currentStepIndex={currentStepIndex}
         labelList={breadcrumbLabels}
-        onClick={jumpToStep}
       />
       <Carousel
         carouselId={carouselId}
@@ -78,6 +77,8 @@ export const ProductsPage = ({
           description={dateTimeScreen.description}
           availabilityTimeslots={dateTimeScreen.availableTimeslots}
           selectDate={selectDate}
+          goPrevStep={goPrevStep}
+          prevStepName={packages.stepName}
         />
         <LocationStep
           heading={locationScreen.heading}

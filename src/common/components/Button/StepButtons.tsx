@@ -1,30 +1,31 @@
-import React from 'react';
+import { callOnEnterKey } from '@chipp972/accessibility';
+import { css } from '@emotion/core';
 import { Button, ButtonProps } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-import { ChevronRight, ChevronLeft } from 'react-feather';
-import { css } from '@emotion/core';
+import React from 'react';
+import { ChevronLeft, ChevronRight } from 'react-feather';
 import { mediaQueries } from '../../theme';
 
-const NextStepButton: React.FC<ButtonProps> = ({ className, children, ...props }) => (
+export const NextStepButton: React.FC<ButtonProps> = ({ className, children, ...props }) => (
   <Button
-    {...props}
     variant="contained"
     color="secondary"
     className={className}
     size="large"
-    endIcon={<ChevronRight />}>
+    endIcon={<ChevronRight aria-hidden="true" />}
+    {...props}>
     {children}
   </Button>
 );
 
-const PrevStepButton: React.FC<ButtonProps> = ({ className, children, ...props }) => (
+export const PrevStepButton: React.FC<ButtonProps> = ({ className, children, ...props }) => (
   <Button
-    {...props}
     variant="outlined"
     color="secondary"
     className={className}
     size="large"
-    startIcon={<ChevronLeft />}>
+    startIcon={<ChevronLeft aria-hidden="true" />}
+    {...props}>
     {children}
   </Button>
 );
@@ -65,6 +66,7 @@ export const StepButtons: React.FC<Props> = ({
         type="submit"
         style={{ marginBottom: theme.spacing(1) }}
         className={nextStepClassName}
+        onKeyDown={callOnEnterKey(onNextStepClick)}
         onClick={onNextStepClick}>
         {nextStepName}
       </NextStepButton>
@@ -72,6 +74,7 @@ export const StepButtons: React.FC<Props> = ({
         type="reset"
         style={{ marginBottom: theme.spacing(1) }}
         className={prevStepClassName}
+        onKeyDown={callOnEnterKey(onPrevStepClick)}
         onClick={onPrevStepClick}>
         {prevStepName}
       </PrevStepButton>

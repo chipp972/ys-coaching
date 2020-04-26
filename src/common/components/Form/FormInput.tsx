@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import { FormControl, FormLabel, TextField, TextFieldProps } from '@material-ui/core';
 import React from 'react';
 
-type Props = TextFieldProps & InputProps & { hasBigLabel?: boolean };
+type Props = TextFieldProps & InputProps;
 
 export const FormInput: React.FC<Props> = ({
   label,
@@ -17,7 +17,6 @@ export const FormInput: React.FC<Props> = ({
   disabled,
   required,
   className,
-  hasBigLabel = false,
   ...props
 }) => {
   const { hasError } = useForm({ name, validate, errorMessage, onFieldReset, onFieldValidated });
@@ -32,15 +31,14 @@ export const FormInput: React.FC<Props> = ({
         display: flex;
         flex-direction: column;
       `}>
-      {hasBigLabel && <FormLabel htmlFor={name}>
+      <FormLabel component="legend" htmlFor={name}>
         {label}
-      </FormLabel>}
+      </FormLabel>
       <TextField
         {...props}
         error={hasError}
         id={name}
         name={name}
-        label={!hasBigLabel && label}
         variant={variant}
         disabled={disabled}
         required={required}
