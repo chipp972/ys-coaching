@@ -1,13 +1,13 @@
-import React from 'react';
-import { StepContainer } from '../StepContainer';
-import { FormInput, FormRadioGroup } from '../../../../common/components/Form';
 import { Form } from '@chipp972/form-validation';
-import { setLocation } from '../../state/products.action';
-import { useDispatch } from 'react-redux';
 import { css } from '@emotion/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { StepButtons } from '../../../../common/components/Button';
+import { FormInput, FormRadioGroup } from '../../../../common/components/Form';
 import { ProductsContext } from '../../products.context';
+import { setLocation } from '../../state/products.action';
+import { StepContainer } from '../StepContainer';
 
 type Location = {
   label: React.ReactNode;
@@ -26,7 +26,7 @@ type Props = {
 
 const useStyles = makeStyles((theme: Theme) => ({
   fieldset: {
-    marginTop: theme.spacing(2)
+    marginBottom: theme.spacing(4)
   }
 }));
 
@@ -55,7 +55,11 @@ export const LocationStep: React.FC<Props> = ({
     .concat([customPlaceOption])
     .map(({ label, address }) => ({ label, value: address }));
   return (
-    <StepContainer heading={heading} description={description}>
+    <StepContainer
+      heading={heading}
+      description={description}
+      prevStepName={prevStepName}
+      goPrevStep={goPrevStep}>
       <Form
         css={css`
           display: flex;

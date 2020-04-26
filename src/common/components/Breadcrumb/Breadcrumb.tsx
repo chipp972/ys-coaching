@@ -21,6 +21,7 @@ const MobileLabel = ({ label }) => (
 
 const BreadcrumbStepList: React.FC = ({ children }) => (
   <div
+    aria-label="Breadcrumb"
     css={css`
       display: flex;
       flex: 0 0 100%;
@@ -76,7 +77,7 @@ export const Breadcrumb: React.FC<Props> = ({
         min-height: 100px;
       }
     `}>
-    <MobileLabel label={labelList[currentStepIndex]} />
+    <MobileLabel aria-label="Current step" label={labelList[currentStepIndex]} />
     <BreadcrumbStepList>
       {labelList.map((label, index) => (
         <BreadcrumbStep

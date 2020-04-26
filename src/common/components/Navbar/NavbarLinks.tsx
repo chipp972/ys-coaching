@@ -9,7 +9,7 @@ export const NavbarLinks: React.FC = () => {
   return (
     <div className="navbar-end has-text-centered">
       <a
-        aria-label="instagram link"
+        aria-label="Y's coaching Instagram"
         className="navbar-item social-icon"
         css={css`
           :hover {

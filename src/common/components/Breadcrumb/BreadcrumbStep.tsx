@@ -42,6 +42,7 @@ const DesktopLabel: React.FC<SharedProps & { label: string }> = ({
   isDoneStep
 }) => (
   <ExtraSmallText
+    aria-label={isCurrentStep ? 'Current step' : 'Step'}
     className="desktop-label"
     css={css`
       display: none;

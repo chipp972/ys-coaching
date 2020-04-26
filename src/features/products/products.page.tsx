@@ -41,7 +41,7 @@ export const ProductsPage = ({
   confirmationScreen,
   thankYouScreen
 }) => {
-  const { currentStepIndex, goNextStep, goPrevStep, jumpToStep } = useCarousel(carouselId);
+  const { currentStepIndex, goNextStep, goPrevStep } = useCarousel(carouselId);
   const dispatch = useDispatch();
   const breadcrumbLabels: string[] = [
     packages,

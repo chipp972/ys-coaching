@@ -1,9 +1,9 @@
-import './navbar.sass';
-import React from 'react';
 import { Link } from 'gatsby';
+import React from 'react';
 import { useSiteMetadata } from '../../hook/use-site-metadata';
-import { Logo } from './Logo';
 import { HamburgerMenu } from './HamburgerMenu';
+import { Logo } from './Logo';
+import './navbar.sass';
 import { NavbarLinks } from './NavbarLinks';
 
 type Props = {

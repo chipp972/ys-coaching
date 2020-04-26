@@ -1,7 +1,7 @@
-import React from 'react';
-import { css } from '@emotion/core';
-import { colors, mediaQueries } from '../../theme';
 import { callOnEnterOrSpaceKey } from '@chipp972/accessibility';
+import { css } from '@emotion/core';
+import React from 'react';
+import { colors, mediaQueries } from '../../theme';
 
 type Props = {
   label: string;
@@ -9,6 +9,7 @@ type Props = {
   isSelected: boolean;
 };
 
+// eslint-disable-next-line max-lines-per-function
 export const TabItem: React.FC<Props> = ({ label, selectTab, isSelected }) => (
   <li
     tabIndex={isSelected ? -1 : 0}
@@ -17,7 +18,7 @@ export const TabItem: React.FC<Props> = ({ label, selectTab, isSelected }) => (
       padding-bottom: 1rem;
       margin-right: 1rem;
       text-align: center;
-      cursor: pointer;
+      cursor: ${!isSelected ? 'pointer' : 'auto'};
       outline: none;
 
       :hover,
@@ -51,10 +52,8 @@ export const TabItem: React.FC<Props> = ({ label, selectTab, isSelected }) => (
         margin-right: 0;
       }
 
-      ${isSelected &&
-        `
+      ${isSelected && `
       color: ${colors.crimson200};
-
       :after {
         width: 100%;
         background-color: ${colors.crimson200};

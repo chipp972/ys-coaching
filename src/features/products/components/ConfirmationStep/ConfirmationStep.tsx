@@ -7,7 +7,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StepButtons } from '../../../../common/components/Button';
 import { FormInput } from '../../../../common/components/Form';
-import { MediumText } from '../../../../common/theme';
 import { ProductsContext } from '../../products.context';
 import { setComment, setEmail, setFirstName, setLastName } from '../../state/products.action';
 import { getSelectedDate, getSelectedLocation, getSelectedPlan } from '../../state/products.selector';
@@ -30,8 +29,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const FilledAnswer: React.FC<{label: string; answer: string; className?: string}> = ({ label, answer, className }) => (
   <div className={className}>
-    <MediumText>{label}</MediumText>
-    <Typography color="primary">{answer}</Typography>
+    <Typography variant="body2">{label}</Typography>
+    <Typography color="primary" variant="body1">{answer}</Typography>
   </div>
 );
 
@@ -54,7 +53,11 @@ export const ConfirmationStep: React.FC<Props> = ({
   const formattedDate = !!selectedDate && format('iiii dd/MM hh:mm', selectedDate);
 
   return (
-    <StepContainer heading={heading} description={description}>
+    <StepContainer
+      heading={heading}
+      description={description}
+      prevStepName={prevStepName}
+      goPrevStep={goPrevStep}>
       <Form
         css={css`
           display: flex;
