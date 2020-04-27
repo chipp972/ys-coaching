@@ -13,7 +13,8 @@ module.exports = {
       // { name: 'FAQ', to: '/contact/examples' },
       // { name: 'Blog', to: '/blog' }
     ],
-    instagramUrl: 'https://www.instagram.com/ys_coaching_0929/'
+    instagramUrl: 'https://www.instagram.com/ys_coaching_0929/',
+    youtubeUrl: 'https://www.youtube.com/channel/UC4rp5GtHU39mmc_9AMcR2YA/featured'
   },
   plugins: [
     'gatsby-plugin-typescript',

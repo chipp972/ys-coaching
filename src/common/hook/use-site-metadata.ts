@@ -10,6 +10,7 @@ export type SiteMetadata = {
   description: string;
   routes: Route[];
   instagramUrl: string;
+  youtubeUrl: string;
 };
 
 export const useSiteMetadata = (): SiteMetadata => {
@@ -25,6 +26,7 @@ export const useSiteMetadata = (): SiteMetadata => {
               to
             }
             instagramUrl
+            youtubeUrl
           }
         }
       }
