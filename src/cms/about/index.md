@@ -62,7 +62,7 @@ part2: >-
 ---
 ### Y's coaching
 
-![](/img/img-20190924-wa0003.jpg "Me, Yuto")
+[object Object]
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut amet enim vitae ornare sed feugiat fermentum facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut amet enim vitae ornare sed feugiat fermentum facilisi.
 
