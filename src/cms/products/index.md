@@ -63,6 +63,10 @@ thankYouScreen:
   heading: Thank you
   redirectLinkLabel: Checkout my bio
   redirectLinkUrl: /about
+  redirectLink:
+    label: Checkout my bio
+    url: about
+    isInternal: true
 heading: Coaching packages
 subheading: Let's work together
 templateKey: product-page
