@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Get strong with Y's coaching
-image: /img/img-20190924-wa0002.jpg
+subtitle: Meet your strength and fitness goals
 heading: A program adapted to your needs
 subheading: Meet your strength and fitness goals
 mainpitch:
@@ -10,7 +10,6 @@ mainpitch:
     Lorem ipsum dolor sit amet, consect etur adipiscing elit. Lorem ipsum dolor
     sit amet. Lorem ipsum dolor sit amet, consect etur adipiscing elit. Lorem
     ipsum dolor sit amet. 
-description: 'Lorem ipsum dolor sit amet, consect etur adipiscing elit.'
 intro:
   blurbs:
     - text: >
@@ -50,6 +49,7 @@ intro:
     java’s origin and support the farmers that grew it. We take coffee
     production, roasting and brewing seriously and we’re glad to pass that
     knowledge to anyone. This is an edit via identity...
+full_image: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
 main:
   heading: Great coffee with no compromises
   description: >
@@ -66,5 +66,8 @@ main:
   image3:
     alt: Coffee beans
     image: /img/products-grid1.jpg
+image: /img/img-20190924-wa0002.jpg
+description: 'Lorem ipsum dolor sit amet, consect etur adipiscing elit.'
+redirectLinkLabel: Let's work together
+redirectLinkUrl: /products
 ---
-
