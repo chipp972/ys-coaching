@@ -1,8 +1,13 @@
 ---
+mainImage: /img/img-20190924-wa0003.jpg
 templateKey: about-page
 title: About
 subtitle: Hello I'm Yuto
-mainImage: /img/img-20190924-wa0003.jpg
+redirectLinkUrl: 'mailto:hello@ys-coaching.fr'
+link:
+  text: READ MORE ON MY BLOG
+  url: /blog
+redirectLinkLabel: Tell me about you and how I can help
 part1: >+
   ### Y's coaching
 
@@ -49,9 +54,6 @@ part2: >-
   risus, feugiat mattis metus viverra sed et. Et adipiscing vitae blandit felis
   purus. Est tempor eu volutpat, nulla sit velit, vitae. Aenean nulla amet
   turpis enim, imperdiet euismod eget. Tellus egestasn
-link:
-  text: READ MORE ON MY BLOG
-  url: /blog
 ---
 ### Y's coaching
 
