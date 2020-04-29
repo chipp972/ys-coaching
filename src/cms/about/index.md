@@ -4,6 +4,10 @@ templateKey: about-page
 title: About
 subtitle: Hello I'm Yuto
 redirectLinkUrl: 'mailto:hello@ys-coaching.fr'
+redirectLink:
+  isInternal: false
+  label: Tell me about you and how can I help
+  url: 'mailto:hello@ys-coaching.fr'
 link:
   text: READ MORE ON MY BLOG
   url: /blog
