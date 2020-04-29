@@ -3,14 +3,15 @@ mainImage: /img/img-20190924-wa0003.jpg
 templateKey: about-page
 title: About
 subtitle: Hello I'm Yuto
-redirectLinkUrl: 'mailto:hello@ys-coaching.fr'
 redirectLink:
   isInternal: false
   label: Tell me about you and how can I help
   url: 'mailto:hello@ys-coaching.fr'
+redirectLinkUrl: 'mailto:hello@ys-coaching.fr'
 link:
   text: READ MORE ON MY BLOG
   url: /blog
+image: /img/alora-griffiths-bnrqnvtzxio-unsplash.jpg
 redirectLinkLabel: Tell me about you and how I can help
 part1: >+
   ### Y's coaching
