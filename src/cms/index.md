@@ -50,6 +50,10 @@ intro:
     production, roasting and brewing seriously and we’re glad to pass that
     knowledge to anyone. This is an edit via identity...
 full_image: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
+redirectLink:
+  label: Let's work together
+  url: products
+  isInternal: true
 main:
   heading: Great coffee with no compromises
   description: >
