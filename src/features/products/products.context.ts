@@ -47,7 +47,22 @@ export const ProductsContext = React.createContext({
   confirmationScreen: {
     stepName: 'Confirmation',
     heading: 'IS EVERYTHING OK FOR YOU ?',
-    description: ''
+    description: '',
+    contribution: {
+      planChoiceLabel: '',
+      dateChoiceLabel: '',
+      locationChoiceLabel: '',
+      validationButtonLabel: '',
+      emailLabel: '',
+      emailPlaceholder: '',
+      firstNameLabel: '',
+      firstNamePlaceholder: '',
+      lastNameLabel: '',
+      lastNamePlaceholder: '',
+      additionalInfoLabel: '',
+      additionalInfoPlaceholder: '',
+      requiredErrorMessage: ''
+    }
   },
   thankYouScreen: {
     stepName: 'Schedule our meeting',

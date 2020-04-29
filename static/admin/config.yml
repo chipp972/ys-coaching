@@ -118,7 +118,22 @@ collections:
           - {label: "Confirmation screen", name: "confirmationScreen", widget: "object", fields: [
               {label: "Step name", name: "stepName", widget: "string"},
               {label: "Heading", name: "heading", widget: "string"},
-              {label: "Description", name: "description", widget: "text", required: false, default: ''}
+              {label: "Description", name: "description", widget: "text", required: false, default: ''},
+              {label: "Labels", name: "contribution", widget: "object", fields: [
+                {label: "Plan choice label", name: "planChoiceLabel", widget: "string", default: 'Plan chosen'},
+                {label: "Date choice label", name: "dateChoiceLabel", widget: "string", default: 'Date'},
+                {label: "Location choice label", name: "locationChoiceLabel", widget: "string", default: 'Place'},
+                {label: "Validation button label", name: "validationButtonLabel", widget: "string", default: 'Schedule our meeting'},
+                {label: "Email label", name: "emailLabel", widget: "string", default: 'Email'},
+                {label: "Email placeholder", name: "emailPlaceholder", widget: "string", default: 'john.doe@gmail.com'},
+                {label: "Firstname label", name: "firstNameLabel", widget: "string", default: 'First name'},
+                {label: "Firstname placeholder", name: "firstNamePlaceholder", widget: "string", default: 'John'},
+                {label: "Lastname label", name: "lastNameLabel", widget: "string", default: 'Last name'},
+                {label: "Lastname placeholder", name: "lastNamePlaceholder", widget: "string", default: 'Doe'},
+                {label: "Additional informations label", name: "additionalInfoLabel", widget: "string", default: 'Any questions or note ?'},
+                {label: "Additional informations placeholder", name: "additionalInfoPlaceholder", widget: "string", default: 'Feel free to ask any question here'},
+                {label: "Required field error message", name: "requiredErrorMessage", widget: "text", default: 'You must answer here'}
+              ]},
             ]}
           - {label: "Thank you screen", name: "thankYouScreen", widget: "object", fields: [
               {label: "Heading", name: "heading", widget: "string"},

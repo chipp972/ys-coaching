@@ -126,6 +126,21 @@ export const productPageQuery = graphql`
           stepName
           heading
           description
+          contribution {
+            planChoiceLabel
+            dateChoiceLabel
+            locationChoiceLabel
+            validationButtonLabel
+            emailLabel
+            emailPlaceholder
+            firstNameLabel
+            firstNamePlaceholder
+            lastNameLabel
+            lastNamePlaceholder
+            additionalInfoLabel
+            additionalInfoPlaceholder
+            requiredErrorMessage
+          }
         }
         thankYouScreen {
           heading

@@ -28,17 +28,16 @@ const FilledAnswer: React.FC<{label: string; answer: string; className?: string}
 // eslint-disable-next-line max-lines-per-function
 export const ConfirmationStep: React.FC = () => {
   const dispatch = useDispatch();
-  const { locationScreen, goNextStep, goPrevStep, prevStep } = useProductsContext();
+  const { goNextStep, goPrevStep, prevStep, confirmationScreen } = useProductsContext();
   const selectedLocation = useSelector(getSelectedLocation);
   const selectedPlan = useSelector(getSelectedPlan);
   const selectedDate = useSelector(getSelectedDate);
   const classes = useStyles();
 
-  const formattedDate = !!selectedDate && format('iiii dd/MM hh:mm', selectedDate);
-
-  // TODO: put in contrib
-  const validationButtonLabel = 'SCHEDULE OUR MEETING';
-  // TODO: add contrib in confirmation screen instead and use it
+  const formattedDate = React.useMemo(
+    () => !!selectedDate && format('iiii dd/MM hh:mm', selectedDate),
+    [selectedDate]
+  );
 
   return (
     <StepContainer>
@@ -58,59 +57,59 @@ export const ConfirmationStep: React.FC = () => {
         }}>
         <FilledAnswer
           className={classes.fieldset}
-          label="Plan chosen"
+          label={confirmationScreen.contribution.planChoiceLabel}
           answer={selectedPlan}
         />
 
         <FilledAnswer
           className={classes.fieldset}
-          label="Date"
+          label={confirmationScreen.contribution.dateChoiceLabel}
           answer={formattedDate}
         />
 
         <FilledAnswer
           className={classes.fieldset}
-          label="Location"
+          label={confirmationScreen.contribution.locationChoiceLabel}
           answer={selectedLocation}
         />
 
         <FormInput
           className={classes.fieldset}
-          label={locationScreen.contribution.customerPlaceLabel}
+          label={confirmationScreen.contribution.emailLabel}
+          placeholder={confirmationScreen.contribution.emailPlaceholder}
+          errorMessage={confirmationScreen.contribution.requiredErrorMessage}
           name="email"
           type="email"
-          placeholder={locationScreen.contribution.customerPlacePlaceholder}
-          errorMessage={locationScreen.contribution.customerPlaceError}
           margin="dense"
           required
         />
 
         <FormInput
           className={classes.fieldset}
-          label={locationScreen.contribution.customerPlaceLabel}
+          label={confirmationScreen.contribution.firstNameLabel}
+          placeholder={confirmationScreen.contribution.firstNamePlaceholder}
+          errorMessage={confirmationScreen.contribution.requiredErrorMessage}
           name="firstName"
-          placeholder={locationScreen.contribution.customerPlacePlaceholder}
-          errorMessage={locationScreen.contribution.customerPlaceError}
           margin="dense"
           required
         />
 
         <FormInput
           className={classes.fieldset}
-          label={locationScreen.contribution.customerPlaceLabel}
+          label={confirmationScreen.contribution.lastNameLabel}
+          placeholder={confirmationScreen.contribution.lastNamePlaceholder}
+          errorMessage={confirmationScreen.contribution.requiredErrorMessage}
           name="lastName"
-          placeholder={locationScreen.contribution.customerPlacePlaceholder}
-          errorMessage={locationScreen.contribution.customerPlaceError}
           margin="dense"
           required
         />
 
         <FormInput
           className={classes.fieldset}
-          label={locationScreen.contribution.customerPlaceLabel}
+          label={confirmationScreen.contribution.additionalInfoLabel}
+          placeholder={confirmationScreen.contribution.additionalInfoPlaceholder}
+          errorMessage={confirmationScreen.contribution.requiredErrorMessage}
           name="additionalInformations"
-          placeholder={locationScreen.contribution.customerPlacePlaceholder}
-          errorMessage={locationScreen.contribution.customerPlaceError}
           margin="dense"
           multiline
         />
@@ -119,7 +118,7 @@ export const ConfirmationStep: React.FC = () => {
           className={classes.fieldset}
           onPrevStepClick={goPrevStep}
           prevStepName={prevStep?.stepName}
-          nextStepName={validationButtonLabel}
+          nextStepName={confirmationScreen.contribution.validationButtonLabel}
         />
       </Form>
     </StepContainer>
