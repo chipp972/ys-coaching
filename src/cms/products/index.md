@@ -61,6 +61,8 @@ thankYouScreen:
     Yuto
   image: /img/apple-touch-icon.png
   heading: Thank you
+  redirectLinkLabel: Checkout my bio
+  redirectLinkUrl: /about
 heading: Coaching packages
 subheading: Let's work together
 templateKey: product-page
