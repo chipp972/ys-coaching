@@ -39,6 +39,19 @@ confirmationScreen:
     Merci de confirmer toutes les informations saisie et d’indiquer une adresse
     mail ainsi que vos noms et prénoms afin de recevoir l’email de confirmation
     et pour que nous puissions vous recontacter.
+  contribution:
+    dateChoiceLabel: Date
+    validationButtonLabel: Schedule our meeting
+    lastNamePlaceholder: Doe
+    lastNameLabel: Lastname
+    emailPlaceholder: john.doe@gmail.com
+    emailLabel: Email
+    firstNamePlaceholder: John
+    firstNameLabel: Firstname
+    additionalInfoPlaceholder: Feel free to ask any question or tell me more about you
+    requiredErrorMessage: Please provide an answer
+    locationChoiceLabel: Location
+    additionalInfoLabel: Any question ?
 thankYouScreen:
   content: |-
     Un email de confirmation vient de vous être envoyé.
