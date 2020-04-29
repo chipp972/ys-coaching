@@ -42,6 +42,7 @@ confirmationScreen:
   contribution:
     dateChoiceLabel: Date
     validationButtonLabel: Schedule our meeting
+    planChoiceLabel: Plan chosen
     lastNamePlaceholder: Doe
     lastNameLabel: Lastname
     emailPlaceholder: john.doe@gmail.com
