@@ -69,6 +69,8 @@ export const ProductsContext = React.createContext({
     heading: 'Thank you',
     description: '',
     content: '',
-    image: null
+    image: null,
+    redirectLinkLabel: 'Checkout my bio',
+    redirectLinkUrl: '/'
   }
 });

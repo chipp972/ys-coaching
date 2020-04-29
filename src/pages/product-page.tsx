@@ -152,6 +152,8 @@ export const productPageQuery = graphql`
               }
             }
           }
+          redirectLinkLabel
+          redirectLinkUrl
         }
       }
     }

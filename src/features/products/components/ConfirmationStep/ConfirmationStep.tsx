@@ -1,6 +1,6 @@
 import { Form } from '@chipp972/form-validation';
 import { css } from '@emotion/core';
-import { Typography } from '@material-ui/core';
+import { FormLabel, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import format from 'date-fns/fp/format';
 import React from 'react';
@@ -14,14 +14,16 @@ import { StepContainer } from '../StepContainer';
 
 const useStyles = makeStyles((theme: Theme) => ({
   fieldset: {
-    marginTop: theme.spacing(2)
+    flexGrow: 1,
+    marginTop: theme.spacing(2),
+    marginRight: theme.spacing(2)
   }
 }));
 
 const FilledAnswer: React.FC<{label: string; answer: string; className?: string}> = ({ label, answer, className }) => (
   <div className={className}>
-    <Typography variant="body2">{label}</Typography>
-    <Typography color="primary" variant="body1">{answer}</Typography>
+    <FormLabel component="p">{label}</FormLabel>
+    <Typography color="primary" variant="h6" component="p">{answer}</Typography>
   </div>
 );
 
@@ -84,25 +86,30 @@ export const ConfirmationStep: React.FC = () => {
           required
         />
 
-        <FormInput
-          className={classes.fieldset}
-          label={confirmationScreen.contribution.firstNameLabel}
-          placeholder={confirmationScreen.contribution.firstNamePlaceholder}
-          errorMessage={confirmationScreen.contribution.requiredErrorMessage}
-          name="firstName"
-          margin="dense"
-          required
-        />
+        <div css={css`
+          display: flex;
+          justify-content: space-between;
+        `}>
+          <FormInput
+            className={classes.fieldset}
+            label={confirmationScreen.contribution.firstNameLabel}
+            placeholder={confirmationScreen.contribution.firstNamePlaceholder}
+            errorMessage={confirmationScreen.contribution.requiredErrorMessage}
+            name="firstName"
+            margin="dense"
+            required
+          />
 
-        <FormInput
-          className={classes.fieldset}
-          label={confirmationScreen.contribution.lastNameLabel}
-          placeholder={confirmationScreen.contribution.lastNamePlaceholder}
-          errorMessage={confirmationScreen.contribution.requiredErrorMessage}
-          name="lastName"
-          margin="dense"
-          required
-        />
+          <FormInput
+            className={classes.fieldset}
+            label={confirmationScreen.contribution.lastNameLabel}
+            placeholder={confirmationScreen.contribution.lastNamePlaceholder}
+            errorMessage={confirmationScreen.contribution.requiredErrorMessage}
+            name="lastName"
+            margin="dense"
+            required
+          />
+        </div>
 
         <FormInput
           className={classes.fieldset}

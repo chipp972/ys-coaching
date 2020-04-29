@@ -8,10 +8,10 @@ export const theme = createMuiTheme({
   palette: {
     type: 'dark',
     primary: {
-      main: colors.crimson200
+      main: colors.gray200
     },
     secondary: {
-      main: colors.gray200
+      main: colors.crimson200
     },
     success: {
       main: colors.success

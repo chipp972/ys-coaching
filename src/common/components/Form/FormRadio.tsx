@@ -60,7 +60,7 @@ export const FormRadioGroup: React.FC<Props> = ({
             key={option.value}
             value={option.value}
             label={option.label}
-            control={<Radio required color="primary" />}
+            control={<Radio required color="secondary" />}
           />
         ))}
       </RadioGroup>

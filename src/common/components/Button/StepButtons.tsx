@@ -9,7 +9,7 @@ import { mediaQueries } from '../../theme';
 export const NextStepButton: React.FC<ButtonProps> = ({ className, children, ...props }) => (
   <Button
     variant="contained"
-    color="secondary"
+    color="primary"
     className={className}
     size="large"
     endIcon={<ChevronRight aria-hidden="true" />}
@@ -21,7 +21,7 @@ export const NextStepButton: React.FC<ButtonProps> = ({ className, children, ...
 export const PrevStepButton: React.FC<ButtonProps> = ({ className, children, ...props }) => (
   <Button
     variant="outlined"
-    color="secondary"
+    color="primary"
     className={className}
     size="large"
     startIcon={<ChevronLeft aria-hidden="true" />}

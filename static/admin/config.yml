@@ -138,5 +138,7 @@ collections:
           - {label: "Thank you screen", name: "thankYouScreen", widget: "object", fields: [
               {label: "Heading", name: "heading", widget: "string"},
               {label: "Content", name: "content", widget: "text"},
-              {label: "Image", name: "image", widget: "image"}
+              {label: "Image", name: "image", widget: "image"},
+              {label: "Redirect link label", name: "redirectLinkLabel", widget: "string", default: 'Checkout my bio'},
+              {label: "Redirect link url", name: "redirectLinkUrl", widget: "string", default: '/about'}
             ]}
