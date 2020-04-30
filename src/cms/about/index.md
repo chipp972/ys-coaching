@@ -62,7 +62,7 @@ part2: >-
 ---
 ### Y's coaching
 
-<img class="md-image--left" src="/img/img-20190924-wa0003.jpg" alt="Me, Yuto" title="Me, Yuto" />
+![Yuto preparing for a hard squat session](/img/img-20190924-wa0003.jpg#left "Me, Yuto"
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut amet enim vitae ornare sed feugiat fermentum facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut amet enim vitae ornare sed feugiat fermentum facilisi.
 
