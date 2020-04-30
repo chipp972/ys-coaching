@@ -1,22 +1,24 @@
 import { css } from '@emotion/core';
+import { Typography } from '@material-ui/core';
 import React from 'react';
-import { colors, mediaQueries, MediumText } from '../../theme';
+import { colors, mediaQueries } from '../../theme';
 import { borderSize, stepSize } from './Breadcrumb.constant';
 import { BreadcrumbStep } from './BreadcrumbStep';
 
 const MobileLabel = ({ label }) => (
-  <MediumText
+  <Typography
+    variant="body1"
     css={css`
       text-align: center;
       font-weight: 500;
-      margin-bottom: 15px;
+      margin-bottom: 1.5rem;
 
       ${mediaQueries.fromTablet} {
         display: none;
       }
     `}>
     {label}
-  </MediumText>
+  </Typography>
 );
 
 const BreadcrumbStepList: React.FC = ({ children }) => (

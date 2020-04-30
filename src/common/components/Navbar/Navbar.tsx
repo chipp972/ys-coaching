@@ -1,10 +1,10 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { useSiteMetadata } from '../../hook/use-site-metadata';
+import { SocialLinks } from '../SocialLinks';
 import { HamburgerMenu } from './HamburgerMenu';
 import { Logo } from './Logo';
 import './navbar.sass';
-import { NavbarLinks } from './NavbarLinks';
 
 type Props = {
   pathname: string;
@@ -41,7 +41,9 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
               </Link>
             ))}
           </div>
-          <NavbarLinks />
+          <div className="navbar-end has-text-centered">
+            <SocialLinks />
+          </div>
         </div>
       </div>
     </nav>

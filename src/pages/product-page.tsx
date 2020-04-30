@@ -152,6 +152,11 @@ export const productPageQuery = graphql`
               }
             }
           }
+          redirectLink {
+            label
+            url
+            isInternal
+          }
           redirectLinkLabel
           redirectLinkUrl
         }

@@ -42,6 +42,19 @@ export const theme = createMuiTheme({
         lineHeight: 1.5
       }
     },
+    h3: {
+      fontSize: '3.2rem',
+      fontWeight: 100,
+      letterSpacing: 2,
+      lineHeight: 1.2,
+      textTransform: 'uppercase',
+      textAlign: 'center',
+      [mediaQueries.fromTablet]: {
+        fontSize: '3.6rem',
+        lineHeight: 1.5,
+        textAlign: 'left'
+      }
+    },
     htmlFontSize: 10
   }
 });

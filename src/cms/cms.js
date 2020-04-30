@@ -8,15 +8,16 @@ import { AboutPagePreview } from '../features/about/about.preview';
 import { BlogPostPreview } from '../features/blog/blog.preview';
 import { IndexPagePreview } from '../features/home/home.preview';
 import { ProductPagePreview } from '../features/products/products.preview';
+import { BetterMarkdownImage } from './better-markdown-image';
 
 CMS.registerMediaLibrary(uploadcare);
 CMS.registerMediaLibrary(cloudinary);
 
+CMS.registerEditorComponent(BetterMarkdownImage);
+
 const PreviewWrapper = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <CSSInjector>
-      {children}
-    </CSSInjector>
+    <CSSInjector>{children}</CSSInjector>
   </ThemeProvider>
 );
 

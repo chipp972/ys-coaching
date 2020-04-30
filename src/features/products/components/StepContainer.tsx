@@ -4,12 +4,15 @@ import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
 import React from 'react';
 import { PrevStepButton } from '../../../common/components/Button';
 import { Section } from '../../../common/layout';
-import { SectionTitle } from '../../../common/theme';
+import { colors } from '../../../common/theme';
 import { useProductsContext } from '../products.hook';
 
 const useStyles = makeStyles((theme: Theme) => ({
   description: {
     marginBottom: theme.spacing(5)
+  },
+  sectionTitle: {
+    color: colors.white
   }
 }));
 
@@ -34,7 +37,7 @@ export const StepContainer: React.FC = ({ children }) => {
           </PrevStepButton>
         </div>
       )}
-      <SectionTitle>{currentStep?.heading}</SectionTitle>
+      <Typography className={classes.sectionTitle} variant="h3">{currentStep?.heading}</Typography>
       {currentStep?.description && (
         <Typography className={classes.description} variant="body2">
           {currentStep?.description}

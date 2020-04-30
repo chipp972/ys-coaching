@@ -51,6 +51,11 @@ collections:
           - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Title, name: title, widget: string}, {label: Text, name: text, widget: text}]}]}
           - {label: Full_image, name: full_image, widget: image}
           - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
+          - {label: "Redirect link", name: "redirectLink", widget: "object", fields: [
+              {label: "Label", name: "label", widget: "string"},
+              {label: "Url", name: "url", widget: "string"},
+              {label: "Internal link", name: "isInternal", widget: "boolean"}
+            ]}
 
       - file: "src/cms/about/index.md"
         label: "About"
@@ -59,10 +64,13 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Subtitle", name: "subtitle", widget: "string"}
-          - {label: "Main image", name: "mainImage", widget: "image"}
-          - {label: "Part1", name: "part1", widget: "text"}
-          - {label: "Part2", name: "part2", widget: "text"}
-          - {label: Link, name: link, widget: object, fields: [{label: Text, name: text, widget: string}, {label: URL, name: url, widget: string}]}
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Redirect link", name: "redirectLink", widget: "object", fields: [
+              {label: "Label", name: "label", widget: "string"},
+              {label: "Url", name: "url", widget: "string"},
+              {label: "Internal link", name: "isInternal", widget: "boolean"}
+            ]}
 
       - file: "src/cms/products/index.md"
         label: "Products Page"
@@ -139,6 +147,9 @@ collections:
               {label: "Heading", name: "heading", widget: "string"},
               {label: "Content", name: "content", widget: "text"},
               {label: "Image", name: "image", widget: "image"},
-              {label: "Redirect link label", name: "redirectLinkLabel", widget: "string", default: 'Checkout my bio'},
-              {label: "Redirect link url", name: "redirectLinkUrl", widget: "string", default: '/about'}
+              {label: "Redirect link", name: "redirectLink", widget: "object", fields: [
+                {label: "Label", name: "label", widget: "string"},
+                {label: "Url", name: "url", widget: "string"},
+                {label: "Internal link", name: "isInternal", widget: "boolean"}
+              ]}
             ]}

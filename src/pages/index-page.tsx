@@ -1,8 +1,8 @@
-import React from 'react';
 import { graphql } from 'gatsby';
+import React from 'react';
+import { GatsbyImage } from '../common/helpers/gatsby';
 import { Page } from '../common/layout';
 import { HomePage } from '../features/home/home.page';
-import { GatsbyImage } from '../common/helpers/gatsby';
 
 type Props = {
   location: {pathname: string};
@@ -74,6 +74,11 @@ export const pageQuery = graphql`
           }
           heading
           description
+        }
+        redirectLink {
+          label
+          url
+          isInternal
         }
       }
     }

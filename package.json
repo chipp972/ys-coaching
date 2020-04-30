@@ -12,7 +12,7 @@
     "format": "prettier --write \"{gatsby-*.js,src/**/*.{js,ts,tsx}}\"",
     "lint": "eslint \"{gatsby-*.js,src/**/*.{js,ts,tsx}}\"",
     "typecheck": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
@@ -36,6 +36,7 @@
     "babel-preset-gatsby": "^0.3.1",
     "bufferutil": "^4.0.1",
     "bulma": "^0.8.1",
+    "clsx": "^1.1.0",
     "codemirror": "^5.52.2",
     "date-fns": "^2.11.1",
     "eslint": "^6.8.0",
@@ -77,5 +78,8 @@
     "swipe-js-iso": "^2.1.5",
     "typescript": "^3.8.3",
     "utf-8-validate": "^5.0.2"
+  },
+  "devDependencies": {
+    "jest": "^25.5.2"
   }
 }

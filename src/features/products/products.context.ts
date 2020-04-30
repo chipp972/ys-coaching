@@ -70,7 +70,10 @@ export const ProductsContext = React.createContext({
     description: '',
     content: '',
     image: null,
-    redirectLinkLabel: 'Checkout my bio',
-    redirectLinkUrl: '/'
+    redirectLink: {
+      label: '',
+      url: '',
+      isInternal: true
+    }
   }
 });

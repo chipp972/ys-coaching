@@ -1,10 +1,12 @@
 import { css } from '@emotion/core';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import React from 'react';
-import { PrimaryButton } from '../../common/components/Button';
+import { RedirectLink } from '../../common/components/Button';
 import { GatsbyImage } from '../../common/helpers/gatsby';
-import { SectionTitle } from '../../common/theme';
-import { FeatureCard, FeatureCardProps } from './components/FeatureCard/FeatureCard';
-import { HomeParallax } from './components/HomeParallax/HomeParallax';
+import { PageContent, Section } from '../../common/layout';
+import { FeatureCard, FeatureCardProps } from './components/FeatureCard';
+import { HomeParallax } from './components/HomeParallax';
+import { HomeSection } from './components/HomeSection';
 
 type Props = {
   image: GatsbyImage;
@@ -21,6 +23,16 @@ type Props = {
   };
 };
 
+const useStyles = makeStyles(() => ({
+  mainCta: {
+    fontSize: '3rem',
+    borderWidth: '3px',
+    '&:hover': {
+      borderWidth: '3px'
+    }
+  }
+}));
+
 export const HomePage: React.FC<Props> = ({
   image,
   title,
@@ -29,42 +41,35 @@ export const HomePage: React.FC<Props> = ({
   mainpitch,
   description,
   intro
-}) => (
-  <div>
-    <HomeParallax image={image} title={title} subtitle={subheading} />
-    <section>
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-12">
-              <div className="tile">
-                <SectionTitle>{mainpitch.title}</SectionTitle>
-              </div>
-              <div className="tile">
-                <p>{mainpitch.description}</p>
-              </div>
-            </div>
-          </div>
-          <div className="columns">
-            <div className="column is-12">
-              <SectionTitle>{heading}</SectionTitle>
-              <p>{description}</p>
-            </div>
-          </div>
-          <div className="columns is-multiline">
+}) => {
+  const theme = useTheme();
+  const { mainCta } = useStyles();
+  // TODO: put in contrib
+  const redirectLink = {
+    url: '/products',
+    label: 'See all services',
+    isInternal: true
+  };
+  return (
+    <>
+      <HomeParallax image={image} title={title} subtitle={subheading} />
+      <PageContent>
+        <Section>
+          <HomeSection title={mainpitch.title} content={mainpitch.description} />
+          <HomeSection title={heading} content={description} />
+          <div
+            css={css`
+              display: flex;
+              flex-flow: row wrap;
+              justify-content: center;
+            `}>
             {intro.blurbs.map((featureData, index) => (
               <FeatureCard key={index} {...featureData} />
             ))}
           </div>
-          <div css={css`
-            display: flex;
-            justify-content: center;
-            margin-top: 5rem;
-          `}>
-            <PrimaryButton to="/products">See all services</PrimaryButton>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-);
+          <RedirectLink {...redirectLink} />
+        </Section>
+      </PageContent>
+    </>
+  );
+};

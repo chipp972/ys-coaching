@@ -1,25 +1,32 @@
-import React from 'react';
 import { graphql } from 'gatsby';
-import { Page, HTMLContent } from '../common/layout';
+import React from 'react';
+import { HTMLContent, Page } from '../common/layout';
+import { AboutContext } from '../features/about/about.context';
 import { AboutPage } from '../features/about/about.page';
 
 type Props = {
-  location: {pathname: string};
+  location: { pathname: string };
   data: any;
 };
 
 const About: React.FC<Props> = ({ data, location }) => {
-  const { markdownRemark: post } = data;
+  const { markdownRemark } = data;
+  const { title, subtitle, image } = markdownRemark.frontmatter;
+  const context = {
+    ...markdownRemark.frontmatter,
+    content: markdownRemark.html
+  };
 
   return (
-    <Page pathname={location.pathname}>
-      <AboutPage
-        ContentComponent={HTMLContent}
-        title={post.frontmatter.title}
-        subtitle={post.frontmatter.subtitle}
-        mainImage={post.frontmatter.mainImage}
-        content={post.html}
-      />
+    <Page
+      pathname={location.pathname}
+      title={title}
+      subtitle={subtitle}
+      image={image}
+      hasHeadlineBanner>
+      <AboutContext.Provider value={context}>
+        <AboutPage ContentComponent={HTMLContent} />
+      </AboutContext.Provider>
     </Page>
   );
 };
@@ -33,18 +40,17 @@ export const aboutPageQuery = graphql`
       frontmatter {
         title
         subtitle
-        part1
-        part2
-        link {
-          text
-          url
-        }
-        mainImage {
+        image {
           childImageSharp {
-            fluid(maxWidth: 500, quality: 100) {
+            fluid(maxWidth: 2048, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        redirectLink {
+          label
+          url
+          isInternal
         }
       }
     }

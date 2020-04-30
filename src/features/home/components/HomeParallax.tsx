@@ -2,10 +2,9 @@ import { css } from '@emotion/core';
 import { Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React from 'react';
-import { GatsbyImage, getImageSrc } from '../../../../common/helpers/gatsby';
-import { navbarHeight } from '../../../../common/layout';
-import { colors, mediaQueries } from '../../../../common/theme';
-import { Subtitle } from './Subtitle';
+import { GatsbyImage, getImageSrc } from '../../../common/helpers/gatsby';
+import { navbarHeight } from '../../../common/layout';
+import { colors, mediaQueries } from '../../../common/theme';
 
 type Props = {
   image: GatsbyImage;
@@ -21,6 +20,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: 'uppercase',
     textAlign: 'center',
     backgroundColor: colors.shadow
+  },
+  subtitle: {
+    fontWeight: 100,
+    color: colors.gray50,
+    textAlign: 'center',
+    backgroundColor: colors.shadow,
+    padding: theme.spacing(2)
   }
 }));
 
@@ -56,7 +62,7 @@ export const HomeParallax: React.FC<Props> = ({ image, title, subtitle }) => {
         flex-direction: column;
       `}>
       <Typography className={classes.title} variant="h1">{title}</Typography>
-      {subtitle && <Subtitle>{subtitle}</Subtitle>}
+      {subtitle && <Typography className={classes.subtitle} variant="h4" component="h2">{subtitle}</Typography>}
     </div>
   </div>);
  };

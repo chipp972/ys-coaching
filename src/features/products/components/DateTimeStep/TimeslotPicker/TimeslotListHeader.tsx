@@ -1,10 +1,10 @@
 import { css } from '@emotion/core';
-import { TableCell, TableHead, TableRow } from '@material-ui/core';
+import { TableCell, TableHead, TableRow, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import format from 'date-fns/fp/format';
 import parseISO from 'date-fns/fp/parseISO';
 import React from 'react';
-import { colors, MediumText } from '../../../../../common/theme';
+import { colors } from '../../../../../common/theme';
 
 type Props = {
   dateList: string[];
@@ -34,8 +34,8 @@ export const TimeslotListHeader: React.FC<Props> = ({ dateList }) => {
               text-align: center;
               color: ${colors.gray900};
             `}>
-              <MediumText>{format('iiii', date)}</MediumText>
-              <MediumText>{format('dd/MM', date)}</MediumText>
+              <Typography variant="body2">{format('iiii', date)}</Typography>
+              <Typography variant="body1">{format('dd/MM', date)}</Typography>
             </div>
           </TableCell>
         ))}

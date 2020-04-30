@@ -1,7 +1,8 @@
 import { css } from '@emotion/core';
+import { Typography } from '@material-ui/core';
 import React from 'react';
 import { Check as DoneIcon, RefreshCw as CurrentStepIcon } from 'react-feather';
-import { animation, colors, ExtraSmallText, mediaQueries } from '../../theme';
+import { animation, colors, mediaQueries } from '../../theme';
 import { borderSize, stepSize } from './Breadcrumb.constant';
 
 const getIconStyle = ({
@@ -41,7 +42,8 @@ const DesktopLabel: React.FC<SharedProps & { label: string }> = ({
   isCurrentStep,
   isDoneStep
 }) => (
-  <ExtraSmallText
+  <Typography
+    variant="body2"
     aria-label={isCurrentStep ? 'Current step' : 'Step'}
     className="desktop-label"
     css={css`
@@ -56,7 +58,7 @@ const DesktopLabel: React.FC<SharedProps & { label: string }> = ({
       }
     `}>
     {label}
-  </ExtraSmallText>
+  </Typography>
 );
 
 const BreadcrumbIcon: React.FC<SharedProps> = ({ isCurrentStep, isDoneStep }) => {

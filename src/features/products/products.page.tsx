@@ -2,6 +2,7 @@ import { Carousel } from '@chipp972/carousel';
 import { css } from '@emotion/core';
 import React from 'react';
 import { Breadcrumb } from '../../common/components/Breadcrumb/Breadcrumb';
+import { PageContent } from '../../common/layout';
 import { colors } from '../../common/theme';
 import { ConfirmationStep, DateTimeStep, PlanChoice, ThankYouStep } from './components';
 import { LocationStep } from './components/LocationStep/LocationStep';
@@ -34,7 +35,7 @@ export const ProductsPage = () => {
   const { breadcrumbLabels, currentStepIndex } = useProductsContext();
 
   return (
-    <div className="container">
+    <PageContent>
       <Breadcrumb
         currentStepIndex={currentStepIndex}
         labelList={breadcrumbLabels}
@@ -52,6 +53,6 @@ export const ProductsPage = () => {
         <ConfirmationStep />
         <ThankYouStep />
       </Carousel>
-    </div>
+    </PageContent>
   );
 };

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { mediaQueries } from '../theme';
 
@@ -6,18 +5,18 @@ import { mediaQueries } from '../theme';
  * Section without side padding for content that should be displayed accross
  * the full screen like images.
  */
-export const FullWidthSection: React.FC = styled.section`
-  padding: 30px 0;
+export const FullWidthSection = styled.section`
+  padding: 3rem 0;
 
   ${mediaQueries.fromTablet} {
-    padding: 50px 0;
+    padding: 5rem 0;
   }
 `;
 
 /**
  * Section of content with standardized padding.
  */
-export const Section: React.FC = styled.section`
+export const Section = styled.section`
   padding: 3rem 0.5rem;
 
   ${mediaQueries.fromTablet} {
@@ -32,14 +31,14 @@ export const Section: React.FC = styled.section`
 /**
  * Section with less top and bottom padding.
  */
-export const SubSection: React.FC = styled.section`
-  padding: 15px 5px;
+export const SubSection = styled.section`
+  padding: 1.5rem 0.5rem;
 
   ${mediaQueries.fromTablet} {
-    padding: 20px 20px;
+    padding: 2rem 2rem;
   }
 
   ${mediaQueries.fromDesktop} {
-    padding: 30px 30px;
+    padding: 3rem 3rem;
   }
 `;

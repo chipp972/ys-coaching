@@ -1,7 +1,8 @@
-import React from 'react';
 import { css } from '@emotion/core';
+import { Typography } from '@material-ui/core';
 import format from 'date-fns/fp/format';
-import { MediumText, colors, mediaQueries } from '../../../../../common/theme';
+import React from 'react';
+import { colors, mediaQueries } from '../../../../../common/theme';
 
 const formatHours = format('HH:mm');
 
@@ -36,9 +37,9 @@ export const Timeslot: React.FC<Props> = ({ value, onClick, isSelected }) => (
       background-color: ${colors.crimson200};
     `}
   `}>
-    <MediumText css={css`
+    <Typography variant="body2" css={css`
       color: ${colors.black};
       font-weight: 600;
-    `}>{formatHours(value)}</MediumText>
+    `}>{formatHours(value)}</Typography>
   </button>
 );

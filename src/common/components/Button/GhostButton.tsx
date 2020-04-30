@@ -1,16 +1,15 @@
-import { Button, Theme } from '@material-ui/core';
+import { Button, ButtonProps, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import clsx from 'clsx';
 import { Link } from 'gatsby';
 import React from 'react';
 
 type Props = {
   type?: 'reset' | 'button' | 'submit';
-  theme?: 'crimson' | 'light';
-  size?: 'medium' | 'big';
   className?: string;
-  to?: string;
-  onClick?: () => void;
-} & React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>;
+  isInternal?: boolean;
+  url?: string;
+} & ButtonProps;
 
 const useStyles = makeStyles((theme: Theme) => ({
   primaryButton: {
@@ -20,17 +19,33 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export const PrimaryButton: React.FC<Props> = ({ to, className = '', children, ...props }) => {
+const getProps = ({ url, isInternal }) => {
+  if (isInternal) {
+    return {
+      component: Link,
+      to: url
+    };
+  }
+  if (!!url && !isInternal) {
+    return {
+      component: 'a',
+      href: url,
+      target: '_blank'
+    };
+  }
+  return 'button';
+};
+
+export const PrimaryButton: React.FC<Props> = ({ url, isInternal, className, children, ...props }) => {
   const classes = useStyles();
   return (
     <Button
-      {...props}
-      component={!!to ? Link : 'button'}
-      to={to}
+      {...getProps({ url, isInternal })}
       variant="outlined"
       color="primary"
-      className={`${classes.primaryButton} ${className}`}
-      size="large">
+      className={clsx(classes.primaryButton, className)}
+      size="large"
+      {...props}>
       {children}
     </Button>
   );
