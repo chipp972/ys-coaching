@@ -38,8 +38,8 @@ export const Footer = () => {
         src={logoDarkSrc}
         alt="Ys coaching logo"
         css={css`
-          height: 100%;
-          width: auto;
+          height: auto;
+          width: 30rem;
         `}
       />
     </footer>

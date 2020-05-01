@@ -5,7 +5,7 @@ export const navbarHeight = {
 
 export const footerHeight = {
   mobile: '40rem',
-  fromTablet: '16rem'
+  fromTablet: '40rem'
 };
 
 export const headlineBannerHeight = {
