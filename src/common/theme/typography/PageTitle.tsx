@@ -1,8 +1,25 @@
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { colors } from '../colors';
 import { mediaQueries } from '../mediaqueries';
+
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    textAlign: 'center',
+    alignItems: 'center',
+    zIndex: 1
+  },
+  title: {
+    color: colors.white
+  },
+  subtitle: {
+    color: colors.white
+  }
+});
 
 const Title = styled.h1`
   color: ${colors.white};
@@ -35,16 +52,18 @@ type Props = {
   subtitle?: string;
 };
 
-export const PageTitle: React.FC<Props> = ({ title, subtitle }) => (
-  <div
-    css={css`
-      display: flex;
-      flex-flow: column nowrap;
-      text-align: center;
-      align-items: center;
-      z-index: 1;
-    `}>
-    <Title>{title}</Title>
-    {subtitle && <SubTitle>{subtitle}</SubTitle>}
-  </div>
-);
+export const PageTitle: React.FC<Props> = ({ title, subtitle }) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.container}>
+      <Typography className={classes.title} variant="h2" component="h1">
+        {title}
+      </Typography>
+      {subtitle && (
+        <Typography className={classes.subtitle} variant="h4" component="h2">
+          {subtitle}
+        </Typography>
+      )}
+    </div>
+  );
+};

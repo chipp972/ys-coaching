@@ -25,12 +25,14 @@ export const theme = createMuiTheme({
   },
   typography: {
     fontFamily: fontFamilies.notoSans,
+    htmlFontSize: 10,
     body1: {
       fontSize: '1.8rem'
     },
     body2: {
       fontSize: '1.6rem'
     },
+    // Alternative typo title
     h1: {
       fontFamily: fontFamilies.cinzel,
       fontSize: '4.8rem',
@@ -42,6 +44,20 @@ export const theme = createMuiTheme({
         lineHeight: 1.5
       }
     },
+    // Page title
+    h2: {
+      fontSize: '3.4rem',
+      fontWeight: 800,
+      letterSpacing: 2,
+      lineHeight: 1.5,
+      textTransform: 'uppercase',
+      textAlign: 'center',
+      [mediaQueries.fromTablet]: {
+        fontSize: '3.8rem',
+        lineHeight: 1.5
+      }
+    },
+    // Section title
     h3: {
       fontSize: '3.2rem',
       fontWeight: 100,
@@ -55,6 +71,17 @@ export const theme = createMuiTheme({
         textAlign: 'left'
       }
     },
-    htmlFontSize: 10
+    // Page Subtitle
+    h4: {
+      fontSize: '2.8rem',
+      fontWeight: 100,
+      letterSpacing: 2,
+      lineHeight: 1.2,
+      textAlign: 'center',
+      [mediaQueries.fromTablet]: {
+        fontSize: '3.2rem',
+        lineHeight: 1.5
+      }
+    }
   }
 });

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
     flexGrow: 1,
     flexShrink: 1,
-    minWidth: 300,
+    minWidth: 290,
     maxWidth: 400,
     padding: theme.spacing(1),
     margin: theme.spacing(3)
@@ -24,10 +24,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   cardImage: {
     display: 'block',
     position: 'relative',
-    width: '20%',
+    width: '50%',
     height: 'auto',
-    left: '40%',
-    paddingTop: theme.spacing(1)
+    left: '25%',
+    paddingTop: theme.spacing(3)
   },
   cardContent: {
     padding: theme.spacing(4)

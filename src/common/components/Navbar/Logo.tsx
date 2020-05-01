@@ -8,13 +8,14 @@ import { navbarHeight } from './Navbar.constant';
 
 const useStyle = makeStyles({
   logoType: {
-    fontSize: '1.2rem',
+    fontSize: '1.4rem',
     color: colors.gray500,
     textTransform: 'uppercase',
-    letterSpacing: 5,
+    letterSpacing: 3,
     transition: 'letter-spacing 0.2s ease, color 0.2s ease',
     [mediaQueries.tabletOnly]: {
-      fontSize: '1.8rem'
+      fontSize: '1.8rem',
+      letterSpacing: 5
     },
     [mediaQueries.fromDesktop]: {
       fontSize: '2rem'
@@ -39,7 +40,11 @@ export const Logo: React.FC = () => {
         &:hover {
           .logo-type {
             color: ${colors.gray50};
-            letter-spacing: 7px;
+            letter-spacing: 5px;
+
+            ${mediaQueries.fromDesktop} {
+              letter-spacing: 7px;
+            }
           }
           .logo-image {
             transform: scale(1.1);

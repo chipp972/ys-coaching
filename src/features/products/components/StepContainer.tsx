@@ -1,6 +1,5 @@
-import { css } from '@emotion/core';
 import { Typography } from '@material-ui/core';
-import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import React from 'react';
 import { PrevStepButton } from '../../../common/components/Button';
 import { Section } from '../../../common/layout';
@@ -8,30 +7,29 @@ import { colors } from '../../../common/theme';
 import { useProductsContext } from '../products.hook';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  section: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  backButtonContainer: {
+    marginBottom: theme.spacing(3)
+  },
   description: {
     marginBottom: theme.spacing(5)
   },
   sectionTitle: {
-    color: colors.white
+    color: colors.white,
+    marginBottom: theme.spacing(3)
   }
 }));
 
 export const StepContainer: React.FC = ({ children }) => {
   const classes = useStyles();
-  const theme = useTheme();
   const { prevStep, currentStep, goPrevStep } = useProductsContext();
   return (
-    <Section
-      css={css`
-        display: flex;
-        flex-direction: column;
-      `}>
+    <Section className={classes.section}>
       {prevStep?.stepName && (
-        <div
-          css={css`
-            disply: inline-block;
-            margin-bottom: ${theme.spacing(3)};
-          `}>
+        <div className={classes.backButtonContainer}>
           <PrevStepButton variant="text" onClick={goPrevStep}>
             {prevStep?.stepName}
           </PrevStepButton>

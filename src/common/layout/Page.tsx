@@ -1,14 +1,14 @@
+import { css } from '@emotion/core';
+import { ThemeProvider } from '@material-ui/core/styles';
 import React from 'react';
 import { Footer } from '../components/Footer/Footer';
-import { Navbar } from '../components/Navbar/Navbar';
-import { Meta } from './Meta';
 import { HeadlineBanner } from '../components/HeadlineBanner/HeadlineBanner';
+import { Navbar } from '../components/Navbar/Navbar';
+import { GatsbyImage } from '../helpers/gatsby';
 import { useSiteMetadata } from '../hook/use-site-metadata';
 import { mediaQueries, theme } from '../theme';
-import { navbarHeight, footerHeight } from './layout.constant';
-import { css } from '@emotion/core';
-import { GatsbyImage } from '../helpers/gatsby';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { footerHeight, navbarHeight } from './layout.constant';
+import { Meta } from './Meta';
 
 type Props = {
   pathname: string;
@@ -29,12 +29,12 @@ export const Page: React.FC<Props> = ({ children, pathname, hasHeadlineBanner, t
           css={css`
             margin-top: ${navbarHeight.mobile};
             overflow-x: hidden;
-            min-height: calc(100vh - ${footerHeight} - ${navbarHeight.mobile});
+            min-height: calc(100vh - ${footerHeight.mobile} - ${navbarHeight.mobile});
 
             ${mediaQueries.fromTablet} {
               margin-top: ${navbarHeight.fromTablet};
               min-height: calc(
-                100vh - ${footerHeight} - ${navbarHeight.fromTablet}
+                100vh - ${footerHeight.fromTablet} - ${navbarHeight.fromTablet}
               );
             }
           `}>
