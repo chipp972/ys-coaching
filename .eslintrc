@@ -8,6 +8,6 @@
     "space-before-function-paren": ["error", "never"],
     "indent": "off",
     "no-unused-expressions": "off",
-    "no-magic-number": "off"
+    "no-magic-numbers": "off"
   }
 }

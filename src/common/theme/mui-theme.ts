@@ -3,8 +3,10 @@ import { colors } from './colors';
 import { mediaQueries } from './mediaqueries';
 import { fontFamilies } from './typography/variables';
 
+const oneUnitSpace = 0.75;
+
 export const theme = createMuiTheme({
-  spacing: (factor) => `${0.75 * factor}rem`,
+  spacing: (factor) => `${oneUnitSpace * factor}rem`,
   palette: {
     type: 'dark',
     primary: {
@@ -65,6 +67,7 @@ export const theme = createMuiTheme({
       lineHeight: 1.2,
       textTransform: 'uppercase',
       textAlign: 'center',
+      margin: `${oneUnitSpace * 5}rem 0`,
       [mediaQueries.fromTablet]: {
         fontSize: '3.6rem',
         lineHeight: 1.5,

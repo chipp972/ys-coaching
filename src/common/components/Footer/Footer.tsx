@@ -4,6 +4,7 @@ import React from 'react';
 import logoDarkSrc from '../../../img/logo-dark.svg';
 import { footerHeight } from '../../layout';
 import { colors, mediaQueries } from '../../theme';
+import { BackToTopButton } from '../Button/BackToTopButton';
 import { SocialLinks } from '../SocialLinks';
 import './footer.sass';
 
@@ -29,10 +30,7 @@ export const Footer = () => {
           margin-top: ${theme.spacing(2)};
         `}>
         <SocialLinks />
-        <button onClick={() => typeof window !== 'undefined' && window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        })}>Back to top</button>
+        <BackToTopButton />
       </div>
       <img
         src={logoDarkSrc}

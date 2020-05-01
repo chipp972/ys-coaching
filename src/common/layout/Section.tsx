@@ -6,25 +6,23 @@ import { mediaQueries } from '../theme';
  * the full screen like images.
  */
 export const FullWidthSection = styled.section`
-  padding: 3rem 0;
-
-  ${mediaQueries.fromTablet} {
-    padding: 5rem 0;
-  }
+  padding: 0;
+  margin: 0;
+  width: 100vw;
 `;
 
 /**
  * Section of content with standardized padding.
  */
 export const Section = styled.section`
-  padding: 3rem 0.5rem;
+  padding: 0 0.5rem;
 
   ${mediaQueries.fromTablet} {
-    padding: 5rem 2rem;
+    padding: 0 2rem;
   }
 
   ${mediaQueries.fromDesktop} {
-    padding: 3rem 6rem;
+    padding: 0 6rem;
   }
 `;
 

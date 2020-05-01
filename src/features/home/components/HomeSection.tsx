@@ -8,18 +8,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     flexFlow: 'column nowrap',
     marginBottom: theme.spacing(2)
-  },
-  sectionTitle: {
-    marginBottom: theme.spacing(2)
   }
 }));
 
 
 export const HomeSection = ({ title, content }) => {
-  const { sectionTitle, subSection } = useStyles();
+  const { subSection } = useStyles();
   return (
     <SubSection className={subSection}>
-      <Typography variant="h3" className={sectionTitle}>
+      <Typography variant="h3">
         {title}
       </Typography>
       <Typography variant="body1">{content}</Typography>

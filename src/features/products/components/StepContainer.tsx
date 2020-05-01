@@ -18,8 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: theme.spacing(5)
   },
   sectionTitle: {
-    color: colors.white,
-    marginBottom: theme.spacing(3)
+    color: colors.white
   }
 }));
 

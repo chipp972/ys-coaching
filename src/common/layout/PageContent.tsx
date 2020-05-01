@@ -32,6 +32,7 @@ export type ContentProps = {
   className?: string;
 };
 
+// eslint-disable-next-line max-lines-per-function
 const MarkdownStyle = () => {
   const theme = useTheme();
   return (
@@ -39,9 +40,23 @@ const MarkdownStyle = () => {
       // @ts-ignore
       styles={css`
         .${markdownClassName} {
+          h1 {
+            ${theme.typography.h1}
+          }
+          h2 {
+            ${theme.typography.h2}
+          }
           h3 {
             ${theme.typography.h3}
-            margin: ${theme.spacing(5)} 0;
+          }
+          h4 {
+            ${theme.typography.h4}
+          }
+          h5 {
+            ${theme.typography.h5}
+          }
+          h6 {
+            ${theme.typography.h6}
           }
           img {
             margin-bottom: ${theme.spacing(4)};
