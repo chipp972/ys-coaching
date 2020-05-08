@@ -55,7 +55,7 @@ intro:
 full_image: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
 redirectLink:
   label: Let's work together
-  url: products
+  url: /products
   isInternal: true
 main:
   heading: Great coffee with no compromises
