@@ -6,6 +6,9 @@ mainCta:
   label: Choose a program now
   url: /products
   isInternal: true
+sections:
+  - section: home-sections
+  - section: home-sections
 heading: A program adapted to your needs
 subheading: Meet your strength and fitness goals
 mainpitch:
@@ -57,9 +60,6 @@ redirectLink:
   label: Let's work together
   url: /products
   isInternal: true
-sections:
-  - section: Become the best version of yourself
-  - section: Become the best version of yourself
 main:
   heading: Great coffee with no compromises
   description: >
