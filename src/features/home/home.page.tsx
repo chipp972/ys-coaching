@@ -1,18 +1,14 @@
 import { css } from '@emotion/core';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
 import React from 'react';
 import { RedirectLink } from '../../common/components/Button';
-import { GatsbyImage } from '../../common/helpers/gatsby';
 import { PageContent, Section } from '../../common/layout';
 import { FeatureCard, FeatureCardProps } from './components/FeatureCard';
 import { HomeParallax } from './components/HomeParallax';
 import { HomeSection } from './components/HomeSection';
+import { HomeContext } from './home.context';
 
 type Props = {
-  image: GatsbyImage;
-  title: string;
   heading: string;
-  subheading: string;
   mainpitch: {
     title: string;
     description: string;
@@ -23,36 +19,16 @@ type Props = {
   };
 };
 
-const useStyles = makeStyles(() => ({
-  mainCta: {
-    fontSize: '3rem',
-    borderWidth: '3px',
-    '&:hover': {
-      borderWidth: '3px'
-    }
-  }
-}));
-
 export const HomePage: React.FC<Props> = ({
-  image,
-  title,
   heading,
-  subheading,
   mainpitch,
   description,
   intro
 }) => {
-  const theme = useTheme();
-  const { mainCta } = useStyles();
-  // TODO: put in contrib
-  const redirectLink = {
-    url: '/products',
-    label: 'See all services',
-    isInternal: true
-  };
+  const { redirectLink } = React.useContext(HomeContext);
   return (
     <>
-      <HomeParallax image={image} title={title} subtitle={subheading} />
+      <HomeParallax />
       <PageContent>
         <Section>
           <HomeSection title={mainpitch.title} content={mainpitch.description} />

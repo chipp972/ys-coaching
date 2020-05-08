@@ -1,50 +1,118 @@
 import { css } from '@emotion/core';
+import { Button, Typography } from '@material-ui/core';
 import { ThemeProvider, useTheme } from '@material-ui/core/styles';
+import { Link } from 'gatsby';
 import React from 'react';
 import logoDarkSrc from '../../../img/logo-dark.svg';
-import { footerHeight } from '../../layout';
+import { useSiteMetadata } from '../../hook/use-site-metadata';
+import { footerHeight, logoSize } from '../../layout';
 import { colors, lightTheme, mediaQueries } from '../../theme';
 import { BackToTopButton } from '../Button/BackToTopButton';
 import { SocialLinks } from '../SocialLinks';
 import './footer.sass';
 
-export const Footer = () => {
+const FooterRouteLinks: React.FC = () => {
   const theme = useTheme();
+  const { routes } = useSiteMetadata();
   return (
-  <ThemeProvider theme={lightTheme}>
-    <footer
+    <div
       css={css`
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: ${colors.gray50};
-        height: ${footerHeight.mobile};
 
         ${mediaQueries.fromTablet} {
-          height: ${footerHeight.fromTablet};
+          margin-right: ${theme.spacing(4)};
         }
       `}>
-      <div
+      {routes.map(({ name, to }) => (
+        <Button
+          key={to}
+          css={css`
+            margin-bottom: ${theme.spacing(1)};
+          `}
+          component={Link}
+          to={to}>
+          {name}
+        </Button>
+      ))}
+    </div>
+  );
+};
+
+const SecondColumn: React.FC = () => (
+  <div
+    css={css`
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    `}>
+    <div>
+      <SocialLinks />
+    </div>
+    <div>
+      <BackToTopButton />
+    </div>
+  </div>
+);
+
+const AdditionalLinks: React.FC = () => (
+  <div
+    css={css`
+      background-color: ${colors.gray500};
+      text-align: center;
+    `}>
+    <Typography
+      variant="caption"
+      css={css`
+        color: ${colors.black};
+      `}>
+      © Yuto Coaching 2019-2021 - Mentions Légales - CGV
+    </Typography>
+  </div>
+);
+
+export const Footer: React.FC = () => {
+  const theme = useTheme();
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <footer
         css={css`
           display: flex;
           flex-direction: column;
-          margin-top: ${theme.spacing(2)};
+          align-items: center;
+          justify-content: center;
+          background-color: ${colors.gray50};
+          height: ${footerHeight.mobile};
+
+          ${mediaQueries.fromTablet} {
+            flex-direction: row;
+            height: ${footerHeight.fromTablet};
+          }
         `}>
-        <div>
-          <SocialLinks />
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+            margin-top: ${theme.spacing(2)};
+
+            ${mediaQueries.fromTablet} {
+              flex-direction: row;
+            }
+          `}>
+          <FooterRouteLinks />
+          <SecondColumn />
         </div>
-        <BackToTopButton />
-      </div>
-      <img
-        src={logoDarkSrc}
-        alt="Ys coaching logo"
-        css={css`
-          height: auto;
-          width: 30rem;
-        `}
-      />
-    </footer>
-  </ThemeProvider>
+        <img
+          src={logoDarkSrc}
+          alt="Ys coaching logo"
+          css={css`
+            height: auto;
+            width: ${logoSize.footer};
+          `}
+        />
+      </footer>
+      <AdditionalLinks />
+    </ThemeProvider>
   );
 };

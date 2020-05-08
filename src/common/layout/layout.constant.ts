@@ -3,8 +3,13 @@ export const navbarHeight = {
   fromTablet: '9.6rem'
 };
 
+export const logoSize = {
+  navbar: '40rem',
+  footer: '30rem'
+};
+
 export const footerHeight = {
-  mobile: '40rem',
+  mobile: '60rem',
   fromTablet: '40rem'
 };
 

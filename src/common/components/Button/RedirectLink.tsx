@@ -1,5 +1,6 @@
 import { ButtonProps } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import clsx from 'clsx';
 import React from 'react';
 import { PrimaryButton } from './GhostButton';
 
@@ -26,13 +27,14 @@ type Props = {
   url?: string;
   isInternal?: boolean;
   label?: string;
+  containerClass?: string;
 } & ButtonProps;
 
-export const RedirectLink: React.FC<Props> = ({ url, isInternal, label, ...props }) => {
+export const RedirectLink: React.FC<Props> = ({ containerClass, url, isInternal, label, ...props }) => {
   const { container, cta } = useStyles();
 
   return (
-    <div className={container}>
+    <div className={clsx(container, containerClass)}>
       <PrimaryButton {...props} className={cta} url={url} isInternal={isInternal}>
         {label}
       </PrimaryButton>

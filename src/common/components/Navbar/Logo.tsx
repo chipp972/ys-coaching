@@ -3,8 +3,8 @@ import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import logoSrc from '../../../img/logo.svg';
+import { logoSize, navbarHeight } from '../../layout';
 import { colors, mediaQueries } from '../../theme';
-import { navbarHeight } from './Navbar.constant';
 
 const useStyle = makeStyles({
   logoType: {
@@ -34,7 +34,7 @@ export const Logo: React.FC = () => {
         align-items: center;
 
         ${mediaQueries.fromDesktop} {
-          width: 400px;
+          width: ${logoSize.navbar};
         }
 
         &:hover {
@@ -58,8 +58,8 @@ export const Logo: React.FC = () => {
           max-height: ${navbarHeight.mobile};
           transition: transform 0.2s ease;
           ${mediaQueries.fromTablet} {
-            height: ${navbarHeight.tablet};
-            max-height: ${navbarHeight.tablet};
+            height: ${navbarHeight.fromTablet};
+            max-height: ${navbarHeight.fromTablet};
           }
         `}
         className="logo-image"
