@@ -57,6 +57,9 @@ redirectLink:
   label: Let's work together
   url: /products
   isInternal: true
+sections:
+  - section: Become the best version of yourself
+  - section: Become the best version of yourself
 main:
   heading: Great coffee with no compromises
   description: >
