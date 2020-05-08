@@ -2,14 +2,17 @@
 templateKey: index-page
 title: Get strong with Y's coaching
 subtitle: Meet your strength and fitness goals
+mainCta:
+  label: Choose a program now
+  url: /products
+  isInternal: true
 heading: A program adapted to your needs
 subheading: Meet your strength and fitness goals
 mainpitch:
   title: Why Y's Coaching
-  description: >-
-    Lorem ipsum dolor sit amet, consect etur adipiscing elit. Lorem ipsum dolor
-    sit amet. Lorem ipsum dolor sit amet, consect etur adipiscing elit. Lorem
-    ipsum dolor sit amet. 
+  description: "Lorem ipsum dolor sit amet, consect etur adipiscing elit. Lorem
+    ipsum dolor sit amet. Lorem ipsum dolor sit amet, consect etur adipiscing
+    elit. Lorem ipsum dolor sit amet. "
 intro:
   blurbs:
     - text: >
@@ -70,8 +73,8 @@ main:
   image3:
     alt: Coffee beans
     image: /img/products-grid1.jpg
-image: /img/img-20190924-wa0002.jpg
-description: 'Lorem ipsum dolor sit amet, consect etur adipiscing elit.'
-redirectLinkLabel: Let's work together
 redirectLinkUrl: /products
+image: /img/img-20190924-wa0002.jpg
+description: Lorem ipsum dolor sit amet, consect etur adipiscing elit.
+redirectLinkLabel: Let's work together
 ---

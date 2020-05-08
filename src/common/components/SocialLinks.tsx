@@ -7,17 +7,28 @@ import { useSiteMetadata } from '../hook/use-site-metadata';
 const SocialLink = ({ href, label, icon: Icon, ...props }) => (
     <IconButton
       {...props}
+      css={css`
+        padding: 0;
+        margin: 1rem;
+      `}
       aria-label={label}
       href={href}
       target="_blank"
       rel="noopener noreferrer">
-      <Icon
-        aria-hidden="true"
-        css={css`
-          width: 2.5rem;
-          height: auto;
+        <span css={css`
+          line-height: 2.4rem;
+          border-radius: 50%;
+          padding: 1rem;
         `}
-      />
+        className="social-icon">
+          <Icon
+            aria-hidden="true"
+            css={css`
+              width: 2.4rem;
+              height: auto;
+            `}
+          />
+        </span>
     </IconButton>
   );
 

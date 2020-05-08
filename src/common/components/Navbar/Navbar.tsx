@@ -2,6 +2,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
 import React from 'react';
 import { useSiteMetadata } from '../../hook/use-site-metadata';
+import { colors } from '../../theme';
 import { SocialLinks } from '../SocialLinks';
 import { HamburgerMenu } from './HamburgerMenu';
 import { Logo } from './Logo';
@@ -11,6 +12,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   socialIcons: {
     borderRadius: 0,
     '&:hover': {
+      backgroundColor: colors.transparent
+    },
+    '&:hover .social-icon': {
+      backgroundColor: theme.palette.background.paper,
       color: theme.palette.secondary.main
     }
   }
