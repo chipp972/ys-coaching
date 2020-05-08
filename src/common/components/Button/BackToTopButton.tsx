@@ -1,13 +1,9 @@
-import { css } from '@emotion/core';
+import { Button } from '@material-ui/core';
 import React from 'react';
-import { colors } from '../../theme';
 
 export const BackToTopButton = () => (
-  <button
-    css={css`
-      border: none;
-      background-color: ${colors.transparent};
-    `}
+  <Button
+    style={{ textTransform: 'none' }}
     onClick={() =>
       typeof window !== 'undefined' &&
       window.scrollTo({
@@ -16,5 +12,5 @@ export const BackToTopButton = () => (
       })
     }>
     Back to top
-  </button>
+  </Button>
 );

@@ -1,3 +1,4 @@
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
 import React from 'react';
 import { useSiteMetadata } from '../../hook/use-site-metadata';
@@ -5,6 +6,15 @@ import { SocialLinks } from '../SocialLinks';
 import { HamburgerMenu } from './HamburgerMenu';
 import { Logo } from './Logo';
 import './navbar.sass';
+
+const useStyles = makeStyles((theme: Theme) => ({
+  socialIcons: {
+    borderRadius: 0,
+    '&:hover': {
+      color: theme.palette.secondary.main
+    }
+  }
+}));
 
 type Props = {
   pathname: string;
@@ -16,6 +26,7 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
   const { routes } = useSiteMetadata();
   const [isActive, setActive] = React.useState(false);
   const isCurrentPage = (to) => to === pathname;
+  const classes = useStyles();
 
   return (
     <nav className="navbar" role="navigation" aria-label="main-navigation">
@@ -42,7 +53,7 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
             ))}
           </div>
           <div className="navbar-end has-text-centered">
-            <SocialLinks />
+            <SocialLinks className={classes.socialIcons} />
           </div>
         </div>
       </div>

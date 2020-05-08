@@ -1,7 +1,7 @@
+import { graphql, Link } from 'gatsby';
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { toKebabCase } from '../../common/helpers/to-kebab-case';
-import Helmet from 'react-helmet';
-import { Link, graphql } from 'gatsby';
 import { Page } from '../../common/layout';
 
 const TagsPage = ({

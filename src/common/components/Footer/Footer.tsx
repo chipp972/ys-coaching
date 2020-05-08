@@ -1,9 +1,9 @@
 import { css } from '@emotion/core';
-import { useTheme } from '@material-ui/core/styles';
+import { ThemeProvider, useTheme } from '@material-ui/core/styles';
 import React from 'react';
 import logoDarkSrc from '../../../img/logo-dark.svg';
 import { footerHeight } from '../../layout';
-import { colors, mediaQueries } from '../../theme';
+import { colors, lightTheme, mediaQueries } from '../../theme';
 import { BackToTopButton } from '../Button/BackToTopButton';
 import { SocialLinks } from '../SocialLinks';
 import './footer.sass';
@@ -11,6 +11,7 @@ import './footer.sass';
 export const Footer = () => {
   const theme = useTheme();
   return (
+  <ThemeProvider theme={lightTheme}>
     <footer
       css={css`
         display: flex;
@@ -27,9 +28,12 @@ export const Footer = () => {
       <div
         css={css`
           display: flex;
+          flex-direction: column;
           margin-top: ${theme.spacing(2)};
         `}>
-        <SocialLinks />
+        <div>
+          <SocialLinks />
+        </div>
         <BackToTopButton />
       </div>
       <img
@@ -41,5 +45,6 @@ export const Footer = () => {
         `}
       />
     </footer>
+  </ThemeProvider>
   );
 };

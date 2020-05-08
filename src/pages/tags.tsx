@@ -1,6 +1,6 @@
+import { graphql, Link } from 'gatsby';
 import React from 'react';
-import Helmet from 'react-helmet';
-import { Link, graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
 import { Page } from '../common/layout';
 
 const PostLink = ({

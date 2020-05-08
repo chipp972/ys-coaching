@@ -1,19 +1,20 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeOptions } from '@material-ui/core/styles';
 import { colors } from './colors';
 import { mediaQueries } from './mediaqueries';
 import { fontFamilies } from './typography/variables';
 
 const oneUnitSpace = 0.75;
 
-export const theme = createMuiTheme({
+// eslint-disable-next-line max-lines-per-function
+const themeOptions = ({ isDark }: { isDark: boolean }): ThemeOptions => ({
   spacing: (factor) => `${oneUnitSpace * factor}rem`,
   palette: {
-    type: 'dark',
+    type: isDark ? 'dark' : 'light',
     primary: {
-      main: colors.gray200
+      main: isDark ? colors.gray200 : colors.gray500
     },
     secondary: {
-      main: colors.crimson200
+      main: isDark ? colors.crimson200 : colors.crimson500
     },
     success: {
       main: colors.success
@@ -37,12 +38,12 @@ export const theme = createMuiTheme({
     // Alternative typo title
     h1: {
       fontFamily: fontFamilies.cinzel,
-      fontSize: '4.8rem',
+      fontSize: '3.6rem',
       fontWeight: 900,
       letterSpacing: 3,
       lineHeight: 1.2,
       [mediaQueries.fromTablet]: {
-        fontSize: '5.8rem',
+        fontSize: '3.8rem',
         lineHeight: 1.5
       }
     },
@@ -55,7 +56,7 @@ export const theme = createMuiTheme({
       textTransform: 'uppercase',
       textAlign: 'center',
       [mediaQueries.fromTablet]: {
-        fontSize: '3.8rem',
+        fontSize: '3.6rem',
         lineHeight: 1.5
       }
     },
@@ -69,7 +70,7 @@ export const theme = createMuiTheme({
       textAlign: 'center',
       margin: `${oneUnitSpace * 5}rem 0`,
       [mediaQueries.fromTablet]: {
-        fontSize: '3.6rem',
+        fontSize: '3.4rem',
         lineHeight: 1.5,
         textAlign: 'left'
       }
@@ -88,3 +89,7 @@ export const theme = createMuiTheme({
     }
   }
 });
+
+export const theme = createMuiTheme(themeOptions({ isDark: true }));
+
+export const lightTheme = createMuiTheme(themeOptions({ isDark: false }));

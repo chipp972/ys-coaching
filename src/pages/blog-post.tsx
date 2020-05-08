@@ -1,7 +1,7 @@
-import React from 'react';
-import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
-import { Page, HTMLContent } from '../common/layout';
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { HTMLContent, Page } from '../common/layout';
 import { BlogPost } from '../features/blog/blog.page';
 
 type Props = {

@@ -11,8 +11,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: `${theme.spacing(8)} 0 ${theme.spacing(5)} 0`
   },
   cta: {
-    fontSize: '3rem',
+    fontSize: '2rem',
     borderWidth: '3px',
+    borderColor: theme.palette.primary.main,
     textAlign: 'center',
     wordSpacing: '0.5rem',
     '&:hover': {
