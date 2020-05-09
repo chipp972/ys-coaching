@@ -8,7 +8,7 @@ mainCta:
   isInternal: true
 sections:
   - section: Become the best version of yourself
-  - section: Become the best version of yourself
+  - section: Last CTA
 heading: A program adapted to your needs
 subheading: Meet your strength and fitness goals
 mainpitch:
