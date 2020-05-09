@@ -7,17 +7,20 @@ cards:
     title: Personalized program
     text: No one-size-fits-all program on Y’s coaching. You are unique, so you
       deserve a customized program adapted to you !
+    alt: Training program
   - type: horizontal
     text: If during our first training you think we won't get along, we refund your
       money back (subscriptions only).
     title: "Money back guarantee "
     image: /img/noun_money_1886177.png
+    alt: Hand landing money
   - type: horizontal
     text: >-
       
       With each program you get access to my mail to ask me any questions anytime about your training, your diet and your result.
     title: I answer your questions
     image: /img/noun_questions_1195076.png
+    alt: Question chat
 backgroundImage: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
 dataKey: home-sections
 title: Why Y's Coaching
