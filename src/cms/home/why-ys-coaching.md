@@ -4,6 +4,11 @@ theme: light
 title: Why Y's Coaching
 isTitleVisible: true
 backgroundImage: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
+image:
+  title: Yuto
+  image: /img/img-20190924-wa0003.jpg
+  alt: Yuto preparing for training
+  position: right
 cards:
   - type: horizontal
     image: /img/noun_fitness-app_1699370.png
