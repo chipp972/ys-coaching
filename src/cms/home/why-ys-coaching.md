@@ -1,14 +1,6 @@
 ---
-dataKey: home-sections
 theme: light
-title: Why Y's Coaching
 isTitleVisible: true
-backgroundImage: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
-image:
-  title: Yuto
-  image: /img/img-20190924-wa0003.jpg
-  alt: Yuto preparing for training
-  position: right
 cards:
   - type: horizontal
     image: /img/noun_fitness-app_1699370.png
@@ -26,6 +18,19 @@ cards:
       With each program you get access to my mail to ask me any questions anytime about your training, your diet and your result.
     title: I answer your questions
     image: /img/noun_questions_1195076.png
+backgroundImage: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
+dataKey: home-sections
+title: Why Y's Coaching
+sectionImage:
+  title: Training hard
+  image: /img/guillaume-bolduc-hdbaq9w0hry-unsplash.jpg
+  alt: Woman training hard in the gym
+  position: right
 cta:
   isInternal: false
+image:
+  title: Yuto
+  image: /img/img-20190924-wa0003.jpg
+  alt: Yuto preparing for training
+  position: right
 ---
