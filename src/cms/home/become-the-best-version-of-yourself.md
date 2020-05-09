@@ -18,8 +18,8 @@ cards:
     text: Be it aesthetics or performance !
     type: vertical
 cta:
-  label: I want all this
-  url: /products
+  label: ""
+  url: ""
   isInternal: false
 ---
 You are here because you need to feel better physically and mentally. You are in the right place.
