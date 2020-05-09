@@ -1,21 +1,13 @@
 ---
-templateKey: index-page
-title: Get strong with Y's coaching
-subtitle: Meet your strength and fitness goals
-mainCta:
-  label: Choose a program now
-  url: /products
-  isInternal: true
-sections:
-  - section: Become the best version of yourself
-  - section: Last CTA
 heading: A program adapted to your needs
 subheading: Meet your strength and fitness goals
+templateKey: index-page
 mainpitch:
   title: Why Y's Coaching
   description: "Lorem ipsum dolor sit amet, consect etur adipiscing elit. Lorem
     ipsum dolor sit amet. Lorem ipsum dolor sit amet, consect etur adipiscing
     elit. Lorem ipsum dolor sit amet. "
+full_image: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
 intro:
   blurbs:
     - text: >
@@ -55,9 +47,18 @@ intro:
     java’s origin and support the farmers that grew it. We take coffee
     production, roasting and brewing seriously and we’re glad to pass that
     knowledge to anyone. This is an edit via identity...
-full_image: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
+sections:
+  - section: Become the best version of yourself
+  - section: Last CTA
+  - section: Why Y's Coaching
 redirectLink:
   label: Let's work together
+  url: /products
+  isInternal: true
+title: Get strong with Y's coaching
+subtitle: Meet your strength and fitness goals
+mainCta:
+  label: Choose a program now
   url: /products
   isInternal: true
 main:
