@@ -49,8 +49,8 @@ intro:
     knowledge to anyone. This is an edit via identity...
 sections:
   - section: Become the best version of yourself
-  - section: Last CTA
   - section: Why Y's Coaching
+  - section: Last CTA
 redirectLink:
   label: Let's work together
   url: /products
