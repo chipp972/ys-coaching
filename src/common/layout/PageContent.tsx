@@ -27,10 +27,11 @@ export const PageContainer = styled.div`
   }
 `;
 
-export const PageContent: React.FC = ({ children }) => {
+export const PageContent: React.FC<{className?: string}> = ({ children, className }) => {
   const theme = useTheme();
   return (
     <div
+      className={className}
       css={css`
         padding: ${theme.spacing(2)} 0;
         width: 100%;

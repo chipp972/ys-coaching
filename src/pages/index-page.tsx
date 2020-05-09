@@ -49,7 +49,11 @@ export const pageQuery = graphql`
               alt
               position
               image {
-                id
+                childImageSharp {
+                  fluid(maxWidth: 2048, quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
               }
             }
             cards {
