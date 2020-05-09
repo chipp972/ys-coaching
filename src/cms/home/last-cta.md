@@ -2,7 +2,7 @@
 dataKey: home-sections
 theme: dark
 title: Last CTA
-isTitleVisible: true
+isTitleVisible: false
 cards: []
 cta:
   isInternal: true
