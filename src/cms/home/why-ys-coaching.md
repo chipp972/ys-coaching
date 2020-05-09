@@ -21,5 +21,5 @@ cards:
     title: I answer your questions
     image: /img/noun_questions_1195076.png
 cta:
-  isInternal: true
+  isInternal: false
 ---
