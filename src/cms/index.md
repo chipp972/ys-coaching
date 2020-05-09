@@ -7,8 +7,8 @@ mainCta:
   url: /products
   isInternal: true
 sections:
-  - section: home-sections
-  - section: home-sections
+  - section: Become the best version of yourself
+  - section: Become the best version of yourself
 heading: A program adapted to your needs
 subheading: Meet your strength and fitness goals
 mainpitch:
