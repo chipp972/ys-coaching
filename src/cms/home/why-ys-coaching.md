@@ -3,6 +3,7 @@ dataKey: home-sections
 theme: light
 title: Why Y's Coaching
 isTitleVisible: true
+backgroundImage: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
 cards:
   - type: horizontal
     image: /img/noun_fitness-app_1699370.png
