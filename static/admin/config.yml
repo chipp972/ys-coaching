@@ -7,6 +7,37 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "home-sections"
+    label: "Home sections"
+    folder: "src/cms/home"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - {label: "Data Key", name: "dataKey", widget: "hidden", default: "home-sections"}
+      - {label: "Theme", name: "theme", widget: "select", default: "dark", options: ["dark", "light"]}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Show title", name: "isTitleVisible", widget: "boolean", required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - {label: "Image", name: "sectionImage", widget: "object", required: false, fields: [
+          {label: "Title", name: "title", widget: "string", required: false},
+          {label: "Image", name: "image", widget: "image", required: false},
+          {label: "Alternative text", name: "alt", widget: "string", required: false},
+          {label: "Position", name: "position", widget: "select", default: "right", required: false, options: ["left", "right", "background"]},
+          {label: "Height (background)", name: "height", widget: "number", required: false}
+        ]}
+      - {label: "Cards", name: "cards", widget: "list", required: false, fields: [
+          {label: "Title", name: "title", widget: "string"},
+          {label: "Type", name: "type", widget: "select", default: "vertical", options: ["vertical", "horizontal", "carousel"]},
+          {label: "Image", name: "image", widget: "image"},
+          {label: "Alternative text", name: "alt", widget: "string", required: false},
+          {label: "Text", name: "text", widget: "text", required: false}
+        ]}
+      - {label: "Call-To-Action", name: "cta", widget: "object", required: false, fields: [
+          {label: "Label", name: "label", widget: "string", required: false},
+          {label: "Url", name: "url", widget: "string", required: false},
+          {label: "Internal link", name: "isInternal", widget: "boolean", required: false}
+        ]}
+
   - name: "product-categories"
     label: "Product categories"
     folder: "src/cms/products/categories"
@@ -41,20 +72,16 @@ collections:
         name: "index"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - {label: Title, name: title, widget: string}
-          - {label: Subtitle, name: subtitle, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Subheading, name: subheading, widget: string}
-          - {label: Mainpitch, name: mainpitch, widget: object, fields: [{label: Title, name: title, widget: string}, {label: Description, name: description, widget: text}]}
-          - {label: Description, name: description, widget: string}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Title, name: title, widget: string}, {label: Text, name: text, widget: text}]}]}
-          - {label: Full_image, name: full_image, widget: image}
-          - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
-          - {label: "Redirect link", name: "redirectLink", widget: "object", fields: [
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Main Call-To-Action", name: "mainCta", widget: "object", required: false, fields: [
               {label: "Label", name: "label", widget: "string"},
               {label: "Url", name: "url", widget: "string"},
               {label: "Internal link", name: "isInternal", widget: "boolean"}
+            ]}
+          - {label: "Sections", name: "sections", widget: "list", fields: [
+              {label: "Section", name: "section", widget: "relation", collection: "home-sections", searchFields: ["title"], valueField: "title"}
             ]}
 
       - file: "src/cms/about/index.md"

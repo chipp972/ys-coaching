@@ -8,7 +8,7 @@ import { mediaQueries } from '../theme';
 
 const markdownClassName = 'ys-md-content';
 
-export const PageContent = styled.div`
+export const PageContainer = styled.div`
   flex-grow: 1;
   margin: 0 auto;
   position: relative;
@@ -26,6 +26,20 @@ export const PageContent = styled.div`
     max-width: 1344px;
   }
 `;
+
+export const PageContent: React.FC = ({ children }) => {
+  const theme = useTheme();
+  return (
+    <div
+      css={css`
+        padding: ${theme.spacing(2)} 0;
+        width: 100%;
+        background-color: ${theme.palette.background.default};
+      `}>
+      <PageContainer>{children}</PageContainer>
+    </div>
+  );
+};
 
 export type ContentProps = {
   content: string;
@@ -59,7 +73,7 @@ const MarkdownStyle = () => {
             ${theme.typography.h6}
           }
           img {
-            margin-bottom: ${theme.spacing(4)};
+            padding-bottom: ${theme.spacing(4)};
             object-fit: cover;
             max-height: 40rem;
             max-width: 100%;
@@ -68,7 +82,7 @@ const MarkdownStyle = () => {
             width: 100vw;
 
             ${mediaQueries.fromTablet} {
-              margin-right: ${theme.spacing(4)};
+              padding-right: ${theme.spacing(4)};
               width: auto;
               float: left;
             }
@@ -77,14 +91,14 @@ const MarkdownStyle = () => {
             width: 100vw;
 
             ${mediaQueries.fromTablet} {
-              margin-left: ${theme.spacing(4)};
+              padding-left: ${theme.spacing(4)};
               width: auto;
               float: right;
             }
           }
           img[src$='#center'] {
-            margin-left: auto;
-            margin-right: auto;
+            padding-left: auto;
+            padding-right: auto;
             display: block;
           }
           img[src$='#fullWidth'] {
@@ -104,7 +118,10 @@ const MarkdownStyle = () => {
 export const HTMLContent: React.FC<ContentProps> = ({ content, className }) => (
   <>
     <MarkdownStyle />
-    <div className={clsx(markdownClassName, className)} dangerouslySetInnerHTML={{ __html: content }} />
+    <div
+      className={clsx(markdownClassName, className)}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   </>
 );
 

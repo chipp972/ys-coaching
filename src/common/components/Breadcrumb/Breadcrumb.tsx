@@ -8,10 +8,10 @@ import { BreadcrumbStep } from './BreadcrumbStep';
 const MobileLabel = ({ label }) => (
   <Typography
     variant="body1"
+    align="center"
+    gutterBottom
     css={css`
-      text-align: center;
       font-weight: 500;
-      margin-bottom: 1.5rem;
 
       ${mediaQueries.fromTablet} {
         display: none;

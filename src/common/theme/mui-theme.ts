@@ -24,6 +24,9 @@ const themeOptions = ({ isDark }: { isDark: boolean }): ThemeOptions => ({
     },
     error: {
       main: colors.warning
+    },
+    background: {
+      default: isDark ? colors.black : colors.gray50
     }
   },
   typography: {
@@ -68,7 +71,7 @@ const themeOptions = ({ isDark }: { isDark: boolean }): ThemeOptions => ({
       lineHeight: 1.2,
       textTransform: 'uppercase',
       textAlign: 'center',
-      margin: `${oneUnitSpace * 5}rem 0`,
+      padding: `${oneUnitSpace * 5}rem 0`,
       [mediaQueries.fromTablet]: {
         fontSize: '3.4rem',
         lineHeight: 1.5,

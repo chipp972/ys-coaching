@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 import React from 'react';
 import { Footer } from '../components/Footer/Footer';
@@ -22,6 +23,7 @@ export const Page: React.FC<Props> = ({ children, pathname, hasHeadlineBanner, t
   const { title: siteTitle, description } = useSiteMetadata();
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <div>
         <Meta title={siteTitle} description={description} />
         <Navbar pathname={pathname} />

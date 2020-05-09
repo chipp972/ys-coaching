@@ -21,7 +21,6 @@ cards:
     title: I answer your questions
     image: /img/noun_questions_1195076.png
     alt: Question chat
-backgroundImage: /img/victor-freitas-jbi04nyfajk-unsplash.jpg
 dataKey: home-sections
 title: Why Y's Coaching
 sectionImage:
@@ -31,9 +30,4 @@ sectionImage:
   position: right
 cta:
   isInternal: false
-image:
-  title: Yuto
-  image: /img/img-20190924-wa0003.jpg
-  alt: Yuto preparing for training
-  position: right
 ---

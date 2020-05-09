@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: `${theme.spacing(8)} 0 ${theme.spacing(5)} 0`
+    padding: `${theme.spacing(8)} 0 ${theme.spacing(5)} 0`
   },
   cta: {
     fontSize: '2rem',
@@ -27,14 +27,13 @@ type Props = {
   url?: string;
   isInternal?: boolean;
   label?: string;
-  containerClass?: string;
 } & ButtonProps;
 
-export const RedirectLink: React.FC<Props> = ({ containerClass, url, isInternal, label, ...props }) => {
+export const RedirectLink: React.FC<Props> = ({ className, url, isInternal, label, ...props }) => {
   const { container, cta } = useStyles();
 
   return (
-    <div className={clsx(container, containerClass)}>
+    <div className={clsx(container, className)}>
       <PrimaryButton {...props} className={cta} url={url} isInternal={isInternal}>
         {label}
       </PrimaryButton>

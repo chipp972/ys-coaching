@@ -28,7 +28,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(2)
   },
   cta: {
-    backgroundColor: colors.shadow
+    backgroundColor: colors.shadow,
+    padding: 0,
+    marginTop: theme.spacing(5)
   }
 }));
 
@@ -72,7 +74,7 @@ export const HomeParallax: React.FC = () => {
             {subtitle}
           </Typography>
         )}
-        {!!mainCta?.url && <RedirectLink {...mainCta} containerClass={classes.cta} />}
+        {!!mainCta?.url && <RedirectLink {...mainCta} className={classes.cta} />}
       </div>
     </div>
   );
