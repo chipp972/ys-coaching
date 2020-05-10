@@ -109,6 +109,15 @@ const MarkdownStyle = () => {
             height: 100vh;
             max-height: 100vh;
           }
+          p {
+            margin-bottom: ${theme.spacing(4)};
+          }
+          li {
+            margin-bottom: ${theme.spacing(3)};
+            :last-child {
+              margin-bottom: ${theme.spacing(4)};
+            }
+          }
           ${theme.typography.body1}
         }
       `}

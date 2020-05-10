@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingTop: theme.spacing(3)
   },
   cardContent: {
-    padding: theme.spacing(4)
+    padding: theme.spacing(4),
+    textAlign: 'center'
   },
   cardTitle: {
     textTransform: 'uppercase',

@@ -1,14 +1,24 @@
+import { css } from '@emotion/core';
+import { Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import clsx from 'clsx';
 import { Link } from 'gatsby';
 import React from 'react';
 import { useSiteMetadata } from '../../hook/use-site-metadata';
-import { colors } from '../../theme';
+import { animation, colors, mediaQueries } from '../../theme';
 import { SocialLinks } from '../SocialLinks';
 import { HamburgerMenu } from './HamburgerMenu';
 import { Logo } from './Logo';
-import './navbar.sass';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  navbarItem: {
+    textTransform: 'uppercase',
+    padding: '1.2rem',
+    '&:hover': {
+      backgroundColor: theme.palette.background.paper,
+      color: theme.palette.secondary.main
+    }
+  },
   socialIcons: {
     borderRadius: 0,
     '&:hover': {
@@ -34,7 +44,14 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
   const classes = useStyles();
 
   return (
-    <nav className="navbar" role="navigation" aria-label="main-navigation">
+    <nav css={css`
+      border-bottom: 1px solid ${colors.gray500};
+      box-shadow: 0 4px 4px ${colors.black};
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+    `} className="navbar" role="navigation" aria-label="main-navigation">
       <div className="container">
         <div className="navbar-brand">
           <Link to="/" title="Logo">
@@ -44,17 +61,21 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
         </div>
         <div
           id="navMenu"
+          css={css`
+            animation: ${animation.slideLeft} 0.3s ease;
+
+            ${mediaQueries.fromDesktop} {
+              animation: none;
+            }
+          `}
           className={`navbar-menu ${isActive && navBarActiveClass}`}>
           <div className="navbar-end has-text-centered">
-            {routes.map(({ name, to }, index) => (
-              <Link
-                key={index}
-                className={`navbar-item ${
-                  isCurrentPage(to) ? navBarActiveClass : ''
-                }`}
-                to={to}>
-                {name}
-              </Link>
+            {routes.map(({ name, to }) => (
+              <Typography key={to} variant="button" className={clsx({
+                'navbar-item': true,
+                [navBarActiveClass]: isCurrentPage(to),
+                [classes.navbarItem]: true
+              })} component={Link} to={to}>{name}</Typography>
             ))}
           </div>
           <div className="navbar-end has-text-centered">

@@ -115,7 +115,7 @@ module.exports = {
         // Activates purging in npm run develop
         develop: true,
         // applies purging only on the bulma css file
-        purgeOnly: ['/all.sass']
+        purgeOnly: ['/global.sass']
       }
     },
     {

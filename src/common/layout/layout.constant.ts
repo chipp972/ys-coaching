@@ -9,7 +9,7 @@ export const logoSize = {
 };
 
 export const footerHeight = {
-  mobile: '60rem',
+  mobile: '70rem',
   fromTablet: '40rem'
 };
 

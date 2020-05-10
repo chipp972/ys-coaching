@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column'
   },
   backButtonContainer: {
-    marginBottom: theme.spacing(3)
+    margin: `${theme.spacing(3)} 0`
   },
   description: {
     marginBottom: theme.spacing(5)

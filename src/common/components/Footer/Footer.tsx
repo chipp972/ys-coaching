@@ -9,7 +9,6 @@ import { footerHeight, logoSize } from '../../layout';
 import { colors, lightTheme, mediaQueries } from '../../theme';
 import { BackToTopButton } from '../Button/BackToTopButton';
 import { SocialLinks } from '../SocialLinks';
-import './footer.sass';
 
 const FooterRouteLinks: React.FC = () => {
   const theme = useTheme();
@@ -28,7 +27,7 @@ const FooterRouteLinks: React.FC = () => {
         <Button
           key={to}
           css={css`
-            margin-bottom: ${theme.spacing(1)};
+            margin-bottom: ${theme.spacing(2)};
           `}
           component={Link}
           to={to}>
@@ -47,10 +46,17 @@ const SecondColumn: React.FC = () => (
       align-items: center;
       justify-content: center;
     `}>
-    <div>
+    <div css={css`margin-bottom: 1rem;`}>
       <SocialLinks />
     </div>
-    <div>
+    <div css={css`
+      ${mediaQueries.fromTablet} {
+        position: absolute;
+        right: 50%;
+        top: 2rem;
+        transform: translateX(50%);
+      }
+    `}>
       <BackToTopButton />
     </div>
   </div>

@@ -1,9 +1,11 @@
-@import "./variables.sass"
-@import "./typography.sass"
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,400,500,900|Cinzel:900&display=swap")
+@import "~bulma/sass/utilities/_all"
 
-$family-primary: $noto-sans
-$body-background-color: $black
+$gray50: #f7f7f7
+$crimson200: #cc8080
+$primary: $crimson200
+$black-04dp: mix($white, $black, 9%);
+$navbar-height-mobile: 6.4rem
 
 // Navbar
 $navbar-height: $navbar-height-mobile
@@ -25,3 +27,9 @@ $navbar-dropdown-arrow: #B9B9B9
 
 html
     font-size: 62.5%;
+
++desktop
+  .navbar-item.is-active
+    &:hover,
+    &:focus
+      background-color: #525252

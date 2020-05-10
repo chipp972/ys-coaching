@@ -80,11 +80,9 @@ export const GhostButton: React.FC<Props> = ({
   const sizeProps = buttonSizes[size];
 
   return !!to ? (
-    <div className="column is-12 has-text-centered big-cta-container">
-      <Link css={buttonCss(themeProps, sizeProps)} to={to} {...props}>
-        {children}
-      </Link>
-    </div>
+    <Link css={buttonCss(themeProps, sizeProps)} to={to} {...props}>
+      {children}
+    </Link>
   ) : (
     <button css={buttonCss(themeProps, sizeProps)} type={type} {...props}>
       {children}

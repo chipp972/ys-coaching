@@ -19,6 +19,7 @@ const SocialLink = ({ href, label, icon: Icon, ...props }) => (
           line-height: 2.4rem;
           border-radius: 50%;
           padding: 1rem;
+          transition: all 0.15s ease;
         `}
         className="social-icon">
           <Icon
