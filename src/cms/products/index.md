@@ -22,23 +22,20 @@ locationScreen:
     - address: 81-83 Rue du Chevaleret 75013 Paris
       label: Fitness park Chevaleret
     - label: Fitness park Bercy 2
-      address: 'Centre Commercial Bercy 2, 4 Place de l''Europe 94220 Charenton-le-Pont'
+      address: Centre Commercial Bercy 2, 4 Place de l'Europe 94220 Charenton-le-Pont
   stepName: Location
   description: >-
     La deuxième étape pour démarrer ensemble est de programmer notre rencontre.
 
-    Votre première session durera environ une heure où j’évaluerai votre niveau
-    actuel et établirai un plan adapté pour vous mener à l’accomplissement de
-    vos objectifs.
+    Votre première session durera environ une heure où j’évaluerai votre niveau actuel et établirai un plan adapté pour vous mener à l’accomplissement de vos objectifs.
   locationChoiceLabel: Your preferred place
   customerPlaceError: We are missing an address to meet
 confirmationScreen:
   heading: IS EVERYTHING OK FOR YOU ?
   stepName: Confirmation
-  description: >-
-    Merci de confirmer toutes les informations saisie et d’indiquer une adresse
-    mail ainsi que vos noms et prénoms afin de recevoir l’email de confirmation
-    et pour que nous puissions vous recontacter.
+  description: Merci de confirmer toutes les informations saisie et d’indiquer une
+    adresse mail ainsi que vos noms et prénoms afin de recevoir l’email de
+    confirmation et pour que nous puissions vous recontacter.
   contribution:
     dateChoiceLabel: Date
     validationButtonLabel: Schedule our meeting
@@ -59,7 +56,7 @@ thankYouScreen:
     A très vite !
 
     Yuto
-  image: /img/apple-touch-icon.png
+  image: /img/img-20191024-wa0022.jpg
   heading: Thank you
   redirectLinkLabel: Checkout my bio
   redirectLinkUrl: /about
@@ -111,9 +108,8 @@ packages:
         - 1 cheat meal per week
         - Flexitarian friendly
       category: Custom programs
-      description: >-
-        Reach your physique goal: lose weight, gain muscle, get competition
-        ready...
+      description: "Reach your physique goal: lose weight, gain muscle, get
+        competition ready..."
       frequency: month
       image: /img/emma-matthews-digital-content-production-8k62atzbulq-unsplash.jpg
       plan: Nutrition plan
@@ -125,26 +121,24 @@ dateTimeScreen:
   description: >-
     La deuxième étape pour démarrer ensemble est de programmer notre rencontre.
 
-    Votre première session durera environ une heure où j’évaluerai votre niveau
-    actuel et établirai un plan adapté pour vous mener à l’accomplissement de
-    vos objectifs.
+    Votre première session durera environ une heure où j’évaluerai votre niveau actuel et établirai un plan adapté pour vous mener à l’accomplissement de vos objectifs.
   availableTimeslots:
     - start: 2020-03-08T08:00:00.000Z
       end: 2020-03-08T19:00:59.582Z
-    - start: 'March 9, 2020 9:00 AM'
-      end: 'March 9, 2020 1:00 PM'
-    - start: 'March 9, 2020 2:00 PM'
-      end: 'March 9, 2020 6:30 PM'
-    - start: 'March 10, 2020 8:00 AM'
-      end: 'March 10, 2020 5:00 PM'
-    - start: 'April 14, 2020 10:00 AM'
-      end: 'April 14, 2020 7:00 PM'
-    - start: 'April 15, 2020 10:00 AM'
-      end: 'April 15, 2020 8:00 PM'
-    - start: 'April 16, 2020 10:00 AM'
-      end: 'April 16, 2020 8:00 PM'
-    - start: 'April 17, 2020 10:00 AM'
-      end: 'April 17, 2020 8:00 PM'
-    - start: 'April 18, 2020 10:00 AM'
-      end: 'April 18, 2020 7:00 PM'
+    - start: March 9, 2020 9:00 AM
+      end: March 9, 2020 1:00 PM
+    - start: March 9, 2020 2:00 PM
+      end: March 9, 2020 6:30 PM
+    - start: March 10, 2020 8:00 AM
+      end: March 10, 2020 5:00 PM
+    - start: April 14, 2020 10:00 AM
+      end: April 14, 2020 7:00 PM
+    - start: April 15, 2020 10:00 AM
+      end: April 15, 2020 8:00 PM
+    - start: April 16, 2020 10:00 AM
+      end: April 16, 2020 8:00 PM
+    - start: April 17, 2020 10:00 AM
+      end: April 17, 2020 8:00 PM
+    - start: April 18, 2020 10:00 AM
+      end: April 18, 2020 7:00 PM
 ---
