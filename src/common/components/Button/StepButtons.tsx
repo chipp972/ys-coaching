@@ -1,22 +1,37 @@
 import { callOnEnterKey } from '@chipp972/accessibility';
 import { css } from '@emotion/core';
 import { Button, ButtonProps } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
+import clsx from 'clsx';
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'react-feather';
 import { mediaQueries } from '../../theme';
 
-export const NextStepButton: React.FC<ButtonProps> = ({ className, children, ...props }) => (
-  <Button
-    variant="contained"
-    color="primary"
-    className={className}
-    size="large"
-    endIcon={<ChevronRight aria-hidden="true" />}
-    {...props}>
-    {children}
-  </Button>
-);
+const useStyles = makeStyles((theme: Theme) => ({
+  nextStepButton: {
+    color: theme.palette.success.contrastText,
+    backgroundColor: theme.palette.success.light,
+    '&:hover': {
+      backgroundColor: theme.palette.success.main
+    }
+  }
+}));
+
+
+export const NextStepButton: React.FC<ButtonProps> = ({ className, children, ...props }) => { 
+  const classes = useStyles();
+  return (
+    <Button
+      variant="contained"
+      color="primary"
+      className={clsx(className, classes.nextStepButton)}
+      size="large"
+      endIcon={<ChevronRight aria-hidden="true" />}
+      {...props}>
+      {children}
+    </Button>
+  );
+};
 
 export const PrevStepButton: React.FC<ButtonProps> = ({ className, children, ...props }) => (
   <Button
