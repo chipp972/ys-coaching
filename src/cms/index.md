@@ -50,6 +50,7 @@ intro:
 sections:
   - section: Become the best version of yourself
   - section: Why Y's Coaching
+  - section: Join the team NOW
   - section: Last CTA
 redirectLink:
   label: Let's work together
