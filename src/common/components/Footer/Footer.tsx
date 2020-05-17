@@ -90,6 +90,7 @@ export const Footer: React.FC = () => {
           justify-content: center;
           background-color: ${colors.gray50};
           height: ${footerHeight.mobile};
+          position: relative;
 
           ${mediaQueries.fromTablet} {
             flex-direction: row;

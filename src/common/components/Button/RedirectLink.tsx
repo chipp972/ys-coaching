@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: `${theme.spacing(8)} 0 ${theme.spacing(5)} 0`
+    padding: `${theme.spacing(8)} 0`
   },
   cta: {
     fontSize: '2rem',

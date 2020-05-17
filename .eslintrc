@@ -9,5 +9,14 @@
     "indent": "off",
     "no-unused-expressions": "off",
     "no-magic-numbers": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": "src/cms/**/*.js",
+      "rules": {
+        "camelcase": "off",
+        "@typescript-eslint/camelcase": "off"
+      }
+    }
+  ]
 }

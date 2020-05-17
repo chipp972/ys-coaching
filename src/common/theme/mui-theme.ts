@@ -47,7 +47,7 @@ const themeOptions = ({ isDark }: { isDark: boolean }): ThemeOptions => ({
       lineHeight: 1.2,
       [mediaQueries.fromTablet]: {
         fontSize: '3.8rem',
-        lineHeight: 1.5
+        lineHeight: 1.2
       }
     },
     // Page title
@@ -55,12 +55,12 @@ const themeOptions = ({ isDark }: { isDark: boolean }): ThemeOptions => ({
       fontSize: '3.4rem',
       fontWeight: 800,
       letterSpacing: 2,
-      lineHeight: 1.5,
+      lineHeight: 1.2,
       textTransform: 'uppercase',
       textAlign: 'center',
       [mediaQueries.fromTablet]: {
         fontSize: '3.6rem',
-        lineHeight: 1.5
+        lineHeight: 1.2
       }
     },
     // Section title
@@ -74,7 +74,7 @@ const themeOptions = ({ isDark }: { isDark: boolean }): ThemeOptions => ({
       padding: `${oneUnitSpace * 5}rem 0`,
       [mediaQueries.fromTablet]: {
         fontSize: '3.4rem',
-        lineHeight: 1.5,
+        lineHeight: 1.2,
         textAlign: 'left'
       }
     },
@@ -83,11 +83,11 @@ const themeOptions = ({ isDark }: { isDark: boolean }): ThemeOptions => ({
       fontSize: '2.8rem',
       fontWeight: 100,
       letterSpacing: 2,
-      lineHeight: 1.2,
+      lineHeight: 1.3,
       textAlign: 'center',
       [mediaQueries.fromTablet]: {
         fontSize: '3.2rem',
-        lineHeight: 1.5
+        lineHeight: 1.2
       }
     }
   }

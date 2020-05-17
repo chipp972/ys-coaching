@@ -9,7 +9,8 @@ import { CardFooter } from './CardFooter';
 import { CardTitle } from './CardTitle';
 import { GhostButton } from './GhostButton';
 
-const selectedCardShadow = `0px 0px 0px 2px ${colors.gray50}`;
+const baseCardShadow = `0px 0px 20px 2px ${colors.shadow}`;
+const selectedCardShadow = `${baseCardShadow}, 0px 0px 0px 2px ${colors.gray50}`;
 const transitionDuration = '0.4s';
 const cardWidth = '30rem';
 
@@ -66,9 +67,10 @@ export const ServiceCard: React.FC<Props> = ({
         display: flex;
         flex-flow: column nowrap;
         transition: all ${transitionDuration} ease-in-out;
-        box-shadow: ${isSelected ? selectedCardShadow : 'none'};
+        box-shadow: ${isSelected ? selectedCardShadow : baseCardShadow};
         cursor: pointer;
         margin-top: 3rem;
+        border-radius: 0 0 5px 5px;
 
         ${activeStyle};
 

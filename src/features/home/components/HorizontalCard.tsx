@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 0,
     flexShrink: 0,
     width: 300,
-    padding: theme.spacing(1),
+    padding: `${theme.spacing(3)} ${theme.spacing(1)}`,
     margin: theme.spacing(3),
     [mediaQueries.fromTablet]: {
       flexDirection: 'row',

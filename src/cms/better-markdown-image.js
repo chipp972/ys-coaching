@@ -1,8 +1,8 @@
 import React from 'react';
 
 export const BetterMarkdownImage = {
-  id: 'image-adv',
-  label: 'image advanced',
+  id: 'image',
+  label: 'Image',
   fields: [
     { name: 'image', label: 'Image', widget: 'image', media_library: { allow_multiple: false } },
     { name: 'title', label: 'Title', widget: 'string' },

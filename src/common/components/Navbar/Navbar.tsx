@@ -11,6 +11,10 @@ import { HamburgerMenu } from './HamburgerMenu';
 import { Logo } from './Logo';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  navBar: {
+    boxShadow: theme.shadows[8],
+    zIndex: theme.zIndex.appBar
+  },
   navbarItem: {
     textTransform: 'uppercase',
     padding: '1.2rem',
@@ -46,12 +50,11 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
   return (
     <nav css={css`
       border-bottom: 1px solid ${colors.gray500};
-      box-shadow: 0 4px 4px ${colors.black};
       position: fixed;
       left: 0;
       right: 0;
       top: 0;
-    `} className="navbar" role="navigation" aria-label="main-navigation">
+    `} className={clsx('navbar', classes.navBar)} role="navigation" aria-label="main-navigation">
       <div className="container">
         <div className="navbar-brand">
           <Link to="/" title="Logo">
