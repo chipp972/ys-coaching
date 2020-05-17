@@ -38,6 +38,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             isTitleVisible
+            textPosition
             theme
             cta {
               label
@@ -48,6 +49,9 @@ export const pageQuery = graphql`
               title
               alt
               position
+              url
+              isInternal
+              maxHeight
               image {
                 childImageSharp {
                   fluid(maxWidth: 2048, quality: 100) {

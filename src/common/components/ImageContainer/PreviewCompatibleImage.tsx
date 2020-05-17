@@ -1,6 +1,6 @@
+import Img, { FluidObject } from 'gatsby-image';
 import * as R from 'ramda';
 import React from 'react';
-import Img, { FluidObject } from 'gatsby-image';
 import { GatsbyImage } from '../../helpers/gatsby';
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 export const PreviewCompatibleImage: React.FC<Props> = ({
   imageInfo: { alt = '', childImageSharp, image }
 }) => {
-  const imageStyle = { borderRadius: '5px' };
+  const imageStyle = { borderRadius: '5px', height: '100%' };
 
   if (R.hasPath(['childImageSharp', 'fluid'], image)) {
     return (

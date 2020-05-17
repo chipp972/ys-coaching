@@ -18,12 +18,15 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Show title", name: "isTitleVisible", widget: "boolean", required: false}
       - {label: "Body", name: "body", widget: "markdown", required: false}
+      - {label: "Text Position", name: "textPosition", widget: "select", required: false, options: ["left", "right", "center"]}
       - {label: "Image", name: "sectionImage", widget: "object", required: false, fields: [
           {label: "Title", name: "title", widget: "string", required: false},
           {label: "Image", name: "image", widget: "image", required: false},
           {label: "Alternative text", name: "alt", widget: "string", required: false},
           {label: "Position", name: "position", widget: "select", default: "right", required: false, options: ["left", "right", "background"]},
-          {label: "Height (background)", name: "height", widget: "number", required: false}
+          {label: "Max Height (pixels)", name: "maxHeight", widget: "number", required: false},
+          {label: "Url", name: "url", widget: "string", required: false},
+          {label: "Internal link", name: "isInternal", widget: "boolean", required: false}
         ]}
       - {label: "Cards", name: "cards", widget: "list", required: false, fields: [
           {label: "Title", name: "title", widget: "string"},

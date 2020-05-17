@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 0,
     flexShrink: 0,
     width: 300,
+    maxWidth: '55rem',
     padding: `${theme.spacing(3)} ${theme.spacing(1)}`,
     margin: theme.spacing(3),
     [mediaQueries.fromTablet]: {
@@ -24,9 +25,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       '&:last-child': {
         marginBottom: 0
       }
-    },
-    [mediaQueries.fromDesktop]: {
-      width: '55rem'
     }
   },
   cardImage: {

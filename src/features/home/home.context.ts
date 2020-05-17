@@ -21,13 +21,16 @@ export type SectionImage = {
   image: GatsbyImage;
   alt?: string;
   position: 'left' | 'right' | 'background';
-  height?: number;
+  maxHeight?: number;
+  url?: string;
+  isInternal: boolean;
 };
 
 export type HomeSection = {
   theme: 'dark' | 'light';
   title: string;
   isTitleVisible: boolean;
+  textPosition?: 'left' | 'right' | 'center';
   sectionImage?: SectionImage;
   markdownContent?: string;
   cards?: Card[];

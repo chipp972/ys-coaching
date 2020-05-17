@@ -34,7 +34,6 @@ export const PageContent: React.FC<{className?: string}> = ({ children, classNam
       className={className}
       css={css`
         padding: ${theme.spacing(2)} 0;
-        width: 100%;
         background-color: ${theme.palette.background.default};
       `}>
       <PageContainer>{children}</PageContainer>
