@@ -4,12 +4,12 @@ theme: dark
 title: Join the team NOW
 textPosition: right
 sectionImage:
-  position: right
+  position: background
   image: /img/img-20191024-wa0012.jpg
   title: Join now
   alt: Yuto squatting big weights
   max-height: 600
-  url: /products
+  url: products
   isInternal: true
 cards: []
 ---
