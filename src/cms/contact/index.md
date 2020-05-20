@@ -1,6 +1,6 @@
 ---
 title: Contact me
-subtitle: Hi
+subtitle: ""
 image: /img/img-20191024-wa0016.jpg
 contribution:
   validationButtonLabel: Send the message
