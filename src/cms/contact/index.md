@@ -14,10 +14,17 @@ contribution:
   firstNameLabel: Firstname
   requiredErrorMessage: Please provide an answer
 redirectLink:
-  label: Or send a mail
+  label: Or send an email
   url: mailto:hello@ys-coaching.fr
   isInternal: false
 ---
 Hello,
 
 If you need an information that you did not found on the website or if you have a question, feel free to send a message with the form below or send me a mail at **hello@ys-coaching.fr**.
+
+
+
+If you want to meet me in person between a coaching session, send me an email:
+
+* Fitness Park Diderot monday-friday 09:30 - 12:00 or on demand if you send me an email
+* At your home or office on demand (Paris and suburb)
