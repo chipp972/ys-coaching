@@ -5,6 +5,7 @@ image: /img/img-20191024-wa0016.jpg
 contribution:
   validationButtonLabel: Send the message
   messagePlaceholder: Feel free to ask any question or tell me more about you
+  errorMessageNotSent: Sorry an error occured. Please save your message and try again later.
   messageLabel: Your message
   lastNamePlaceholder: Doe
   lastNameLabel: Lastname
@@ -12,6 +13,7 @@ contribution:
   emailLabel: Email
   firstNamePlaceholder: John
   firstNameLabel: Firstname
+  successMessageSent: Thank you ! Your message is on its way to my mailbox.
   requiredErrorMessage: Please provide an answer
 redirectLink:
   label: Or send an email
