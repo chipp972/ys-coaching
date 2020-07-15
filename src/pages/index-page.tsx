@@ -4,17 +4,7 @@ import { Page } from '../common/layout';
 import { getHomePageContextData, HomeContext } from '../features/home/home.context';
 import { HomePage } from '../features/home/home.page';
 
-type Props = {
-  location: {pathname: string};
-  data: {
-    markdownRemark: {
-      frontmatter: any;
-    };
-    allMarkdownRemark: any;
-  };
-};
-
-const Home: React.FC<Props> = ({ data, location }) => {
+const Home: React.FC<PageProps> = ({ data, location }) => {
   const { frontmatter } = data.markdownRemark;
   const { title } = frontmatter;
 

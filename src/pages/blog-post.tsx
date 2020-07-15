@@ -4,21 +4,13 @@ import { Helmet } from 'react-helmet';
 import { HTMLContent, Page } from '../common/layout';
 import { BlogPost } from '../features/blog/blog.page';
 
-type Props = {
-  location: {pathname: string};
-  data: {
-    markdownRemark: {
-      html: string;
-      frontmatter: {
-        tags: string[];
-        title: string;
-        description: string;
-      };
-    };
-  };
+type FrontMatter = {
+  tags: string[];
+  title: string;
+  description: string;
 };
 
-const Blog: React.FC<Props> = ({ data, location }) => {
+const Blog: React.FC<PageProps<FrontMatter>> = ({ data, location }) => {
   const { markdownRemark: post } = data;
 
   return (

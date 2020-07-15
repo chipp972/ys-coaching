@@ -1,9 +1,10 @@
 ---
+templateKey: contact-page
 title: Contact me
 subtitle: ""
 image: /img/img-20191024-wa0016.jpg
 contribution:
-  validationButtonLabel: Send the message
+  validationButtonLabel: Send message
   messagePlaceholder: Feel free to ask any question or tell me more about you
   errorMessageNotSent: Sorry an error occured. Please save your message and try again later.
   messageLabel: Your message
@@ -23,8 +24,6 @@ redirectLink:
 Hello,
 
 If you need an information that you did not found on the website or if you have a question, feel free to send a message with the form below or send me a mail at **hello@ys-coaching.fr**.
-
-
 
 If you want to meet me in person between a coaching session, send me an email:
 

@@ -1,4 +1,5 @@
 ---
+templateKey: product-page
 locationScreen:
   heading: WHERE DO YOU PREFER TO TRAIN ?
   customerPlacePlaceholder: Choose a place
@@ -58,15 +59,10 @@ thankYouScreen:
     Yuto
   image: /img/img-20191024-wa0022.jpg
   heading: Thank you
-  redirectLinkLabel: Checkout my bio
-  redirectLinkUrl: /about
   redirectLink:
     label: Checkout my bio
     url: about
     isInternal: true
-heading: Coaching packages
-subheading: Let's work together
-templateKey: product-page
 title: Coaching services
 subtitle: Let's work together
 image: /img/victor-freitas-wvdydxdzkhs-unsplash.jpg

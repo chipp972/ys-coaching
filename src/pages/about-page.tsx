@@ -4,12 +4,7 @@ import { HTMLContent, Page } from '../common/layout';
 import { AboutContext } from '../features/about/about.context';
 import { AboutPage } from '../features/about/about.page';
 
-type Props = {
-  location: { pathname: string };
-  data: any;
-};
-
-const About: React.FC<Props> = ({ data, location }) => {
+const About: React.FC<PageProps> = ({ data, location }) => {
   const { markdownRemark } = data;
   const { title, subtitle, image } = markdownRemark.frontmatter;
   const context = {

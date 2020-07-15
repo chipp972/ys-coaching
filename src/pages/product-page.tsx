@@ -5,32 +5,26 @@ import { ProductsContext } from '../features/products/products.context';
 import { getProductPageContextData } from '../features/products/products.data';
 import { ProductsPage } from '../features/products/products.page';
 
-type Props = {
-  location: {
-    pathname: string;
+type Node = {
+  frontmatter: {
+    title: string;
+    description: string;
+    position: number;
   };
-  data: {
-    allMarkdownRemark: {
-      edges: {
-        node: {
-          frontmatter: {
-            title: string;
-            description: string;
-            position: number;
-          };
-          fields: {
-            slug: string;
-          };
-        };
-      };
-    };
-    markdownRemark: {
-      frontmatter: any;
-    };
+  fields: {
+    slug: string;
   };
 };
 
-const Products: React.FC<Props> = ({ data, location }) => {
+type FrontMatter = {
+  packages: any;
+  dateTimeScreen: any;
+  locationScreen: any;
+  confirmationScreen: any;
+  thankYouScreen: any;
+};
+
+const Products: React.FC<PageProps<FrontMatter, Node>> = ({ data, location }) => {
   const { title, subtitle, image } = data.markdownRemark.frontmatter;
   return (
     <Page
@@ -157,8 +151,6 @@ export const productPageQuery = graphql`
             url
             isInternal
           }
-          redirectLinkLabel
-          redirectLinkUrl
         }
       }
     }

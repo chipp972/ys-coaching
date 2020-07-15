@@ -23,7 +23,7 @@ const themeOptions = ({ isDark }: { isDark: boolean }): ThemeOptions => ({
       main: colors.warning
     },
     error: {
-      main: colors.warning
+      main: colors.error
     },
     background: {
       default: isDark ? colors.black : colors.gray50

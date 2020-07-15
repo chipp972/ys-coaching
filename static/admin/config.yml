@@ -7,51 +7,6 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "home-sections"
-    label: "Home sections"
-    folder: "src/cms/home"
-    create: true
-    slug: "{{title}}"
-    fields:
-      - {label: "Data Key", name: "dataKey", widget: "hidden", default: "home-sections"}
-      - {label: "Theme", name: "theme", widget: "select", default: "dark", options: ["dark", "light"]}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Show title", name: "isTitleVisible", widget: "boolean", required: false}
-      - {label: "Body", name: "body", widget: "markdown", required: false}
-      - {label: "Text Position", name: "textPosition", widget: "select", required: false, options: ["left", "right", "center"]}
-      - {label: "Image", name: "sectionImage", widget: "object", required: false, fields: [
-          {label: "Title", name: "title", widget: "string", required: false},
-          {label: "Image", name: "image", widget: "image", required: false},
-          {label: "Alternative text", name: "alt", widget: "string", required: false},
-          {label: "Position", name: "position", widget: "select", default: "right", required: false, options: ["left", "right", "background"]},
-          {label: "Max Height (pixels)", name: "maxHeight", widget: "number", required: false},
-          {label: "Url", name: "url", widget: "string", required: false},
-          {label: "Internal link", name: "isInternal", widget: "boolean", required: false}
-        ]}
-      - {label: "Cards", name: "cards", widget: "list", required: false, fields: [
-          {label: "Title", name: "title", widget: "string"},
-          {label: "Type", name: "type", widget: "select", default: "vertical", options: ["vertical", "horizontal", "carousel"]},
-          {label: "Image", name: "image", widget: "image"},
-          {label: "Alternative text", name: "alt", widget: "string", required: false},
-          {label: "Text", name: "text", widget: "text", required: false}
-        ]}
-      - {label: "Call-To-Action", name: "cta", widget: "object", required: false, fields: [
-          {label: "Label", name: "label", widget: "string", required: false},
-          {label: "Url", name: "url", widget: "string", required: false},
-          {label: "Internal link", name: "isInternal", widget: "boolean", required: false}
-        ]}
-
-  - name: "product-categories"
-    label: "Product categories"
-    folder: "src/cms/products/categories"
-    create: true
-    slug: "{{title}}"
-    fields:
-      - {label: "Data Key", name: "dataKey", widget: "hidden", default: "product-categories"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Position", name: "position", widget: "number", default: 50}
-
   - name: "blog"
     label: "Blog"
     folder: "src/cms/blog"
@@ -76,7 +31,7 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
           - {label: "Image", name: "image", widget: "image"}
           - {label: "Main Call-To-Action", name: "mainCta", widget: "object", required: false, fields: [
               {label: "Label", name: "label", widget: "string"},
@@ -93,13 +48,42 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
           - {label: "Image", name: "image", widget: "image"}
           - {label: "Body", name: "body", widget: "markdown"}
           - {label: "Redirect link", name: "redirectLink", widget: "object", fields: [
-              {label: "Label", name: "label", widget: "string"},
-              {label: "Url", name: "url", widget: "string"},
-              {label: "Internal link", name: "isInternal", widget: "boolean"}
+              {label: "Label", name: "label", widget: "string", required: false},
+              {label: "Url", name: "url", widget: "string", required: false},
+              {label: "Internal link", name: "isInternal", widget: "boolean", required: false}
+            ]}
+
+      - file: "src/cms/contact/index.md"
+        label: "Contact"
+        name: "contact"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "contact-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Labels", name: "contribution", widget: "object", fields: [
+              {label: "Validation button label", name: "validationButtonLabel", widget: "string", default: 'Send'},
+              {label: "Email label", name: "emailLabel", widget: "string", default: 'Email'},
+              {label: "Email placeholder", name: "emailPlaceholder", widget: "string", default: 'john.doe@gmail.com'},
+              {label: "Firstname label", name: "firstNameLabel", widget: "string", default: 'First name'},
+              {label: "Firstname placeholder", name: "firstNamePlaceholder", widget: "string", default: 'John'},
+              {label: "Lastname label", name: "lastNameLabel", widget: "string", default: 'Last name'},
+              {label: "Lastname placeholder", name: "lastNamePlaceholder", widget: "string", default: 'Doe'},
+              {label: "Message label", name: "messageLabel", widget: "string", default: 'Your message'},
+              {label: "Message placeholder", name: "messagePlaceholder", widget: "string", default: 'Feel free to ask any question here'},
+              {label: "Required field error message", name: "requiredErrorMessage", widget: "text", default: 'You must answer here'},
+              {label: "Success message sent", name: "successMessageSent", widget: "text", default: 'Success'},
+              {label: "Error message not sent", name: "errorMessageNotSent", widget: "text", default: 'An error occured. Please try again later.'}
+            ]}
+          - {label: "Redirect link", name: "redirectLink", widget: "object", fields: [
+              {label: "Label", name: "label", widget: "string", required: false},
+              {label: "Url", name: "url", widget: "string", required: false},
+              {label: "Internal link", name: "isInternal", widget: "boolean", required: false}
             ]}
 
       - file: "src/cms/products/index.md"
@@ -108,7 +92,7 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
           - {label: "Image", name: "image", widget: "image"}
           - {label: "Packages", name: "packages", widget: "object", fields: [
               {label: "Step name", name: "stepName", widget: "string"},
@@ -178,8 +162,53 @@ collections:
               {label: "Content", name: "content", widget: "text"},
               {label: "Image", name: "image", widget: "image"},
               {label: "Redirect link", name: "redirectLink", widget: "object", fields: [
-                {label: "Label", name: "label", widget: "string"},
-                {label: "Url", name: "url", widget: "string"},
-                {label: "Internal link", name: "isInternal", widget: "boolean"}
+                {label: "Label", name: "label", widget: "string", required: false},
+                {label: "Url", name: "url", widget: "string", required: false},
+                {label: "Internal link", name: "isInternal", widget: "boolean", required: false}
               ]}
             ]}
+
+  - name: "home-sections"
+    label: "Home sections"
+    folder: "src/cms/home"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - {label: "Data Key", name: "dataKey", widget: "hidden", default: "home-sections"}
+      - {label: "Theme", name: "theme", widget: "select", default: "dark", options: ["dark", "light"]}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Show title", name: "isTitleVisible", widget: "boolean", required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - {label: "Text Position", name: "textPosition", widget: "select", required: false, options: ["left", "right", "center"]}
+      - {label: "Image", name: "sectionImage", widget: "object", required: false, fields: [
+          {label: "Title", name: "title", widget: "string", required: false},
+          {label: "Image", name: "image", widget: "image", required: false},
+          {label: "Alternative text", name: "alt", widget: "string", required: false},
+          {label: "Position", name: "position", widget: "select", default: "right", required: false, options: ["left", "right", "background"]},
+          {label: "Max Height (pixels)", name: "maxHeight", widget: "number", required: false},
+          {label: "Url", name: "url", widget: "string", required: false},
+          {label: "Internal link", name: "isInternal", widget: "boolean", required: false}
+        ]}
+      - {label: "Cards", name: "cards", widget: "list", required: false, fields: [
+          {label: "Title", name: "title", widget: "string"},
+          {label: "Type", name: "type", widget: "select", default: "vertical", options: ["vertical", "horizontal", "carousel"]},
+          {label: "Image", name: "image", widget: "image"},
+          {label: "Alternative text", name: "alt", widget: "string", required: false},
+          {label: "Text", name: "text", widget: "text", required: false}
+        ]}
+      - {label: "Call-To-Action", name: "cta", widget: "object", required: false, fields: [
+          {label: "Label", name: "label", widget: "string", required: false},
+          {label: "Url", name: "url", widget: "string", required: false},
+          {label: "Internal link", name: "isInternal", widget: "boolean", required: false}
+        ]}
+
+  - name: "product-categories"
+    label: "Product categories"
+    folder: "src/cms/products/categories"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - {label: "Data Key", name: "dataKey", widget: "hidden", default: "product-categories"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Position", name: "position", widget: "number", default: 50}

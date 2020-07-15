@@ -23,13 +23,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-type Props = {
+export type CtaProps = {
   url?: string;
   isInternal?: boolean;
   label?: string;
-} & ButtonProps;
+};
 
-export const RedirectLink: React.FC<Props> = ({ className, url, isInternal, label, ...props }) => {
+export const RedirectLink: React.FC<CtaProps & ButtonProps> = ({ className, url, isInternal, label, ...props }) => {
   const { container, cta } = useStyles();
 
   return (

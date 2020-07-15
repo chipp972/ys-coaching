@@ -12,7 +12,9 @@
     "noEmit": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "functions/**/*",
+    "lambda.type.ts"
   ],
   "exclude": [
     "**/__tests__/**/*",

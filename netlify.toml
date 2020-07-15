@@ -2,5 +2,18 @@
   publish = "public"
   command = "npm run build"
   functions = "lambda"
+
+[dev]
+  framework = "gatsby"
+  command = "npm run develop"
+  port = 8888
+  publish = "public"
+  autoLaunch = true
+
 [build.environment]
   NPM_VERSION = "6.12.0"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=360000"

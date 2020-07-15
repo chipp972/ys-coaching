@@ -1,12 +1,7 @@
 import * as R from 'ramda';
 import React from 'react';
+import { CtaProps } from '../../common/components/Button';
 import { GatsbyImage } from '../../common/helpers/gatsby';
-
-type Cta = {
-  label: string;
-  url: string;
-  isInternal: boolean;
-};
 
 export type Card = {
   type: 'horizontal' | 'vertical' | 'carousel';
@@ -34,17 +29,17 @@ export type HomeSection = {
   sectionImage?: SectionImage;
   markdownContent?: string;
   cards?: Card[];
-  cta?: Cta;
+  cta?: CtaProps;
 };
 
 export const HomeContext = React.createContext({
   title: '',
   subtitle: '',
   image: {} as SectionImage,
-  mainCta: {} as Cta,
+  mainCta: {} as CtaProps,
   sections: [] as string[],
   homeSectionList: [] as HomeSection[],
-  redirectLink: {} as Cta
+  redirectLink: {} as CtaProps
 });
 
 const getSections = R.pipe(
@@ -61,13 +56,12 @@ const getSections = R.pipe(
   })
 );
 
-export const getHomePageContextData = (data: any) => {
+export const getHomePageContextData = (data: PageData) => {
   const isPreview = !R.hasPath(['markdownRemark', 'frontmatter'], data);
   const contribution = isPreview ? data : R.path(['markdownRemark', 'frontmatter'], data);
   const sectionList: HomeSection[] = getSections(data);
   const homeSectionList: HomeSection[] = contribution.sections
     .map(({ section: sectionTitle }: {section: string}) => sectionList.find(({ title }) => title === sectionTitle));
-  console.log({ ...contribution, homeSectionList });
 
   return {
     ...contribution,

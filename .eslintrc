@@ -5,10 +5,14 @@
   },
   "rules": {
     "unicorn/filename-case": "off",
-    "space-before-function-paren": ["error", "never"],
     "indent": "off",
     "no-unused-expressions": "off",
-    "no-magic-numbers": "off"
+    "no-magic-numbers": "off",
+    "space-before-function-paren": ["error", {
+        "anonymous": "always",
+        "named": "always",
+        "asyncArrow": "always"
+    }]
   },
   "overrides": [
     {

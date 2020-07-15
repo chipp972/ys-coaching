@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-const getProps = ({ url, isInternal }) => {
+const getProps = ({ url, isInternal, type }) => {
   if (isInternal) {
     return {
       component: Link,
@@ -33,14 +33,17 @@ const getProps = ({ url, isInternal }) => {
       target: '_blank'
     };
   }
-  return 'button';
+  return {
+    component: 'button',
+    type
+  };
 };
 
-export const PrimaryButton: React.FC<Props> = ({ url, isInternal, className, children, ...props }) => {
+export const PrimaryButton: React.FC<Props> = ({ url, isInternal, className, children, type = 'button', ...props }) => {
   const classes = useStyles();
   return (
     <Button
-      {...getProps({ url, isInternal })}
+      {...getProps({ url, isInternal, type })}
       variant="outlined"
       color="primary"
       className={clsx(classes.primaryButton, className)}

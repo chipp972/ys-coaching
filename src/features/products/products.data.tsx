@@ -21,7 +21,7 @@ const getPreviewProductCategories = R.pipe(
     }))
 );
 
-export const getProductPageContextData = (data: any, fieldsMetaData?: any) => {
+export const getProductPageContextData = (data: PageData, fieldsMetaData?: any) => {
   const isPreview = !R.hasPath(['markdownRemark', 'frontmatter'], data);
   const productCategories = isPreview
     ? getPreviewProductCategories(fieldsMetaData)
