@@ -55,6 +55,11 @@ export const contactPageQuery = graphql`
           url
           isInternal
         }
+        successRedirectLink {
+          label
+          url
+          isInternal
+        }
       }
     }
   }

@@ -22,6 +22,7 @@ export const ContactContext = React.createContext({
     errorMessageNotSent: ''
   },
   redirectLink: {} as CtaProps,
+  successRedirectLink: {} as CtaProps,
   body: ''
 });
 

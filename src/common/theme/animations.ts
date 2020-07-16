@@ -19,3 +19,12 @@ export const slideLeft = keyframes`
     transform: translateX(0);
   }
 `;
+
+export const fadeInAnimation = {
+  from: {
+    opacity: 0
+  },
+  to: {
+    opacity: 1
+  }
+};

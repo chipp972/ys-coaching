@@ -60,7 +60,7 @@ const handleSubmit = (updateStatus: (status: MailSendingStatus) => void) =>
   };
 
 export const ContactPage: React.FC<Props> = ({ ContentComponent = Content }) => {
-  const { redirectLink, contribution, body } = React.useContext(ContactContext);
+  const { successRedirectLink, redirectLink, contribution, body } = React.useContext(ContactContext);
   const [status, updateStatus] = React.useState(MailSendingStatus.NOT_STARTED);
   const classes = useStyles();
   useReCaptcha();
@@ -93,6 +93,9 @@ export const ContactPage: React.FC<Props> = ({ ContentComponent = Content }) => 
                 <Alert variant="filled" severity="success">
                   {contribution.successMessageSent}
                 </Alert>
+
+
+                {successRedirectLink?.url && <RedirectLink {...successRedirectLink} />}
               </Case>
 
               <Case when={status === MailSendingStatus.ERROR}>

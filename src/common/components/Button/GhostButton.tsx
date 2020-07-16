@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import clsx from 'clsx';
 import { Link } from 'gatsby';
 import React from 'react';
+import { fadeInAnimation } from '../../theme/animations';
 
 type Props = {
   type?: 'reset' | 'button' | 'submit';
@@ -12,18 +13,20 @@ type Props = {
 } & ButtonProps;
 
 const useStyles = makeStyles((theme: Theme) => ({
+  '@keyframes fadeIn': fadeInAnimation,
   primaryButton: {
+    animation: '$fadeIn 1s ease-in-out',
     '&:hover': {
       color: theme.palette.primary.main
     }
   }
 }));
 
-const getProps = ({ url, isInternal, type }) => {
+const getProps = ({ url, isInternal, type }: Partial<Props>) => {
   if (isInternal) {
     return {
       component: Link,
-      to: url
+      to: url.startsWith('/') ? url : `/${url}`
     };
   }
   if (!!url && !isInternal) {
