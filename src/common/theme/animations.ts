@@ -28,3 +28,14 @@ export const fadeInAnimation = {
     opacity: 1
   }
 };
+
+export const slideDownAnimation = {
+  from: {
+    opacity: 0,
+    transform: 'translateY(-3rem)'
+  },
+  to: {
+    opacity: 1,
+    transform: 'translateY(0)'
+  }
+};

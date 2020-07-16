@@ -217,3 +217,18 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Position", name: "position", widget: "number", default: 50}
+
+  - name: "settings"
+    label: "Settings"
+    extension: "json"
+    editor:
+      preview: false
+
+    files:
+      - file: "src/settings/email.json"
+        label: "Email"
+        name: "email"
+
+        fields:
+          - {label: "Contact mail subject", name: "contactMailSubject", widget: "string"}
+          - {label: "Contact mail template name", name: "contactMailTemplateName", widget: "string"}

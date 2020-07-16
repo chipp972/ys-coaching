@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { connect } from 'node-mailjet';
 import { ReCaptchaAction } from '../src/common/helpers/recaptcha';
-import { emailSendApiVersion, getMailSender, getTemplateId, isSandboxMode, TemplateName } from '../src/server/mail';
+import { emailSendApiVersion, getMailSender, getTemplateId, isSandboxMode } from '../src/server/mail';
 import { checkReCaptchaToken } from '../src/server/recaptcha';
-
-const contactMailSubject = 'Someone is trying to reach you';
+import { contactMailSubject, contactMailTemplateName } from '../src/settings/email.json';
 
 export async function handler (event) {
   try {
@@ -19,7 +18,7 @@ export async function handler (event) {
 
     const mailSender = await getMailSender({ isBulk: false, mailjet });
 
-    const templateId = await getTemplateId({ name: TemplateName.contact, mailjet });
+    const templateId = await getTemplateId({ templateName: contactMailTemplateName, mailjet });
 
     const result = await mailjet.post('send').request({
       SandboxMode: isSandboxMode,

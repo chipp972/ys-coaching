@@ -30,10 +30,6 @@ type MailTemplate = {
   Name: string;
 };
 
-export enum TemplateName {
-  contact = 'contact'
-}
-
 export const getMailSender = async ({ isBulk, mailjet }: {isBulk: boolean; mailjet: Mailjet.Client}) => {
   const sender = await mailjet.get('sender', { version: emailApiVersion }).request();
   const { Email, Name } = (sender.body.Data as MailSender[])
@@ -44,10 +40,10 @@ export const getMailSender = async ({ isBulk, mailjet }: {isBulk: boolean; mailj
   return { Email, Name };
 };
 
-export const getTemplateId = async ({ name, mailjet }: {name: TemplateName; mailjet: Mailjet.Client}) => {
+export const getTemplateId = async ({ templateName, mailjet }: {templateName: string; mailjet: Mailjet.Client}) => {
   const template = await mailjet.get('template', { version: emailApiVersion }).request();
   const { ID } = (template.body.Data as MailTemplate[])
-    .find(({ Name }) => Name === name);
+    .find(({ Name }) => Name === templateName);
 
   return ID;
 };

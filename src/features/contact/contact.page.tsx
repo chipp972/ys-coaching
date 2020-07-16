@@ -7,6 +7,7 @@ import { Case } from 'react-case-when';
 import { PrimaryButton, RedirectLink } from '../../common/components/Button';
 import { getReCaptchaToken, ReCaptchaAction, useReCaptcha } from '../../common/helpers/recaptcha';
 import { Content, ContentProps, PageContent, Section, SubSection } from '../../common/layout';
+import { slideDownAnimation } from '../../common/theme/animations';
 import { ContactFormFields } from './contact-form-fields';
 import { contactRequestEndPoint } from './contact.constants';
 import { ContactContext } from './contact.context';
@@ -29,6 +30,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   sendButton: {
     maxWidth: '30rem'
+  },
+  '@keyframes slideDown': slideDownAnimation,
+  alertContainer: {
+    animation: '$slideDown 0.5s ease-out'
   }
 }));
 
@@ -90,7 +95,7 @@ export const ContactPage: React.FC<Props> = ({ ContentComponent = Content }) => 
               </Case>
 
               <Case when={status === MailSendingStatus.SUCCESS}>
-                <Alert variant="filled" severity="success">
+                <Alert className={classes.alertContainer} variant="filled" severity="success">
                   {contribution.successMessageSent}
                 </Alert>
 
