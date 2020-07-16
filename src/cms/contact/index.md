@@ -20,6 +20,10 @@ redirectLink:
   label: Or send an email
   url: mailto:hello@ys-coaching.fr
   isInternal: false
+successRedirectLink:
+  isInternal: true
+  label: Get back home
+  url: /
 ---
 Hello,
 
