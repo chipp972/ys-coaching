@@ -30,7 +30,7 @@ export const Pricing: React.FC<Props> = ({ data, description, onClick }) => {
       <div
         css={css`
           display: flex;
-          flex-flow: column wrap;
+          flex-flow: column nowrap;
           align-items: center;
 
           ${mediaQueries.fromTablet} {

@@ -84,7 +84,7 @@ export const ServiceCard: React.FC<Props> = ({
           ${activeStyle}
         }
 
-        ${mediaQueries.fromDesktop} {
+        ${mediaQueries.fromTablet} {
           margin: 3rem 3rem 0 0;
 
           .pricing-plan-image {
