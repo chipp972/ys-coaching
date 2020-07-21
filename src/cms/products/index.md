@@ -51,6 +51,7 @@ confirmationScreen:
     requiredErrorMessage: Please provide an answer
     locationChoiceLabel: Location
     additionalInfoLabel: Any question ?
+    errorMessageNotSent: Sorry an error occured. Please try again later.
 thankYouScreen:
   content: |-
     Un email de confirmation vient de vous être envoyé.

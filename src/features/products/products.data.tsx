@@ -1,4 +1,5 @@
 import * as R from 'ramda';
+import { carouselId } from './state/products.constant';
 
 const getProductCategories = R.pipe(
   R.path(['allMarkdownRemark', 'edges']),
@@ -29,7 +30,7 @@ export const getProductPageContextData = (data: PageData, fieldsMetaData?: any) 
   const contribution = isPreview ? data : R.path(['markdownRemark', 'frontmatter'], data);
 
   return {
-    carouselId: 'products',
+    carouselId,
     productCategories,
     ...contribution
   };

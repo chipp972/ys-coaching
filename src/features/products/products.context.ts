@@ -61,7 +61,8 @@ export const ProductsContext = React.createContext({
       lastNamePlaceholder: '',
       additionalInfoLabel: '',
       additionalInfoPlaceholder: '',
-      requiredErrorMessage: ''
+      requiredErrorMessage: '',
+      errorMessageNotSent: ''
     }
   },
   thankYouScreen: {

@@ -134,6 +134,7 @@ export const productPageQuery = graphql`
             additionalInfoLabel
             additionalInfoPlaceholder
             requiredErrorMessage
+            errorMessageNotSent
           }
         }
         thankYouScreen {

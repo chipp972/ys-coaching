@@ -159,7 +159,8 @@ collections:
                 {label: "Lastname placeholder", name: "lastNamePlaceholder", widget: "string", default: 'Doe'},
                 {label: "Additional informations label", name: "additionalInfoLabel", widget: "string", default: 'Any questions or note ?'},
                 {label: "Additional informations placeholder", name: "additionalInfoPlaceholder", widget: "string", default: 'Feel free to ask any question here'},
-                {label: "Required field error message", name: "requiredErrorMessage", widget: "text", default: 'You must answer here'}
+                {label: "Required field error message", name: "requiredErrorMessage", widget: "text", default: 'You must answer here'},
+                {label: "Error message not sent", name: "errorMessageNotSent", widget: "text", default: 'An error occured. Try again later.'}
               ]},
             ]}
           - {label: "Thank you screen", name: "thankYouScreen", widget: "object", fields: [

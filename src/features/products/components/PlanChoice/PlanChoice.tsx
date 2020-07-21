@@ -2,6 +2,7 @@ import * as R from 'ramda';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Tabs } from '../../../../common/components/Tabs/Tabs';
+import { useReCaptcha } from '../../../../common/helpers/recaptcha';
 import { useProductsContext } from '../../products.hook';
 import { setPlan } from '../../state/products.action';
 import { StepContainer } from '../StepContainer';
@@ -35,6 +36,9 @@ export const PlanChoice: React.FC = () => {
   const tabsData: TabData[] = makeTabsData(packages)(productCategories);
   const dispatch = useDispatch();
   const selectPlan: (plan: string) => void = R.pipe(setPlan, dispatch, goNextStep);
+
+  useReCaptcha();
+
   return (
     <StepContainer>
       {tabsData.length > 0 && (

@@ -1,23 +1,14 @@
 import { Form } from '@chipp972/form-validation';
-import { CircularProgress } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Alert } from '@material-ui/lab';
 import React from 'react';
-import { Case } from 'react-case-when';
-import { PrimaryButton, RedirectLink } from '../../common/components/Button';
-import { getReCaptchaToken, ReCaptchaAction, useReCaptcha } from '../../common/helpers/recaptcha';
+import { LoadingButton, LoadingStatus, PrimaryButton, RedirectLink } from '../../common/components/Button';
+import { handleFormSubmitWithRecaptcha } from '../../common/helpers/form-submit';
+import { ReCaptchaAction, useReCaptcha } from '../../common/helpers/recaptcha';
 import { Content, ContentProps, PageContent, Section, SubSection } from '../../common/layout';
-import { slideDownAnimation } from '../../common/theme/animations';
+import { ContactFormData } from '../../server/data.type';
 import { ContactFormFields } from './contact-form-fields';
 import { contactRequestEndPoint } from './contact.constants';
 import { ContactContext } from './contact.context';
-
-enum MailSendingStatus {
-  NOT_STARTED = 'NOT_STARTED',
-  PENDING = 'PENDING',
-  SUCCESS = 'SUCCESS',
-  ERROR = 'ERROR'
-}
 
 const useStyles = makeStyles((theme: Theme) => ({
   form: {
@@ -30,10 +21,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   sendButton: {
     maxWidth: '30rem'
-  },
-  '@keyframes slideDown': slideDownAnimation,
-  alertContainer: {
-    animation: '$slideDown 0.5s ease-out'
   }
 }));
 
@@ -41,32 +28,9 @@ type Props = {
   ContentComponent?: React.FC<ContentProps>;
 };
 
-const handleSubmit = (updateStatus: (status: MailSendingStatus) => void) =>
-  async (formData) => {
-    try {
-      updateStatus(MailSendingStatus.PENDING);
-
-      const recaptchaToken = await getReCaptchaToken(ReCaptchaAction.SUBMIT_CONTACT);
-    
-      const response = await fetch(contactRequestEndPoint, {
-        method: 'POST',
-        body: JSON.stringify({ ...formData, recaptchaToken })
-      });
-
-      const result = await response.json();
-
-      if (!response.ok || result.response?.Messages?.[0].Status !== 'success') {
-        throw new Error();
-      }
-      updateStatus(MailSendingStatus.SUCCESS);
-    } catch (error) {
-      updateStatus(MailSendingStatus.ERROR);
-    }
-  };
-
 export const ContactPage: React.FC<Props> = ({ ContentComponent = Content }) => {
   const { successRedirectLink, redirectLink, contribution, body } = React.useContext(ContactContext);
-  const [status, updateStatus] = React.useState(MailSendingStatus.NOT_STARTED);
+  const [status, updateStatus] = React.useState(LoadingStatus.NOT_STARTED);
   const classes = useStyles();
   useReCaptcha();
 
@@ -78,36 +42,31 @@ export const ContactPage: React.FC<Props> = ({ ContentComponent = Content }) => 
         </SubSection>
 
         <SubSection>
-          <Form className={classes.form} onValidationSuccess={handleSubmit(updateStatus)}>
+          <Form className={classes.form} onValidationSuccess={async (contactFormData: ContactFormData) => {
+            updateStatus(LoadingStatus.PENDING);
+            const newStatus = await handleFormSubmitWithRecaptcha({
+              action: ReCaptchaAction.SUBMIT_CONTACT,
+              endpoint: contactRequestEndPoint
+            })(contactFormData);
+            updateStatus(newStatus);
+          }}>
             <ContactFormFields />
+
             <div className={classes.sendButtonContainer}>
-              <Case when={[MailSendingStatus.NOT_STARTED, MailSendingStatus.ERROR].includes(status)}>
+              <LoadingButton
+                status={status}
+                errorMessage={contribution.errorMessageNotSent}
+                successMessage={contribution.successMessageSent}
+                successRedirectLink={successRedirectLink}>
+
                 <PrimaryButton
                   variant="contained"
                   className={classes.sendButton}
                   type="submit">
                   {contribution.validationButtonLabel}
                 </PrimaryButton>
-              </Case>
 
-              <Case when={status === MailSendingStatus.PENDING}>
-                <CircularProgress color="primary" />
-              </Case>
-
-              <Case when={status === MailSendingStatus.SUCCESS}>
-                <Alert className={classes.alertContainer} variant="filled" severity="success">
-                  {contribution.successMessageSent}
-                </Alert>
-
-
-                {successRedirectLink?.url && <RedirectLink {...successRedirectLink} />}
-              </Case>
-
-              <Case when={status === MailSendingStatus.ERROR}>
-                <Alert className={classes.sendButtonContainer} variant="filled" severity="error">
-                  {contribution.errorMessageNotSent}
-                </Alert>
-              </Case>
+              </LoadingButton>
             </div>
 
           </Form>

@@ -2,7 +2,8 @@ import React from 'react';
 import { load, ReCaptchaInstance } from 'recaptcha-v3';
 
 export enum ReCaptchaAction {
-  SUBMIT_CONTACT = 'submit_contact'
+  SUBMIT_CONTACT = 'submit_contact',
+  SUBMIT_PRODUCTS = 'submit_products',
 }
 
 const reCaptchaSingleton: {

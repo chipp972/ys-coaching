@@ -7,6 +7,7 @@ import { StepButtons } from '../../../../common/components/Button';
 import { FormInput, FormRadioGroup } from '../../../../common/components/Form';
 import { useProductsContext } from '../../products.hook';
 import { setLocation } from '../../state/products.action';
+import { Fieldnames } from '../../state/products.constant';
 import { StepContainer } from '../StepContainer';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -48,7 +49,7 @@ export const LocationStep: React.FC = () => {
           options={locationList}
           label={locationScreen.contribution.locationChoiceLabel}
           errorMessage={locationScreen.contribution.locationChoiceError}
-          name="location"
+          name={Fieldnames.location}
           value={currentLocation}
           onFieldReset={() => setCurrentLocation(null)}
           onChange={(event) => {
@@ -60,7 +61,7 @@ export const LocationStep: React.FC = () => {
         <FormInput
           className={classes.fieldset}
           label={locationScreen.contribution.customerPlaceLabel}
-          name="homeAddress"
+          name={Fieldnames.homeAddress}
           placeholder={locationScreen.contribution.customerPlacePlaceholder}
           errorMessage={locationScreen.contribution.customerPlaceError}
           required={isCustomLocationChecked}
