@@ -3,6 +3,7 @@ export type ContactFormData = {
   firstName: string;
   lastName: string;
   message: string;
+  recaptchaToken?: string;
 };
 
 export type ProductsFormData = {
@@ -10,7 +11,8 @@ export type ProductsFormData = {
   firstName: string;
   lastName: string;
   plan: string;
-  date: Date;
+  date: string;
   location: string;
   additionalInformations?: string;
+  recaptchaToken?: string;
 };

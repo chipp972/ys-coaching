@@ -1,12 +1,13 @@
 import { connect } from 'node-mailjet';
 import { ReCaptchaAction } from '../src/common/helpers/recaptcha';
+import { ContactFormData } from '../src/server/data.type';
 import { emailSendApiVersion, getMailSender, getTemplateId, isSandboxMode } from '../src/server/mail';
 import { checkReCaptchaToken } from '../src/server/recaptcha';
 import { contactMailSubject, contactMailTemplateName } from '../src/settings/email.json';
 
 export async function handler (event) {
   try {
-    const { recaptchaToken, ...Variables } = JSON.parse(event.body);
+    const { recaptchaToken, ...Variables } = JSON.parse(event.body) as ContactFormData;
 
     await checkReCaptchaToken(recaptchaToken, ReCaptchaAction.SUBMIT_CONTACT);
 

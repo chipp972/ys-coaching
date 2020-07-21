@@ -1,5 +1,6 @@
 import React from 'react';
 import { load, ReCaptchaInstance } from 'recaptcha-v3';
+import { isNetlifyCms } from './is-cms';
 
 export enum ReCaptchaAction {
   SUBMIT_CONTACT = 'submit_contact',
@@ -14,7 +15,7 @@ const reCaptchaSingleton: {
  * Load ReCaptcha return a ref to a ReCaptcha instance
  */
 export const loadReCaptcha = async () => {
-  if (!reCaptchaSingleton.instance) {
+  if (!reCaptchaSingleton.instance && !isNetlifyCms()) {
     const recaptchaInstance = await load(process.env.GATSBY_APP_SITE_RECAPTCHA_KEY, {
       // TODO: Must add some text in the footer to hide the badge
       autoHideBadge: false

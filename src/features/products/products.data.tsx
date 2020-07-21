@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { carouselId } from './state/products.constant';
+import { reducerKey as carouselId } from './state/products.constant';
 
 const getProductCategories = R.pipe(
   R.path(['allMarkdownRemark', 'edges']),

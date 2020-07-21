@@ -2,7 +2,6 @@ import { Form } from '@chipp972/form-validation';
 import { css } from '@emotion/core';
 import { FormLabel, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import format from 'date-fns/fp/format';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { LoadingButton, LoadingStatus, StepButtons } from '../../../../common/components/Button';
@@ -12,7 +11,7 @@ import { ReCaptchaAction } from '../../../../common/helpers/recaptcha';
 import { ProductsFormData } from '../../../../server/data.type';
 import { useProductsContext } from '../../products.hook';
 import { Fieldnames, productsRequestEndPoint } from '../../state/products.constant';
-import { getSelectedDate, getSelectedLocation, getSelectedPlan } from '../../state/products.selector';
+import { getFormattedSelectedDate, getSelectedLocation, getSelectedPlan } from '../../state/products.selector';
 import { StepContainer } from '../StepContainer';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -36,13 +35,8 @@ export const ConfirmationStep: React.FC = () => {
   const { goNextStep, goPrevStep, prevStep, confirmationScreen } = useProductsContext();
   const selectedLocation = useSelector(getSelectedLocation);
   const selectedPlan = useSelector(getSelectedPlan);
-  const selectedDate = useSelector(getSelectedDate);
+  const selectedDate = useSelector(getFormattedSelectedDate);
   const classes = useStyles();
-
-  const formattedDate = React.useMemo(
-    () => !!selectedDate && format('iiii dd/MM hh:mm', selectedDate),
-    [selectedDate]
-  );
 
   return (
     <StepContainer>
@@ -80,7 +74,7 @@ export const ConfirmationStep: React.FC = () => {
         <FilledAnswer
           className={classes.fieldset}
           label={confirmationScreen.contribution.dateChoiceLabel}
-          answer={formattedDate}
+          answer={selectedDate}
         />
 
         <FilledAnswer

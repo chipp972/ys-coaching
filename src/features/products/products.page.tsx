@@ -7,7 +7,7 @@ import { colors } from '../../common/theme';
 import { ConfirmationStep, DateTimeStep, PlanChoice, ThankYouStep } from './components';
 import { LocationStep } from './components/LocationStep/LocationStep';
 import { useProductsContext } from './products.hook';
-import { carouselId } from './state/products.constant';
+import { reducerKey as carouselId } from './state/products.constant';
 
 type StepData = {
   stepName: string;

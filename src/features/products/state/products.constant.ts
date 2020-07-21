@@ -6,23 +6,9 @@ export const actions = {
 
 export const reducerKey = 'products';
 
-export const steps = {
-  PLAN_CHOICE: 'PLAN_CHOICE',
-  DATE_TIME_CHOICE: 'DATE_TIME_CHOICE',
-  LOCATION: 'LOCATION',
-  CONFIRMATION: 'CONFIRMATION',
-  THANK_YOU: 'THANK_YOU'
-};
-
-export const initialState = {
-  plan: null,
-  date: null,
-  location: null
-};
-
 export enum Fieldnames {
   plan = 'plan',
-  date = 'dateTime',
+  date = 'date',
   location = 'location',
   homeAddress = 'homeAddress',
   email = 'email',
@@ -31,6 +17,10 @@ export enum Fieldnames {
   additionalInformations = 'additionalInformations'
 }
 
-export const carouselId = 'products';
+export const initialState = {
+  plan: null,
+  date: null,
+  location: null
+};
 
 export const productsRequestEndPoint = '/.netlify/functions/products';
