@@ -24,10 +24,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const StepContainer: React.FC = ({ children }) => {
   const classes = useStyles();
-  const { prevStep, currentStep, goPrevStep } = useProductsContext();
+  const { prevStep, currentStep, goPrevStep, nextStep } = useProductsContext();
   return (
     <Section className={classes.section}>
-      {prevStep?.stepName && (
+      {nextStep !== null && prevStep?.stepName && (
         <div className={classes.backButtonContainer}>
           <PrevStepButton variant="text" onClick={goPrevStep}>
             {prevStep?.stepName}
