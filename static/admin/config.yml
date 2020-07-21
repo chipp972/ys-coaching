@@ -233,3 +233,7 @@ collections:
         fields:
           - {label: "Contact mail subject", name: "contactMailSubject", widget: "string"}
           - {label: "Contact mail template name", name: "contactMailTemplateName", widget: "string"}
+          - {label: "Products mail subject sent to Ys coaching service account", name: "productsServiceSubject", widget: "string"}
+          - {label: "Products mail template name sent to Ys coaching service account", name: "productsServiceTemplateName", widget: "string"}
+          - {label: "Products mail subject sent to client", name: "productsConfirmationSubject", widget: "string"}
+          - {label: "Products mail template name sent to client", name: "productsConfirmationTemplateName", widget: "string"}

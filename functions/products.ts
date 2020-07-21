@@ -1,54 +1,49 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { connect } from 'node-mailjet';
+import { ReCaptchaAction } from '../src/common/helpers/recaptcha';
+import { emailSendApiVersion, getMailSender, getTemplateId, isSandboxMode } from '../src/server/mail';
+import { checkReCaptchaToken } from '../src/server/recaptcha';
+import { productsConfirmationSubject, productsConfirmationTemplateName, productsServiceSubject, productsServiceTemplateName } from '../src/settings/email.json';
 
-const templateIds = {
-  customer: 1432614,
-  yuto: 0
-};
-
-// eslint-disable-next-line max-lines-per-function
-export async function handler() {
+export async function handler (event) {
   try {
+    const { recaptchaToken, ...Variables } = JSON.parse(event.body);
+
+    await checkReCaptchaToken(recaptchaToken, ReCaptchaAction.SUBMIT_PRODUCTS);
+
     const mailjet = connect(process.env.MAILJET_API_KEY, process.env.MAILJET_API_SECRET, {
-      version: 'v3.1',
-      // TODO: don't forget to remove the test variable npm run develop
-      perform_api_call: process.env.MAILJET_SANDBOX !== '1'
+      version: emailSendApiVersion,
+      perform_api_call: !isSandboxMode
     });
 
-    // TODO: Retrieve email, firstname, lastname and message
-    const email = 'pierrecharles.nicolas@gmail.com';
-    const lastname = 'Pierre-charles';
-    const firstname = 'Nicolas';
-    const message = 'Test message';
+    const mailSender = await getMailSender({ isBulk: false, mailjet });
+
+    const serviceTemplateId = await getTemplateId({ templateName: productsServiceTemplateName, mailjet });
+    const confirmationTemplateId = await getTemplateId({ templateName: productsConfirmationTemplateName, mailjet });
 
     const result = await mailjet.post('send').request({
-      SandboxMode: process.env.MAILJET_SANDBOX !== '1',
+      SandboxMode: isSandboxMode,
       Messages: [
         {
-          From: {
-            Email: 'hello@ys-coaching.fr',
-            Name: 'ys-coaching'
-          },
-          To: [
-            {
-              Email: email,
-              Name: `${firstname} ${lastname}`
-            }
-          ],
-          TemplateID: templateIds.customer,
+          From: mailSender,
+          To: [mailSender],
+          TemplateID: serviceTemplateId,
           TemplateLanguage: true,
-          Subject: '[Ys-coaching] Product customer request',
-          Variables: {
-            prénom: firstname,
-            nom: lastname,
-            message,
-            email
-          }
+          Subject: productsServiceSubject,
+          Variables
+        },
+        {
+          From: mailSender,
+          To: [{
+            Email: Variables.email,
+            Name: `${Variables.firstName} ${Variables.lastName}`
+          }],
+          TemplateID: confirmationTemplateId,
+          TemplateLanguage: true,
+          Subject: productsConfirmationSubject,
+          Variables
         }
       ]
     });
-
-    console.log(result.body);
 
     return {
       statusCode: 200,
@@ -57,11 +52,8 @@ export async function handler() {
       })
     };
   } catch (error) {
-    console.log(error.statusCode);
-    console.log(error);
-
     return {
-      statusCode: error.statusCode,
+      statusCode: error.statusCode || 500,
       body: JSON.stringify({
         response: error
       })

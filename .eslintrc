@@ -16,7 +16,10 @@
   },
   "overrides": [
     {
-      "files": "src/cms/**/*.js",
+      "files": [
+        "src/cms/**/*.js",
+        "functions/**/*.ts"
+      ],
       "rules": {
         "camelcase": "off",
         "@typescript-eslint/camelcase": "off"

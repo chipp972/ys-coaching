@@ -13,9 +13,7 @@ export const handler: LambdaHandler = async (event, context) => {
     statusCode: 200,
     body: JSON.stringify({
       msg: `Hello, World! This is better ${ Math.round(Math.random() * 10)}`,
-      count: await count(),
-      env: process.env.MAILJET_API_KEY,
-      secret: process.env.MAILJET_API_SECRET
+      count: await count()
     })
   };
 };

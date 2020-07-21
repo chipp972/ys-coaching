@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { connect } from 'node-mailjet';
 import { ReCaptchaAction } from '../src/common/helpers/recaptcha';
 import { emailSendApiVersion, getMailSender, getTemplateId, isSandboxMode } from '../src/server/mail';

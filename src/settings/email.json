@@ -1,4 +1,8 @@
 {
   "contactMailSubject": "Someone is trying to reach you",
-  "contactMailTemplateName": "contact"
+  "contactMailTemplateName": "contact",
+  "productsServiceSubject": "Someone is interested in your services",
+  "productsServiceTemplateName": "products-service",
+  "productsConfirmationSubject": "Confirmation for Ys coaching request",
+  "productsConfirmationTemplateName": "products-confirmation"
 }
