@@ -28,7 +28,7 @@ export const HamburgerMenu = ({ setActive, isActive }) => (
       `}
       className="navbar-burger burger"
       data-target="navMenu"
-      onClick={() => setActive(!isActive)}>
+      onClick={() => setActive((currentState: boolean) => !currentState)}>
       {R.range(0, 3).map((id) => (
         <div
           key={id}
