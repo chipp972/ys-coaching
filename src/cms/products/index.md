@@ -53,22 +53,37 @@ packages:
       frequency: session
       description: Soft tissue release
       image: /img/qu’est-ce-que-la-technique-graston-.jpg
+      benefits:
+        - Relaxation
+        - Mobility
+        - Pain-free
     - price: 490
       plan: SBD session
       category: Long term coaching
       image: /img/alora-griffiths-xw47yqne0tq-unsplash.jpg
       frequency: 2 months (1 session per week)
+      benefits:
+        - 2 dedicated hours of training
+        - Tips to help you go past sticking points and break new PRs
+        - Get initiated to a super effective warm-up routine
     - price: 980
       plan: SBD session
       category: Long term coaching
       frequency: 2 months (2 session per week)
       image: /img/alora-griffiths-xw47yqne0tq-unsplash.jpg
+      benefits:
+        - 2 dedicated hours of training
+        - Tips to help you go past sticking points and break new PRs
+        - Get initiated to a super effective warm-up routine
     - price: 70
       plan: At Home Session
       category: Single session
       frequency: session
       description: training/condiotioning/stretch
       image: /img/annie-spratt-oqfshq2uaic-unsplash.jpg
+      benefits:
+        - Moving to your place
+        - Improve body condition
   stepName: Choose a program
 dateTimeScreen:
   stepName: Date and time
