@@ -35,13 +35,6 @@ const TabList: React.FC = ({ children }) => (
 
 export const Tabs: React.FC<Props> = ({ labels, children, onChange, ...props }) => {
   const [currentTab, setCurrentTab] = React.useState(0);
-  if (labels.length !== React.Children.count(children)) {
-    throw new Error(
-      `The number of tabs (${
-        labels.length
-      }) and tab contents (${React.Children.count(children)}) are different`
-    );
-  }
   return (
     <div
       {...props}

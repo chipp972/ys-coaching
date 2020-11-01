@@ -4,11 +4,11 @@ import clsx from 'clsx';
 import React from 'react';
 import { RedirectLink } from '../../../common/components/Button';
 import { PreviewCompatibleImage, useFullWidthImageStyle } from '../../../common/components/ImageContainer';
-import { Content, ContentProps, PageContent, Section, SubSection } from '../../../common/layout';
+import { HTMLContent, PageContent, Section, SubSection } from '../../../common/layout';
 import { lightTheme, mediaQueries, theme as darkTheme } from '../../../common/theme';
-import { Card, HomeSection as Props, SectionImage } from '../home.context';
+import { CardSectionData, HomeSectionData, TextSectionData, TitleSectionData } from '../home.context';
 import { FeatureCard } from './FeatureCard';
-import { HomePageSectionTitle } from './HomePageSectionTitle';
+import { TitleSection } from './TitleSection';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -31,16 +31,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   })
 }));
 
-type SubsectionProps = {
-  cards: Card[];
-  sectionImage?: SectionImage;
-  hasSectionImage: boolean;
-  isDarkTheme: boolean;
-};
-
-const HomePageSubsection: React.FC<SubsectionProps> = ({ cards = [], hasSectionImage, sectionImage, isDarkTheme }) => {
-  const classes = useStyles({ isDarkTheme });
+const CardSection: React.FC<CardSectionData> = ({ cards, cta, image, imagePosition, text }) => {
+  const classes = useStyles({ isDarkTheme: false });
   return (
+    <Section>
+      {text}
     <div
       css={css`
         display: flex;
@@ -48,7 +43,7 @@ const HomePageSubsection: React.FC<SubsectionProps> = ({ cards = [], hasSectionI
         justify-content: center;
 
         ${mediaQueries.fromWidescreen} {
-          flex-flow: ${sectionImage?.position === 'right' ? 'row' : 'row-reverse'} wrap;
+          flex-flow: ${imagePosition === 'right' ? 'row' : 'row-reverse'} wrap;
         }
       `}>
       {cards.length > 0 && (
@@ -61,49 +56,38 @@ const HomePageSubsection: React.FC<SubsectionProps> = ({ cards = [], hasSectionI
             width: 100%;
 
             ${mediaQueries.fromWidescreen} {
-              width: ${['left', 'right'].includes(sectionImage?.position) ? '50%' : '100%'};
+              width: ${['left', 'right'].includes(imagePosition) ? '50%' : '100%'};
             }
           `}>
-          {cards.map(({ title: cardTitle, ...card }) => (
-            <FeatureCard key={cardTitle} title={cardTitle} {...card} />
+          {cards.map((cardData) => (
+            <FeatureCard key={cardData.id} {...cardData} />
           ))}
         </SubSection>
       )}
       <SubSection className={classes.imageContainer}>
-        {hasSectionImage && <PreviewCompatibleImage imageInfo={sectionImage} />}
+        {!!image && <PreviewCompatibleImage imageInfo={image} />}
       </SubSection>
     </div>
+    <RedirectLink {...cta} />
+    </Section>
   );
 };
 
-// eslint-disable-next-line max-lines-per-function, complexity
-export const HomeSection: React.FC<Props & { ContentComponent: React.FC<ContentProps> }> = ({
-  title,
-  theme,
-  isTitleVisible,
-  sectionImage,
-  textPosition,
-  cards,
-  markdownContent,
-  cta,
-  ContentComponent = Content
-}) => {
+// eslint-disable-next-line complexity
+const TextSection: React.FC<TextSectionData> = ({ text, theme, cta, ctaPosition, image, imagePosition, maxImageHeight, textPosition }) => {
   const isDarkTheme = theme === 'dark';
-  const backgroundImage = sectionImage?.position === 'background' && sectionImage?.image;
-  const hasSectionImage = sectionImage?.position !== 'background' && !!sectionImage?.image;
-  const height = sectionImage?.maxHeight;
+  const backgroundImage = imagePosition === 'background' && image;
   const { fullWidthImageContainer } = useFullWidthImageStyle({
     image: backgroundImage,
     hasText: true,
-    height
+    height: maxImageHeight
   });
-  const classes = useStyles({ isDarkTheme, textPosition, backgroundImage, height });
+  const classes = useStyles({ isDarkTheme, textPosition, backgroundImage, height: maxImageHeight });
   return (
-    <ThemeProvider key={title} theme={isDarkTheme ? darkTheme : lightTheme}>
-      <HomePageSectionTitle title={title} isTitleVisible={isTitleVisible} />
+    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <PageContent
         className={clsx(classes.container, {
-          [fullWidthImageContainer]: sectionImage?.position === 'background'
+          [fullWidthImageContainer]: imagePosition === 'background'
         })}>
         <Section
           css={css`
@@ -117,22 +101,28 @@ export const HomeSection: React.FC<Props & { ContentComponent: React.FC<ContentP
               center: 'text-align: center;'
             }[textPosition] || ''}
           `}>
-          {!!markdownContent && (
+          {!!text && (
             <SubSection>
-              <ContentComponent content={markdownContent} className={classes.markdownContent} />
+              <HTMLContent content={text} className={classes.markdownContent} />
             </SubSection>
           )}
-          {(cards.length > 0 || hasSectionImage) && (
-            <HomePageSubsection
-              cards={cards}
-              hasSectionImage={hasSectionImage}
-              isDarkTheme={isDarkTheme}
-              sectionImage={sectionImage}
-            />
-          )}
-          {cta?.url && <RedirectLink {...cta} />}
+          <RedirectLink {...cta} />
         </Section>
       </PageContent>
     </ThemeProvider>
   );
+};
+
+export const NewHomeSection: React.FC<HomeSectionData> = (sectionData) => {
+  const { model } = sectionData;
+  switch(model.apiKey) {
+    case 'title_section':
+      return <TitleSection {...sectionData as TitleSectionData} />;
+    case 'card_section':
+      return <CardSection {...sectionData as CardSectionData} />;
+    case 'text_section':
+      return <TextSection {...sectionData as TextSectionData} />;
+    default:
+      return null;
+  }
 };

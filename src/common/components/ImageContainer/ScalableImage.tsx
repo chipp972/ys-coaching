@@ -1,9 +1,13 @@
-import React from 'react';
 import { css } from '@emotion/core';
-import { getImageSrc, GatsbyImage } from '../../helpers/gatsby';
+import { FluidObject } from 'gatsby-image';
+import React from 'react';
+import { getImageSrc } from '../../helpers/gatsby';
 
 type Props = {
-  image: GatsbyImage;
+  image: {
+    fluid: FluidObject;
+    alt: string;
+  };
   scalableImageClassName: string;
   height?: string;
   width?: string;

@@ -1,3 +1,5 @@
+import { FluidObject } from 'gatsby-image';
+
 declare module '*.svg' {
   const content: any;
   export default content;
@@ -9,27 +11,37 @@ declare module '*.inline.svg' {
 }
 
 declare module 'react-case-when' {
-    export const Switch: import('react').FC;
-    export const Case: import('react').FC<{when: boolean}>;
+  export const Switch: import('react').FC;
+  export const Case: import('react').FC<{when: boolean}>;
 }
 
-declare type PageData<FrontMatter = any, Node = any> = {
-  allMarkdownRemark?: {
-    edges: { node: Node }[];
-  };
-  markdownRemark: {
-    html?: string;
-    frontmatter: {
-      title: string;
-      subtitle?: string;
-      image?: any;
-    } & FrontMatter;
+declare type HeaderProps = {
+  _allTitleLocales: LocalizedField[];
+  _allSubtitleLocales: LocalizedField[];
+  image?: {
+    fluid: FluidObject;
   };
 };
 
-declare type PageProps<FrontMatter = any, Node = any> = {
-  location: {
-    pathname: string;
+declare type PageData<PageSpecificData = any> = {
+  page: {
+    header: HeaderProps;
+    seoMetaTags: { tags: any[] };
+  } & PageSpecificData;
+};
+
+declare type SvgProps = {
+  size?: number;
+  className?: string;
+};
+
+declare type MarkdownField = {
+  childMarkdownRemark: {
+    html: string;
   };
-  data: PageData<FrontMatter, Node>;
+};
+
+declare type LocalizedField<T = string> = {
+  locale: string;
+  value: T;
 };

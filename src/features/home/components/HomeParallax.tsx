@@ -2,11 +2,12 @@ import { css } from '@emotion/core';
 import { Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React from 'react';
-import { RedirectLink } from '../../../common/components/Button';
+import { CtaProps, RedirectLink } from '../../../common/components/Button';
 import { getImageSrc } from '../../../common/helpers/gatsby';
 import { navbarHeight } from '../../../common/layout';
+import { useI18n } from '../../../common/layout/Multilanguage';
 import { colors, mediaQueries } from '../../../common/theme';
-import { HomeContext } from '../home.context';
+import { HeaderProps } from '../../../custom';
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
@@ -34,9 +35,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export const HomeParallax: React.FC = () => {
+export const HomeParallax: React.FC<HeaderProps & {mainCta: CtaProps}> = ({ _allTitleLocales, _allSubtitleLocales, image, mainCta }) => {
+  const { getLocalizedContent } = useI18n();
   const classes = useStyles();
-  const { title, subtitle, image, mainCta } = React.useContext(HomeContext);
+  const title = getLocalizedContent(_allTitleLocales);
+  const subtitle = getLocalizedContent(_allSubtitleLocales);
+
   return (
     <div
       css={css`
@@ -74,7 +78,7 @@ export const HomeParallax: React.FC = () => {
             {subtitle}
           </Typography>
         )}
-        {!!mainCta?.url && <RedirectLink {...mainCta} className={classes.cta} />}
+        <RedirectLink {...mainCta} className={classes.cta} />
       </div>
     </div>
   );

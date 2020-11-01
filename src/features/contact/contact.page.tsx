@@ -4,7 +4,8 @@ import React from 'react';
 import { LoadingButton, LoadingStatus, PrimaryButton, RedirectLink } from '../../common/components/Button';
 import { handleFormSubmitWithRecaptcha } from '../../common/helpers/form-submit';
 import { ReCaptchaAction, useReCaptcha } from '../../common/helpers/recaptcha';
-import { Content, ContentProps, PageContent, Section, SubSection } from '../../common/layout';
+import { HTMLContent, PageContent, Section, SubSection } from '../../common/layout';
+import { useI18n } from '../../common/layout/Multilanguage';
 import { ContactFormData } from '../../server/data.type';
 import { ContactFormFields } from './contact-form-fields';
 import { contactRequestEndPoint } from './contact.constants';
@@ -24,21 +25,25 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-type Props = {
-  ContentComponent?: React.FC<ContentProps>;
-};
-
-export const ContactPage: React.FC<Props> = ({ ContentComponent = Content }) => {
-  const { successRedirectLink, redirectLink, contribution, body } = React.useContext(ContactContext);
+export const ContactPage: React.FC = () => {
+  const {
+    successCta,
+    mailCta,
+    errorMessageNotSent,
+    successMessageSent,
+    _allContentLocales,
+    validationButtonLabel
+  } = React.useContext(ContactContext);
   const [status, updateStatus] = React.useState(LoadingStatus.NOT_STARTED);
   const classes = useStyles();
   useReCaptcha();
+  const { getLocalizedContent } = useI18n();
 
   return (
     <PageContent>
       <Section>
         <SubSection>
-          <ContentComponent content={body} />
+          <HTMLContent content={getLocalizedContent(_allContentLocales)} />
         </SubSection>
 
         <SubSection>
@@ -55,15 +60,15 @@ export const ContactPage: React.FC<Props> = ({ ContentComponent = Content }) => 
             <div className={classes.sendButtonContainer}>
               <LoadingButton
                 status={status}
-                errorMessage={contribution.errorMessageNotSent}
-                successMessage={contribution.successMessageSent}
-                successRedirectLink={successRedirectLink}>
+                errorMessage={errorMessageNotSent}
+                successMessage={successMessageSent}
+                successRedirectLink={successCta}>
 
                 <PrimaryButton
                   variant="contained"
                   className={classes.sendButton}
                   type="submit">
-                  {contribution.validationButtonLabel}
+                  {validationButtonLabel}
                 </PrimaryButton>
 
               </LoadingButton>
@@ -72,7 +77,7 @@ export const ContactPage: React.FC<Props> = ({ ContentComponent = Content }) => 
           </Form>
         </SubSection>
 
-        {redirectLink?.url && <RedirectLink {...redirectLink} />}
+        <RedirectLink {...mailCta} />
       </Section>
     </PageContent>
   );

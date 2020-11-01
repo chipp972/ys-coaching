@@ -78,7 +78,7 @@ const MarkdownStyle = () => {
             max-height: 40rem;
             max-width: 100%;
           }
-          img[src$='#left'] {
+          img.left {
             width: 100vw;
 
             ${mediaQueries.fromTablet} {
@@ -87,7 +87,7 @@ const MarkdownStyle = () => {
               float: left;
             }
           }
-          img[src$='#right'] {
+          img.right {
             width: 100vw;
 
             ${mediaQueries.fromTablet} {
@@ -96,15 +96,15 @@ const MarkdownStyle = () => {
               float: right;
             }
           }
-          img[src$='#center'] {
+          img.center {
             padding-left: auto;
             padding-right: auto;
             display: block;
           }
-          img[src$='#fullWidth'] {
+          img.fullwidth {
             width: 100vw;
           }
-          img[src$='#fullHeight'] {
+          img.fullheight {
             height: 100vh;
             max-height: 100vh;
           }
@@ -124,19 +124,10 @@ const MarkdownStyle = () => {
   );
 };
 
-export const HTMLContent: React.FC<ContentProps> = ({ content, className }) => (
-  <>
+export const HTMLContent: React.FC<ContentProps> = ({ content, className, children }) => (
+  <div className={clsx(markdownClassName, className)}>
     <MarkdownStyle />
-    <div
-      className={clsx(markdownClassName, className)}
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-  </>
-);
-
-export const Content: React.FC<ContentProps> = ({ content, className }) => (
-  <>
-    <MarkdownStyle />
-    <div className={clsx(markdownClassName, className)}>{content}</div>
-  </>
+    {children}
+    <div dangerouslySetInnerHTML={{ __html: content }} />
+  </div>
 );

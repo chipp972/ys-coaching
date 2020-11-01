@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { Link } from 'gatsby';
 import React from 'react';
 import { useSiteMetadata } from '../../hook/use-site-metadata';
+import { LanguageSelection } from '../../layout/Multilanguage';
 import { animation, colors, mediaQueries } from '../../theme';
 import { SocialLinks } from '../SocialLinks';
 import { HamburgerMenu } from './HamburgerMenu';
@@ -85,6 +86,7 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
             <SocialLinks className={classes.socialIcons} />
           </div>
         </div>
+        <LanguageSelection />
       </div>
     </nav>
   );

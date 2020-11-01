@@ -1,80 +1,126 @@
+import { FluidObject } from 'gatsby-image';
 import React from 'react';
+import { CtaProps } from '../../common/components/Button';
+import { LocalizedField } from '../../custom';
 
-type ProductCategory = {
-  label: string;
-  value: string;
-  position: number;
-  description?: string;
+export type Plan = {
+  id: string;
+  title: string;
+  description: string;
+  category: {
+    id: string;
+  };
+  image: {
+    alt: string;
+    fluid: FluidObject;
+  };
+  price: number;
+  frequency?: string;
+  // string array to JSON.parse
+  benefits?: string;
 };
 
-type Location = {
-  label: React.ReactNode;
-  address: string;
+export type DatoCmsPlanStep = {
+  id: string;
+  model: {
+    apiKey: 'plan_step';
+  };
+  plans: Plan[];
+};
+
+export type Timeslot = {
+  id: string;
+  startDate: string;
+  endDate: string;
+};
+
+export type DatoCmsDateTimeStep = {
+  id: string;
+  model: {
+    apiKey: 'date_time_step';
+  };
+  timeslots: Timeslot[];
+};
+
+export type Location = {
+  id: string;
+  label: string;
+  geolocation: {
+    latitude: number;
+    longitude: number;
+  };
+};
+
+export type DatoCmsLocationStep = {
+  id: string;
+  model: {
+    apiKey: 'location_step';
+  };
+  customPlaceError: string;
+  customPlaceLabel: string;
+  customPlacePlaceholder: string;
+  locationChoiceCustomPlaceLabel: string;
+  locationChoiceError: string;
+  locationChoiceLabel: string;
+  locations: Location[];
+};
+
+export type DatoCmsConfirmationStep = {
+  id: string;
+  model: {
+    apiKey: 'confirmation_step';
+  };
+  dateChoiceLabel: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  errorMessageNotSent: string;
+  firstnamePlaceholder: string;
+  firstnameLabel: string;
+  lastnameLabel: string;
+  lastnamePlaceholder: string;
+  locationChoiceLabel: string;
+  messageLabel: string;
+  messagePlacholder: string;
+  planChoiceLabel: string;
+  requiredFieldErrorMessage: string;
+  validationButtonLabel: string;
+};
+
+export type DatoCmsThankYouStep = {
+  id: string;
+  model: {
+    apiKey: 'thank_you_step';
+  };
+  image: {
+    alt: string;
+    fluid: FluidObject;
+  };
+  redirectLink: CtaProps;
+};
+
+export type StepContent =
+  | DatoCmsPlanStep
+  | DatoCmsDateTimeStep
+  | DatoCmsLocationStep
+  | DatoCmsConfirmationStep
+  | DatoCmsThankYouStep;
+
+export type ProductStep<Content = StepContent> = {
+  id: string;
+  position: number;
+  _allNameLocales: LocalizedField[];
+  _allTitleLocales: LocalizedField[];
+  _allDescriptionLocales: LocalizedField[];
+  _allContentLocales: LocalizedField<Content>[];
 };
 
 export const ProductsContext = React.createContext({
   carouselId: 'products',
-  title: 'Coaching services',
-  subtitle: 'Let\'s work together',
-  image: null,
-  productCategories: [] as ProductCategory[],
-  packages: {
-    stepName: 'Choose a program',
-    heading: 'How do you want us to work together ?',
-    description: '',
-    plans: []
-  },
-  dateTimeScreen: {
-    stepName: 'Date and time',
-    heading: 'When are you available ?',
-    description: '',
-    availableTimeslots: []
-  },
-  locationScreen: {
-    stepName: 'Location',
-    heading: 'Where do you prefer to train ?',
-    description: '',
-    contribution: {
-      locationChoiceCustomPlaceLabel: 'At your place',
-      locationChoiceLabel: 'Your preferred place',
-      locationChoiceError: 'Please select a place to meet or provide your own place',
-      customerPlaceLabel: 'Choose a place',
-      customerPlacePlaceholder: '1 rue du général Leclerc ...',
-      customerPlaceError: 'We are missing an address to meet'
-    },
-    availableLocations: [] as Location[]
-  },
-  confirmationScreen: {
-    stepName: 'Confirmation',
-    heading: 'IS EVERYTHING OK FOR YOU ?',
-    description: '',
-    contribution: {
-      planChoiceLabel: '',
-      dateChoiceLabel: '',
-      locationChoiceLabel: '',
-      validationButtonLabel: '',
-      emailLabel: '',
-      emailPlaceholder: '',
-      firstNameLabel: '',
-      firstNamePlaceholder: '',
-      lastNameLabel: '',
-      lastNamePlaceholder: '',
-      additionalInfoLabel: '',
-      additionalInfoPlaceholder: '',
-      requiredErrorMessage: '',
-      errorMessageNotSent: ''
-    }
-  },
-  thankYouScreen: {
-    stepName: 'Schedule our meeting',
-    heading: 'Thank you',
-    description: '',
-    content: '',
-    image: null,
-    redirectLink: {
-      label: '',
-      url: '',
-      isInternal: true
-    }
-  }
+  steps: [] as [
+    ProductStep<DatoCmsPlanStep>,
+    ProductStep<DatoCmsDateTimeStep>,
+    ProductStep<DatoCmsLocationStep>,
+    ProductStep<DatoCmsConfirmationStep>,
+    ProductStep<DatoCmsThankYouStep>
+  ]
 });
