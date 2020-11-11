@@ -2,12 +2,24 @@ import { MenuItem, Select } from '@material-ui/core';
 import React from 'react';
 import { LocalizedField } from '../../custom';
 
-export const defaultLocale = 'en';
+const supportedLocales = [
+  { value: 'en', label: 'English' },
+  { value: 'ja', label: 'Japanese' }
+];
 
-export const useI18n = (defaultLanguage = defaultLocale) => {
-  const [currentLanguage, setCurrentLanguage] = React.useState(typeof window !== 'undefined'
-    ? window.navigator.language
-    : defaultLanguage);
+export const defaultLocale = supportedLocales[0].value;
+
+const getClosestWindowLocale = () => {
+  if (typeof window === 'undefined') {
+    return defaultLocale;
+  }
+  const { language } = window.navigator;
+  return supportedLocales
+    .find(({ value }) => language.includes(value))?.value || defaultLocale;
+};
+
+export const useI18n = () => {
+  const [currentLanguage, setCurrentLanguage] = React.useState(getClosestWindowLocale());
 
   React.useEffect(() => {
     const storedLanguage = localStorage?.getItem('language');
@@ -33,12 +45,18 @@ export const useI18n = (defaultLanguage = defaultLocale) => {
   };
 };
 
-export const LanguageSelection = () => {
+export const LanguageSelection: React.FC<{className?: string}> = ({ className }) => {
   const { currentLanguage, setLanguage } = useI18n();
+
   return (
-    <Select value={currentLanguage || 'en'} onChange={(event) => setLanguage(event.target.value)}>
-      <MenuItem value="en">English</MenuItem>
-      <MenuItem value="ja">Japanese</MenuItem>
+    <Select
+      className={className}
+      variant="standard"
+      value={currentLanguage || defaultLocale }
+      onChange={(event) => setLanguage((event.target as HTMLSelectElement).value)}>
+      {supportedLocales.map(({ label, value }) => (
+        <MenuItem key={value} value={value}>{label}</MenuItem>
+      ))}
     </Select>
   );
 };

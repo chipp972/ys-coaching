@@ -85,8 +85,10 @@ export const Navbar: React.FC<Props> = ({ pathname }) => {
           <div className="navbar-end has-text-centered">
             <SocialLinks className={classes.socialIcons} />
           </div>
+          <div className="navbar-end has-text-centered">
+            <LanguageSelection className={classes.navbarItem} />
+          </div>
         </div>
-        <LanguageSelection />
       </div>
     </nav>
   );
