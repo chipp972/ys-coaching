@@ -5,7 +5,9 @@ import { LocalizedField } from '../../custom';
 export const defaultLocale = 'en';
 
 export const useI18n = (defaultLanguage = defaultLocale) => {
-  const [currentLanguage, setCurrentLanguage] = React.useState(window.navigator.language || defaultLanguage);
+  const [currentLanguage, setCurrentLanguage] = React.useState(typeof window !== 'undefined'
+    ? window.navigator.language
+    : defaultLanguage);
 
   React.useEffect(() => {
     const storedLanguage = localStorage?.getItem('language');
