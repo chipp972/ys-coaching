@@ -19,16 +19,27 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
+// eslint-disable-next-line max-lines-per-function
 export const ContactFormFields = () => {
-  const { contribution } = React.useContext(ContactContext);
+  const {
+    emailLabel,
+    emailPlaceholder,
+    requiredFieldErrorMessage,
+    firstnameLabel,
+    firstnamePlaceholder,
+    lastnameLabel,
+    lastnamePlaceholder,
+    messageLabel,
+    messagePlaceholder
+  } = React.useContext(ContactContext);
   const classes = useStyles();
   return (
     <>
       <FormInput
         className={classes.fieldset}
-        label={contribution.emailLabel}
-        placeholder={contribution.emailPlaceholder}
-        errorMessage={contribution.requiredErrorMessage}
+        label={emailLabel}
+        placeholder={emailPlaceholder}
+        errorMessage={requiredFieldErrorMessage}
         name={Fieldnames.email}
         type="email"
         margin="dense"
@@ -38,9 +49,9 @@ export const ContactFormFields = () => {
       <div className={classes.twoFieldContainer}>
         <FormInput
           className={clsx(classes.fieldset, classes.leftFieldset)}
-          label={contribution.firstNameLabel}
-          placeholder={contribution.firstNamePlaceholder}
-          errorMessage={contribution.requiredErrorMessage}
+          label={firstnameLabel}
+          placeholder={firstnamePlaceholder}
+          errorMessage={requiredFieldErrorMessage}
           name={Fieldnames.firstName}
           margin="dense"
           required
@@ -48,9 +59,9 @@ export const ContactFormFields = () => {
 
         <FormInput
           className={classes.fieldset}
-          label={contribution.lastNameLabel}
-          placeholder={contribution.lastNamePlaceholder}
-          errorMessage={contribution.requiredErrorMessage}
+          label={lastnameLabel}
+          placeholder={lastnamePlaceholder}
+          errorMessage={requiredFieldErrorMessage}
           name={Fieldnames.lastName}
           margin="dense"
           required
@@ -59,9 +70,9 @@ export const ContactFormFields = () => {
 
       <FormInput
         className={classes.fieldset}
-        label={contribution.messageLabel}
-        placeholder={contribution.messagePlaceholder}
-        errorMessage={contribution.requiredErrorMessage}
+        label={messageLabel}
+        placeholder={messagePlaceholder}
+        errorMessage={requiredFieldErrorMessage}
         name={Fieldnames.message}
         margin="dense"
         multiline

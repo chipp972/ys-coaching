@@ -10,8 +10,6 @@ module.exports = {
       { name: 'About', to: '/about' },
       { name: 'Coaching', to: '/products' },
       { name: 'Contact', to: '/contact' }
-      // { name: 'FAQ', to: '/contact/examples' },
-      // { name: 'Blog', to: '/blog' }
     ],
     instagramUrl: 'https://www.instagram.com/ys_coaching_0929/',
     youtubeUrl: 'https://www.youtube.com/channel/UC4rp5GtHU39mmc_9AMcR2YA/featured'
@@ -60,13 +58,6 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/cms`,
-        name: 'cms'
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
         path: `${__dirname}/src/img`,
         name: 'images'
       }
@@ -102,12 +93,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-netlify-cms',
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`
-      }
-    },
-    {
       // purges all unused/unreferenced css rules
       // must be after other CSS plugins
       resolve: 'gatsby-plugin-purgecss',
@@ -129,6 +114,12 @@ module.exports = {
         },
         cleanupOnClient: true,
         windowKey: '__PRELOADED_STATE__'
+      }
+    },
+    {
+      resolve: 'gatsby-source-datocms',
+      options: {
+        apiToken: process.env.DATO_API_TOKEN
       }
     },
     // make sure to keep gatby-plugin-netlify last in the array
